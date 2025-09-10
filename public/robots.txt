@@ -1,0 +1,16 @@
+# Robots.txt for Schachklub Kreis 4 Classical League
+
+User-agent: *
+Allow: /
+Allow: /players/register
+Allow: /rules
+Allow: /links
+
+# Block admin areas
+Disallow: /admin
+Disallow: /admin-auth
+Disallow: /api/admin
+Disallow: /setup
+
+# Sitemap
+Sitemap: https://classical.schachklub-k4.ch/sitemap.xml
