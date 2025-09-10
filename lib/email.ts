@@ -57,7 +57,7 @@ export async function sendRegistrationSuccessEmail(
   playerName: string,
   nickname: string
 ): Promise<boolean> {
-  const subject = 'Registration Successful - K4 Classical League'
+  const subject = 'Registration Received - K4 Classical League'
   const textBody = `Hello ${playerName},
 
 Welcome to the K4 Classical League!
@@ -69,8 +69,8 @@ Your registration has been submitted successfully. Here are your details:
 Your registration is currently pending approval by our tournament organizers. You'll receive another email once your registration has been approved and you're officially part of the tournament.
 
 In the meantime, you can:
-- Review the tournament rules at: http://localhost:3000/rules
-- Check tournament links at: http://localhost:3000/links
+- Review the tournament rules at: https://classical.schachklub-k4.ch/rules
+- Check tournament links at: https://classical.schachklub-k4.ch/links
 
 If you have any questions, please don't hesitate to contact us.
 
@@ -117,10 +117,10 @@ Important reminders:
 - Stay connected with other players via WhatsApp
 
 Tournament Resources:
-- View all players: http://localhost:3000/players
-- Submit results: http://localhost:3000/results
-- Request byes: http://localhost:3000/byes
-- Tournament links: http://localhost:3000/links
+- View all players: https://classical.schachklub-k4.ch/players
+- Submit results: https://classical.schachklub-k4.ch/results
+- Request byes: https://classical.schachklub-k4.ch/byes
+- Tournament links: https://classical.schachklub-k4.ch/links
 
 Welcome to the tournament and good luck!
 
@@ -158,7 +158,7 @@ Important:
 - You'll be included in pairings for future rounds (unless you request more byes)
 
 To view current standings and upcoming rounds:
-http://localhost:3000/links
+https://classical.schachklub-k4.ch/links
 
 If you have any questions about your bye or the tournament, please contact the organizers.
 
@@ -218,10 +218,10 @@ ${standingsLink}
 
 Important Reminders:
 - Contact your opponent via phone/WhatsApp to arrange the game time
-- Find opponent contact info: http://localhost:3000/players
+- Find opponent contact info: https://classical.schachklub-k4.ch/players
 - Games must be completed by ${deadline.toLocaleDateString('de-CH')}
-- Submit your result promptly: http://localhost:3000/results
-- Need a bye for next round? Request it early: http://localhost:3000/byes
+- Submit your result promptly: https://classical.schachklub-k4.ch/results
+- Need a bye for next round? Request it early: https://classical.schachklub-k4.ch/byes
 
 Good luck in your game!
 
