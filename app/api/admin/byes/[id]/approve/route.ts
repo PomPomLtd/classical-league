@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
+import { sendByeApprovedEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(
   request: NextRequest,
@@ -20,7 +21,8 @@ export async function POST(
     const byeRequest = await db.byeRequest.findUnique({
       where: { id: requestId },
       include: {
-        round: true
+        round: true,
+        player: true
       }
     })
 
@@ -42,6 +44,17 @@ export async function POST(
         approvedDate: new Date()
       }
     })
+
+    // Send bye approval email (non-blocking)
+    sendEmailSafe(
+      () => sendByeApprovedEmail(
+        byeRequest.player.email,
+        byeRequest.player.fullName,
+        byeRequest.round.roundNumber,
+        byeRequest.round.roundDate
+      ),
+      'bye approval'
+    )
 
     return NextResponse.json({
       success: true,

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
+import { sendPlayerApprovalEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(
   request: NextRequest,
@@ -41,6 +42,16 @@ export async function POST(
         approvedDate: new Date()
       }
     })
+
+    // Send player approval email (non-blocking)
+    sendEmailSafe(
+      () => sendPlayerApprovalEmail(
+        player.email,
+        player.fullName,
+        player.nickname
+      ),
+      'player approval'
+    )
 
     return NextResponse.json({
       success: true,

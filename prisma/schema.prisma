@@ -9,6 +9,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Global settings
+model Settings {
+  id              String   @id @default(cuid())
+  tournamentLink  String?  // SwissSystem.org tournament link
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("settings")
+}
+
 // Season management
 model Season {
   id           String   @id @default(cuid())

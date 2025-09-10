@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
+import { getTournamentSettings, updateTournamentSettings } from '@/lib/settings'
 
 export async function GET(request: NextRequest) {
   try {
@@ -16,10 +17,11 @@ export async function GET(request: NextRequest) {
       where: { isActive: true }
     })
 
-    // For now, we'll store simple settings in a JSON format
-    // In a real application, you might want a dedicated Settings table
+    // Get tournament settings from database
+    const tournamentSettings = await getTournamentSettings()
+
     const settings = {
-      tournamentLink: process.env.TOURNAMENT_LINK || null,
+      tournamentLink: tournamentSettings.tournamentLink,
       currentSeasonId: activeSeason?.id || ''
     }
 
@@ -61,6 +63,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Season not found' }, { status: 404 })
     }
 
+    // Update tournament settings in database
+    const settingsUpdated = await updateTournamentSettings(tournamentLink)
+    if (!settingsUpdated) {
+      return NextResponse.json({ error: 'Failed to update tournament settings' }, { status: 500 })
+    }
+
     // Update active season - set all to inactive first, then activate the selected one
     await db.season.updateMany({
       data: { isActive: false }
@@ -70,9 +78,6 @@ export async function POST(request: NextRequest) {
       where: { id: currentSeasonId },
       data: { isActive: true }
     })
-
-    // Note: In a production app, you'd want to store the tournament link in the database
-    // For now, this would need to be set as an environment variable
 
     return NextResponse.json({
       success: true,

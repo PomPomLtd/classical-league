@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Players', href: '/admin/players', icon: '👥' },
   { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️' },
   { name: 'Results', href: '/admin/results', icon: '🏆' },
+  { name: 'Rounds', href: '/admin/rounds', icon: '📅' },
   { name: 'Settings', href: '/admin/settings', icon: '⚙️' },
 ]
 
