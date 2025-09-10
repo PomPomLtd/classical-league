@@ -105,9 +105,15 @@ The application uses Prisma with PostgreSQL and follows a multi-season tournamen
 - Creative nickname generation with 47+ humorous chess phrases
 
 **Environment Setup:**
-- Requires `DATABASE_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`
-- PostgreSQL database (local or hosted)
-- Vercel deployment recommended for production
+- Requires `DATABASE_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `POSTMARK_API_KEY`
+- PostgreSQL database (production: Neon serverless)
+- Postmark API for email notifications (sender: check@schachklub-k4.ch)
+- Production deployment: Vercel at classical.schachklub-k4.ch
+
+**Email Notifications:**
+- Registration success, player approval, bye approval, round notifications
+- Non-blocking email system to prevent API timeouts
+- All email templates include tournament links from admin settings
 
 ## Development Workflow
 

@@ -174,11 +174,20 @@ The application includes email testing capabilities for development and verifica
 
 ## Deployment
 
-The application is designed for production deployment with:
-- Database migrations via Prisma
-- Email notifications via Postmark
-- Static asset optimization
-- Environment-based configuration
+### Production Setup
+The application is deployed at [classical.schachklub-k4.ch](https://classical.schachklub-k4.ch) with:
+
+- **Database**: Neon PostgreSQL serverless database
+- **Email**: Postmark API for transactional emails
+- **Hosting**: Vercel with automatic deployments from main branch
+- **SEO**: Complete Open Graph and Twitter Card metadata
+- **Security**: Admin authentication with bcrypt password hashing
+
+### Initial Production Setup
+1. **Database Initialization**: Visit `/api/admin/migrate-db` to create schema
+2. **Admin Creation**: Visit `/api/admin/create-admin` to create initial admin user
+3. **Season Setup**: Use admin panel to configure current season settings
+4. **Tournament Links**: Configure SwissSystem.org links in admin settings
 
 ## Contributing
 
