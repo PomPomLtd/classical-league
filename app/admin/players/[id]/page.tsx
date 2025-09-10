@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
 interface Player {
@@ -20,7 +20,6 @@ interface Player {
 
 export default function AdminPlayerDetailPage() {
   const params = useParams()
-  const _router = useRouter()
   const [player, setPlayer] = useState<Player | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')

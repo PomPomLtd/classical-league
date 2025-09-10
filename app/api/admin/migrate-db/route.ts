@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 // import { getServerSession } from 'next-auth/next'
 // import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
 
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     // For initial setup, we'll allow this without auth check
     // Remove this comment and uncomment auth check after initial setup

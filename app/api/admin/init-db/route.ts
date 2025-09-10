@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
 
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     // Check admin authentication
     const session = await getServerSession(authOptions)

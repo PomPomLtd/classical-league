@@ -29,7 +29,7 @@ export default function AdminLogin() {
       } else {
         setError('Authentication failed')
       }
-    } catch (_error) {
+    } catch {
       setError('An error occurred during login')
     } finally {
       setIsLoading(false)

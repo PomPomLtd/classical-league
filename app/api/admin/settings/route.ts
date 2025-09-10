@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
 import { getTournamentSettings, updateTournamentSettings } from '@/lib/settings'
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     // Check admin authentication
     const session = await getServerSession(authOptions)
@@ -96,7 +96,7 @@ function isValidUrl(string: string): boolean {
   try {
     new URL(string)
     return true
-  } catch (__) {
+  } catch {
     return false
   }
 }

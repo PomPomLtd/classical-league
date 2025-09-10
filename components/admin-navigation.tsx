@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 
@@ -21,7 +20,6 @@ function classNames(...classes: string[]) {
 
 export function AdminNavigation() {
   const pathname = usePathname()
-  const _router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Close mobile menu when route changes

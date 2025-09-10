@@ -62,7 +62,7 @@ export default function RegisterPage() {
           message: result.error || 'Registration failed. Please try again.'
         })
       }
-    } catch (_error) {
+    } catch {
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'
