@@ -186,6 +186,10 @@ export default function AdminPlayerDetailPage() {
               <dd className="mt-1 text-sm text-gray-900 dark:text-white">{player.nickname}</dd>
             </div>
             <div>
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Lichess Rating</dt>
+              <dd className="mt-1 text-sm text-gray-900 dark:text-white">{player.lichessRating || 1500}</dd>
+            </div>
+            <div>
               <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</dt>
               <dd className="mt-1 text-sm text-gray-900 dark:text-white">
                 <a href={`mailto:${player.email}`} className="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">

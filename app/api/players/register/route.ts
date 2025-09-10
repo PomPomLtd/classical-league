@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { fullName, email, phoneNumber, nickname, rulesAccepted } = validationResult.data
+    const { fullName, email, phoneNumber, nickname, lichessRating, rulesAccepted } = validationResult.data
 
     // Get current active season
     const currentSeason = await getCurrentSeason()
@@ -63,6 +63,7 @@ export async function POST(request: NextRequest) {
         email,
         phoneNumber,
         nickname,
+        lichessRating: parseInt(lichessRating),
         rulesAccepted,
         isApproved: false // Requires admin approval
       }

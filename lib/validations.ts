@@ -20,6 +20,13 @@ export const playerRegistrationSchema = z.object({
     .max(50, 'Chess Player Name must be less than 50 characters')
     .regex(/^[a-zA-Z0-9äöüÄÖÜß\s'"_-]+$/, 'Chess Player Name can only contain letters, numbers, spaces, quotes, underscores, and hyphens'),
   
+  lichessRating: z.string()
+    .regex(/^\d{3,4}$/, 'Rating must be a number between 100 and 3000')
+    .refine(val => {
+      const rating = parseInt(val)
+      return rating >= 100 && rating <= 3000
+    }, 'Rating must be between 100 and 3000'),
+  
   rulesAccepted: z.boolean()
     .refine(val => val === true, 'You must accept the tournament rules to register')
 })

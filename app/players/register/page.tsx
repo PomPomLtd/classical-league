@@ -241,6 +241,38 @@ export default function RegisterPage() {
             )}
           </div>
 
+          {/* Lichess Classical Rating */}
+          <div>
+            <label htmlFor="lichessRating" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Lichess Classical Rating *
+            </label>
+            <input
+              {...register('lichessRating')}
+              type="number"
+              id="lichessRating"
+              min="100"
+              max="3000"
+              className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+              placeholder="1500"
+            />
+            <div className="mt-2 text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <p className="font-medium">How to find your rating:</p>
+              <ul className="list-disc list-inside space-y-1 text-xs">
+                <li><strong>Best:</strong> Use your Lichess Classical rating</li>
+                <li><strong>Alternative:</strong> Use Lichess Rapid rating</li>
+                <li><strong>Chess.com users:</strong> Add 150 to your Chess.com Classical/Rapid rating</li>
+                <li><strong>No classical/rapid rating?</strong> Use your Blitz rating</li>
+                <li><strong>No online rating?</strong> Enter 500 (we'll adjust after your first games)</li>
+              </ul>
+              <p className="text-xs italic mt-2">This helps create balanced pairings in the Swiss system</p>
+            </div>
+            {errors.lichessRating && (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {errors.lichessRating.message}
+              </p>
+            )}
+          </div>
+
           {/* Rules Acceptance */}
           <div>
             <div className="flex items-start">

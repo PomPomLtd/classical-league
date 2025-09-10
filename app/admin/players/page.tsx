@@ -172,7 +172,7 @@ export default function AdminPlayersPage() {
                           {player.fullName}
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {player.nickname}
+                          {player.nickname} • Rating: {player.lichessRating || 1500}
                         </div>
                       </div>
                     </td>
