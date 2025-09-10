@@ -53,5 +53,7 @@ export const authOptions: NextAuthOptions = {
       return session
     }
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  // Temporary fallback for build process
+  ...(process.env.NEXTAUTH_URL && { url: process.env.NEXTAUTH_URL })
 }

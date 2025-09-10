@@ -13,17 +13,17 @@ export async function POST(_request: NextRequest) {
     //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     // }
 
-    // Create tables using raw SQL for PostgreSQL
-    const createTables = `
-      -- Create settings table
+    // Create tables using individual statements for PostgreSQL
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "settings" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "tournamentLink" TEXT,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
+      )
+    `)
 
-      -- Create seasons table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "seasons" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "seasonNumber" INTEGER UNIQUE NOT NULL,
@@ -33,9 +33,10 @@ export async function POST(_request: NextRequest) {
         "isActive" BOOLEAN DEFAULT false,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
+      )
+    `)
 
-      -- Create players table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "players" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "seasonId" TEXT NOT NULL REFERENCES "seasons"("id") ON DELETE CASCADE,
@@ -52,9 +53,10 @@ export async function POST(_request: NextRequest) {
         "withdrawalDate" TIMESTAMP,
         UNIQUE("seasonId", "email"),
         UNIQUE("seasonId", "nickname")
-      );
+      )
+    `)
 
-      -- Create rounds table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "rounds" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "seasonId" TEXT NOT NULL REFERENCES "seasons"("id") ON DELETE CASCADE,
@@ -63,9 +65,10 @@ export async function POST(_request: NextRequest) {
         "byeDeadline" TIMESTAMP NOT NULL,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UNIQUE("seasonId", "roundNumber")
-      );
+      )
+    `)
 
-      -- Create bye_requests table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "bye_requests" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "playerId" TEXT NOT NULL REFERENCES "players"("id") ON DELETE CASCADE,
@@ -75,9 +78,10 @@ export async function POST(_request: NextRequest) {
         "approvedDate" TIMESTAMP,
         "adminNotes" TEXT,
         UNIQUE("playerId", "roundId")
-      );
+      )
+    `)
 
-      -- Create game_results table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "game_results" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "roundId" TEXT NOT NULL REFERENCES "rounds"("id") ON DELETE CASCADE,
@@ -93,9 +97,10 @@ export async function POST(_request: NextRequest) {
         "blackPlayerId" TEXT REFERENCES "players"("id"),
         "winningPlayerId" TEXT REFERENCES "players"("id"),
         UNIQUE("roundId", "boardNumber")
-      );
+      )
+    `)
 
-      -- Create admins table
+    await db.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "admins" (
         "id" TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         "username" TEXT UNIQUE NOT NULL,
@@ -103,11 +108,8 @@ export async function POST(_request: NextRequest) {
         "lastLogin" TIMESTAMP,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
-    `
-
-    // Execute the SQL
-    await db.$executeRawUnsafe(createTables)
+      )
+    `)
 
     // Now create Season 2 with rounds
     const existingSeason = await db.season.findUnique({
