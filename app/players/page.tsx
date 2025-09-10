@@ -119,7 +119,7 @@ export default function PlayersPage() {
                   {/* Player Info */}
                   <div className="text-center">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {player.firstName} <span className="font-syne-tactile italic">"{player.nickname}"</span> {player.lastInitial}
+                      {player.firstName} <span className="font-syne-tactile italic">"{player.nickname}"</span> <span className="ml-2">{player.lastInitial}</span>
                     </h3>
                   </div>
 

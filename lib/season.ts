@@ -62,3 +62,21 @@ export async function getActiveRounds() {
     orderBy: { roundNumber: 'asc' }
   })
 }
+
+export async function getCurrentRound() {
+  const season = await getCurrentSeason()
+  if (!season) return null
+
+  const now = new Date()
+  
+  // Find the round that is currently active (round date has passed but next round hasn't started)
+  const round = await db.round.findFirst({
+    where: { 
+      seasonId: season.id,
+      roundDate: { lte: now } // Round has started
+    },
+    orderBy: { roundNumber: 'desc' } // Get the most recent round that has started
+  })
+
+  return round
+}
