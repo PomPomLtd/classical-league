@@ -25,7 +25,15 @@ export default function RegisterPage() {
     resolver: zodResolver(playerRegistrationSchema)
   })
 
-  const currentNickname = watch('nickname')
+  const watchedFields = watch(['fullName', 'nickname', 'lichessRating'])
+  const fullName = watchedFields[0] || ''
+  const nickname = watchedFields[1] || ''
+  const rating = watchedFields[2] || '1500'
+  
+  // Extract first name and last initial from full name
+  const nameParts = fullName.trim().split(' ')
+  const firstName = nameParts[0] || ''
+  const lastInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0).toUpperCase() + '.' : ''
 
   const onSubmit = async (data: PlayerRegistrationData) => {
     setIsSubmitting(true)
@@ -273,6 +281,41 @@ export default function RegisterPage() {
             )}
           </div>
 
+          {/* Player Card Preview */}
+          {(fullName || nickname) && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Player Card Preview
+              </label>
+              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg p-6 border-2 border-indigo-200 dark:border-indigo-800 shadow-lg">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-gray-900 dark:text-white">
+                    {firstName && (
+                      <>
+                        {firstName}
+                        {nickname && (
+                          <>
+                            {' '}
+                            <span className="font-syne-tactile italic text-indigo-600 dark:text-indigo-400">
+                              "{nickname}"
+                            </span>
+                          </>
+                        )}
+                        {lastInitial && (
+                          <span className="ml-2">{lastInitial}</span>
+                        )}
+                      </>
+                    )}
+                    {!firstName && <span className="text-gray-400">Your name will appear here</span>}
+                  </div>
+                  <div className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+                    Rating: {rating || '1500'}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Rules Acceptance */}
           <div>
             <div className="flex items-start">
@@ -285,7 +328,7 @@ export default function RegisterPage() {
               <div className="ml-3">
                 <label htmlFor="rulesAccepted" className="text-sm text-gray-700 dark:text-gray-300">
                   I have read and accept the{' '}
-                  <Link href="/rules" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 underline">
+                  <Link href="/rules" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 underline">
                     tournament rules
                   </Link>{' '}
                   *
