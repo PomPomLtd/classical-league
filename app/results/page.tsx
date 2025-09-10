@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface Round {
   id: string
@@ -39,9 +39,24 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetchRounds()
+  }, [])
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowPlayerDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [])
 
   const fetchRounds = async () => {
@@ -163,8 +178,8 @@ export default function ResultsPage() {
 
   // Filter players for search
   const filteredPlayers = players.filter(player => {
-    if (!playerSearch) return true
-    const searchLower = playerSearch.toLowerCase()
+    if (!playerSearch.trim()) return true
+    const searchLower = playerSearch.toLowerCase().trim()
     return (
       player.firstName.toLowerCase().includes(searchLower) ||
       player.nickname.toLowerCase().includes(searchLower) ||
@@ -310,7 +325,7 @@ export default function ResultsPage() {
                 <label htmlFor="winningPlayer" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Winning Player *
                 </label>
-                <div className="mt-1 relative">
+                <div className="mt-1 relative" ref={dropdownRef}>
                   <input
                     type="text"
                     id="winningPlayer"
@@ -329,7 +344,7 @@ export default function ResultsPage() {
                   />
                   
                   {/* Dropdown */}
-                  {showPlayerDropdown && filteredPlayers.length > 0 && (
+                  {showPlayerDropdown && players.length > 0 && (
                     <div className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-700 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                       {filteredPlayers.slice(0, 10).map((player) => (
                         <button
