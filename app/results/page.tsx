@@ -145,7 +145,7 @@ export default function ResultsPage() {
       const data = await response.json()
 
       if (response.ok) {
-        setMessage('Result submitted successfully! Our K4 admin homie will verify and update the official tournament page.')
+        setMessage('Result submitted successfully! Our tournament organizers will update the official SwissSystem tournament page.')
         // Reset form
         setSelectedRound('')
         setBoardNumber('')
@@ -233,7 +233,7 @@ export default function ResultsPage() {
                   <li>Winners must submit results within 24 hours of the game</li>
                   <li>Use the board number from the official pairings</li>
                   <li>Include complete PGN notation from your chess platform</li>
-                  <li>Our K4 admin homie will verify results and update the official SwissSystem tournament page</li>
+                  <li>Our tournament organizers will update the official SwissSystem tournament page with your result</li>
                 </ul>
               </div>
             </div>

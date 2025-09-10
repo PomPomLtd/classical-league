@@ -26,7 +26,7 @@ interface GameResult {
 }
 
 
-type FilterType = 'all' | 'unverified' | 'verified'
+type FilterType = 'all' | 'unverified' | 'processed'
 
 const RESULT_LABELS: Record<string, string> = {
   'WHITE_WIN': '1-0',
@@ -61,7 +61,7 @@ export default function AdminResultsPage() {
     }
   }
 
-  const handleVerify = async (resultId: string) => {
+  const handleProcess = async (resultId: string) => {
     try {
       const response = await fetch(`/api/admin/results/${resultId}/verify`, {
         method: 'POST'
@@ -70,7 +70,7 @@ export default function AdminResultsPage() {
         fetchData()
       }
     } catch (error) {
-      console.error('Error verifying result:', error)
+      console.error('Error processing result:', error)
     }
   }
 
@@ -79,7 +79,7 @@ export default function AdminResultsPage() {
     // Apply status filter
     let matchesFilter = true
     if (filter === 'unverified') matchesFilter = !result.isVerified
-    else if (filter === 'verified') matchesFilter = result.isVerified
+    else if (filter === 'processed') matchesFilter = result.isVerified
 
     // Apply search filter
     const matchesSearch = search === '' || 
@@ -105,7 +105,7 @@ export default function AdminResultsPage() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Result Management</h1>
           <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-            Verify game results and update the official SwissSystem tournament page
+            Process game results and update the official SwissSystem tournament page
           </p>
         </div>
       </div>
@@ -115,7 +115,7 @@ export default function AdminResultsPage() {
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Status Filter */}
           <div className="flex flex-wrap gap-2">
-            {(['all', 'unverified', 'verified'] as FilterType[]).map(filterType => (
+            {(['all', 'unverified', 'processed'] as FilterType[]).map(filterType => (
               <button
                 key={filterType}
                 onClick={() => setFilter(filterType)}
@@ -209,7 +209,7 @@ export default function AdminResultsPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       {result.isVerified ? (
                         <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 dark:bg-green-900/20 dark:text-green-400">
-                          Verified
+                          Processed
                         </span>
                       ) : (
                         <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">
@@ -220,10 +220,10 @@ export default function AdminResultsPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       {!result.isVerified && (
                         <button
-                          onClick={() => handleVerify(result.id)}
+                          onClick={() => handleProcess(result.id)}
                           className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300"
                         >
-                          Verify
+                          Process
                         </button>
                       )}
                     </td>
@@ -269,7 +269,7 @@ export default function AdminResultsPage() {
               <div className="ml-5 w-0 flex-1">
                 <dl>
                   <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
-                    Unverified
+                    Unprocessed
                   </dt>
                 </dl>
               </div>
@@ -290,7 +290,7 @@ export default function AdminResultsPage() {
               <div className="ml-5 w-0 flex-1">
                 <dl>
                   <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
-                    Verified
+                    Processed
                   </dt>
                 </dl>
               </div>

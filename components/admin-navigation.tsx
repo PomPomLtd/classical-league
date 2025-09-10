@@ -12,6 +12,7 @@ const navigation = [
   { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️' },
   { name: 'Results', href: '/admin/results', icon: '🏆' },
   { name: 'Seasons', href: '/admin/seasons', icon: '📅' },
+  { name: 'Settings', href: '/admin/settings', icon: '⚙️' },
 ]
 
 function classNames(...classes: string[]) {

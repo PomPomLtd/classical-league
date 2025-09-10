@@ -105,7 +105,7 @@ export default function RulesPage() {
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-white">Bye Requests</p>
                       <p>Before Wednesday 12:00 noon</p>
-                      <p className="text-xs text-gray-500">Contact our K4 admin homie</p>
+                      <p className="text-xs text-gray-500">Contact tournament organizers</p>
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function RulesPage() {
 
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
                   <p className="font-semibold text-red-800 dark:text-red-200 mb-2">🚪 Need a Bye or Want to Withdraw?</p>
-                  <p className="text-red-700 dark:text-red-300">Life gets busy! If you can't play a round or need to drop out, just let our K4 admin homie know before Wednesday noon when pairings are released. We're totally understanding! 😊</p>
+                  <p className="text-red-700 dark:text-red-300">Life gets busy! If you can't play a round or need to drop out, just let our tournament organizers know before Wednesday noon when pairings are released. We're totally understanding! 😊</p>
                   <div className="mt-3">
                     <Link 
                       href="/byes" 
@@ -179,7 +179,7 @@ export default function RulesPage() {
                     <p><strong>Winner reports the result</strong> using our handy online form</p>
                     <p><strong>In case of a draw:</strong> The white player should report the result</p>
                     <p><strong>Include the PGN notation</strong> from your game - copy it from Lichess, Chess.com, or your chess app</p>
-                    <p className="text-sm mt-3">💡 <em>Our K4 admin homie will verify results and update the official SwissSystem tournament page</em></p>
+                    <p className="text-sm mt-3">💡 <em>Our tournament organizers will update the official SwissSystem tournament page with your result</em></p>
                   </div>
                   <div className="mt-4">
                     <Link 
@@ -263,7 +263,7 @@ export default function RulesPage() {
                 
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white mb-2">🔍 Disputes</p>
-                  <p>Got a problem or disagreement? No worries! Report any issues to our K4 admin homie, whose decision will be final. We're here to help resolve things fairly and keep the tournament fun for everyone.</p>
+                  <p>Got a problem or disagreement? No worries! Report any issues to our tournament organizers, whose decision will be final. We're here to help resolve things fairly and keep the tournament fun for everyone.</p>
                 </div>
               </div>
             </section>
@@ -275,7 +275,7 @@ export default function RulesPage() {
                   🎉 Let's Have a Great Tournament!
                 </h3>
                 <p className="text-indigo-700 dark:text-indigo-300">
-                  By participating in this tournament, all players agree to abide by these rules and the decisions of our K4 admin homie. 
+                  By participating in this tournament, all players agree to abide by these rules and the decisions of our tournament organizers. 
                   Most importantly: <strong>let's enjoy a fair, competitive, and friendly tournament!</strong>
                 </p>
                 <p className="mt-4 text-sm text-indigo-600 dark:text-indigo-400 italic">
