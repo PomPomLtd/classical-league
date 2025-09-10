@@ -136,7 +136,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white">Start Date</h3>
-              <p className="text-gray-600 dark:text-gray-300">September 23rd, 2025</p>
+              <p className="text-gray-600 dark:text-gray-300">23.9.2025</p>
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white">Rounds</h3>

@@ -56,7 +56,7 @@ export function Navigation() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/" className="text-white font-bold text-xl hover:text-gray-300 transition-colors">
-                ♛ Schachklub Kreis 4 Classical League
+                ♛ K4 Classical League
               </Link>
             </div>
             <div className="hidden lg:block">

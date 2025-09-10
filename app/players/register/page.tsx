@@ -87,7 +87,7 @@ export default function RegisterPage() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
               <div>
-                <p><strong>📅 Start:</strong> September 23, 2025</p>
+                <p><strong>📅 Start:</strong> 23.9.2025</p>
                 <p><strong>⏰ Schedule:</strong> Every 2 weeks</p>
                 <p><strong>🎯 Rounds:</strong> 7 total rounds</p>
               </div>

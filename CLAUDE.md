@@ -1,0 +1,121 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+K4 Classical League is a Next.js 15 web application for managing a Swiss system chess tournament. The application handles player registration with admin approval, bye request management, game result submission with PGN notation, and tournament administration.
+
+**Key Tournament Details:**
+- Swiss system format, 7 rounds, 30+30 time control
+- External pairings via swissystem.org
+- Multi-season support (currently Season 2)
+- Expected scale: ~50 players per season
+
+## Commands
+
+**Development:**
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production with Turbopack
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+**Database:**
+- `npm run db:seed` - Seed database with initial data
+- `npx prisma migrate dev` - Run database migrations
+- `npx prisma studio` - Open Prisma Studio
+- `npx prisma generate` - Generate Prisma client
+
+## Architecture Overview
+
+### Tech Stack
+- **Frontend:** Next.js 15 App Router, React 19, TailwindCSS 4
+- **Backend:** Next.js API routes, Prisma ORM, PostgreSQL
+- **Authentication:** NextAuth.js with credentials provider
+- **Deployment:** Vercel (recommended)
+
+### Database Architecture
+The application uses Prisma with PostgreSQL and follows a multi-season tournament model:
+
+- **Season** - Tournament seasons with start/end dates
+- **Player** - User registrations with approval workflow  
+- **Round** - Tournament rounds with bye deadlines
+- **ByeRequest** - Player bye requests with admin approval
+- **GameResult** - Game results with board numbers and PGN notation
+- **Admin** - Administrative users with authentication
+
+### Key Design Patterns
+
+**Admin Approval Workflows:**
+- Player registration requires admin approval before appearing in directory
+- Bye requests require admin approval before Wednesday noon deadlines
+- Game results require admin verification and player assignment
+
+**Multi-Season Support:**
+- All player data is scoped to seasons
+- Email/nickname uniqueness enforced per season
+- Season management through admin panel
+
+**Authentication Architecture:**
+- NextAuth.js with custom credentials provider
+- Admin-only authentication (single role)
+- JWT sessions with 8-hour expiry
+- Server-side session validation in admin layouts
+
+### File Structure
+
+**Core Application:**
+- `/app` - Next.js App Router pages and API routes
+- `/components` - Reusable React components with navigation
+- `/lib` - Utilities, database client, auth configuration
+- `/prisma` - Database schema and seed files
+
+**Key Components:**
+- `components/navigation.tsx` - Public site navigation with mobile flyout
+- `components/admin-navigation.tsx` - Admin panel navigation
+- `lib/auth-config.ts` - NextAuth.js configuration
+- `lib/nickname-generator.ts` - Creative chess nickname generation
+- `lib/validations.ts` - Zod schemas for form validation
+
+## Development Notes
+
+**Authentication Flow:**
+- Login page at `/admin-auth` (outside admin layout to prevent redirect loops)
+- Admin layout uses `getServerSession()` with auth config
+- Session provider wraps entire app for client-side auth
+
+**Form Validation:**
+- Uses React Hook Form with Zod resolvers
+- Phone numbers required for WhatsApp integration
+- Nickname validation allows spaces, quotes, underscores, hyphens
+
+**Mobile Design:**
+- Mobile-first responsive design
+- Flyout navigation menus for both public and admin sections
+- TailwindCSS 4 with custom Syne font integration
+
+**Data Patterns:**
+- Swiss date formatting (`toLocaleDateString('de-CH')`) 
+- Board number-based result entry (no player selection)
+- PGN notation required for all game submissions
+- Creative nickname generation with 47+ humorous chess phrases
+
+**Environment Setup:**
+- Requires `DATABASE_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`
+- PostgreSQL database (local or hosted)
+- Vercel deployment recommended for production
+
+## Development Workflow
+
+**For New Features:**
+1. Check `/PROJECT_SPEC.md` for requirements and data models
+2. Update Prisma schema if database changes needed
+3. Follow existing patterns for admin approval workflows
+4. Use mobile-first TailwindCSS design approach
+5. Test admin authentication and approval flows
+
+**For Bug Fixes:**
+1. Test with development server running (`npm run dev`)
+2. Check both public and admin interfaces
+3. Verify mobile responsiveness
+4. Test authentication flows and session management

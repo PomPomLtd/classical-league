@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
+import { Providers } from "@/components/session-provider";
 
 export const metadata: Metadata = {
   title: "Schachklub Kreis 4 Classical League",
@@ -15,12 +16,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="h-full font-syne antialiased bg-background text-foreground">
-        <div className="min-h-full">
-          <Navigation />
-          <main className="pb-10">
-            {children}
-          </main>
-        </div>
+        <Providers>
+          <div className="min-h-full">
+            <Navigation />
+            <main className="pb-10">
+              {children}
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
