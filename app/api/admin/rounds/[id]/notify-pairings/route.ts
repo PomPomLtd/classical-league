@@ -6,7 +6,7 @@ import { sendNewRoundPairingsEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check admin authentication
@@ -15,7 +15,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const roundId = params.id
+    const { id: roundId } = await params
 
     // Get round with all players and their pairings/byes
     const round = await db.round.findUnique({

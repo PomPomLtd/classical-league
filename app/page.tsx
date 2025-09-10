@@ -62,7 +62,7 @@ export default function Home() {
                   Request Bye
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Skip rounds when you can't play
+                  Skip rounds when you can&apos;t play
                 </p>
               </div>
             </div>

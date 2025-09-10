@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getCurrentSeason } from '@/lib/season'
+import Link from 'next/link'
 
 async function getAdminStats() {
   const currentSeason = await getCurrentSeason()
@@ -191,27 +192,27 @@ export default async function AdminDashboard() {
             Quick Actions
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <a
+            <Link
               href="/admin/players"
               className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
             >
               <span className="mr-2">👥</span>
               Manage Players
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admin/byes"
               className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
             >
               <span className="mr-2">⏸️</span>
               Review Byes
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admin/results"
               className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
             >
               <span className="mr-2">🏆</span>
               Verify Results
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
 
     // Format the response with player name parts for display
     const formattedResults = results.map(result => {
-      const formatPlayer = (player: any) => {
+      const formatPlayer = (player: { fullName: string; nickname: string } | null) => {
         if (!player) return null
         const nameParts = player.fullName.trim().split(' ')
         const firstName = nameParts[0]

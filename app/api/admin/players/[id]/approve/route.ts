@@ -6,7 +6,7 @@ import { sendPlayerApprovalEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check admin authentication
@@ -15,7 +15,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const playerId = params.id
+    const { id: playerId } = await params
 
     // Check if player exists and is not already approved
     const player = await db.player.findUnique({

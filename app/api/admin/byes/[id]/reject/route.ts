@@ -5,7 +5,7 @@ import { db } from '@/lib/db'
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check admin authentication
@@ -14,7 +14,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const requestId = params.id
+    const { id: requestId } = await params
 
     // Check if bye request exists
     const byeRequest = await db.byeRequest.findUnique({
