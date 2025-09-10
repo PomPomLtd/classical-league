@@ -7,6 +7,36 @@ export default function SetupPage() {
   const [message, setMessage] = useState('')
   const [details, setDetails] = useState<Record<string, unknown> | null>(null)
 
+  const createAdmin = async () => {
+    setStatus('loading')
+    setMessage('Creating admin user...')
+    
+    try {
+      const response = await fetch('/api/admin/create-admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      const data = await response.json()
+      
+      if (response.ok) {
+        setStatus('success')
+        setMessage(data.message || 'Admin user created!')
+        setDetails(data)
+      } else {
+        setStatus('error')
+        setMessage(data.error || 'Admin creation failed')
+        setDetails(data)
+      }
+    } catch (error) {
+      setStatus('error')
+      setMessage('Failed to create admin')
+      setDetails({ error: error instanceof Error ? error.message : 'Unknown error' })
+    }
+  }
+
   const runMigration = async () => {
     setStatus('loading')
     setMessage('Running database migration...')
@@ -116,6 +146,14 @@ export default function SetupPage() {
               className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 disabled:opacity-50"
             >
               3. Initialize Database Schema & Create Season 2
+            </button>
+            
+            <button
+              onClick={createAdmin}
+              disabled={status === 'loading'}
+              className="w-full px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 disabled:opacity-50"
+            >
+              4. Create Admin User (from ENV variables)
             </button>
           </div>
           
