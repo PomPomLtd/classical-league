@@ -3,8 +3,8 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 
 export const metadata: Metadata = {
-  title: "Classical Chess League",
-  description: "Management portal for classical chess league tournament",
+  title: "Schachklub Kreis 4 Classical League",
+  description: "Management portal for Schachklub Kreis 4 classical chess league tournament",
 };
 
 export default function RootLayout({

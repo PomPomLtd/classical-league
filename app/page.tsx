@@ -7,7 +7,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-            Classical Chess League
+            Schachklub Kreis 4 Classical League
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
             Welcome to Season 2 of our classical chess tournament. Register, manage your byes, 
