@@ -71,7 +71,6 @@ Your registration is currently pending approval by our tournament organizers. Yo
 In the meantime, you can:
 - Review the tournament rules at: http://localhost:3000/rules
 - Check tournament links at: http://localhost:3000/links
-- View registered players at: http://localhost:3000/players
 
 If you have any questions, please don't hesitate to contact us.
 
