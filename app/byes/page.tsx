@@ -112,7 +112,7 @@ export default function ByesPage() {
       const data = await response.json()
 
       if (response.ok) {
-        setMessage('Bye request submitted successfully! Admin will review your request.')
+        setMessage('Bye request submitted successfully! Our chess organizer will review your request.')
         setSelectedRounds([])
         fetchExistingRequests(selectedPlayer)
       } else {
@@ -186,7 +186,7 @@ export default function ByesPage() {
                   <li>Bye requests must be submitted before Wednesday 12:00 noon</li>
                   <li>Bye rounds score 0.5 points (half point)</li>
                   <li>No limit on the number of bye rounds per player</li>
-                  <li>Admin approval required - you'll be notified of the decision</li>
+                  <li>Chess organizer approval required - you'll be notified of the decision</li>
                 </ul>
               </div>
             </div>

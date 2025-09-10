@@ -121,7 +121,7 @@ export default function RegisterPage() {
                   {submitStatus.message}
                 </p>
                 <p className="mt-2 text-sm text-green-700 dark:text-green-300">
-                  You will be notified once an administrator approves your registration.
+                  You will be notified once our chess organizer approves your registration.
                 </p>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function RegisterPage() {
             What happens after registration?
           </h3>
           <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-            <li>• Your registration will be reviewed by an administrator</li>
+            <li>• Your registration will be reviewed by our chess organizer</li>
             <li>• You will be manually added to the swissystem.org tournament</li>
             <li>• Once approved, you'll appear in the player directory</li>
             <li>• You can then request byes and submit results</li>

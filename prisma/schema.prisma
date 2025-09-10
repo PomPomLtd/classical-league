@@ -46,6 +46,7 @@ model Player {
   whiteGames     GameResult[] @relation("WhitePlayer")
   blackGames     GameResult[] @relation("BlackPlayer")
   submittedResults GameResult[] @relation("SubmittedBy")
+  wonGames       GameResult[] @relation("WinningPlayer")
 
   @@unique([seasonId, email])
   @@unique([seasonId, nickname])
@@ -99,12 +100,14 @@ model GameResult {
   verifiedDate     DateTime?
   adminNotes       String?
   whitePlayerId    String?   // Added by admin
-  blackPlayerId    String?   // Added by admin
+  blackPlayerId    String?   // Added by admin  
+  winningPlayerId  String?   // Submitted by player to help identify pairing
 
   round            Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
   submittedBy      Player?   @relation("SubmittedBy", fields: [submittedById], references: [id])
   whitePlayer      Player?   @relation("WhitePlayer", fields: [whitePlayerId], references: [id])
   blackPlayer      Player?   @relation("BlackPlayer", fields: [blackPlayerId], references: [id])
+  winningPlayer    Player?   @relation("WinningPlayer", fields: [winningPlayerId], references: [id])
 
   @@unique([roundId, boardNumber])
   @@map("game_results")
@@ -127,5 +130,6 @@ enum GameResultEnum {
   BLACK_WIN      // 0-1
   DRAW           // 1/2-1/2
   WHITE_WIN_FF   // 1-0 FF (forfeit)
+  BLACK_WIN_FF   // 0-1 FF (forfeit)
   DOUBLE_FF      // 0-0 FF (double forfeit)
 }
