@@ -1,0 +1,131 @@
+// Classical Chess League Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Season management
+model Season {
+  id           String   @id @default(cuid())
+  seasonNumber Int      @unique
+  name         String
+  startDate    DateTime
+  endDate      DateTime
+  isActive     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  players     Player[]
+  rounds      Round[]
+
+  @@map("seasons")
+}
+
+// Players in the league
+model Player {
+  id             String    @id @default(cuid())
+  seasonId       String
+  fullName       String
+  email          String
+  nickname       String
+  phoneNumber    String
+  registrationDate DateTime @default(now())
+  rulesAccepted  Boolean   @default(true)
+  isApproved     Boolean   @default(false)
+  approvedDate   DateTime?
+  isWithdrawn    Boolean   @default(false)
+  withdrawalDate DateTime?
+
+  season         Season      @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  byeRequests    ByeRequest[]
+  whiteGames     GameResult[] @relation("WhitePlayer")
+  blackGames     GameResult[] @relation("BlackPlayer")
+  submittedResults GameResult[] @relation("SubmittedBy")
+
+  @@unique([seasonId, email])
+  @@unique([seasonId, nickname])
+  @@map("players")
+}
+
+// Tournament rounds
+model Round {
+  id           String   @id @default(cuid())
+  seasonId     String
+  roundNumber  Int
+  roundDate    DateTime
+  byeDeadline  DateTime // Wednesday noon before round
+  createdAt    DateTime @default(now())
+
+  season       Season       @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  byeRequests  ByeRequest[]
+  gameResults  GameResult[]
+
+  @@unique([seasonId, roundNumber])
+  @@map("rounds")
+}
+
+// Bye requests from players
+model ByeRequest {
+  id             String    @id @default(cuid())
+  playerId       String
+  roundId        String
+  requestedDate  DateTime  @default(now())
+  isApproved     Boolean?  // null = pending, true = approved, false = rejected
+  approvedDate   DateTime?
+  adminNotes     String?
+
+  player         Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  round          Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, roundId])
+  @@map("bye_requests")
+}
+
+// Game results submitted by players
+model GameResult {
+  id               String    @id @default(cuid())
+  roundId          String
+  boardNumber      Int
+  result           GameResultEnum
+  pgn              String    @db.Text
+  submittedDate    DateTime  @default(now())
+  submittedById    String?
+  isVerified       Boolean   @default(false)
+  verifiedDate     DateTime?
+  adminNotes       String?
+  whitePlayerId    String?   // Added by admin
+  blackPlayerId    String?   // Added by admin
+
+  round            Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  submittedBy      Player?   @relation("SubmittedBy", fields: [submittedById], references: [id])
+  whitePlayer      Player?   @relation("WhitePlayer", fields: [whitePlayerId], references: [id])
+  blackPlayer      Player?   @relation("BlackPlayer", fields: [blackPlayerId], references: [id])
+
+  @@unique([roundId, boardNumber])
+  @@map("game_results")
+}
+
+// Admin users
+model Admin {
+  id           String    @id @default(cuid())
+  username     String    @unique
+  passwordHash String
+  lastLogin    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("admins")
+}
+
+enum GameResultEnum {
+  WHITE_WIN      // 1-0
+  BLACK_WIN      // 0-1
+  DRAW           // 1/2-1/2
+  WHITE_WIN_FF   // 1-0 FF (forfeit)
+  DOUBLE_FF      // 0-0 FF (double forfeit)
+}
