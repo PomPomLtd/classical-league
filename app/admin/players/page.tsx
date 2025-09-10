@@ -9,6 +9,7 @@ interface Player {
   email: string
   nickname: string
   phoneNumber: string
+  lichessRating: number
   registrationDate: string
   isApproved: boolean
   isWithdrawn: boolean

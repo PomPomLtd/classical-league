@@ -21,7 +21,7 @@ function classNames(...classes: string[]) {
 
 export function AdminNavigation() {
   const pathname = usePathname()
-  const router = useRouter()
+  const _router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Close mobile menu when route changes

@@ -3,10 +3,10 @@ import { db } from '@/lib/db'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { playerId: string } }
+  { params }: { params: Promise<{ playerId: string }> }
 ) {
   try {
-    const playerId = params.playerId
+    const { playerId } = await params
 
     // Get all bye requests for this player
     const byeRequests = await db.byeRequest.findMany({

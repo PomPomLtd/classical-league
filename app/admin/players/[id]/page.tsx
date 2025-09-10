@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -15,11 +15,12 @@ interface Player {
   isWithdrawn: boolean
   approvedDate?: string
   withdrawalDate?: string
+  lichessRating?: number
 }
 
 export default function AdminPlayerDetailPage() {
   const params = useParams()
-  const router = useRouter()
+  const _router = useRouter()
   const [player, setPlayer] = useState<Player | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -27,11 +28,7 @@ export default function AdminPlayerDetailPage() {
 
   const playerId = params.id as string
 
-  useEffect(() => {
-    fetchPlayer()
-  }, [playerId])
-
-  const fetchPlayer = async () => {
+  const fetchPlayer = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/players/${playerId}`)
       if (response.ok) {
@@ -48,7 +45,11 @@ export default function AdminPlayerDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [playerId])
+
+  useEffect(() => {
+    fetchPlayer()
+  }, [playerId, fetchPlayer])
 
   const handleApprove = async () => {
     if (!player || actionLoading) return

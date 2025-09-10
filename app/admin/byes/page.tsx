@@ -194,7 +194,7 @@ export default function AdminByesPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
                         <div className="text-sm font-medium text-gray-900 dark:text-white">
-                          {request.player.firstName} <span className="font-syne-tactile italic">"{request.player.nickname}"</span> {request.player.lastInitial}
+                          {request.player.firstName} <span className="font-syne-tactile italic">&quot;{request.player.nickname}&quot;</span> {request.player.lastInitial}
                         </div>
                       </div>
                     </td>

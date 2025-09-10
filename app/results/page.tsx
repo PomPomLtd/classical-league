@@ -263,7 +263,7 @@ export default function ResultsPage() {
                 ))}
               </select>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                Select the round for which you're submitting a result
+                Select the round for which you&apos;re submitting a result
               </p>
             </div>
 
@@ -311,8 +311,8 @@ export default function ResultsPage() {
                 <p className="font-medium">What is a forfeit?</p>
                 <p>A forfeit occurs when a player:</p>
                 <ul className="list-disc pl-5 mt-1 space-y-1">
-                  <li>Doesn't show up for the scheduled game</li>
-                  <li>Doesn't communicate or respond to scheduling attempts</li>
+                  <li>Doesn&apos;t show up for the scheduled game</li>
+                  <li>Doesn&apos;t communicate or respond to scheduling attempts</li>
                   <li>Makes it impossible to schedule the game within the round period</li>
                   <li>Abandons the game without a valid reason</li>
                 </ul>
@@ -353,7 +353,7 @@ export default function ResultsPage() {
                           onClick={() => handlePlayerSelect(player)}
                           className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-900 dark:text-white"
                         >
-                          {player.firstName} <span className="font-syne-tactile italic">"{player.nickname}"</span> {player.lastInitial}
+                          {player.firstName} <span className="font-syne-tactile italic">&quot;{player.nickname}&quot;</span> {player.lastInitial}
                         </button>
                       ))}
                     </div>
@@ -433,8 +433,8 @@ export default function ResultsPage() {
               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Lichess.org</h4>
               <ol className="list-decimal list-inside space-y-1">
                 <li>Go to your completed game</li>
-                <li>Click the "Share & export" button</li>
-                <li>Click "PGN" tab</li>
+                <li>Click the &quot;Share &amp; export&quot; button</li>
+                <li>Click &quot;PGN&quot; tab</li>
                 <li>Copy the text and paste it above</li>
               </ol>
             </div>
@@ -442,8 +442,8 @@ export default function ResultsPage() {
               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Chess.com</h4>
               <ol className="list-decimal list-inside space-y-1">
                 <li>Go to your completed game</li>
-                <li>Click the "Share" button</li>
-                <li>Select "Download PGN"</li>
+                <li>Click the &quot;Share&quot; button</li>
+                <li>Select &quot;Download PGN&quot;</li>
                 <li>Open the file and copy the content</li>
               </ol>
             </div>

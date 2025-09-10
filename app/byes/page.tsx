@@ -165,7 +165,7 @@ export default function ByesPage() {
             Request Bye
           </h1>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-            Skip rounds when you can't play - deadline is Wednesday at noon before each round
+            Skip rounds when you can&apos;t play - deadline is Wednesday at noon before each round
           </p>
         </div>
 
@@ -186,7 +186,7 @@ export default function ByesPage() {
                   <li>Bye requests must be submitted before Wednesday 12:00 noon</li>
                   <li>Bye rounds score 0.5 points (half point)</li>
                   <li>No limit on the number of bye rounds per player</li>
-                  <li>Chess organizer approval required - you'll be notified of the decision</li>
+                  <li>Chess organizer approval required - you&apos;ll be notified of the decision</li>
                 </ul>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function ByesPage() {
                 <option value="">Choose a player...</option>
                 {players.map(player => (
                   <option key={player.id} value={player.id}>
-                    {player.firstName} "{player.nickname}" {player.lastInitial}
+                    {player.firstName} &quot;{player.nickname}&quot; {player.lastInitial}
                   </option>
                 ))}
               </select>

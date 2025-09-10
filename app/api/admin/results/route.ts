@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Check admin authentication
     const session = await getServerSession(authOptions)
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
 
     // Format the response with player name parts for display
     const formattedResults = results.map(result => {
-      const formatPlayer = (player: { fullName: string; nickname: string } | null) => {
+      const formatPlayer = (player: { id: string; fullName: string; nickname: string } | null) => {
         if (!player) return null
         const nameParts = player.fullName.trim().split(' ')
         const firstName = nameParts[0]

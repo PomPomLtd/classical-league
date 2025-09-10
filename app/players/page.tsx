@@ -119,7 +119,7 @@ export default function PlayersPage() {
                   {/* Player Info */}
                   <div className="text-center">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {player.firstName} <span className="font-syne-tactile italic">"{player.nickname}"</span> <span className="ml-2">{player.lastInitial}</span>
+                      {player.firstName} <span className="font-syne-tactile italic">&quot;{player.nickname}&quot;</span> <span className="ml-2">{player.lastInitial}</span>
                     </h3>
                   </div>
 
@@ -156,7 +156,7 @@ export default function PlayersPage() {
                 How to arrange games
               </h3>
               <div className="mt-2 text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <p>• Click "Contact on WhatsApp" to message a player directly</p>
+                <p>• Click &quot;Contact on WhatsApp&quot; to message a player directly</p>
                 <p>• Coordinate game times that work for both players</p>
                 <p>• Play your games before the round deadline</p>
                 <p>• Submit results after each game in the Results section</p>

@@ -62,7 +62,7 @@ export default function RegisterPage() {
           message: result.error || 'Registration failed. Please try again.'
         })
       }
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           </h2>
           <div className="text-sm text-blue-700 dark:text-blue-300 space-y-2">
             <p className="font-medium">
-              ♟️ <strong>All skill levels welcome!</strong> Whether you're a complete beginner or a seasoned player, this tournament is for everyone.
+              ♟️ <strong>All skill levels welcome!</strong> Whether you&apos;re a complete beginner or a seasoned player, this tournament is for everyone.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
               <div>
@@ -270,7 +270,7 @@ export default function RegisterPage() {
                 <li><strong>Alternative:</strong> Use Lichess Rapid rating</li>
                 <li><strong>Chess.com users:</strong> Add 150 to your Chess.com Classical/Rapid rating</li>
                 <li><strong>No classical/rapid rating?</strong> Use your Blitz rating</li>
-                <li><strong>No online rating?</strong> Enter 500 (we'll adjust after your first games)</li>
+                <li><strong>No online rating?</strong> Enter 500 (we&apos;ll adjust after your first games)</li>
               </ul>
               <p className="text-xs italic mt-2">This helps create balanced pairings in the Swiss system</p>
             </div>
@@ -297,7 +297,7 @@ export default function RegisterPage() {
                           <>
                             {' '}
                             <span className="font-syne-tactile italic text-indigo-600 dark:text-indigo-400">
-                              "{nickname}"
+                              &quot;{nickname}&quot;
                             </span>
                           </>
                         )}
@@ -374,7 +374,7 @@ export default function RegisterPage() {
           <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
             <li>• Your registration will be reviewed by our chess organizer</li>
             <li>• You will be manually added to the swissystem.org tournament</li>
-            <li>• Once approved, you'll appear in the player directory</li>
+            <li>• Once approved, you&apos;ll appear in the player directory</li>
             <li>• You can then request byes and submit results</li>
           </ul>
         </div>

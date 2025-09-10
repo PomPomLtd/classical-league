@@ -59,6 +59,7 @@ async function main() {
             email: player.email,
             nickname: player.nickname,
             phoneNumber: player.phone,
+            lichessRating: player.rating,
             rulesAccepted: true,
             isApproved: true, // Auto-approve for testing
             approvedDate: new Date()
@@ -80,16 +81,16 @@ async function main() {
     if (season) {
       // Create dummy players for testing
       const dummyPlayers = [
-        { fullName: 'Magnus Carlsen', email: 'magnus@test.com', nickname: 'World Champion', phone: '+47123456789' },
-        { fullName: 'Garry Kasparov', email: 'garry@test.com', nickname: 'The Beast from Baku', phone: '+7987654321' },
-        { fullName: 'Bobby Fischer', email: 'bobby@test.com', nickname: 'American Genius', phone: '+1555123456' },
-        { fullName: 'Mikhail Tal', email: 'tal@test.com', nickname: 'The Magician from Riga', phone: '+371987654321' },
-        { fullName: 'Jose Raul Capablanca', email: 'capa@test.com', nickname: 'The Chess Machine', phone: '+53123456789' },
-        { fullName: 'Emanuel Lasker', email: 'lasker@test.com', nickname: 'The Fighting Machine', phone: '+49123456789' },
-        { fullName: 'Anatoly Karpov', email: 'karpov@test.com', nickname: 'The Python', phone: '+7123456789' },
-        { fullName: 'Vladimir Kramnik', email: 'kramnik@test.com', nickname: 'The Octopus', phone: '+7987123456' },
-        { fullName: 'Viswanathan Anand', email: 'anand@test.com', nickname: 'The Lightning Kid', phone: '+91987654321' },
-        { fullName: 'Fabiano Caruana', email: 'fabi@test.com', nickname: 'The American Hope', phone: '+1987654321' }
+        { fullName: 'Magnus Carlsen', email: 'magnus@test.com', nickname: 'World Champion', phone: '+47123456789', rating: 2839 },
+        { fullName: 'Garry Kasparov', email: 'garry@test.com', nickname: 'The Beast from Baku', phone: '+7987654321', rating: 2851 },
+        { fullName: 'Bobby Fischer', email: 'bobby@test.com', nickname: 'American Genius', phone: '+1555123456', rating: 2785 },
+        { fullName: 'Mikhail Tal', email: 'tal@test.com', nickname: 'The Magician from Riga', phone: '+371987654321', rating: 2690 },
+        { fullName: 'Jose Raul Capablanca', email: 'capa@test.com', nickname: 'The Chess Machine', phone: '+53123456789', rating: 2725 },
+        { fullName: 'Emanuel Lasker', email: 'lasker@test.com', nickname: 'The Fighting Machine', phone: '+49123456789', rating: 2690 },
+        { fullName: 'Anatoly Karpov', email: 'karpov@test.com', nickname: 'The Python', phone: '+7123456789', rating: 2780 },
+        { fullName: 'Vladimir Kramnik', email: 'kramnik@test.com', nickname: 'The Octopus', phone: '+7987123456', rating: 2800 },
+        { fullName: 'Viswanathan Anand', email: 'anand@test.com', nickname: 'The Lightning Kid', phone: '+91987654321', rating: 2785 },
+        { fullName: 'Fabiano Caruana', email: 'fabi@test.com', nickname: 'The American Hope', phone: '+1987654321', rating: 2820 }
       ]
 
       console.log('🎭 Creating dummy players...')
