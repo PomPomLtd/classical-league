@@ -5,7 +5,7 @@ import { useState } from 'react'
 export default function SetupPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
-  const [details, setDetails] = useState<any>(null)
+  const [details, setDetails] = useState<Record<string, unknown> | null>(null)
 
   const runMigration = async () => {
     setStatus('loading')
