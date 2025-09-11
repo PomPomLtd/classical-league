@@ -1,12 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import BroadcastSetupInstructions from '@/components/BroadcastSetupInstructions'
 
 interface Round {
   id: string
   roundNumber: number
   roundDate: string
   byeDeadline: string
+  pgnFilePath?: string
+  pgnUpdatedAt?: string
+  lichessBroadcastUrl?: string
 }
 
 interface Season {
@@ -20,6 +24,18 @@ export default function AdminRoundsPage() {
   const [season, setSeason] = useState<Season | null>(null)
   const [loading, setLoading] = useState(true)
   const [notificationLoading, setNotificationLoading] = useState<string | null>(null)
+  const [broadcastInfo, setBroadcastInfo] = useState<{
+    season?: { id: string; name: string; seasonNumber: number }
+    rounds?: Array<{
+      id: string
+      roundNumber: number
+      gameCount: number
+      pgnUrl: string
+      lastUpdated?: string
+    }>
+    settings?: { broadcastEnabled: boolean }
+  } | null>(null)
+  const [showBroadcastSetup, setShowBroadcastSetup] = useState(false)
   const [message, setMessage] = useState<{
     type: 'success' | 'error' | null
     text: string
@@ -27,7 +43,22 @@ export default function AdminRoundsPage() {
 
   useEffect(() => {
     fetchCurrentSeason()
+    fetchBroadcastInfo()
   }, [])
+
+  const fetchBroadcastInfo = async () => {
+    try {
+      const response = await fetch('/api/broadcast/rounds')
+      if (response.ok) {
+        const data = await response.json()
+        setBroadcastInfo(data)
+      }
+    } catch (error) {
+      console.error('Error fetching broadcast info:', error)
+      // Don't show broadcast section if there's an error (e.g., missing database columns)
+      setBroadcastInfo(null)
+    }
+  }
 
   const fetchCurrentSeason = async () => {
     try {
@@ -200,6 +231,99 @@ export default function AdminRoundsPage() {
           </div>
         </div>
       </div>
+
+      {/* Lichess Broadcast Section */}
+      {broadcastInfo && (
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="px-4 py-5 sm:p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Lichess Broadcast Integration
+              </h3>
+              <button
+                onClick={() => setShowBroadcastSetup(!showBroadcastSetup)}
+                className="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+              >
+                {showBroadcastSetup ? 'Hide' : 'Show'} Setup Instructions
+              </button>
+            </div>
+
+            {/* Broadcast Status */}
+            <div className="mb-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-700">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    Broadcast Status:
+                  </span>
+                  <span className={`ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                    broadcastInfo.settings?.broadcastEnabled
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                  }`}>
+                    {broadcastInfo.settings?.broadcastEnabled ? 'Enabled' : 'Disabled'}
+                  </span>
+                </div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                  Tournament: {broadcastInfo.season?.name}
+                </div>
+              </div>
+            </div>
+
+            {/* Round PGN URLs */}
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-gray-900 dark:text-white">Round PGN URLs</h4>
+              {broadcastInfo.rounds?.map((round) => (
+                <div key={round.id} className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-600 rounded-md">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      Round {round.roundNumber}
+                    </span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
+                      {round.gameCount} games
+                    </span>
+                    {round.lastUpdated && (
+                      <span className="text-xs text-gray-400 dark:text-gray-500">
+                        Updated: {new Date(round.lastUpdated).toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <a
+                      href={round.pgnUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                    >
+                      View PGN
+                    </a>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(round.pgnUrl)}
+                      className="text-sm text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+                    >
+                      Copy URL
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Setup Instructions */}
+            {showBroadcastSetup && broadcastInfo.rounds && (
+              <div className="mt-6">
+                <BroadcastSetupInstructions
+                  rounds={broadcastInfo.rounds.map((r) => ({
+                    id: r.id,
+                    roundNumber: r.roundNumber,
+                    pgnUrl: r.pgnUrl,
+                    gameCount: r.gameCount
+                  }))}
+                  seasonName={broadcastInfo.season?.name || 'Classical League'}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Info Section */}
       <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6">

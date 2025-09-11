@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
+import { PGNFileService } from '@/lib/pgn-file-service'
 
 export async function POST(
   request: NextRequest,
@@ -57,6 +58,12 @@ export async function POST(
         whitePlayerId: whitePlayerId,
         blackPlayerId: blackPlayerId
       }
+    })
+
+    // Regenerate PGN for broadcast after player assignment (async, don't wait for completion)
+    const pgnService = new PGNFileService()
+    pgnService.generateRoundPGN(updatedResult.roundId).catch(error => {
+      console.error(`Failed to regenerate PGN for round ${updatedResult.roundId} after player assignment:`, error)
     })
 
     return NextResponse.json({
