@@ -224,7 +224,7 @@ export class PGNFileService {
       const filePath = this.getPGNFilePath(roundId)
       const content = await fs.readFile(filePath, 'utf8')
       return content
-    } catch (error) {
+    } catch {
       // File doesn't exist or other error - return null
       return null
     }

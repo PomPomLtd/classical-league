@@ -20,9 +20,24 @@ export async function GET() {
     // Get tournament settings from database
     const tournamentSettings = await getTournamentSettings()
 
+    // Get broadcast settings
+    const broadcastSettings = await db.adminSettings.findMany({
+      where: {
+        key: {
+          in: ['broadcast_enabled', 'broadcast_base_url', 'broadcast_tournament_template', 'broadcast_round_template']
+        }
+      }
+    })
+
+    const broadcastMap = new Map(broadcastSettings.map(s => [s.key, s.value]))
+
     const settings = {
       tournamentLink: tournamentSettings.tournamentLink,
-      currentSeasonId: activeSeason?.id || ''
+      currentSeasonId: activeSeason?.id || '',
+      broadcastEnabled: broadcastMap.get('broadcast_enabled') === 'true',
+      broadcastBaseUrl: broadcastMap.get('broadcast_base_url') || 'https://classical.schachklub-k4.ch',
+      broadcastTournamentTemplate: broadcastMap.get('broadcast_tournament_template') || 'Classical League Season {season}',
+      broadcastRoundTemplate: broadcastMap.get('broadcast_round_template') || 'Round {round}'
     }
 
     return NextResponse.json(settings)
@@ -43,11 +58,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { tournamentLink, currentSeasonId } = await request.json()
+    const { 
+      tournamentLink, 
+      currentSeasonId, 
+      broadcastEnabled, 
+      broadcastBaseUrl, 
+      broadcastTournamentTemplate, 
+      broadcastRoundTemplate 
+    } = await request.json()
 
     // Validate inputs
     if (tournamentLink && !isValidUrl(tournamentLink)) {
       return NextResponse.json({ error: 'Invalid tournament link URL' }, { status: 400 })
+    }
+
+    if (broadcastBaseUrl && !isValidUrl(broadcastBaseUrl)) {
+      return NextResponse.json({ error: 'Invalid broadcast base URL' }, { status: 400 })
     }
 
     if (!currentSeasonId) {
@@ -67,6 +93,30 @@ export async function POST(request: NextRequest) {
     const settingsUpdated = await updateTournamentSettings(tournamentLink)
     if (!settingsUpdated) {
       return NextResponse.json({ error: 'Failed to update tournament settings' }, { status: 500 })
+    }
+
+    // Update broadcast settings
+    const broadcastSettingsData = [
+      { key: 'broadcast_enabled', value: broadcastEnabled?.toString() || 'false' },
+      { key: 'broadcast_base_url', value: broadcastBaseUrl || 'https://classical.schachklub-k4.ch' },
+      { key: 'broadcast_tournament_template', value: broadcastTournamentTemplate || 'Classical League Season {season}' },
+      { key: 'broadcast_round_template', value: broadcastRoundTemplate || 'Round {round}' }
+    ]
+
+    for (const setting of broadcastSettingsData) {
+      await db.adminSettings.upsert({
+        where: { key: setting.key },
+        update: { 
+          value: setting.value,
+          updatedAt: new Date()
+        },
+        create: {
+          id: crypto.randomUUID(),
+          key: setting.key,
+          value: setting.value,
+          description: getSettingDescription(setting.key)
+        }
+      })
     }
 
     // Update active season - set all to inactive first, then activate the selected one
@@ -99,4 +149,14 @@ function isValidUrl(string: string): boolean {
   } catch {
     return false
   }
+}
+
+function getSettingDescription(key: string): string {
+  const descriptions: Record<string, string> = {
+    'broadcast_enabled': 'Enable/disable Lichess broadcast PGN generation',
+    'broadcast_base_url': 'Base URL for PGN file access',
+    'broadcast_tournament_template': 'Template for tournament names',
+    'broadcast_round_template': 'Template for round names'
+  }
+  return descriptions[key] || ''
 }
