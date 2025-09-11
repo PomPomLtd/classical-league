@@ -139,6 +139,14 @@ export default function AdminRoundsPage() {
             {season.rounds.map((round) => {
               const roundDate = new Date(round.roundDate)
               const byeDeadline = new Date(round.byeDeadline)
+              
+              // Calculate the bi-weekly playing period
+              // Round date is when pairings are published (Wednesday)
+              // Players have exactly 2 weeks to play until the next Wednesday
+              const pairingDate = new Date(roundDate) // When pairings are published
+              const deadlineDate = new Date(roundDate)
+              deadlineDate.setDate(roundDate.getDate() + 14) // 2 weeks later
+              
               const isPast = roundDate < new Date()
               const isNotifying = notificationLoading === round.id
 
@@ -150,8 +158,8 @@ export default function AdminRoundsPage() {
                         Round {round.roundNumber}
                       </h4>
                       <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                        <div>📅 Round Date: {roundDate.toLocaleDateString('de-CH')}</div>
-                        <div>⏰ Bye Deadline: {byeDeadline.toLocaleDateString('de-CH')} at {byeDeadline.toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })}</div>
+                        <div>📅 Playing Period: {pairingDate.toLocaleDateString('de-CH')} - {deadlineDate.toLocaleDateString('de-CH')}</div>
+                        <div>⏰ Game Deadline & Next Bye Cutoff: {deadlineDate.toLocaleDateString('de-CH')} at 12:00</div>
                         <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                           isPast 
                             ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
