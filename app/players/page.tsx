@@ -11,14 +11,29 @@ interface Player {
   phoneNumber: string
 }
 
+const PLAYER_DIRECTORY_PASSWORD = process.env.NEXT_PUBLIC_PLAYER_DIRECTORY_PASSWORD || 'Ke2!!'
+
 export default function PlayersPage() {
   const [players, setPlayers] = useState<Player[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
 
   useEffect(() => {
     fetchPlayers()
   }, [])
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (password === PLAYER_DIRECTORY_PASSWORD) {
+      setIsAuthenticated(true)
+      setPasswordError('')
+    } else {
+      setPasswordError('Incorrect password. Check your tournament emails for the password.')
+    }
+  }
 
   const fetchPlayers = async () => {
     try {
@@ -45,6 +60,62 @@ export default function PlayersPage() {
 
   const formatWhatsAppNumber = (phoneNumber: string) => {
     return phoneNumber.replace(/[^0-9]/g, '')
+  }
+
+  // Show password gate if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="mx-auto max-w-md px-4 sm:px-6 lg:px-8 py-16">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-8">
+          <div className="text-center mb-6">
+            <div className="text-4xl mb-4">🔒</div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Player Directory Access
+            </h1>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              This directory contains player contact information. Please enter the password from your tournament emails.
+            </p>
+          </div>
+
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                  setPasswordError('')
+                }}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                placeholder="Enter chess password..."
+                required
+              />
+            </div>
+
+            {passwordError && (
+              <div className="text-red-600 dark:text-red-400 text-sm">
+                {passwordError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+            >
+              Access Directory
+            </button>
+          </form>
+
+          <div className="mt-6 text-xs text-gray-500 dark:text-gray-400 text-center">
+            💡 Hint: It&apos;s a famous chess move notation that every chess player knows and loves (or hates)!
+          </div>
+        </div>
+      </div>
+    )
   }
 
   if (loading) {
