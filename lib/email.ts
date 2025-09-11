@@ -236,6 +236,60 @@ This is an automated message. Please do not reply to this email.`
   return await sendEmail({ to, subject, textBody })
 }
 
+// Admin Notification: New Registration
+export async function sendAdminNewRegistrationEmail(
+  playerName: string,
+  nickname: string,
+  email: string
+): Promise<boolean> {
+  const subject = 'New Registration - K4 Classical League'
+  const textBody = `A new player has registered for the tournament!
+
+Player Details:
+- Name: ${playerName}
+- Nickname: "${nickname}"
+- Email: ${email}
+
+Please review and approve this registration in the admin panel:
+https://classical.schachklub-k4.ch/admin/players
+
+Best regards,
+K4 Classical League System`
+
+  return await sendEmail({ 
+    to: 'classical@schachklub-k4.ch', 
+    subject, 
+    textBody 
+  })
+}
+
+// Admin Notification: New Bye Request
+export async function sendAdminNewByeRequestEmail(
+  playerName: string,
+  roundNumber: number,
+  reason: string
+): Promise<boolean> {
+  const subject = 'New Bye Request - K4 Classical League'
+  const textBody = `A player has requested a bye for an upcoming round.
+
+Bye Request Details:
+- Player: ${playerName}
+- Round: ${roundNumber}
+- Reason: ${reason}
+
+Please review and approve this bye request in the admin panel:
+https://classical.schachklub-k4.ch/admin/byes
+
+Best regards,
+K4 Classical League System`
+
+  return await sendEmail({ 
+    to: 'classical@schachklub-k4.ch', 
+    subject, 
+    textBody 
+  })
+}
+
 // Utility function to send emails with error handling
 export async function sendEmailSafe(
   emailFunction: () => Promise<boolean>,
@@ -247,6 +301,6 @@ export async function sendEmailSafe(
       console.error(`Failed to send ${context} email`)
     }
   } catch (error) {
-    console.error(`Error sending ${context} email:`, error)
+    console.error(`Error sending ${context} email:`, context, error)
   }
 }

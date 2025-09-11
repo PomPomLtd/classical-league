@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { sendAdminNewByeRequestEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -85,6 +86,21 @@ export async function POST(request: NextRequest) {
         requestedDate: now
       }))
     })
+
+    // Send admin notification for bye request (non-blocking)
+    const roundNumbers = rounds.map(r => r.roundNumber)
+    const reason = roundNumbers.length === 1 
+      ? `Round ${roundNumbers[0]}` 
+      : `${roundNumbers.length} rounds: ${roundNumbers.join(', ')}`
+    
+    sendEmailSafe(
+      () => sendAdminNewByeRequestEmail(
+        player.fullName, 
+        roundNumbers[0], // Use first round number for subject line
+        reason
+      ),
+      'admin new bye request notification'
+    )
 
     return NextResponse.json({
       success: true,

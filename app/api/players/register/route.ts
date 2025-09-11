@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { getCurrentSeason } from '@/lib/season'
 import { playerRegistrationSchema } from '@/lib/validations'
-import { sendRegistrationSuccessEmail, sendEmailSafe } from '@/lib/email'
+import { sendRegistrationSuccessEmail, sendAdminNewRegistrationEmail, sendEmailSafe } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -74,6 +74,12 @@ export async function POST(request: NextRequest) {
     sendEmailSafe(
       () => sendRegistrationSuccessEmail(email, fullName, nickname),
       'registration success'
+    )
+
+    // Send admin notification email (non-blocking)
+    sendEmailSafe(
+      () => sendAdminNewRegistrationEmail(fullName, nickname, email),
+      'admin new registration notification'
     )
 
     return NextResponse.json(
