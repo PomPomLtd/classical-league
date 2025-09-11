@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { PGNFileService } from '@/lib/pgn-file-service'
 
 export async function POST(request: NextRequest) {
   try {
@@ -91,6 +92,12 @@ export async function POST(request: NextRequest) {
         submittedDate: new Date(),
         isVerified: false
       }
+    })
+
+    // Regenerate PGN for broadcast (async, don't wait for completion)
+    const pgnService = new PGNFileService()
+    pgnService.generateRoundPGN(roundId).catch(error => {
+      console.error(`Failed to regenerate PGN for round ${roundId} after result submission:`, error)
     })
 
     return NextResponse.json({

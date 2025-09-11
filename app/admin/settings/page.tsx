@@ -7,7 +7,11 @@ import { z } from 'zod'
 
 const settingsSchema = z.object({
   tournamentLink: z.string().url().optional().or(z.literal('')),
-  currentSeasonId: z.string().min(1, 'Please select a season')
+  currentSeasonId: z.string().min(1, 'Please select a season'),
+  broadcastEnabled: z.boolean().optional(),
+  broadcastBaseUrl: z.string().url().optional().or(z.literal('')),
+  broadcastTournamentTemplate: z.string().optional(),
+  broadcastRoundTemplate: z.string().optional()
 })
 
 type SettingsData = z.infer<typeof settingsSchema>
@@ -24,6 +28,10 @@ interface Season {
 interface Settings {
   tournamentLink: string | null
   currentSeasonId: string
+  broadcastEnabled: boolean
+  broadcastBaseUrl: string
+  broadcastTournamentTemplate: string
+  broadcastRoundTemplate: string
 }
 
 export default function AdminSettingsPage() {
@@ -57,6 +65,10 @@ export default function AdminSettingsPage() {
         const settingsData: Settings = await settingsRes.json()
         setValue('tournamentLink', settingsData.tournamentLink || '')
         setValue('currentSeasonId', settingsData.currentSeasonId)
+        setValue('broadcastEnabled', settingsData.broadcastEnabled || false)
+        setValue('broadcastBaseUrl', settingsData.broadcastBaseUrl || '')
+        setValue('broadcastTournamentTemplate', settingsData.broadcastTournamentTemplate || '')
+        setValue('broadcastRoundTemplate', settingsData.broadcastRoundTemplate || '')
       }
     } catch (error) {
       console.error('Error fetching data:', error)
@@ -167,6 +179,85 @@ export default function AdminSettingsPage() {
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               The season that is currently accepting registrations and results
             </p>
+          </div>
+
+          {/* Broadcast Settings */}
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Lichess Broadcast Settings</h3>
+            
+            <div className="space-y-4">
+              {/* Enable Broadcast */}
+              <div className="flex items-center">
+                <input
+                  {...register('broadcastEnabled')}
+                  type="checkbox"
+                  id="broadcastEnabled"
+                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700"
+                />
+                <label htmlFor="broadcastEnabled" className="ml-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Enable Lichess Broadcast Integration
+                </label>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Generate PGN files for Lichess broadcast polling
+              </p>
+
+              {/* Base URL */}
+              <div>
+                <label htmlFor="broadcastBaseUrl" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Broadcast Base URL
+                </label>
+                <input
+                  {...register('broadcastBaseUrl')}
+                  type="url"
+                  id="broadcastBaseUrl"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+                  placeholder="https://classical.schachklub-k4.ch"
+                />
+                {errors.broadcastBaseUrl && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {errors.broadcastBaseUrl.message}
+                  </p>
+                )}
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Base URL where Lichess can access PGN files
+                </p>
+              </div>
+
+              {/* Tournament Template */}
+              <div>
+                <label htmlFor="broadcastTournamentTemplate" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Tournament Name Template
+                </label>
+                <input
+                  {...register('broadcastTournamentTemplate')}
+                  type="text"
+                  id="broadcastTournamentTemplate"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+                  placeholder="Classical League Season {season}"
+                />
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Template for tournament names. Use &#123;season&#125; for season number.
+                </p>
+              </div>
+
+              {/* Round Template */}
+              <div>
+                <label htmlFor="broadcastRoundTemplate" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Round Name Template
+                </label>
+                <input
+                  {...register('broadcastRoundTemplate')}
+                  type="text"
+                  id="broadcastRoundTemplate"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+                  placeholder="Round {round}"
+                />
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Template for round names. Use &#123;round&#125; for round number.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Submit Button */}
