@@ -25,7 +25,7 @@ export async function GET() {
         }
       },
       orderBy: {
-        roundNumber: 'desc' // Most recent first
+        roundNumber: 'asc' // 1, 2, 3, 4, 5, 6, 7...
       }
     })
 
