@@ -168,7 +168,7 @@ export default function RegisterPage() {
                 <li className="flex items-start">
                   <span className="font-bold mr-2">4.</span>
                   <div>
-                    <strong>Prepare for Round 1</strong> - Once approved, you'll be included in the first round pairings starting 23.9.2025
+                    <strong>Prepare for Round 1</strong> - Once approved, you&apos;ll be included in the first round pairings starting 23.9.2025
                   </div>
                 </li>
               </ol>
