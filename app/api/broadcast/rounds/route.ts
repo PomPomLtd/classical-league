@@ -41,15 +41,15 @@ export async function GET() {
     }
     
     // Format round information for broadcast
-    const rounds = currentSeason.rounds.map(round => ({
+    const rounds = await Promise.all(currentSeason.rounds.map(async round => ({
       id: round.id,
       roundNumber: round.roundNumber,
       roundDate: round.roundDate.toISOString(),
       gameCount: round.gameResults.length,
-      pgnUrl: pgnService.getRoundPGNUrl(round.id),
+      pgnUrl: await pgnService.getRoundPGNUrl(round.id),
       lastUpdated: round.pgnUpdatedAt?.toISOString() || null,
       lichessBroadcastUrl: round.lichessBroadcastUrl || null
-    }))
+    })))
     
     return NextResponse.json({
       season: {

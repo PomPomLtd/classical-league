@@ -34,6 +34,13 @@ export async function GET(
     // Generate latest PGN for the round
     const processedPGN = await pgnService.generateRoundPGN(roundId)
     
+    console.log(`PGN generation result for round ${roundId}:`, {
+      isValid: processedPGN.isValid,
+      gameCount: processedPGN.gameCount,
+      errors: processedPGN.errors,
+      pgnLength: processedPGN.pgn.length
+    })
+    
     if (!processedPGN.isValid) {
       console.error(`Invalid PGN for round ${roundId}:`, processedPGN.errors)
       

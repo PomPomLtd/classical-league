@@ -34,9 +34,9 @@ export class PGNFileService {
   /**
    * Get public URL for round PGN file (for Lichess polling)
    */
-  getRoundPGNUrl(roundId: string): string {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-    return `${baseUrl}/api/broadcast/round/${roundId}/pgn`
+  async getRoundPGNUrl(roundId: string): Promise<string> {
+    const settings = await this.getBroadcastSettings()
+    return `${settings.baseUrl}/api/broadcast/round/${roundId}/pgn`
   }
   
   /**
