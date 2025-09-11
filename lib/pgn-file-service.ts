@@ -125,8 +125,7 @@ export class PGNFileService {
       const processedPGN = this.pgnProcessor.combineGames(games)
       
       if (processedPGN.isValid && processedPGN.pgn.trim()) {
-        // Save to file and update database
-        await this.saveRoundPGNFile(roundId, processedPGN.pgn)
+        // Update database timestamp (skip file saving for serverless)
         await this.updateRoundPGNTimestamp(roundId)
       }
       
