@@ -69,12 +69,12 @@ export async function GET() {
           lastInitial,
           fullName: request.player.fullName
         },
-        round: {
+        round: request.round ? {
           id: request.round.id,
           roundNumber: request.round.roundNumber,
           roundDate: request.round.roundDate.toISOString(),
           byeDeadline: request.round.byeDeadline.toISOString()
-        }
+        } : null
       }
     })
 

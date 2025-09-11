@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import SearchablePlayerDropdown from '@/components/SearchablePlayerDropdown'
 
 interface Round {
   id: string
@@ -33,31 +34,15 @@ export default function ResultsPage() {
   const [boardNumber, setBoardNumber] = useState('')
   const [result, setResult] = useState<GameResult | ''>('')
   const [winningPlayer, setWinningPlayer] = useState('')
-  const [playerSearch, setPlayerSearch] = useState('')
-  const [showPlayerDropdown, setShowPlayerDropdown] = useState(false)
   const [pgn, setPgn] = useState('')
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetchRounds()
   }, [])
 
-  // Handle click outside to close dropdown
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowPlayerDropdown(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
 
   const fetchRounds = async () => {
     try {
@@ -151,7 +136,6 @@ export default function ResultsPage() {
         setBoardNumber('')
         setResult('')
         setWinningPlayer('')
-        setPlayerSearch('')
         setPgn('')
       } else {
         setMessage(data.error || 'Failed to submit result')
@@ -176,22 +160,6 @@ export default function ResultsPage() {
     return hasGameEnd || hasMoves || cleaned.length > 20 // Accept longer text as potentially valid
   }
 
-  // Filter players for search
-  const filteredPlayers = players.filter(player => {
-    if (!playerSearch.trim()) return true
-    const searchLower = playerSearch.toLowerCase().trim()
-    return (
-      player.firstName.toLowerCase().includes(searchLower) ||
-      player.nickname.toLowerCase().includes(searchLower) ||
-      player.lastInitial.toLowerCase().includes(searchLower)
-    )
-  })
-
-  const handlePlayerSelect = (player: Player) => {
-    setWinningPlayer(player.id)
-    setPlayerSearch(`${player.firstName} "${player.nickname}" ${player.lastInitial}`)
-    setShowPlayerDropdown(false)
-  }
 
   if (loading) {
     return (
@@ -321,48 +289,15 @@ export default function ResultsPage() {
 
             {/* Winning Player (only show for non-draw/non-double-forfeit results) */}
             {result && !['DRAW', 'DOUBLE_FF'].includes(result) && (
-              <div>
-                <label htmlFor="winningPlayer" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Winning Player *
-                </label>
-                <div className="mt-1 relative" ref={dropdownRef}>
-                  <input
-                    type="text"
-                    id="winningPlayer"
-                    value={playerSearch}
-                    onChange={(e) => {
-                      setPlayerSearch(e.target.value)
-                      setShowPlayerDropdown(true)
-                      if (!e.target.value) {
-                        setWinningPlayer('')
-                      }
-                    }}
-                    onFocus={() => setShowPlayerDropdown(true)}
-                    className="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
-                    placeholder="Search for winning player..."
-                    required
-                  />
-                  
-                  {/* Dropdown */}
-                  {showPlayerDropdown && players.length > 0 && (
-                    <div className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-700 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                      {filteredPlayers.slice(0, 10).map((player) => (
-                        <button
-                          key={player.id}
-                          type="button"
-                          onClick={() => handlePlayerSelect(player)}
-                          className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-900 dark:text-white"
-                        >
-                          {player.firstName} <span className="font-syne-tactile italic">&quot;{player.nickname}&quot;</span> {player.lastInitial}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  Type to search for the player who won this game. This helps us match the result even if the board number is wrong.
-                </p>
-              </div>
+              <SearchablePlayerDropdown
+                players={players}
+                selectedPlayerId={winningPlayer}
+                onPlayerSelect={setWinningPlayer}
+                label="Winning Player"
+                placeholder="Search for winning player..."
+                required
+                helpText="Type to search for the player who won this game. This helps us match the result even if the board number is wrong."
+              />
             )}
 
             {/* PGN Input */}

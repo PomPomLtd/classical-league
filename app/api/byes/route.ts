@@ -65,9 +65,10 @@ export async function POST(request: NextRequest) {
     })
 
     if (existingRequests.length > 0) {
+      const roundIds = existingRequests.map(req => req.roundId).filter((id): id is string => id !== null)
       const existingRoundNumbers = await db.round.findMany({
         where: {
-          id: { in: existingRequests.map(req => req.roundId) }
+          id: { in: roundIds }
         },
         select: { roundNumber: true }
       })

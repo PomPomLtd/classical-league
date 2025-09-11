@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import SearchablePlayerDropdown from '@/components/SearchablePlayerDropdown'
 
 interface Player {
   id: string
@@ -31,6 +32,7 @@ export default function ByesPage() {
   const [existingRequests, setExistingRequests] = useState<ExistingByeRequest[]>([])
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
+  const [withdrawing, setWithdrawing] = useState(false)
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -126,6 +128,49 @@ export default function ByesPage() {
     }
   }
 
+  const handleWithdrawal = async () => {
+    if (!selectedPlayer) {
+      setMessage('Please select a player first')
+      return
+    }
+
+    const player = players.find(p => p.id === selectedPlayer)
+    if (!confirm(`Are you sure you want to request tournament withdrawal for "${player?.firstName} '${player?.nickname}' ${player?.lastInitial}"? This request will be reviewed by the tournament organizers. Once approved, the withdrawal cannot be undone.`)) {
+      return
+    }
+
+    setWithdrawing(true)
+    setMessage('')
+
+    try {
+      const response = await fetch('/api/players/withdraw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          playerId: selectedPlayer
+        })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setMessage('Tournament withdrawal submitted successfully. The tournament organizers have been notified.')
+        setSelectedPlayer('')
+        setSelectedRounds([])
+        fetchData() // Refresh data to remove withdrawn player
+      } else {
+        setMessage(data.error || 'Failed to submit withdrawal')
+      }
+    } catch (error) {
+      console.error('Error submitting withdrawal:', error)
+      setMessage('Failed to submit withdrawal')
+    } finally {
+      setWithdrawing(false)
+    }
+  }
+
   const getRoundStatus = (round: Round) => {
     const existing = existingRequests.find(req => req.roundId === round.id)
     if (existing) {
@@ -138,7 +183,7 @@ export default function ByesPage() {
 
   const getStatusDisplay = (status: string) => {
     switch (status) {
-      case 'approved': return { text: 'Approved', class: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 dark:bg-green-900/20' }
+      case 'approved': return { text: '✅ Bye Active - Not Playing', class: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 dark:bg-green-900/20' }
       case 'rejected': return { text: 'Rejected', class: 'text-red-600 dark:text-red-400', bg: 'bg-red-50 dark:bg-red-900/20' }
       case 'pending': return { text: 'Pending', class: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-50 dark:bg-yellow-900/20' }
       case 'deadline-passed': return { text: 'Deadline Passed', class: 'text-gray-500 dark:text-gray-400', bg: 'bg-gray-50 dark:bg-gray-800' }
@@ -197,25 +242,15 @@ export default function ByesPage() {
         <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Player Selection */}
-            <div>
-              <label htmlFor="player" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Select Player
-              </label>
-              <select
-                id="player"
-                value={selectedPlayer}
-                onChange={(e) => setSelectedPlayer(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
-                required
-              >
-                <option value="">Choose a player...</option>
-                {players.map(player => (
-                  <option key={player.id} value={player.id}>
-                    {player.firstName} &quot;{player.nickname}&quot; {player.lastInitial}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <SearchablePlayerDropdown
+              players={players}
+              selectedPlayerId={selectedPlayer}
+              onPlayerSelect={setSelectedPlayer}
+              label="Select Player"
+              placeholder="Search for a player..."
+              required
+              helpText="Type to search by name or nickname"
+            />
 
             {/* Round Selection */}
             {selectedPlayer && rounds.length > 0 && (
@@ -276,9 +311,20 @@ export default function ByesPage() {
               </div>
             )}
 
-            {/* Submit Button */}
+            {/* Submit Buttons */}
             {selectedPlayer && (
-              <div className="flex justify-end">
+              <div className="flex justify-between items-center">
+                {/* Withdrawal Button */}
+                <button
+                  type="button"
+                  onClick={handleWithdrawal}
+                  disabled={withdrawing}
+                  className="bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-md transition-colors"
+                >
+                  {withdrawing ? 'Submitting...' : 'Withdraw from Tournament'}
+                </button>
+
+                {/* Bye Request Button */}
                 <button
                   type="submit"
                   disabled={submitting || selectedRounds.length === 0}

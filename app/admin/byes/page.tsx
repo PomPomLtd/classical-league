@@ -20,7 +20,7 @@ interface ByeRequest {
     roundNumber: number
     roundDate: string
     byeDeadline: string
-  }
+  } | null // null for withdrawal requests
 }
 
 type FilterType = 'all' | 'pending' | 'approved' | 'rejected'
@@ -86,14 +86,18 @@ export default function AdminByesPage() {
     const matchesSearch = search === '' || 
       request.player.fullName.toLowerCase().includes(search.toLowerCase()) ||
       request.player.nickname.toLowerCase().includes(search.toLowerCase()) ||
-      request.round.roundNumber.toString().includes(search)
+      (request.round && request.round.roundNumber.toString().includes(search)) ||
+      (!request.round && 'withdrawal'.includes(search.toLowerCase()))
 
     return matchesFilter && matchesSearch
   })
 
   const getStatusBadge = (request: ByeRequest) => {
     if (request.isApproved === true) {
-      return <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 dark:bg-green-900/20 dark:text-green-400">Approved</span>
+      const isWithdrawal = !request.round
+      return <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 dark:bg-green-900/20 dark:text-green-400">
+        {isWithdrawal ? '✅ Withdrawn' : '✅ Bye Active'}
+      </span>
     } else if (request.isApproved === false) {
       return <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 dark:bg-red-900/20 dark:text-red-400">Rejected</span>
     } else {
@@ -199,19 +203,27 @@ export default function AdminByesPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900 dark:text-white">Round {request.round.roundNumber}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        {new Date(request.round.roundDate).toLocaleDateString('de-CH')}
-                      </div>
-                      <div className={`text-xs ${isDeadlinePassed(request.round.byeDeadline) ? 'text-red-500' : 'text-gray-400'}`}>
-                        Deadline: {new Date(request.round.byeDeadline).toLocaleDateString('de-CH', {
-                          weekday: 'short',
-                          month: 'short',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit'
-                        })}
-                      </div>
+                      {request.round ? (
+                        <>
+                          <div className="text-sm text-gray-900 dark:text-white">Round {request.round.roundNumber}</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {new Date(request.round.roundDate).toLocaleDateString('de-CH')}
+                          </div>
+                          <div className={`text-xs ${isDeadlinePassed(request.round.byeDeadline) ? 'text-red-500' : 'text-gray-400'}`}>
+                            Deadline: {new Date(request.round.byeDeadline).toLocaleDateString('de-CH', {
+                              weekday: 'short',
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </div>
+                        </>
+                      ) : (
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-red-600 dark:text-red-400">🚪 Tournament Withdrawal</div>
+                        </div>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                       {new Date(request.requestedDate).toLocaleDateString('de-CH', {

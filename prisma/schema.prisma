@@ -86,16 +86,16 @@ model Round {
 model ByeRequest {
   id             String    @id @default(cuid())
   playerId       String
-  roundId        String
+  roundId        String?
   requestedDate  DateTime  @default(now())
   isApproved     Boolean?  // null = pending, true = approved, false = rejected
   approvedDate   DateTime?
   adminNotes     String?
 
   player         Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
-  round          Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  round          Round?    @relation(fields: [roundId], references: [id], onDelete: Cascade)
 
-  @@unique([playerId, roundId])
+  @@index([playerId, roundId])
   @@map("bye_requests")
 }
 

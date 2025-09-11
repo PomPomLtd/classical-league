@@ -36,30 +36,58 @@ export async function POST(
       }, { status: 400 })
     }
 
-    // Approve the bye request
-    const updatedRequest = await db.byeRequest.update({
-      where: { id: requestId },
-      data: {
-        isApproved: true,
-        approvedDate: new Date()
-      }
-    })
+    // Check if this is a withdrawal request (no round)
+    const isWithdrawal = !byeRequest.round
 
-    // Send bye approval email (non-blocking)
-    sendEmailSafe(
-      () => sendByeApprovedEmail(
-        byeRequest.player.email,
-        byeRequest.player.fullName,
-        byeRequest.round.roundNumber,
-        byeRequest.round.roundDate
-      ),
-      'bye approval'
-    )
+    if (isWithdrawal) {
+      // For withdrawal requests, mark the player as withdrawn and approve the request
+      await db.$transaction([
+        db.player.update({
+          where: { id: byeRequest.playerId },
+          data: {
+            isWithdrawn: true,
+            withdrawalDate: new Date()
+          }
+        }),
+        db.byeRequest.update({
+          where: { id: requestId },
+          data: {
+            isApproved: true,
+            approvedDate: new Date()
+          }
+        })
+      ])
+
+      // TODO: Send withdrawal approval email if needed
+      
+    } else {
+      // Regular bye request approval
+      await db.byeRequest.update({
+        where: { id: requestId },
+        data: {
+          isApproved: true,
+          approvedDate: new Date()
+        }
+      })
+
+      // Send bye approval email (non-blocking)
+      if (byeRequest.round) {
+        const round = byeRequest.round
+        sendEmailSafe(
+          () => sendByeApprovedEmail(
+            byeRequest.player.email,
+            byeRequest.player.fullName,
+            round.roundNumber,
+            round.roundDate
+          ),
+          'bye approval'
+        )
+      }
+    }
 
     return NextResponse.json({
       success: true,
-      message: 'Bye request approved successfully',
-      byeRequest: updatedRequest
+      message: isWithdrawal ? 'Tournament withdrawal approved successfully' : 'Bye request approved successfully'
     })
   } catch (error) {
     console.error('Error approving bye request:', error)

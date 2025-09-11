@@ -43,7 +43,7 @@ export default function Home() {
           />
 
           <LinkCard
-            href="/results"
+            href="/submit-result"
             icon="🏆"
             title="Submit Results"
             description="Report your game results with PGN"

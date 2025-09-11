@@ -178,7 +178,7 @@ export default function RulesPage() {
                   </div>
                   <div className="mt-4">
                     <Link 
-                      href="/results" 
+                      href="/submit-result" 
                       className="inline-flex items-center px-4 py-2 border border-green-300 shadow-sm text-sm font-medium rounded-md text-green-800 bg-white hover:bg-green-50 dark:bg-green-900/30 dark:text-green-200 dark:border-green-600 dark:hover:bg-green-900/50 transition-colors"
                     >
                       📝 Submit Game Result →

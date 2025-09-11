@@ -120,7 +120,7 @@ Important reminders:
 
 Tournament Resources:
 - View all players: https://classical.schachklub-k4.ch/players (password: Ke2!!)
-- Submit results: https://classical.schachklub-k4.ch/results
+- Submit results: https://classical.schachklub-k4.ch/submit-result
 - Request byes: https://classical.schachklub-k4.ch/byes
 - Tournament links: https://classical.schachklub-k4.ch/links
 
@@ -222,7 +222,7 @@ Important Reminders:
 - Contact your opponent via phone/WhatsApp to arrange the game time
 - Find opponent contact info: https://classical.schachklub-k4.ch/players (password: Ke2!!)
 - Games must be completed by ${deadline.toLocaleDateString('de-CH')}
-- Submit your result promptly: https://classical.schachklub-k4.ch/results
+- Submit your result promptly: https://classical.schachklub-k4.ch/submit-result
 - Need a bye for next round? Request it early: https://classical.schachklub-k4.ch/byes
 
 Good luck in your game!
