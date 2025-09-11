@@ -15,7 +15,8 @@
       "Bash(cat:*)",
       "WebFetch(domain:lichess.org)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:www.prisma.io)"
     ],
     "deny": [],
     "ask": []

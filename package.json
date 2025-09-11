@@ -9,7 +9,7 @@
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma migrate deploy && prisma generate && next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "prisma:deploy": "prisma migrate deploy && prisma generate",
     "prisma:setup": "prisma generate && prisma migrate deploy"
   },

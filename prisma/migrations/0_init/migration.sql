@@ -1,5 +1,30 @@
+-- CreateSchema
+CREATE SCHEMA IF NOT EXISTS "public";
+
 -- CreateEnum
-CREATE TYPE "public"."GameResultEnum" AS ENUM ('WHITE_WIN', 'BLACK_WIN', 'DRAW', 'WHITE_WIN_FF', 'DOUBLE_FF');
+CREATE TYPE "public"."GameResultEnum" AS ENUM ('WHITE_WIN', 'BLACK_WIN', 'DRAW', 'WHITE_WIN_FF', 'BLACK_WIN_FF', 'DOUBLE_FF');
+
+-- CreateTable
+CREATE TABLE "public"."settings" (
+    "id" TEXT NOT NULL,
+    "tournamentLink" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "settings_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "public"."admin_settings" (
+    "id" TEXT NOT NULL,
+    "key" TEXT NOT NULL,
+    "value" TEXT NOT NULL,
+    "description" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "admin_settings_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "public"."seasons" (
@@ -23,6 +48,7 @@ CREATE TABLE "public"."players" (
     "email" TEXT NOT NULL,
     "nickname" TEXT NOT NULL,
     "phoneNumber" TEXT NOT NULL,
+    "lichessRating" INTEGER NOT NULL DEFAULT 1500,
     "registrationDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "rulesAccepted" BOOLEAN NOT NULL DEFAULT true,
     "isApproved" BOOLEAN NOT NULL DEFAULT false,
@@ -41,6 +67,9 @@ CREATE TABLE "public"."rounds" (
     "roundDate" TIMESTAMP(3) NOT NULL,
     "byeDeadline" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "pgn_file_path" TEXT,
+    "pgn_updated_at" TIMESTAMP(3),
+    "lichess_broadcast_url" TEXT,
 
     CONSTRAINT "rounds_pkey" PRIMARY KEY ("id")
 );
@@ -49,7 +78,7 @@ CREATE TABLE "public"."rounds" (
 CREATE TABLE "public"."bye_requests" (
     "id" TEXT NOT NULL,
     "playerId" TEXT NOT NULL,
-    "roundId" TEXT NOT NULL,
+    "roundId" TEXT,
     "requestedDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "isApproved" BOOLEAN,
     "approvedDate" TIMESTAMP(3),
@@ -72,6 +101,7 @@ CREATE TABLE "public"."game_results" (
     "adminNotes" TEXT,
     "whitePlayerId" TEXT,
     "blackPlayerId" TEXT,
+    "winningPlayerId" TEXT,
 
     CONSTRAINT "game_results_pkey" PRIMARY KEY ("id")
 );
@@ -89,6 +119,9 @@ CREATE TABLE "public"."admins" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "admin_settings_key_key" ON "public"."admin_settings"("key");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "seasons_seasonNumber_key" ON "public"."seasons"("seasonNumber");
 
 -- CreateIndex
@@ -101,7 +134,7 @@ CREATE UNIQUE INDEX "players_seasonId_nickname_key" ON "public"."players"("seaso
 CREATE UNIQUE INDEX "rounds_seasonId_roundNumber_key" ON "public"."rounds"("seasonId", "roundNumber");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "bye_requests_playerId_roundId_key" ON "public"."bye_requests"("playerId", "roundId");
+CREATE INDEX "bye_requests_playerId_roundId_idx" ON "public"."bye_requests"("playerId", "roundId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "game_results_roundId_boardNumber_key" ON "public"."game_results"("roundId", "boardNumber");
@@ -132,3 +165,7 @@ ALTER TABLE "public"."game_results" ADD CONSTRAINT "game_results_whitePlayerId_f
 
 -- AddForeignKey
 ALTER TABLE "public"."game_results" ADD CONSTRAINT "game_results_blackPlayerId_fkey" FOREIGN KEY ("blackPlayerId") REFERENCES "public"."players"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "public"."game_results" ADD CONSTRAINT "game_results_winningPlayerId_fkey" FOREIGN KEY ("winningPlayerId") REFERENCES "public"."players"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
