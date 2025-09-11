@@ -23,6 +23,7 @@ export default function AdminPlayersPage() {
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<FilterType>('all')
   const [search, setSearch] = useState('')
+  const [copiedId, setCopiedId] = useState<string | null>(null)
 
   useEffect(() => {
     fetchPlayers()
@@ -53,6 +54,18 @@ export default function AdminPlayersPage() {
     } catch (error) {
       console.error('Error approving player:', error)
     }
+  }
+
+  const copyFormattedName = (player: Player) => {
+    const nameParts = player.fullName.split(' ')
+    const firstName = nameParts[0]
+    const lastName = nameParts[nameParts.length - 1]
+    const lastInitial = lastName ? lastName[0].toUpperCase() : ''
+    const formattedName = `${firstName} "${player.nickname}" ${lastInitial}.`
+    
+    navigator.clipboard.writeText(formattedName)
+    setCopiedId(player.id)
+    setTimeout(() => setCopiedId(null), 2000)
   }
 
   const filteredPlayers = players.filter(player => {
@@ -199,6 +212,17 @@ export default function AdminPlayersPage() {
                       {getStatusBadge(player)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <button
+                        onClick={() => copyFormattedName(player)}
+                        className={`mr-3 transition-colors ${
+                          copiedId === player.id 
+                            ? 'text-green-600 dark:text-green-400' 
+                            : 'text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300'
+                        }`}
+                        title="Copy formatted name for swissystem"
+                      >
+                        {copiedId === player.id ? '✓ Copied!' : 'Copy Name'}
+                      </button>
                       {!player.isApproved && !player.isWithdrawn && (
                         <button
                           onClick={() => handleApprove(player.id)}
