@@ -28,7 +28,7 @@ export default function RulesPage() {
             </div>
             <div className="space-y-2">
               <p><strong>🏅 Scoring:</strong> Win=1pt, Draw=0.5pt, Loss=0pt, Bye=0.5pt</p>
-              <p><strong>🏠 Location:</strong> Preferably club (Tuesday nights)</p>
+              <p><strong>🏠 Location:</strong> Club (Tuesday evenings) or agreed location</p>
               <p><strong>📝 Results:</strong> Winner reports within 24 hours</p>
               <p><strong>🚪 Byes:</strong> Request before Wednesday noon</p>
             </div>
@@ -120,13 +120,8 @@ export default function RulesPage() {
               </h2>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white mb-2">Preferred: Over the Board (OTB) 🏠</p>
-                  <p>Games should primarily be played in person, ideally at our club on Tuesday nights. Nothing beats the experience of moving real pieces!</p>
-                </div>
-                
-                <div>
-                  <p className="font-semibold text-gray-900 dark:text-white mb-2">Alternative Arrangements ✨</p>
-                  <p>Can&apos;t make Tuesday nights? No problem! Both players can agree to meet at any other time and place that works for both.</p>
+                  <p className="font-semibold text-gray-900 dark:text-white mb-2">Where to Play 🏠</p>
+                  <p>Games can be played at Schachklub Kreis 4 (Tuesday evenings) or at a location/time that both players agree. We encourage playing at the club for the social experience, but we understand schedules vary!</p>
                 </div>
 
                 <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">

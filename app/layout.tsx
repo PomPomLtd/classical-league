@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 import { Providers } from "@/components/session-provider";
 import { siteMetadata, viewportConfig } from "./metadata";
 
@@ -15,11 +16,12 @@ export default function RootLayout({
     <html lang="de-CH" className="h-full">
       <body className="h-full font-syne antialiased bg-background text-foreground">
         <Providers>
-          <div className="min-h-full">
+          <div className="min-h-full flex flex-col">
             <Navigation />
-            <main className="pb-10">
+            <main className="flex-grow pb-10">
               {children}
             </main>
+            <Footer />
           </div>
         </Providers>
       </body>

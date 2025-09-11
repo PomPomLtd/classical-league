@@ -13,6 +13,7 @@ export default function RegisterPage() {
     type: 'success' | 'error' | null
     message: string
   }>({ type: null, message: '' })
+  const [submittedData, setSubmittedData] = useState<PlayerRegistrationData | null>(null)
 
   const {
     register,
@@ -26,9 +27,9 @@ export default function RegisterPage() {
   })
 
   const watchedFields = watch(['fullName', 'nickname', 'lichessRating'])
-  const fullName = watchedFields[0] || ''
-  const nickname = watchedFields[1] || ''
-  const rating = watchedFields[2] || '1500'
+  const fullName = submittedData?.fullName || watchedFields[0] || ''
+  const nickname = submittedData?.nickname || watchedFields[1] || ''
+  const rating = submittedData?.lichessRating || watchedFields[2] || '1500'
   
   // Extract first name and last initial from full name
   const nameParts = fullName.trim().split(' ')
@@ -55,6 +56,7 @@ export default function RegisterPage() {
           type: 'success',
           message: result.message
         })
+        setSubmittedData(data) // Store the submitted data
         reset() // Clear form
       } else {
         setSubmitStatus({
@@ -78,8 +80,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-md">
+    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-2xl">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
           Register for Season 2
         </h1>
@@ -115,22 +117,74 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Status Messages */}
+        {/* Success Message with Next Steps */}
         {submitStatus.type === 'success' && (
-          <div className="mb-6 rounded-md bg-green-50 dark:bg-green-900/20 p-4 border border-green-200 dark:border-green-800">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+          <div className="space-y-6">
+            <div className="rounded-md bg-green-50 dark:bg-green-900/20 p-6 border border-green-200 dark:border-green-800">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <svg className="h-8 w-8 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-lg font-medium text-green-800 dark:text-green-200">
+                    Registration Successful! 🎉
+                  </h3>
+                  <p className="mt-2 text-sm text-green-700 dark:text-green-300">
+                    {submitStatus.message}
+                  </p>
+                </div>
               </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium text-green-800 dark:text-green-200">
-                  {submitStatus.message}
-                </p>
-                <p className="mt-2 text-sm text-green-700 dark:text-green-300">
-                  You will be notified once our chess organizer approves your registration.
-                </p>
+            </div>
+
+            {/* Next Steps */}
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+              <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-4">
+                📋 Next Steps
+              </h3>
+              <ol className="space-y-3 text-sm text-blue-700 dark:text-blue-300">
+                <li className="flex items-start">
+                  <span className="font-bold mr-2">1.</span>
+                  <div>
+                    <strong>Check your email</strong> - You should receive a confirmation email at the address you provided
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-bold mr-2">2.</span>
+                  <div>
+                    <strong>Join our WhatsApp group</strong> - Connect with other players and get tournament updates
+                    <a href="https://chat.whatsapp.com/Dc7GHirC7ce6XabpeHDwIs" target="_blank" rel="noopener noreferrer" className="block mt-1 text-blue-600 hover:text-blue-500 underline">
+                      → Join WhatsApp Group
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-bold mr-2">3.</span>
+                  <div>
+                    <strong>Wait for approval</strong> - Our tournament organizer will review and approve your registration within 24-48 hours
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-bold mr-2">4.</span>
+                  <div>
+                    <strong>Prepare for Round 1</strong> - Once approved, you'll be included in the first round pairings starting 23.9.2025
+                  </div>
+                </li>
+              </ol>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link 
+                  href="/rules" 
+                  className="inline-flex items-center px-4 py-2 border border-blue-300 shadow-sm text-sm font-medium rounded-md text-blue-800 bg-white hover:bg-blue-50 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-600 dark:hover:bg-blue-900/50 transition-colors"
+                >
+                  📖 Read Tournament Rules
+                </Link>
+                <Link 
+                  href="/links" 
+                  className="inline-flex items-center px-4 py-2 border border-blue-300 shadow-sm text-sm font-medium rounded-md text-blue-800 bg-white hover:bg-blue-50 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-600 dark:hover:bg-blue-900/50 transition-colors"
+                >
+                  🔗 Tournament Links
+                </Link>
               </div>
             </div>
           </div>
@@ -153,6 +207,7 @@ export default function RegisterPage() {
           </div>
         )}
 
+        {submitStatus.type !== 'success' && (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Full Name */}
           <div>
@@ -281,40 +336,6 @@ export default function RegisterPage() {
             )}
           </div>
 
-          {/* Player Card Preview */}
-          {(fullName || nickname) && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Player Card Preview
-              </label>
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg p-6 border-2 border-indigo-200 dark:border-indigo-800 shadow-lg">
-                <div className="text-center">
-                  <div className="text-xl font-bold text-gray-900 dark:text-white">
-                    {firstName && (
-                      <>
-                        {firstName}
-                        {nickname && (
-                          <>
-                            {' '}
-                            <span className="font-syne-tactile italic text-indigo-600 dark:text-indigo-400">
-                              &quot;{nickname}&quot;
-                            </span>
-                          </>
-                        )}
-                        {lastInitial && (
-                          <span className="ml-2">{lastInitial}</span>
-                        )}
-                      </>
-                    )}
-                    {!firstName && <span className="text-gray-400">Your name will appear here</span>}
-                  </div>
-                  <div className="mt-2 text-lg text-gray-600 dark:text-gray-300">
-                    Rating: {rating || '1500'}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Rules Acceptance */}
           <div>
@@ -365,6 +386,44 @@ export default function RegisterPage() {
             * Required fields
           </p>
         </form>
+        )}
+
+        {/* Player Card Preview - Always Visible */}
+        {(fullName || nickname || submittedData) && (
+          <div className="my-6 mx-auto max-w-md lg:max-w-lg">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">
+              Player Card Preview
+            </label>
+            <div className="relative p-4 rounded-lg shadow-lg chess-board-border">
+              <div className="bg-white dark:bg-gray-900 rounded-md p-6">
+                <div className="text-center">
+                <div className="text-xl font-bold text-gray-900 dark:text-white">
+                  {firstName && (
+                    <>
+                      {firstName}
+                      {nickname && (
+                        <>
+                          {' '}
+                          <span className="font-syne-tactile italic text-indigo-600 dark:text-indigo-400">
+                            &quot;{nickname}&quot;
+                          </span>
+                        </>
+                      )}
+                      {lastInitial && (
+                        <span className="ml-2">{lastInitial}</span>
+                      )}
+                    </>
+                  )}
+                  {!firstName && <span className="text-gray-400">Your name will appear here</span>}
+                </div>
+                <div className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+                  Rating: {rating || '1500'}
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Additional Information */}
         <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800">

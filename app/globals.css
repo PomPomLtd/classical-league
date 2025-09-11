@@ -36,3 +36,29 @@ body {
     font-family: 'Syne Tactile', cursive;
   }
 }
+
+/* Chess board pattern border for player card */
+.chess-board-border {
+  position: relative;
+  border-radius: 8px;
+  padding: 4px;
+  background: 
+    linear-gradient(45deg, #000 25%, transparent 25%) 0 0,
+    linear-gradient(45deg, transparent 25%, #000 50%, transparent 75%) 0 0,
+    linear-gradient(45deg, #000 25%, transparent 25%) 12px 12px,
+    linear-gradient(45deg, transparent 25%, #000 50%, transparent 75%) 12px 12px;
+  background-color: #fff;
+  background-size: 24px 24px;
+  animation: chess-shift 4s ease-in-out infinite;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Chess pattern shift animation */
+@keyframes chess-shift {
+  0%, 100% {
+    background-position: 0 0, 0 0, 12px 12px, 12px 12px;
+  }
+  50% {
+    background-position: 12px 12px, 12px 12px, 0 0, 0 0;
+  }
+}

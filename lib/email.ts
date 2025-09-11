@@ -17,7 +17,7 @@ import { getTournamentSettings } from './settings'
 
 const POSTMARK_API_KEY = '313b4f5f-cf37-402f-8e15-dd5ac6bfd81e'
 const POSTMARK_API_URL = 'https://api.postmarkapp.com/email'
-const DEFAULT_FROM_EMAIL = 'check@schachklub-k4.ch'
+const DEFAULT_FROM_EMAIL = 'classical@schachklub-k4.ch'
 
 export async function sendEmail(options: EmailOptions): Promise<boolean> {
   try {
@@ -69,6 +69,7 @@ Your registration has been submitted successfully. Here are your details:
 Your registration is currently pending approval by our tournament organizers. You'll receive another email once your registration has been approved and you're officially part of the tournament.
 
 In the meantime, you can:
+- Join our WhatsApp group: https://chat.whatsapp.com/Dc7GHirC7ce6XabpeHDwIs
 - Review the tournament rules at: https://classical.schachklub-k4.ch/rules
 - Check tournament links at: https://classical.schachklub-k4.ch/links
 
@@ -112,6 +113,7 @@ You are now officially part of the tournament! Here's what happens next:
 3. Check the tournament page for live pairings and standings: ${tournamentLink}
 
 Important reminders:
+- Join our WhatsApp group: https://chat.whatsapp.com/Dc7GHirC7ce6XabpeHDwIs
 - Submit bye requests at least 3 days before each round
 - Submit your game results promptly after playing
 - Stay connected with other players via WhatsApp
