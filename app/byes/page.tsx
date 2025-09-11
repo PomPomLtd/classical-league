@@ -266,7 +266,11 @@ export default function ByesPage() {
                     const isSelected = selectedRounds.includes(round.id)
 
                     return (
-                      <div key={round.id} className={`p-4 border rounded-lg ${statusDisplay.bg} ${canSelect ? 'cursor-pointer hover:shadow-sm' : 'cursor-not-allowed opacity-75'}`}>
+                      <div 
+                        key={round.id} 
+                        className={`p-4 border rounded-lg ${statusDisplay.bg} ${canSelect ? 'cursor-pointer hover:shadow-sm' : 'cursor-not-allowed opacity-75'}`}
+                        onClick={() => canSelect && handleRoundToggle(round.id)}
+                      >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-3">
                             <input
@@ -274,6 +278,7 @@ export default function ByesPage() {
                               id={`round-${round.id}`}
                               checked={isSelected}
                               onChange={() => canSelect && handleRoundToggle(round.id)}
+                              onClick={(e) => e.stopPropagation()}
                               disabled={!canSelect}
                               className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                             />
@@ -296,7 +301,7 @@ export default function ByesPage() {
                                   day: 'numeric',
                                   hour: '2-digit',
                                   minute: '2-digit'
-                                })}
+                                })} (when next round pairings are published)
                               </p>
                             </div>
                           </div>
@@ -321,7 +326,7 @@ export default function ByesPage() {
                   disabled={withdrawing}
                   className="bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-md transition-colors"
                 >
-                  {withdrawing ? 'Submitting...' : 'Withdraw from Tournament'}
+                  {withdrawing ? 'Submitting...' : '😢 Withdraw from Tournament'}
                 </button>
 
                 {/* Bye Request Button */}

@@ -138,7 +138,6 @@ export default function AdminRoundsPage() {
           <div className="space-y-4">
             {season.rounds.map((round) => {
               const roundDate = new Date(round.roundDate)
-              const byeDeadline = new Date(round.byeDeadline)
               
               // Calculate the bi-weekly playing period
               // Round date is when pairings are published (Wednesday)
