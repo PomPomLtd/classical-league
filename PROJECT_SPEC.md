@@ -42,18 +42,22 @@ A web application for managing a classical chess league tournament with player r
 ### 3. Bye Management System
 - **Round Byes:**
   - No authentication required (public form)
-  - Player selection (dropdown of approved players)
+  - Searchable player dropdown (reusable component)
   - List of upcoming rounds with dates
+  - Click-to-select round tiles with visual status
   - Checkbox selection for bye rounds
   - Save/Update functionality
   - Admin approval in admin panel
+  - Clear status display: "Bye Active - Not Playing" when approved
 - **Tournament Withdrawal:**
-  - Separate option to withdraw completely
-  - Confirmation dialog
-  - Admin handles in admin panel
+  - Separate withdrawal button with sad emoji (😢)
+  - Confirmation dialog with player name verification
+  - Creates special bye request with no round association
+  - Admin approval required (appears in admin bye panel)
+  - Marks player as withdrawn when approved
 - **Constraints:**
   - Cannot request bye for past rounds
-  - Bye deadline: Wednesday noon before round
+  - Bye deadline: Wednesday noon when next round pairings are published
   - No limit on number of byes
 
 ### 4. Player Directory
@@ -62,29 +66,38 @@ A web application for managing a classical chess league tournament with player r
   - Searchable by name or nickname
   - Display: Name, Nickname
   - WhatsApp integration (click to chat)
+  - Password protection with chess-themed password "Ke2!!" (shown in emails)
 - **WhatsApp Link Format:** 
   - Uses phone number from registration
   - Format: `https://wa.me/{phonenumber}`
 
-### 5. Result Entry System (NEW)
+### 5. Result Entry System
+- **URL:** `/submit-result` (renamed from `/results`)
 - **Form Fields:**
-  - Round number (dropdown)
+  - Round number (dropdown with auto-selection)
   - Board number (number input)
   - Result selection:
     - 1-0 (White wins)
     - 0-1 (Black wins)
     - 1/2-1/2 (Draw)
-    - 1-0 FF (Forfeit)
+    - 1-0 FF (White wins by forfeit)
+    - 0-1 FF (Black wins by forfeit)
     - 0-0 FF (Double forfeit)
-  - PGN notation (required, textarea)
+  - Winning player selection (searchable dropdown, required for non-draws)
+  - PGN notation (required, textarea with validation)
+- **Features:**
+  - Uses SearchablePlayerDropdown component for winning player
+  - Basic PGN validation with helpful error messages
+  - Instructions for getting PGN from Lichess/Chess.com
 - **Validation:**
   - Board number must be valid
   - PGN format validation
   - Round must be active/completed
+  - Winning player required for decisive results
 - **Admin Review:**
   - All results appear in admin panel
   - Admin can verify/edit/delete
-  - Admin manually matches board numbers to players
+  - Winning player helps match results even with wrong board numbers
 
 ### 6. Tournament Links Page
 - **External Links to swissystem.org:**
@@ -141,11 +154,12 @@ A web application for managing a classical chess league tournament with player r
 ### ByeRequest
 - id
 - player_id (foreign key)
-- round_id (foreign key)
+- round_id (foreign key, nullable for withdrawal requests)
 - requested_date
 - is_approved (nullable - pending if null)
 - approved_date
 - admin_notes
+- **Special Cases:** Withdrawal requests have round_id = NULL
 
 ### Round
 - id
@@ -189,10 +203,12 @@ A web application for managing a classical chess league tournament with player r
 - Filter by season
 
 ### Bye Management
-- View all bye requests
+- View all bye requests (including withdrawal requests)
 - Approve/reject with notes
 - Filter by round
 - See player bye history
+- **Withdrawal Handling:** Approving withdrawal requests marks player as withdrawn
+- **Visual Indicators:** "🚪 Tournament Withdrawal" vs regular bye requests
 
 ### Result Management
 - View all submitted results
