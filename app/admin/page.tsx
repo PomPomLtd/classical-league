@@ -68,14 +68,14 @@ export default async function AdminDashboard() {
 
   const statCards = [
     {
-      title: 'Pending Players',
+      title: 'Pending Registrations',
       value: stats.pendingPlayers,
       description: 'Awaiting approval',
       color: 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200',
       href: '/admin/players?filter=pending'
     },
     {
-      title: 'Approved Players', 
+      title: 'Approved Registrations', 
       value: stats.approvedPlayers,
       description: 'Active in tournament',
       color: 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200',
