@@ -1,42 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { PGNFileService } from '@/lib/pgn-file-service'
+import { gameResultSubmissionSchema } from '@/lib/validations'
 
 export async function POST(request: NextRequest) {
   try {
-    const { roundId, boardNumber, result, winningPlayerId, pgn } = await request.json()
-
-    // Validate input
-    if (!roundId || !boardNumber || !result || !pgn) {
+    const body = await request.json()
+    
+    // Validate input using Zod schema
+    const validationResult = gameResultSubmissionSchema.safeParse(body)
+    
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { 
+          error: 'Validation failed',
+          details: validationResult.error.issues.map(err => ({
+            field: err.path.join('.'),
+            message: err.message
+          }))
+        },
         { status: 400 }
       )
     }
 
-    if (!Number.isInteger(boardNumber) || boardNumber < 1 || boardNumber > 100) {
-      return NextResponse.json(
-        { error: 'Board number must be between 1 and 100' },
-        { status: 400 }
-      )
-    }
-
-    const validResults = ['WHITE_WIN', 'BLACK_WIN', 'DRAW', 'WHITE_WIN_FF', 'BLACK_WIN_FF', 'DOUBLE_FF']
-    if (!validResults.includes(result)) {
-      return NextResponse.json(
-        { error: 'Invalid result value' },
-        { status: 400 }
-      )
-    }
-
-    // Validate winning player for non-draw, non-double forfeit results
-    const requiresWinner = !['DRAW', 'DOUBLE_FF'].includes(result)
-    if (requiresWinner && !winningPlayerId) {
-      return NextResponse.json(
-        { error: 'Winning player is required for this result type' },
-        { status: 400 }
-      )
-    }
+    const { roundId, boardNumber, result, winningPlayerId, pgn, forfeitReason } = validationResult.data
 
     // Verify winning player exists if provided
     if (winningPlayerId) {
@@ -88,7 +75,8 @@ export async function POST(request: NextRequest) {
         boardNumber: boardNumber,
         result: result,
         winningPlayerId: winningPlayerId || null,
-        pgn: pgn.trim(),
+        pgn: pgn ? pgn.trim() : null,
+        forfeitReason: forfeitReason ? forfeitReason.trim() : null,
         submittedDate: new Date(),
         isVerified: false
       }

@@ -16,7 +16,7 @@ interface Player {
   lastInitial: string
 }
 
-type GameResult = 'WHITE_WIN' | 'BLACK_WIN' | 'DRAW' | 'WHITE_WIN_FF' | 'BLACK_WIN_FF' | 'DOUBLE_FF'
+type GameResult = 'WHITE_WIN' | 'BLACK_WIN' | 'DRAW' | 'WHITE_WIN_FF' | 'BLACK_WIN_FF' | 'DOUBLE_FF' | 'DRAW_FF'
 
 const RESULT_OPTIONS = [
   { value: 'WHITE_WIN', label: '1-0 (White wins)' },
@@ -25,6 +25,7 @@ const RESULT_OPTIONS = [
   { value: 'WHITE_WIN_FF', label: '1-0 FF (White wins by forfeit)' },
   { value: 'BLACK_WIN_FF', label: '0-1 FF (Black wins by forfeit)' },
   { value: 'DOUBLE_FF', label: '0-0 FF (Double forfeit)' },
+  { value: 'DRAW_FF', label: '1/2F-1/2F (Scheduling draw)' },
 ]
 
 export default function ResultsPage() {
@@ -35,6 +36,7 @@ export default function ResultsPage() {
   const [result, setResult] = useState<GameResult | ''>('')
   const [winningPlayer, setWinningPlayer] = useState('')
   const [pgn, setPgn] = useState('')
+  const [forfeitReason, setForfeitReason] = useState('')
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
@@ -42,6 +44,11 @@ export default function ResultsPage() {
   useEffect(() => {
     fetchRounds()
   }, [])
+
+  // Helper function to determine if result is a forfeit
+  const isForfeitResult = (result: string) => {
+    return ['WHITE_WIN_FF', 'BLACK_WIN_FF', 'DOUBLE_FF', 'DRAW_FF'].includes(result)
+  }
 
 
   const fetchRounds = async () => {
@@ -91,21 +98,41 @@ export default function ResultsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!selectedRound || !boardNumber || !result || !pgn.trim()) {
-      setMessage('Please fill in all fields')
+    
+    // Basic validation
+    if (!selectedRound || !boardNumber || !result) {
+      setMessage('Please fill in all required fields')
       return
+    }
+
+    const isForfeiture = isForfeitResult(result)
+
+    // Conditional validation based on result type
+    if (isForfeiture) {
+      if (!forfeitReason.trim()) {
+        setMessage('Please provide a reason for the forfeit')
+        return
+      }
+      if (forfeitReason.length > 500) {
+        setMessage('Forfeit reason must be 500 characters or less')
+        return
+      }
+    } else {
+      if (!pgn.trim()) {
+        setMessage('Please provide PGN notation for regular games')
+        return
+      }
+      // Basic PGN validation
+      if (!validatePGN(pgn)) {
+        setMessage('Please provide valid PGN notation')
+        return
+      }
     }
 
     // Check if winner is required (for non-draw, non-double forfeit results)
-    const requiresWinner = !['DRAW', 'DOUBLE_FF'].includes(result)
+    const requiresWinner = !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(result)
     if (requiresWinner && !winningPlayer) {
       setMessage('Please select the winning player')
-      return
-    }
-
-    // Basic PGN validation
-    if (!validatePGN(pgn)) {
-      setMessage('Please provide valid PGN notation')
       return
     }
 
@@ -113,18 +140,33 @@ export default function ResultsPage() {
     setMessage('')
 
     try {
+      const requestBody: {
+        roundId: string
+        boardNumber: number
+        result: GameResult
+        winningPlayerId: string | null
+        pgn?: string
+        forfeitReason?: string
+      } = {
+        roundId: selectedRound,
+        boardNumber: parseInt(boardNumber),
+        result,
+        winningPlayerId: winningPlayer || null,
+      }
+
+      // Include appropriate field based on result type
+      if (isForfeiture) {
+        requestBody.forfeitReason = forfeitReason.trim()
+      } else {
+        requestBody.pgn = pgn.trim()
+      }
+
       const response = await fetch('/api/results', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          roundId: selectedRound,
-          boardNumber: parseInt(boardNumber),
-          result,
-          winningPlayerId: winningPlayer || null,
-          pgn: pgn.trim()
-        })
+        body: JSON.stringify(requestBody)
       })
 
       const data = await response.json()
@@ -137,6 +179,7 @@ export default function ResultsPage() {
         setResult('')
         setWinningPlayer('')
         setPgn('')
+        setForfeitReason('')
       } else {
         setMessage(data.error || 'Failed to submit result')
       }
@@ -287,8 +330,8 @@ export default function ResultsPage() {
               </div>
             </div>
 
-            {/* Winning Player (only show for non-draw/non-double-forfeit results) */}
-            {result && !['DRAW', 'DOUBLE_FF'].includes(result) && (
+            {/* Winning Player (only show for non-draw/non-double-forfeit/non-scheduling-draw results) */}
+            {result && !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(result) && (
               <SearchablePlayerDropdown
                 players={players}
                 selectedPlayerId={winningPlayer}
@@ -300,18 +343,45 @@ export default function ResultsPage() {
               />
             )}
 
-            {/* PGN Input */}
-            <div>
-              <label htmlFor="pgn" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                PGN Notation *
-              </label>
-              <textarea
-                id="pgn"
-                rows={8}
-                value={pgn}
-                onChange={(e) => setPgn(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm font-mono text-xs"
-                placeholder="[Event &quot;Classical League&quot;]
+            {/* Conditional Input: PGN for regular games, Reason for forfeits */}
+            {result && isForfeitResult(result) ? (
+              /* Forfeit Reason Input */
+              <div>
+                <label htmlFor="forfeitReason" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Forfeit Reason *
+                </label>
+                <textarea
+                  id="forfeitReason"
+                  rows={4}
+                  value={forfeitReason}
+                  onChange={(e) => setForfeitReason(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+                  placeholder="Please explain what happened (e.g., opponent didn't respond to messages, couldn't agree on a time, opponent didn't show up, etc.)"
+                  maxLength={500}
+                  required
+                />
+                <div className="mt-1 flex justify-between">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Describe what led to this forfeit to help tournament organizers understand the situation
+                  </p>
+                  <span className="text-xs text-gray-400">
+                    {forfeitReason.length}/500
+                  </span>
+                </div>
+              </div>
+            ) : result ? (
+              /* PGN Input for regular games */
+              <div>
+                <label htmlFor="pgn" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  PGN Notation *
+                </label>
+                <textarea
+                  id="pgn"
+                  rows={8}
+                  value={pgn}
+                  onChange={(e) => setPgn(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm font-mono text-xs"
+                  placeholder="[Event &quot;Classical League&quot;]
 [Site &quot;lichess.org&quot;]
 [Date &quot;2025.09.23&quot;]
 [White &quot;Player1&quot;]
@@ -319,12 +389,13 @@ export default function ResultsPage() {
 [Result &quot;1-0&quot;]
 
 1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 1-0"
-                required
-              />
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                Copy and paste the complete PGN from lichess.org, chess.com, or your chess app
-              </p>
-            </div>
+                  required
+                />
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Copy and paste the complete PGN from lichess.org, chess.com, or your chess app
+                </p>
+              </div>
+            ) : null}
 
             {/* Submit Button */}
             <div className="flex justify-end">

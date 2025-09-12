@@ -159,4 +159,5 @@ enum GameResultEnum {
   WHITE_WIN_FF   // 1-0 FF (forfeit)
   BLACK_WIN_FF   // 0-1 FF (forfeit)
   DOUBLE_FF      // 0-0 FF (double forfeit)
+  DRAW_FF        // 1/2F-1/2F (scheduling draw)
 }

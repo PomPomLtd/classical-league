@@ -6,7 +6,8 @@ interface GameResult {
   id: string
   boardNumber: number
   result: string
-  pgn: string
+  pgn: string | null
+  forfeitReason: string | null
   submittedDate: string
   isVerified: boolean
   verifiedDate: string | null
@@ -34,7 +35,8 @@ const RESULT_LABELS: Record<string, string> = {
   'DRAW': '1/2-1/2',
   'WHITE_WIN_FF': '1-0 FF',
   'BLACK_WIN_FF': '0-1 FF',
-  'DOUBLE_FF': '0-0 FF'
+  'DOUBLE_FF': '0-0 FF',
+  'DRAW_FF': '1/2F-1/2F'
 }
 
 export default function AdminResultsPage() {
@@ -195,16 +197,21 @@ export default function AdminResultsPage() {
                         {
                           result.winningPlayer
                             ? `${result.winningPlayer.firstName} "${result.winningPlayer.nickname}" ${result.winningPlayer.lastInitial}`
-                            : (['DRAW', 'DOUBLE_FF'].includes(result.result)
-                              ? <span className="text-gray-500 italic">No winner (Draw/Double forfeit)</span>
+                            : (['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(result.result)
+                              ? <span className="text-gray-500 italic">No winner ({result.result === 'DRAW' ? 'Draw' : result.result === 'DRAW_FF' ? 'Scheduling draw' : 'Double forfeit'})</span>
                               : <span className="text-gray-400">Winner not specified</span>)
                         }
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4">
                       <div className="text-sm font-medium text-gray-900 dark:text-white">
                         {RESULT_LABELS[result.result]}
                       </div>
+                      {result.forfeitReason && (
+                        <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                          <span className="font-medium">Reason:</span> {result.forfeitReason}
+                        </div>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {result.isVerified ? (

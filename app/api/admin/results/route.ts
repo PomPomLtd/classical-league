@@ -70,6 +70,7 @@ export async function GET() {
         boardNumber: result.boardNumber,
         result: result.result,
         pgn: result.pgn,
+        forfeitReason: result.forfeitReason,
         submittedDate: result.submittedDate.toISOString(),
         isVerified: result.isVerified,
         verifiedDate: result.verifiedDate?.toISOString() || null,

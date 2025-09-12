@@ -32,3 +32,77 @@ export const playerRegistrationSchema = z.object({
 })
 
 export type PlayerRegistrationData = z.infer<typeof playerRegistrationSchema>
+
+// Game Result Submission Schema
+const GameResultEnum = z.enum(['WHITE_WIN', 'BLACK_WIN', 'DRAW', 'WHITE_WIN_FF', 'BLACK_WIN_FF', 'DOUBLE_FF', 'DRAW_FF'])
+
+export const gameResultSubmissionSchema = z.object({
+  roundId: z.string().cuid('Invalid round ID'),
+  boardNumber: z.number()
+    .int('Board number must be an integer')
+    .min(1, 'Board number must be at least 1')
+    .max(100, 'Board number must be 100 or less'),
+  result: GameResultEnum,
+  winningPlayerId: z.union([z.string().cuid(), z.null()]).optional(),
+  pgn: z.string().optional(),
+  forfeitReason: z.string().optional()
+}).superRefine((data, ctx) => {
+  const forfeitResults = ['WHITE_WIN_FF', 'BLACK_WIN_FF', 'DOUBLE_FF', 'DRAW_FF']
+  const isForfeit = forfeitResults.includes(data.result)
+  const requiresWinner = !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(data.result)
+
+  // Validate winning player requirement
+  if (requiresWinner && !data.winningPlayerId) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'Winning player is required for this result type',
+      path: ['winningPlayerId']
+    })
+  }
+
+  // Conditional validation for PGN vs Forfeit Reason
+  if (isForfeit) {
+    // Forfeit games require forfeit reason, not PGN
+    if (!data.forfeitReason || data.forfeitReason.trim().length === 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Forfeit reason is required for forfeit results',
+        path: ['forfeitReason']
+      })
+    }
+    
+    if (data.forfeitReason && data.forfeitReason.length > 500) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Forfeit reason must be 500 characters or less',
+        path: ['forfeitReason']
+      })
+    }
+  } else {
+    // Regular games require PGN, not forfeit reason
+    if (!data.pgn || data.pgn.trim().length === 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'PGN notation is required for regular games',
+        path: ['pgn']
+      })
+    }
+
+    // Basic PGN validation
+    if (data.pgn) {
+      const cleaned = data.pgn.trim()
+      const hasGameEnd = /1-0|0-1|1\/2-1\/2|\*/.test(cleaned)
+      const hasMoves = /\d+\./.test(cleaned)
+      
+      if (!hasGameEnd && !hasMoves && cleaned.length <= 20) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'Please provide valid PGN notation',
+          path: ['pgn']
+        })
+      }
+    }
+  }
+})
+
+export type GameResultSubmissionData = z.infer<typeof gameResultSubmissionSchema>
