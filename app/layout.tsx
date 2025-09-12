@@ -3,6 +3,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Providers } from "@/components/session-provider";
 import { siteMetadata, viewportConfig } from "./metadata";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = siteMetadata;
 export const viewport = viewportConfig;
@@ -23,6 +24,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
