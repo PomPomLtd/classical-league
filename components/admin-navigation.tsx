@@ -15,9 +15,9 @@ const navigation = [
   { name: 'Dashboard', href: '/admin', icon: '📊', key: 'dashboard' },
   { name: 'Registrations', href: '/admin/players', icon: '👥', key: 'registrations' },
   { name: 'Results', href: '/admin/results', icon: '🏆', key: 'results' },
+  { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️', key: 'byeRequests' },
   { name: 'Rounds', href: '/admin/rounds', icon: '📅', key: 'rounds' },
   { name: 'Settings', href: '/admin/settings', icon: '⚙️', key: 'settings' },
-  { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️', key: 'byeRequests' },
 ]
 
 function classNames(...classes: string[]) {
