@@ -140,7 +140,7 @@ export default function AdminResultsPage() {
                 After verifying results here, manually enter them in the tournament on SwissSystem:
               </p>
               <a 
-                href={`${tournamentLink}/results`}
+                href={`${tournamentLink}/rounds`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center mt-1 font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
