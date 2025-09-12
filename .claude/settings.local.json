@@ -16,7 +16,10 @@
       "WebFetch(domain:lichess.org)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebSearch",
-      "WebFetch(domain:www.prisma.io)"
+      "WebFetch(domain:www.prisma.io)",
+      "WebFetch(domain:neon.com)",
+      "Bash(npm run db:migrate:dev:*)",
+      "Bash(npm run:*)"
     ],
     "deny": [],
     "ask": []
