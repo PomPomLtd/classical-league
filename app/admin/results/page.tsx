@@ -44,9 +44,11 @@ export default function AdminResultsPage() {
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<FilterType>('unverified')
   const [search, setSearch] = useState('')
+  const [tournamentLink, setTournamentLink] = useState<string | null>(null)
 
   useEffect(() => {
     fetchData()
+    fetchSettings()
   }, [])
 
   const fetchData = async () => {
@@ -60,6 +62,18 @@ export default function AdminResultsPage() {
       console.error('Error fetching data:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const fetchSettings = async () => {
+    try {
+      const response = await fetch('/api/admin/settings')
+      if (response.ok) {
+        const data = await response.json()
+        setTournamentLink(data.tournamentLink)
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error)
     }
   }
 
@@ -111,6 +125,35 @@ export default function AdminResultsPage() {
           </p>
         </div>
       </div>
+
+      {/* Tournament Management Instruction */}
+      {tournamentLink && (
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+          <div className="flex items-start space-x-3">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="text-sm text-blue-800 dark:text-blue-200">
+              <p>
+                After verifying results here, manually enter them in the tournament on SwissSystem:
+              </p>
+              <a 
+                href={`${tournamentLink}/results`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center mt-1 font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                Open Tournament Results Management
+                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Filters and Search */}
       <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
