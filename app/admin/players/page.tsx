@@ -50,7 +50,9 @@ export default function AdminPlayersPage() {
       const response = await fetch('/api/admin/settings')
       if (response.ok) {
         const data = await response.json()
-        setTournamentLink(data.tournamentLink)
+        // Remove trailing slash if present to prevent double slashes
+        const link = data.tournamentLink?.replace(/\/$/, '')
+        setTournamentLink(link)
       }
     } catch (error) {
       console.error('Error fetching settings:', error)
