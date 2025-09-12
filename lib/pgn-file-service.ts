@@ -101,7 +101,7 @@ export class PGNFileService {
           whitePlayer,
           blackPlayer,
           result: this.pgnProcessor.formatResult(result.result),
-          pgn: this.pgnProcessor.cleanPGN(result.pgn),
+          pgn: result.pgn ? this.pgnProcessor.cleanPGN(result.pgn) : '',
           roundNumber: round.roundNumber,
           roundDate: round.roundDate,
           event: `Classical League Season ${round.season.seasonNumber}`,
