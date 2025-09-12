@@ -5,13 +5,19 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 
+interface PendingCounts {
+  registrations: number
+  byeRequests: number
+  results: number
+}
+
 const navigation = [
-  { name: 'Dashboard', href: '/admin', icon: '📊' },
-  { name: 'Players', href: '/admin/players', icon: '👥' },
-  { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️' },
-  { name: 'Results', href: '/admin/results', icon: '🏆' },
-  { name: 'Rounds', href: '/admin/rounds', icon: '📅' },
-  { name: 'Settings', href: '/admin/settings', icon: '⚙️' },
+  { name: 'Dashboard', href: '/admin', icon: '📊', key: 'dashboard' },
+  { name: 'Registrations', href: '/admin/players', icon: '👥', key: 'registrations' },
+  { name: 'Results', href: '/admin/results', icon: '🏆', key: 'results' },
+  { name: 'Rounds', href: '/admin/rounds', icon: '📅', key: 'rounds' },
+  { name: 'Settings', href: '/admin/settings', icon: '⚙️', key: 'settings' },
+  { name: 'Bye Requests', href: '/admin/byes', icon: '⏸️', key: 'byeRequests' },
 ]
 
 function classNames(...classes: string[]) {
@@ -21,11 +27,37 @@ function classNames(...classes: string[]) {
 export function AdminNavigation() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [pendingCounts, setPendingCounts] = useState<PendingCounts>({
+    registrations: 0,
+    byeRequests: 0,
+    results: 0
+  })
 
   // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname])
+
+  // Fetch pending counts
+  useEffect(() => {
+    const fetchPendingCounts = async () => {
+      try {
+        const response = await fetch('/api/admin/pending-counts')
+        if (response.ok) {
+          const counts = await response.json()
+          setPendingCounts(counts)
+        }
+      } catch (error) {
+        console.error('Failed to fetch pending counts:', error)
+      }
+    }
+
+    fetchPendingCounts()
+    
+    // Refresh counts every 30 seconds
+    const interval = setInterval(fetchPendingCounts, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   // Close mobile menu on escape key and prevent body scroll
   useEffect(() => {
@@ -52,6 +84,19 @@ export function AdminNavigation() {
     await signOut({ callbackUrl: '/' })
   }
 
+  const getPendingCount = (key: string): number => {
+    switch (key) {
+      case 'registrations':
+        return pendingCounts.registrations
+      case 'results':
+        return pendingCounts.results
+      case 'byeRequests':
+        return pendingCounts.byeRequests
+      default:
+        return 0
+    }
+  }
+
   return (
     <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,21 +108,29 @@ export function AdminNavigation() {
               </Link>
             </div>
             <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    pathname === item.href
-                      ? 'border-indigo-500 text-gray-900 dark:text-white'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-300 dark:hover:text-white',
-                    'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm inline-flex items-center transition-colors'
-                  )}
-                >
-                  <span className="mr-2">{item.icon}</span>
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                const pendingCount = getPendingCount(item.key)
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={classNames(
+                      pathname === item.href
+                        ? 'border-indigo-500 text-gray-900 dark:text-white'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-300 dark:hover:text-white',
+                      'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm inline-flex items-center transition-colors relative'
+                    )}
+                  >
+                    <span className="mr-2">{item.icon}</span>
+                    {item.name}
+                    {pendingCount > 0 && (
+                      <span className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                        {pendingCount}
+                      </span>
+                    )}
+                  </Link>
+                )
+              })}
             </div>
           </div>
           <div className="hidden lg:ml-6 lg:flex lg:items-center space-x-4">
@@ -158,22 +211,32 @@ export function AdminNavigation() {
         </div>
         
         <div className="px-2 py-3">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={classNames(
-                pathname === item.href
-                  ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-200'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
-                'group flex items-center px-3 py-3 text-base font-medium rounded-md transition-colors duration-200'
-              )}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="mr-3 text-lg">{item.icon}</span>
-              {item.name}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const pendingCount = getPendingCount(item.key)
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={classNames(
+                  pathname === item.href
+                    ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-200'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
+                  'group flex items-center justify-between px-3 py-3 text-base font-medium rounded-md transition-colors duration-200'
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <div className="flex items-center">
+                  <span className="mr-3 text-lg">{item.icon}</span>
+                  {item.name}
+                </div>
+                {pendingCount > 0 && (
+                  <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                    {pendingCount}
+                  </span>
+                )}
+              </Link>
+            )
+          })}
           
           <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
             <Link
