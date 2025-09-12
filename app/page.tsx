@@ -11,8 +11,15 @@ export default function Home() {
             Schachklub Kreis 4 Classical League
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Welcome to Season 2 of our classical chess tournament. Register, manage your byes, 
-            submit results, and connect with fellow players.
+            Welcome to Season 2 of our classical chess tournament organized by{' '}
+            <a 
+              href="https://schachklub-k4.ch" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
+            >
+              Schachklub Kreis 4
+            </a>. Register, manage your byes, submit results, and connect with fellow players.
           </p>
         </div>
 

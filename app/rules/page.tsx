@@ -121,7 +121,16 @@ export default function RulesPage() {
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white mb-2">Where to Play 🏠</p>
-                  <p>Games can be played at Schachklub Kreis 4 (Tuesday evenings) or at a location/time that both players agree. We encourage playing at the club for the social experience, but we understand schedules vary!</p>
+                  <p>Games can be played at{' '}
+                    <a 
+                      href="https://schachklub-k4.ch" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
+                    >
+                      Schachklub Kreis 4
+                    </a>{' '}
+                    (Tuesday evenings) or at a location/time that both players agree. We encourage playing at the club for the social experience, but we understand schedules vary!</p>
                 </div>
 
                 <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">

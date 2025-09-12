@@ -104,7 +104,7 @@ export default function RegisterPage() {
               <div>
                 <p><strong>🏅 Format:</strong> Swiss system</p>
                 <p><strong>⏱️ Time control:</strong> 30+30</p>
-                <p><strong>📱 Contact:</strong> WhatsApp groups</p>
+                <p><strong>📱 Contact:</strong> WhatsApp</p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-800/30 rounded border-l-4 border-blue-400">

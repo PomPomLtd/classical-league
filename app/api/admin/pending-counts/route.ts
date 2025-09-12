@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/db'
 import { getCurrentSeason } from '@/lib/season'
 
 export async function GET() {
@@ -11,7 +11,7 @@ export async function GET() {
     }
 
     // Count pending registrations (players not approved)
-    const pendingRegistrations = await prisma.player.count({
+    const pendingRegistrations = await db.player.count({
       where: {
         seasonId: season.id,
         approved: false
@@ -19,7 +19,7 @@ export async function GET() {
     })
 
     // Count pending bye requests (not approved)
-    const pendingByeRequests = await prisma.byeRequest.count({
+    const pendingByeRequests = await db.byeRequest.count({
       where: {
         player: {
           seasonId: season.id
@@ -29,7 +29,7 @@ export async function GET() {
     })
 
     // Count pending results (not verified)
-    const pendingResults = await prisma.gameResult.count({
+    const pendingResults = await db.gameResult.count({
       where: {
         round: {
           seasonId: season.id

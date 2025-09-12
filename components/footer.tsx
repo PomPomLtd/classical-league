@@ -7,7 +7,14 @@ export function Footer() {
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {new Date().getFullYear()} Schachklub Kreis 4. All rights reserved.
+              © {new Date().getFullYear()} <a 
+                href="https://schachklub-k4.ch" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                Schachklub Kreis 4
+              </a>. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
               <Link
