@@ -14,7 +14,7 @@ export async function GET() {
     const pendingRegistrations = await db.player.count({
       where: {
         seasonId: season.id,
-        approved: false
+        isApproved: false
       }
     })
 
@@ -24,7 +24,7 @@ export async function GET() {
         player: {
           seasonId: season.id
         },
-        approved: false
+        isApproved: null // null = pending
       }
     })
 
@@ -34,7 +34,7 @@ export async function GET() {
         round: {
           seasonId: season.id
         },
-        verified: false
+        isVerified: false
       }
     })
 
