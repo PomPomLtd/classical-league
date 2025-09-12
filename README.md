@@ -75,16 +75,11 @@ POSTMARK_API_KEY="your-postmark-api-key"
 
 4. Set up the database:
 ```bash
-npx prisma db push
-npx prisma generate
+npm run db:migrate:dev
+npm run db:seed
 ```
 
-5. Seed the database (optional):
-```bash
-npx prisma db seed
-```
-
-6. Start the development server:
+5. Start the development server:
 ```bash
 npm run dev
 ```
@@ -158,16 +153,44 @@ The application uses Prisma ORM with the following main models:
 ## Development
 
 ### Database Operations
-```bash
-# Reset database
-npx prisma db push --force-reset
 
-# Generate Prisma client
-npx prisma generate
+**Production Migration Workflow:**
+```bash
+# 1. Create new migration (development only)
+npm run db:migrate:dev
+
+# 2. Test locally
+npm run dev
+npm run db:studio
+
+# 3. Push to main branch - Vercel auto-deploys migrations
+git push origin main
+```
+
+**Development Commands:**
+```bash
+# Create new migration
+npm run db:migrate:dev
+
+# Deploy existing migrations
+npm run db:migrate:deploy
+
+# Prototype schema changes (no migration)
+npm run db:push
 
 # View database
-npx prisma studio
+npm run db:studio
+
+# Seed with test data
+npm run db:seed
 ```
+
+**Migration Rules:**
+- ✅ Always use `db:migrate:dev` for schema changes
+- ✅ Test migrations locally before pushing to main
+- ✅ Handle nullable fields in TypeScript code
+- ❌ Never use `db:push` in production
+- ❌ Never edit existing migration files
 
 ### Email Testing
 The application includes email testing capabilities for development and verification.
@@ -184,10 +207,12 @@ The application is deployed at [classical.schachklub-k4.ch](https://classical.sc
 - **Security**: Admin authentication with bcrypt password hashing
 
 ### Initial Production Setup
-1. **Database Initialization**: Visit `/api/admin/migrate-db` to create schema
+1. **Database Migrations**: Automatic via Vercel build process (`vercel-build` script)
 2. **Admin Creation**: Visit `/api/admin/create-admin` to create initial admin user
 3. **Season Setup**: Use admin panel to configure current season settings
 4. **Tournament Links**: Configure SwissSystem.org links in admin settings
+
+**Note**: Database schema is automatically created and updated through Prisma migrations during deployment.
 
 ## Contributing
 

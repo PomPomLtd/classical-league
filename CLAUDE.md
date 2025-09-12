@@ -21,9 +21,11 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 - `npm run lint` - Run ESLint
 
 **Database:**
+- `npm run db:migrate:dev` - Create new migration (development only)
+- `npm run db:migrate:deploy` - Deploy pending migrations (production)
 - `npm run db:seed` - Seed database with initial data
-- `npx prisma migrate dev` - Run database migrations
-- `npx prisma studio` - Open Prisma Studio
+- `npm run db:studio` - Open Prisma Studio
+- `npm run db:push` - Push schema changes without migration (prototyping only)
 - `npx prisma generate` - Generate Prisma client
 
 **Git:**
@@ -81,6 +83,43 @@ The application uses Prisma with PostgreSQL and follows a multi-season tournamen
 - `lib/auth-config.ts` - NextAuth.js configuration
 - `lib/nickname-generator.ts` - Creative chess nickname generation
 - `lib/validations.ts` - Zod schemas for form validation
+
+## Database Migration Workflow
+
+**CRITICAL:** Always follow this exact workflow for database changes:
+
+### Development (Local)
+1. **Modify Schema**: Edit `prisma/schema.prisma` with your changes
+2. **Create Migration**: Run `npm run db:migrate:dev` and provide descriptive name
+3. **Test Locally**: Verify changes work with `npm run dev` and `npm run db:studio`
+4. **Commit**: Add migration files and schema to git
+
+### Production Deployment
+1. **Push to Main**: Vercel automatically runs `vercel-build` script
+2. **Auto-Migration**: Script includes `prisma migrate deploy` before build
+3. **Verify**: Check Vercel logs for successful migration deployment
+
+### Important Rules
+- **NEVER** use `db:push` in production - only for local prototyping
+- **ALWAYS** test migrations locally first with shadow database
+- **NEVER** edit existing migration files - create new ones to fix issues
+- **ALWAYS** make migrations backward compatible when possible
+- **NEVER** delete migration files from git
+- **ALWAYS** handle nullable fields in TypeScript (e.g., `result.pgn ? cleanPGN(result.pgn) : ''`)
+
+### Quick Commands
+```bash
+# Development workflow
+npm run db:migrate:dev        # Create new migration
+npm run db:studio             # Inspect database
+npm run build                 # Test TypeScript compatibility
+
+# Emergency troubleshooting
+npx prisma migrate status     # Check migration status
+npx prisma migrate resolve --applied "migration_name"  # Mark as applied
+```
+
+See `DATABASE_MIGRATIONS.md` for complete documentation.
 
 ## Development Notes
 
