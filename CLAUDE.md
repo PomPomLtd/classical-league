@@ -15,12 +15,21 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 ## Commands
 
 **Development:**
-- `npm run dev` - Start development server with Turbopack (run in separate terminal)
+- `npm run dev` - Start development server with Turbopack (**NEVER RUN THIS - User runs in separate terminal**)
 - `npm run build` - Build for production with Turbopack
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
-**Database:**
+**CRITICAL: NEVER run `npm run dev` - The user always runs this in a separate terminal window. If you need to check if the dev server is running, ask the user to run it.**
+
+**Local Setup (for first time or reset):**
+- `npm run setup:local` - **RECOMMENDED**: Fully automated local environment setup
+- `npm run setup:manual` - Manual setup (requires Prisma dev server already running)
+
+**Database Development:**
+- `npm run db:dev` - Start Prisma dev server (named instance: classical-league)
+- `npm run db:dev:stop` - Stop Prisma dev server
+- `npm run db:dev:remove` - Remove local database instance completely
 - `npm run db:migrate:dev` - Create new migration (development only)
 - `npm run db:migrate:deploy` - Deploy pending migrations (production)
 - `npm run db:seed` - Seed database with initial data
@@ -145,8 +154,9 @@ See `DATABASE_MIGRATIONS.md` for complete documentation.
 - Creative nickname generation with 47+ humorous chess phrases
 
 **Environment Setup:**
+- **Local Development**: Uses Prisma dev server (automated via `npm run setup:local`)
+- **Production**: Neon serverless PostgreSQL
 - Requires `DATABASE_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `POSTMARK_API_KEY`
-- PostgreSQL database (production: Neon serverless)
 - Postmark API for email notifications (sender: check@schachklub-k4.ch)
 - Production deployment: Vercel at classical.schachklub-k4.ch
 
@@ -154,6 +164,49 @@ See `DATABASE_MIGRATIONS.md` for complete documentation.
 - Registration success, player approval, bye approval, round notifications
 - Non-blocking email system to prevent API timeouts
 - All email templates include tournament links from admin settings
+
+## Local Development Setup
+
+**Quick Start (First Time or Reset):**
+```bash
+npm run setup:local    # Automated: starts Prisma dev, sets up DB, seeds data
+# In new terminal:
+npm run dev           # Start Next.js development server
+```
+
+**Manual Setup (Alternative):**
+```bash
+# Terminal 1 (keep running):
+npm run db:dev
+
+# Terminal 2:
+# Update .env with DATABASE_URL from Terminal 1 output
+npm run setup:manual
+npm run dev
+```
+
+**What Gets Created:**
+- Prisma dev server on localhost with named instance `classical-league`
+- `.env` file auto-updated with connection string
+- Season 2 with 7 rounds (Sep-Dec 2025)
+- 10 test players (Magnus Carlsen, Garry Kasparov, etc.)
+- Admin user: `admin` / `SchachKreis4Admin2025!`
+
+**Important Files:**
+- `scripts/setup-env.js` - Automated setup script
+- `scripts/local-setup.sh` - Manual setup script
+- `LOCAL_SETUP.md` - Comprehensive setup documentation
+- `.env` - Auto-generated environment variables
+
+**Daily Workflow:**
+- `npm run setup:local` (if starting fresh)
+- **Ask user to run `npm run dev`** (NEVER run this yourself)
+- Admin panel: http://localhost:3000/admin-auth
+
+**Troubleshooting:**
+- Reset everything: `npm run db:dev:stop && npm run setup:local`
+- Database browser: `npm run db:studio`
+- Check migrations: `npx prisma migrate status`
 
 ## Development Workflow
 
