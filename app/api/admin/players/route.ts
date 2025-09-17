@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth-config'
 import { db } from '@/lib/db'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     // Check admin authentication
     const session = await getServerSession(authOptions)
@@ -20,7 +20,19 @@ export async function GET() {
       return NextResponse.json({ error: 'No active season found' }, { status: 404 })
     }
 
-    // Fetch all players for current season
+    // Check if client wants all players or just the latest ones
+    const { searchParams } = new URL(request.url)
+    const loadAll = searchParams.get('loadAll') === 'true'
+    const limit = loadAll ? undefined : 20
+
+    // Get total count for metadata
+    const totalCount = await db.player.count({
+      where: {
+        seasonId: currentSeason.id
+      }
+    })
+
+    // Fetch players for current season
     const players = await db.player.findMany({
       where: {
         seasonId: currentSeason.id
@@ -28,10 +40,18 @@ export async function GET() {
       orderBy: [
         { isApproved: 'asc' }, // Pending first
         { registrationDate: 'desc' } // Most recent first
-      ]
+      ],
+      take: limit
     })
 
-    return NextResponse.json(players)
+    return NextResponse.json({
+      players,
+      pagination: {
+        total: totalCount,
+        loaded: players.length,
+        hasMore: !loadAll && totalCount > 20
+      }
+    })
   } catch (error) {
     console.error('Error fetching players:', error)
     return NextResponse.json(

@@ -21,6 +21,12 @@ type FilterType = 'all' | 'pending' | 'approved' | 'withdrawn'
 export default function AdminPlayersPage() {
   const [players, setPlayers] = useState<Player[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingAll, setLoadingAll] = useState(false)
+  const [pagination, setPagination] = useState<{
+    total: number
+    loaded: number
+    hasMore: boolean
+  } | null>(null)
   const [filter, setFilter] = useState<FilterType>('all')
   const [search, setSearch] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
@@ -31,18 +37,26 @@ export default function AdminPlayersPage() {
     fetchSettings()
   }, [])
 
-  const fetchPlayers = async () => {
+  const fetchPlayers = async (loadAll = false) => {
     try {
-      const response = await fetch('/api/admin/players')
+      const url = loadAll ? '/api/admin/players?loadAll=true' : '/api/admin/players'
+      const response = await fetch(url)
       if (response.ok) {
         const data = await response.json()
-        setPlayers(data)
+        setPlayers(data.players)
+        setPagination(data.pagination)
       }
     } catch (error) {
       console.error('Error fetching players:', error)
     } finally {
       setLoading(false)
+      setLoadingAll(false)
     }
+  }
+
+  const handleLoadAll = async () => {
+    setLoadingAll(true)
+    await fetchPlayers(true)
   }
 
   const fetchSettings = async () => {
@@ -189,6 +203,45 @@ export default function AdminPlayersPage() {
             />
           </div>
         </div>
+
+        {/* Load All Button and Pagination Info */}
+        {pagination && (
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              Showing {pagination.loaded} of {pagination.total} players
+              {pagination.hasMore && (
+                <span className="ml-1 text-yellow-600 dark:text-yellow-400">
+                  (latest {pagination.loaded} shown for faster loading)
+                </span>
+              )}
+            </div>
+
+            {pagination.hasMore && (
+              <button
+                onClick={handleLoadAll}
+                disabled={loadingAll}
+                className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {loadingAll ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading all...
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Load all {pagination.total} players
+                  </>
+                )}
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Players List */}
