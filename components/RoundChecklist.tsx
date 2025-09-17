@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface RoundChecklistProps {
   roundId: string
@@ -62,11 +62,7 @@ export default function RoundChecklist({ roundId, roundNumber, onClose }: RoundC
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchChecklistData()
-  }, [roundId]) // fetchChecklistData is stable, no need to add to dependencies
-
-  const fetchChecklistData = async () => {
+  const fetchChecklistData = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch(`/api/admin/rounds/${roundId}/checklist`)
@@ -78,13 +74,17 @@ export default function RoundChecklist({ roundId, roundNumber, onClose }: RoundC
       const checklistData = await response.json()
       setData(checklistData)
       setError(null)
-    } catch (error) {
-      console.error('Error fetching checklist:', error)
-      setError('Failed to load checklist data')
+    } catch (err) {
+      console.error('Error fetching checklist data:', err)
+      setError(err instanceof Error ? err.message : 'Failed to load checklist data')
     } finally {
       setLoading(false)
     }
-  }
+  }, [roundId])
+
+  useEffect(() => {
+    fetchChecklistData()
+  }, [fetchChecklistData])
 
   if (loading) {
     return (
