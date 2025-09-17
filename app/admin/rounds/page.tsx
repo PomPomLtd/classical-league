@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import BroadcastSetupInstructions from '@/components/BroadcastSetupInstructions'
+import RoundChecklist from '@/components/RoundChecklist'
 
 interface Round {
   id: string
@@ -36,6 +37,7 @@ export default function AdminRoundsPage() {
     settings?: { broadcastEnabled: boolean }
   } | null>(null)
   const [showBroadcastSetup, setShowBroadcastSetup] = useState(false)
+  const [selectedRoundChecklist, setSelectedRoundChecklist] = useState<{ id: string; number: number } | null>(null)
   const [message, setMessage] = useState<{
     type: 'success' | 'error' | null
     text: string
@@ -202,6 +204,15 @@ export default function AdminRoundsPage() {
                     
                     <div className="flex items-center space-x-3">
                       <button
+                        onClick={() => setSelectedRoundChecklist({ id: round.id, number: round.roundNumber })}
+                        className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                      >
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        Checklist
+                      </button>
+                      <button
                         onClick={() => handleNotifyPairings(round.id, round.roundNumber)}
                         disabled={isNotifying}
                         className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -346,6 +357,19 @@ export default function AdminRoundsPage() {
           </div>
         </div>
       </div>
+
+      {/* Round Checklist Modal */}
+      {selectedRoundChecklist && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <RoundChecklist
+              roundId={selectedRoundChecklist.id}
+              roundNumber={selectedRoundChecklist.number}
+              onClose={() => setSelectedRoundChecklist(null)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
