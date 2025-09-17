@@ -1,15 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import { useState, useEffect } from 'react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 export default function AdminLogin() {
   const [credentials, setCredentials] = useState({ username: '', password: '' })
   const [honeypot, setHoneypot] = useState('')
+  const [rememberMe, setRememberMe] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const { data: session, status } = useSession()
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (status === 'authenticated' && session?.user?.role === 'admin') {
+      router.push('/admin')
+    }
+  }, [status, session, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,6 +36,7 @@ export default function AdminLogin() {
       const result = await signIn('credentials', {
         username: credentials.username,
         password: credentials.password,
+        rememberMe: rememberMe.toString(),
         redirect: false
       })
 
@@ -47,6 +57,24 @@ export default function AdminLogin() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  // Show loading while checking authentication status
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-gray-500 dark:text-gray-400">Loading...</div>
+      </div>
+    )
+  }
+
+  // Don't render login form if already authenticated (will redirect)
+  if (status === 'authenticated' && session?.user?.role === 'admin') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-gray-500 dark:text-gray-400">Redirecting to admin panel...</div>
+      </div>
+    )
   }
 
   return (
@@ -110,6 +138,20 @@ export default function AdminLogin() {
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
                 placeholder="Enter admin password"
               />
+            </div>
+
+            <div className="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700"
+              />
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                Remember me for 2 weeks
+              </label>
             </div>
           </div>
 

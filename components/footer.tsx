@@ -30,7 +30,7 @@ export function Footer() {
                 Tournament Links
               </Link>
               <Link
-                href="/admin-auth"
+                href="/admin"
                 className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 flex items-center gap-1"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4">
