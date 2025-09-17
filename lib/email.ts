@@ -15,7 +15,7 @@ interface PostmarkResponse {
 
 import { getTournamentSettings } from './settings'
 
-const POSTMARK_API_KEY = '313b4f5f-cf37-402f-8e15-dd5ac6bfd81e'
+const POSTMARK_API_KEY = process.env.POSTMARK_API_KEY || ''
 const POSTMARK_API_URL = 'https://api.postmarkapp.com/email'
 const DEFAULT_FROM_EMAIL = 'classical@schachklub-k4.ch'
 
@@ -24,7 +24,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
     const response = await fetch(POSTMARK_API_URL, {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
         'X-Postmark-Server-Token': POSTMARK_API_KEY,
       },
@@ -94,7 +94,9 @@ export async function sendPlayerApprovalEmail(
 ): Promise<boolean> {
   // Get tournament settings to include the correct tournament link
   const settings = await getTournamentSettings()
-  const tournamentLink = settings.tournamentLink || 'https://swisssystem.org/tournament/dd5ba09cff1b4ca0972936c5d01dae58'
+  const tournamentLink =
+    settings.tournamentLink ||
+    'https://swisssystem.org/tournament/dd5ba09cff1b4ca0972936c5d01dae58'
 
   const subject = 'Registration Approved - K4 Classical League'
   const textBody = `Hello ${playerName},
@@ -184,11 +186,11 @@ export async function sendNewRoundPairingsEmail(
   hasBye: boolean = false
 ): Promise<boolean> {
   const subject = `Round ${roundNumber} Pairings Available - K4 Classical League`
-  
+
   // Calculate the deadline (2 weeks from round date)
   const deadline = new Date(roundDate)
   deadline.setDate(deadline.getDate() + 13) // 2 weeks - 1 day for the deadline
-  
+
   let pairingInfo = ''
   if (hasBye) {
     pairingInfo = `You have a bye for Round ${roundNumber}.
@@ -196,13 +198,17 @@ export async function sendNewRoundPairingsEmail(
 - No game to play this round`
   } else {
     pairingInfo = `Round ${roundNumber} pairings are now available!
-- Play your game from ${roundDate.toLocaleDateString('de-CH')} to ${deadline.toLocaleDateString('de-CH')}
+- Play your game from ${roundDate.toLocaleDateString(
+      'de-CH'
+    )} to ${deadline.toLocaleDateString('de-CH')}
 - Check the pairings link below to see your opponent, board number, and colors`
   }
 
   // Get tournament settings for the correct links
   const settings = await getTournamentSettings()
-  const baseLink = settings.tournamentLink || 'https://swisssystem.org/tournament/dd5ba09cff1b4ca0972936c5d01dae58'
+  const baseLink =
+    settings.tournamentLink ||
+    'https://swisssystem.org/tournament/dd5ba09cff1b4ca0972936c5d01dae58'
   const roundsLink = `${baseLink}/rounds`
   const standingsLink = `${baseLink}/standings`
 
@@ -256,10 +262,10 @@ https://classical.schachklub-k4.ch/admin/players
 Best regards,
 K4 Classical League System`
 
-  return await sendEmail({ 
-    to: 'classical@schachklub-k4.ch', 
-    subject, 
-    textBody 
+  return await sendEmail({
+    to: 'classical@schachklub-k4.ch',
+    subject,
+    textBody,
   })
 }
 
@@ -283,10 +289,10 @@ https://classical.schachklub-k4.ch/admin/byes
 Best regards,
 K4 Classical League System`
 
-  return await sendEmail({ 
-    to: 'classical@schachklub-k4.ch', 
-    subject, 
-    textBody 
+  return await sendEmail({
+    to: 'classical@schachklub-k4.ch',
+    subject,
+    textBody,
   })
 }
 
