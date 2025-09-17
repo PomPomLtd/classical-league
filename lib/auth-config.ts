@@ -1,5 +1,6 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { validateAdmin } from './auth'
+import { checkRateLimit } from './rate-limiter'
 import type { NextAuthOptions } from 'next-auth'
 
 export const authOptions: NextAuthOptions = {
@@ -15,8 +16,17 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
+        // Basic rate limiting using username as key
+        const rateLimitKey = `auth:${credentials.username}`
+        const { allowed } = checkRateLimit(rateLimitKey, 5, 15 * 60 * 1000)
+
+        if (!allowed) {
+          console.log(`Rate limit exceeded for username: ${credentials.username}`)
+          return null
+        }
+
         const isValid = await validateAdmin(credentials.username, credentials.password)
-        
+
         if (isValid) {
           return {
             id: credentials.username,
@@ -25,7 +35,7 @@ export const authOptions: NextAuthOptions = {
             role: 'admin'
           }
         }
-        
+
         return null
       }
     })

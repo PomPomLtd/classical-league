@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 
 export default function AdminLogin() {
   const [credentials, setCredentials] = useState({ username: '', password: '' })
+  const [honeypot, setHoneypot] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
@@ -15,6 +16,13 @@ export default function AdminLogin() {
     setIsLoading(true)
     setError('')
 
+    // Honeypot check - if filled, this is likely a bot
+    if (honeypot) {
+      setError('Authentication failed')
+      setIsLoading(false)
+      return
+    }
+
     try {
       const result = await signIn('credentials', {
         username: credentials.username,
@@ -23,7 +31,12 @@ export default function AdminLogin() {
       })
 
       if (result?.error) {
-        setError('Invalid username or password')
+        // Handle rate limiting specifically
+        if (result.error.includes('Too many')) {
+          setError('Too many login attempts. Please try again later.')
+        } else {
+          setError('Invalid credentials')
+        }
       } else if (result?.ok) {
         router.push('/admin')
       } else {
@@ -56,6 +69,17 @@ export default function AdminLogin() {
           )}
           
           <div className="space-y-4">
+            {/* Honeypot field - hidden from users but visible to bots */}
+            <input
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', opacity: 0 }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Username

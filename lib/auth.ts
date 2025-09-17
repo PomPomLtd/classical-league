@@ -42,11 +42,21 @@ export async function createInitialAdmin() {
 }
 
 export async function validateAdmin(username: string, password: string): Promise<boolean> {
-  const admin = await db.admin.findUnique({
-    where: { username }
-  })
+  const startTime = Date.now()
 
-  if (!admin) return false
+  try {
+    const admin = await db.admin.findUnique({
+      where: { username }
+    })
 
-  return verifyPassword(password, admin.passwordHash)
+    const isValid = admin ? await verifyPassword(password, admin.passwordHash) : false
+
+    // Log authentication attempts (don't log passwords!)
+    console.log(`Auth attempt: ${username} | Success: ${isValid} | Time: ${Date.now() - startTime}ms | ${new Date().toISOString()}`)
+
+    return isValid
+  } catch (error) {
+    console.error(`Auth error for ${username}:`, error)
+    return false
+  }
 }
