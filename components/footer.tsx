@@ -51,6 +51,29 @@ export function Footer() {
             </p>
           </div>
         </div>
+
+        {/* Vercel deployment info */}
+        {(process.env.VERCEL_DEPLOYMENT_ID || process.env.VERCEL_GIT_COMMIT_SHA) && (
+          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-gray-400 dark:text-gray-500">
+              {process.env.VERCEL_DEPLOYMENT_ID && (
+                <span>
+                  Deploy: {process.env.VERCEL_DEPLOYMENT_ID.slice(0, 8)}
+                </span>
+              )}
+              {process.env.VERCEL_GIT_COMMIT_SHA && (
+                <span>
+                  Commit: {process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)}
+                </span>
+              )}
+              {process.env.VERCEL_DEPLOYMENT_URL && (
+                <span>
+                  Built: {new Date().toISOString().slice(0, 19).replace('T', ' ')} UTC
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   )
