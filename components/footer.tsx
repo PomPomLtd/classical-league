@@ -1,5 +1,8 @@
 import Link from 'next/link'
 
+// Build timestamp - set at build time
+const BUILD_TIMESTAMP = new Date().toISOString()
+
 export function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -66,11 +69,9 @@ export function Footer() {
                   Commit: {process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)}
                 </span>
               )}
-              {process.env.VERCEL_DEPLOYMENT_URL && (
-                <span>
-                  Built: {new Date().toISOString().slice(0, 19).replace('T', ' ')} UTC
-                </span>
-              )}
+              <span>
+                Built: {BUILD_TIMESTAMP.slice(0, 19).replace('T', ' ')} UTC
+              </span>
             </div>
           </div>
         )}
