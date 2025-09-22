@@ -1,11 +1,34 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { getToken } from 'next-auth/jwt'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET
+  })
+
+  const { pathname } = request.nextUrl
   const response = NextResponse.next()
 
-  // Add security headers for admin routes
-  if (request.nextUrl.pathname.startsWith('/admin')) {
+  // Check if user is accessing admin routes
+  if (pathname.startsWith('/admin')) {
+    // Special handling for admin-auth page to prevent redirect loops
+    if (pathname === '/admin-auth') {
+      // If already authenticated, redirect to admin dashboard
+      if (token && token.role === 'admin') {
+        return NextResponse.redirect(new URL('/admin', request.url))
+      }
+      // Allow access to login page if not authenticated
+    } else {
+      // For all other admin routes, require authentication
+      if (!token || token.role !== 'admin') {
+        // Redirect to login
+        return NextResponse.redirect(new URL('/admin-auth', request.url))
+      }
+    }
+
+    // Add security headers for admin routes
     response.headers.set('X-Frame-Options', 'DENY')
     response.headers.set('X-Content-Type-Options', 'nosniff')
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')

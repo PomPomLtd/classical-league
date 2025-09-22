@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
@@ -11,14 +11,9 @@ export default function AdminLogin() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const { status } = useSession()
 
-  // Redirect if already logged in
-  useEffect(() => {
-    if (status === 'authenticated' && session?.user?.role === 'admin') {
-      router.push('/admin')
-    }
-  }, [status, session, router])
+  // Note: Redirect logic moved to middleware to prevent redirect loops
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,7 +43,8 @@ export default function AdminLogin() {
           setError('Invalid credentials')
         }
       } else if (result?.ok) {
-        router.push('/admin')
+        // Use replace to prevent back button from returning to login
+        router.replace('/admin')
       } else {
         setError('Authentication failed')
       }
@@ -68,14 +64,7 @@ export default function AdminLogin() {
     )
   }
 
-  // Don't render login form if already authenticated (will redirect)
-  if (status === 'authenticated' && session?.user?.role === 'admin') {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="text-gray-500 dark:text-gray-400">Redirecting to admin panel...</div>
-      </div>
-    )
-  }
+  // Note: Authenticated users are redirected by middleware
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
