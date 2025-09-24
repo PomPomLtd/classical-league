@@ -191,19 +191,6 @@ export async function sendNewRoundPairingsEmail(
   const deadline = new Date(roundDate)
   deadline.setDate(deadline.getDate() + 13) // 2 weeks - 1 day for the deadline
 
-  let pairingInfo = ''
-  if (hasBye) {
-    pairingInfo = `You have a bye for Round ${roundNumber}.
-- You will receive 0.5 points for this bye
-- No game to play this round`
-  } else {
-    pairingInfo = `Round ${roundNumber} pairings are now available!
-- Play your game from ${roundDate.toLocaleDateString(
-      'de-CH'
-    )} to ${deadline.toLocaleDateString('de-CH')}
-- Check the pairings link below to see your opponent, board number, and colors`
-  }
-
   // Get tournament settings for the correct links
   const settings = await getTournamentSettings()
   const baseLink =
@@ -212,32 +199,88 @@ export async function sendNewRoundPairingsEmail(
   const roundsLink = `${baseLink}/rounds`
   const standingsLink = `${baseLink}/standings`
 
-  const textBody = `Hello ${playerName},
+  let textBody = ''
 
-The pairings for Round ${roundNumber} of the K4 Classical League are now available!
+  if (hasBye) {
+    textBody = `Hello ${playerName},
 
-${pairingInfo}
+Great news! The pairings for Round ${roundNumber} of the K4 Classical League are now available.
 
-View Full Pairings:
-${roundsLink}
+🎯 YOUR PAIRING
+You have received a bye for Round ${roundNumber}.
+• You will receive 0.5 points automatically
+• No game to play this round
+• You'll be back in the pairings for Round ${roundNumber + 1}
 
-Current Standings:
-${standingsLink}
+📊 TOURNAMENT STATUS
+View current standings: ${standingsLink}
+Check all pairings: ${roundsLink}
 
-Important Reminders:
-- Contact your opponent via phone/WhatsApp to arrange the game time
-- Find opponent contact info: https://classical.schachklub-k4.ch/players (password: Ke2!!)
-- Games must be completed by ${deadline.toLocaleDateString('de-CH')}
-- Submit your result promptly: https://classical.schachklub-k4.ch/submit-result
-- Need a bye for next round? Request it early: https://classical.schachklub-k4.ch/byes
+💬 STAY CONNECTED
+WhatsApp Group: https://chat.whatsapp.com/Dc7GHirC7ce6XabpeHDwIs
+Join our group to stay updated with tournament news and connect with other players!
 
-Good luck in your game!
+📋 USEFUL LINKS
+• Player Directory: https://classical.schachklub-k4.ch/players
+  Password: Ke2!!
+• Request future byes: https://classical.schachklub-k4.ch/byes
+
+See you in the next round!
 
 Best regards,
 K4 Classical League Tournament Organizers
 
 ---
 This is an automated message. Please do not reply to this email.`
+  } else {
+    textBody = `Hello ${playerName},
+
+Great news! The pairings for Round ${roundNumber} of the K4 Classical League are now available.
+
+🎯 YOUR PAIRING
+Check your opponent, board number, and colors: ${roundsLink}
+
+📅 SCHEDULING YOUR GAME
+• Playing window: ${roundDate.toLocaleDateString('de-CH')} to ${deadline.toLocaleDateString('de-CH')} (2 weeks)
+• Contact your opponent within 24 hours to schedule your game
+• Be flexible and accommodating with scheduling
+
+📞 CONTACTING YOUR OPPONENT
+Player Directory: https://classical.schachklub-k4.ch/players
+Password: Ke2!!
+Find your opponent's phone number and email in the directory.
+
+⚠️ HAVING TROUBLE?
+If you don't hear back from your opponent within 24 hours or have scheduling difficulties:
+• Post in our WhatsApp group for help
+• Contact the tournament organizers
+• We're here to help ensure games get played!
+
+💬 WHATSAPP GROUP
+Join if you haven't already: https://chat.whatsapp.com/Dc7GHirC7ce6XabpeHDwIs
+This is the best place to:
+• Get help with scheduling issues
+• Connect with other players
+• Stay updated with tournament news
+
+📋 AFTER YOUR GAME
+• Submit result immediately: https://classical.schachklub-k4.ch/submit-result
+• Include the PGN notation
+• Both players should verify the result
+
+📊 TOURNAMENT INFO
+• Current standings: ${standingsLink}
+• All pairings: ${roundsLink}
+• Need a bye? Request early: https://classical.schachklub-k4.ch/byes
+
+Good luck with your game! May the best player win! ♟️
+
+Best regards,
+K4 Classical League Tournament Organizers
+
+---
+This is an automated message. Please do not reply to this email.`
+  }
 
   return await sendEmail({ to, subject, textBody })
 }
