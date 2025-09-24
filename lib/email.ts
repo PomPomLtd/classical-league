@@ -248,7 +248,7 @@ Check your opponent, board number, and colors: ${roundsLink}
 📞 CONTACTING YOUR OPPONENT
 Player Directory: https://classical.schachklub-k4.ch/players
 Password: Ke2!!
-Find your opponent's phone number and email in the directory.
+Find your opponent's phone number in the directory and contact them via WhatsApp.
 
 ⚠️ HAVING TROUBLE?
 If you don't hear back from your opponent within 24 hours or have scheduling difficulties:
@@ -265,6 +265,7 @@ This is the best place to:
 
 📋 AFTER YOUR GAME
 • Submit result immediately: https://classical.schachklub-k4.ch/submit-result
+• Winner submits the result (for draws: player with white pieces submits)
 • Include the PGN notation
 • Both players should verify the result
 
