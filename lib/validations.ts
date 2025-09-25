@@ -43,6 +43,8 @@ export const gameResultSubmissionSchema = z.object({
     .min(1, 'Board number must be at least 1')
     .max(100, 'Board number must be 100 or less'),
   result: GameResultEnum,
+  whitePlayerId: z.string().cuid('Invalid white player ID'),
+  blackPlayerId: z.string().cuid('Invalid black player ID'),
   winningPlayerId: z.union([z.string().cuid(), z.null()]).optional(),
   pgn: z.string().optional(),
   forfeitReason: z.string().optional()
@@ -51,11 +53,31 @@ export const gameResultSubmissionSchema = z.object({
   const isForfeit = forfeitResults.includes(data.result)
   const requiresWinner = !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(data.result)
 
-  // Validate winning player requirement
+  // Validate that white and black players are different
+  if (data.whitePlayerId === data.blackPlayerId) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'White and Black players must be different',
+      path: ['blackPlayerId']
+    })
+  }
+
+  // Validate winning player requirement and that winner is one of the players
   if (requiresWinner && !data.winningPlayerId) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: 'Winning player is required for this result type',
+      path: ['winningPlayerId']
+    })
+  }
+
+  // Ensure winning player is either white or black player
+  if (data.winningPlayerId &&
+      data.winningPlayerId !== data.whitePlayerId &&
+      data.winningPlayerId !== data.blackPlayerId) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'Winning player must be either the white or black player',
       path: ['winningPlayerId']
     })
   }

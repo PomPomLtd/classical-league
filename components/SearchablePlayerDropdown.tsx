@@ -17,6 +17,7 @@ interface SearchablePlayerDropdownProps {
   placeholder: string
   required?: boolean
   helpText?: string
+  excludePlayerIds?: string[]
 }
 
 export default function SearchablePlayerDropdown({
@@ -26,7 +27,8 @@ export default function SearchablePlayerDropdown({
   label,
   placeholder,
   required = false,
-  helpText
+  helpText,
+  excludePlayerIds = []
 }: SearchablePlayerDropdownProps) {
   const [playerSearch, setPlayerSearch] = useState('')
   const [showPlayerDropdown, setShowPlayerDropdown] = useState(false)
@@ -58,8 +60,12 @@ export default function SearchablePlayerDropdown({
     }
   }, [])
 
-  // Filter players for search
+  // Filter players for search and exclude specified players
   const filteredPlayers = players.filter(player => {
+    // Exclude players in the exclude list
+    if (excludePlayerIds.includes(player.id)) return false
+
+    // Filter by search term
     if (!playerSearch.trim()) return true
     const searchLower = playerSearch.toLowerCase().trim()
     return (

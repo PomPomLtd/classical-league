@@ -34,6 +34,8 @@ export default function ResultsPage() {
   const [selectedRound, setSelectedRound] = useState('')
   const [boardNumber, setBoardNumber] = useState('')
   const [result, setResult] = useState<GameResult | ''>('')
+  const [whitePlayer, setWhitePlayer] = useState('')
+  const [blackPlayer, setBlackPlayer] = useState('')
   const [winningPlayer, setWinningPlayer] = useState('')
   const [pgn, setPgn] = useState('')
   const [forfeitReason, setForfeitReason] = useState('')
@@ -98,10 +100,16 @@ export default function ResultsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Basic validation
-    if (!selectedRound || !boardNumber || !result) {
+    if (!selectedRound || !boardNumber || !result || !whitePlayer || !blackPlayer) {
       setMessage('Please fill in all required fields')
+      return
+    }
+
+    // Validate players are different
+    if (whitePlayer === blackPlayer) {
+      setMessage('White and Black players must be different')
       return
     }
 
@@ -136,6 +144,20 @@ export default function ResultsPage() {
       return
     }
 
+    // Validate winner is one of the players
+    if (winningPlayer && winningPlayer !== whitePlayer && winningPlayer !== blackPlayer) {
+      setMessage('Winning player must be either the white or black player')
+      return
+    }
+
+    // Auto-set winner based on result if not already set
+    let finalWinningPlayer = winningPlayer
+    if (result === 'WHITE_WIN' || result === 'WHITE_WIN_FF') {
+      finalWinningPlayer = whitePlayer
+    } else if (result === 'BLACK_WIN' || result === 'BLACK_WIN_FF') {
+      finalWinningPlayer = blackPlayer
+    }
+
     setSubmitting(true)
     setMessage('')
 
@@ -144,6 +166,8 @@ export default function ResultsPage() {
         roundId: string
         boardNumber: number
         result: GameResult
+        whitePlayerId: string
+        blackPlayerId: string
         winningPlayerId: string | null
         pgn?: string
         forfeitReason?: string
@@ -151,7 +175,9 @@ export default function ResultsPage() {
         roundId: selectedRound,
         boardNumber: parseInt(boardNumber),
         result,
-        winningPlayerId: winningPlayer || null,
+        whitePlayerId: whitePlayer,
+        blackPlayerId: blackPlayer,
+        winningPlayerId: finalWinningPlayer || null,
       }
 
       // Include appropriate field based on result type
@@ -177,6 +203,8 @@ export default function ResultsPage() {
         setSelectedRound('')
         setBoardNumber('')
         setResult('')
+        setWhitePlayer('')
+        setBlackPlayer('')
         setWinningPlayer('')
         setPgn('')
         setForfeitReason('')
@@ -299,6 +327,45 @@ export default function ResultsPage() {
               </p>
             </div>
 
+            {/* Player Selection */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* White Player */}
+              <SearchablePlayerDropdown
+                players={players}
+                selectedPlayerId={whitePlayer}
+                onPlayerSelect={(playerId) => {
+                  setWhitePlayer(playerId)
+                  // Auto-update winner if result is WHITE_WIN
+                  if (result === 'WHITE_WIN' || result === 'WHITE_WIN_FF') {
+                    setWinningPlayer(playerId)
+                  }
+                }}
+                label="White Player *"
+                placeholder="Search for white player..."
+                required
+                helpText="Player with the white pieces"
+                excludePlayerIds={blackPlayer ? [blackPlayer] : []}
+              />
+
+              {/* Black Player */}
+              <SearchablePlayerDropdown
+                players={players}
+                selectedPlayerId={blackPlayer}
+                onPlayerSelect={(playerId) => {
+                  setBlackPlayer(playerId)
+                  // Auto-update winner if result is BLACK_WIN
+                  if (result === 'BLACK_WIN' || result === 'BLACK_WIN_FF') {
+                    setWinningPlayer(playerId)
+                  }
+                }}
+                label="Black Player *"
+                placeholder="Search for black player..."
+                required
+                helpText="Player with the black pieces"
+                excludePlayerIds={whitePlayer ? [whitePlayer] : []}
+              />
+            </div>
+
             {/* Result Selection */}
             <div>
               <label htmlFor="result" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -307,7 +374,18 @@ export default function ResultsPage() {
               <select
                 id="result"
                 value={result}
-                onChange={(e) => setResult(e.target.value as GameResult)}
+                onChange={(e) => {
+                  const newResult = e.target.value as GameResult
+                  setResult(newResult)
+                  // Auto-set winner based on result
+                  if (newResult === 'WHITE_WIN' || newResult === 'WHITE_WIN_FF') {
+                    setWinningPlayer(whitePlayer)
+                  } else if (newResult === 'BLACK_WIN' || newResult === 'BLACK_WIN_FF') {
+                    setWinningPlayer(blackPlayer)
+                  } else if (['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(newResult)) {
+                    setWinningPlayer('')
+                  }
+                }}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
                 required
               >
@@ -331,16 +409,39 @@ export default function ResultsPage() {
             </div>
 
             {/* Winning Player (only show for non-draw/non-double-forfeit/non-scheduling-draw results) */}
-            {result && !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(result) && (
-              <SearchablePlayerDropdown
-                players={players}
-                selectedPlayerId={winningPlayer}
-                onPlayerSelect={setWinningPlayer}
-                label="Winning Player"
-                placeholder="Search for winning player..."
-                required
-                helpText="Type to search for the player who won this game. This helps us match the result even if the board number is wrong."
-              />
+            {result && !['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(result) && whitePlayer && blackPlayer && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Winning Player *
+                </label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setWinningPlayer(whitePlayer)}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      winningPlayer === whitePlayer
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                    }`}
+                  >
+                    {players.find(p => p.id === whitePlayer)?.nickname || 'White'} wins
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setWinningPlayer(blackPlayer)}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      winningPlayer === blackPlayer
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                    }`}
+                  >
+                    {players.find(p => p.id === blackPlayer)?.nickname || 'Black'} wins
+                  </button>
+                </div>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Select the winner of the game
+                </p>
+              </div>
             )}
 
             {/* Conditional Input: PGN for regular games, Reason for forfeits */}

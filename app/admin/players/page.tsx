@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { formatPlayerName } from '@/lib/player-utils'
 
 interface Player {
   id: string
@@ -91,12 +92,8 @@ export default function AdminPlayersPage() {
   }
 
   const copyFormattedName = (player: Player) => {
-    const nameParts = player.fullName.split(' ')
-    const firstName = nameParts[0]
-    const lastName = nameParts[nameParts.length - 1]
-    const lastInitial = lastName ? lastName[0].toUpperCase() : ''
-    const formattedName = `${firstName} "${player.nickname}" ${lastInitial}.`
-    
+    const formattedName = formatPlayerName(player.fullName, player.nickname)
+
     navigator.clipboard.writeText(formattedName)
     setCopiedId(player.id)
     setTimeout(() => setCopiedId(null), 2000)

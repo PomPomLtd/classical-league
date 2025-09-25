@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { PGNFileService } from '@/lib/pgn-file-service'
 import { gameResultSubmissionSchema } from '@/lib/validations'
+import { formatPlayerNameForPGN } from '@/lib/player-utils'
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,7 +24,31 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { roundId, boardNumber, result, winningPlayerId, pgn, forfeitReason } = validationResult.data
+    const { roundId, boardNumber, result, whitePlayerId, blackPlayerId, winningPlayerId, pgn, forfeitReason } = validationResult.data
+
+    // Verify white player exists
+    const whitePlayer = await db.player.findUnique({
+      where: { id: whitePlayerId }
+    })
+
+    if (!whitePlayer) {
+      return NextResponse.json(
+        { error: 'White player not found' },
+        { status: 404 }
+      )
+    }
+
+    // Verify black player exists
+    const blackPlayer = await db.player.findUnique({
+      where: { id: blackPlayerId }
+    })
+
+    if (!blackPlayer) {
+      return NextResponse.json(
+        { error: 'Black player not found' },
+        { status: 404 }
+      )
+    }
 
     // Verify winning player exists if provided
     if (winningPlayerId) {
@@ -68,14 +93,31 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Process PGN with properly formatted player names
+    let processedPGN = null
+    if (pgn) {
+      const whiteName = formatPlayerNameForPGN(whitePlayer.fullName, whitePlayer.nickname)
+      const blackName = formatPlayerNameForPGN(blackPlayer.fullName, blackPlayer.nickname)
+
+      // Replace [White "..."] and [Black "..."] in the PGN with our formatted names
+      let updatedPGN = pgn.trim()
+      updatedPGN = updatedPGN.replace(/\[White\s+"[^"]*"\]/g, `[White "${whiteName}"]`)
+      updatedPGN = updatedPGN.replace(/\[Black\s+"[^"]*"\]/g, `[Black "${blackName}"]`)
+
+      // If no White/Black tags exist, we'll let the PGN service handle adding them
+      processedPGN = updatedPGN
+    }
+
     // Create the game result
     const gameResult = await db.gameResult.create({
       data: {
         roundId: roundId,
         boardNumber: boardNumber,
         result: result,
+        whitePlayerId: whitePlayerId,
+        blackPlayerId: blackPlayerId,
         winningPlayerId: winningPlayerId || null,
-        pgn: pgn ? pgn.trim() : null,
+        pgn: processedPGN,
         forfeitReason: forfeitReason ? forfeitReason.trim() : null,
         submittedDate: new Date(),
         isVerified: false
