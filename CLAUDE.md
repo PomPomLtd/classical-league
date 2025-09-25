@@ -126,6 +126,11 @@ npm run build                 # Test TypeScript compatibility
 # Emergency troubleshooting
 npx prisma migrate status     # Check migration status
 npx prisma migrate resolve --applied "migration_name"  # Mark as applied
+
+# Neon CLI (authenticated and available)
+neon                          # Access Neon CLI for production database management
+neon databases list           # List all databases
+neon sql-editor              # Open SQL editor for direct queries
 ```
 
 See `DATABASE_MIGRATIONS.md` for complete documentation.
