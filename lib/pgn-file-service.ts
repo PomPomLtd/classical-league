@@ -7,6 +7,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import { PGNProcessor, ProcessedPGN, GameInfo } from './pgn-processor'
 import { db } from './db'
+import { formatPlayerNameForPGN } from './player-utils'
 
 export class PGNFileService {
   private pgnProcessor = new PGNProcessor()
@@ -69,21 +70,21 @@ export class PGNFileService {
       const games: GameInfo[] = []
       
       for (const result of round.gameResults) {
-        // Determine player names - use assigned players or fallback to winning player logic
+        // Determine player names - use properly formatted names from the database
         let whitePlayer = 'Unknown Player'
         let blackPlayer = 'Unknown Player'
-        
+
         if (result.whitePlayer && result.blackPlayer) {
-          // Admin has assigned players
-          whitePlayer = result.whitePlayer.fullName
-          blackPlayer = result.blackPlayer.fullName
+          // Use formatted names for broadcast
+          whitePlayer = formatPlayerNameForPGN(result.whitePlayer.fullName, result.whitePlayer.nickname)
+          blackPlayer = formatPlayerNameForPGN(result.blackPlayer.fullName, result.blackPlayer.nickname)
         } else if (result.winningPlayer) {
-          // Use winning player to determine assignment
+          // Use winning player to determine assignment (fallback for old data)
           if (this.isWhiteWin(result.result)) {
-            whitePlayer = result.winningPlayer.fullName
+            whitePlayer = formatPlayerNameForPGN(result.winningPlayer.fullName, result.winningPlayer.nickname)
             blackPlayer = 'Opponent'
           } else if (this.isBlackWin(result.result)) {
-            blackPlayer = result.winningPlayer.fullName
+            blackPlayer = formatPlayerNameForPGN(result.winningPlayer.fullName, result.winningPlayer.nickname)
             whitePlayer = 'Opponent'
           } else {
             // Draw - can't determine who's who, use generic names
@@ -95,7 +96,7 @@ export class PGNFileService {
           whitePlayer = `White (Board ${result.boardNumber})`
           blackPlayer = `Black (Board ${result.boardNumber})`
         }
-        
+
         const gameInfo: GameInfo = {
           boardNumber: result.boardNumber,
           whitePlayer,

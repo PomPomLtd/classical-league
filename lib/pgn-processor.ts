@@ -100,6 +100,22 @@ export class PGNProcessor {
     const moves: string[] = []
     let inHeaders = true
 
+    // Extract existing player names from PGN to preserve formatting if already correct
+    const existingHeaders = this.extractGameHeaders(pgn)
+    const existingWhite = existingHeaders['White']
+    const existingBlack = existingHeaders['Black']
+
+    // Use existing names if they're already in the correct format (contain quotes)
+    let whitePlayer = gameInfo.whitePlayer
+    let blackPlayer = gameInfo.blackPlayer
+
+    if (existingWhite && existingWhite.includes('"') && existingWhite.includes('.')) {
+      whitePlayer = existingWhite
+    }
+    if (existingBlack && existingBlack.includes('"') && existingBlack.includes('.')) {
+      blackPlayer = existingBlack
+    }
+
     // Separate headers from moves
     for (const line of lines) {
       if (line.trim().startsWith('[') && inHeaders) {
@@ -126,8 +142,8 @@ export class PGNProcessor {
     headerMap.set('Site', gameInfo.site || 'Schachklub K4')
     headerMap.set('Date', this.formatDate(gameInfo.roundDate))
     headerMap.set('Round', gameInfo.roundNumber.toString())
-    headerMap.set('White', gameInfo.whitePlayer)
-    headerMap.set('Black', gameInfo.blackPlayer)
+    headerMap.set('White', whitePlayer)
+    headerMap.set('Black', blackPlayer)
     headerMap.set('Result', gameInfo.result)
     headerMap.set('Board', gameInfo.boardNumber.toString())
     

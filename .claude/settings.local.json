@@ -20,7 +20,8 @@
       "WebFetch(domain:neon.com)",
       "Bash(npm run db:migrate:dev:*)",
       "Bash(npm run:*)",
-      "Read(//Users/sgis/Downloads/**)"
+      "Read(//Users/sgis/Downloads/**)",
+      "Bash(node test-pgn.js)"
     ],
     "deny": [],
     "ask": []
