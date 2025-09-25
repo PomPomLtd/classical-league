@@ -209,7 +209,11 @@ export class PGNProcessor {
         if (validation.isValid) {
           pgnGames.push(processedPGN)
         } else {
+          // Log validation errors but include the game anyway for debugging
+          console.error(`PGN validation failed for Board ${game.boardNumber}:`, validation.errors)
           errors.push(`Board ${game.boardNumber}: ${validation.errors.join(', ')}`)
+          // Include the game anyway to see what's wrong
+          pgnGames.push(processedPGN)
         }
       } catch (error) {
         errors.push(`Board ${game.boardNumber}: ${error instanceof Error ? error.message : 'Unknown error'}`)
