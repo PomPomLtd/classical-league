@@ -9,33 +9,37 @@ export async function middleware(request: NextRequest) {
   })
 
   const { pathname } = request.nextUrl
-  const response = NextResponse.next()
 
-  // Check if user is accessing admin routes
+  // Handle admin-auth page specifically
+  if (pathname === '/admin-auth') {
+    // If already authenticated, redirect to admin dashboard
+    if (token && token.role === 'admin') {
+      return NextResponse.redirect(new URL('/admin', request.url))
+    }
+    // Allow access to login page if not authenticated
+    return NextResponse.next()
+  }
+
+  // Handle all /admin/* routes
   if (pathname.startsWith('/admin')) {
-    // Special handling for admin-auth page to prevent redirect loops
-    if (pathname === '/admin-auth') {
-      // If already authenticated, redirect to admin dashboard
-      if (token && token.role === 'admin') {
-        return NextResponse.redirect(new URL('/admin', request.url))
-      }
-      // Allow access to login page if not authenticated
-    } else {
-      // For all other admin routes, require authentication
-      if (!token || token.role !== 'admin') {
-        // Redirect to login
-        return NextResponse.redirect(new URL('/admin-auth', request.url))
-      }
+    // Require authentication for all admin routes
+    if (!token || token.role !== 'admin') {
+      // Store the originally requested page for redirect after login
+      const redirectUrl = new URL('/admin-auth', request.url)
+      // Could add ?callbackUrl=${pathname} if we want to redirect to specific page after login
+      return NextResponse.redirect(redirectUrl)
     }
 
-    // Add security headers for admin routes
+    // Add security headers for authenticated admin routes
+    const response = NextResponse.next()
     response.headers.set('X-Frame-Options', 'DENY')
     response.headers.set('X-Content-Type-Options', 'nosniff')
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
     response.headers.set('X-XSS-Protection', '1; mode=block')
+    return response
   }
 
-  return response
+  return NextResponse.next()
 }
 
 export const config = {

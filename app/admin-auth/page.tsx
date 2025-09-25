@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
@@ -11,9 +11,19 @@ export default function AdminLogin() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  const { status } = useSession()
+  const { data: session, status } = useSession()
 
-  // Note: Redirect logic moved to middleware to prevent redirect loops
+  // Get the callback URL from query params (for future enhancement)
+  // const searchParams = useSearchParams()
+  // const callbackUrl = searchParams.get('callbackUrl') || '/admin'
+  const callbackUrl = '/admin'
+
+  // Redirect if already authenticated (fallback for middleware)
+  useEffect(() => {
+    if (status === 'authenticated' && session?.user) {
+      router.replace(callbackUrl)
+    }
+  }, [status, session, router, callbackUrl])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -44,7 +54,7 @@ export default function AdminLogin() {
         }
       } else if (result?.ok) {
         // Use replace to prevent back button from returning to login
-        router.replace('/admin')
+        router.replace(callbackUrl)
       } else {
         setError('Authentication failed')
       }
@@ -63,8 +73,6 @@ export default function AdminLogin() {
       </div>
     )
   }
-
-  // Note: Authenticated users are redirected by middleware
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
