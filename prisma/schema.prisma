@@ -120,7 +120,7 @@ model GameResult {
   boardNumber      Int
   result           GameResultEnum
   pgn              String?   @db.Text  // Now optional for forfeit games
-  forfeitReason    String?   @db.Text  // Explanation for forfeit (scheduling issues, no-show, etc.)
+  forfeitReason    String?   @db.Text @map("forfeit_reason")  // Explanation for forfeit (scheduling issues, no-show, etc.)
   submittedDate    DateTime  @default(now())
   submittedById    String?
   isVerified       Boolean   @default(false)
