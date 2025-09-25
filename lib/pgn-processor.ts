@@ -57,14 +57,17 @@ export class PGNProcessor {
       errors.push('Missing or invalid game result at end of PGN')
     }
     
-    // Check for valid player names (required for Lichess)
-    const whiteMatch = pgnText.match(/\[White\s+"([^"]+)"\]/)
-    const blackMatch = pgnText.match(/\[Black\s+"([^"]+)"\]/)
-    
+    // Check for valid player names (required for Lichess) - handle escaped quotes
+    const whiteMatch = pgnText.match(/\[White\s+"((?:[^"\\]|\\.)*)"\]/)
+    const blackMatch = pgnText.match(/\[Black\s+"((?:[^"\\]|\\.)*)"\]/)
+
+    console.log('White match:', whiteMatch)
+    console.log('Black match:', blackMatch)
+
     if (!whiteMatch || whiteMatch[1].trim() === '') {
       errors.push('White player name is required and cannot be empty')
     }
-    
+
     if (!blackMatch || blackMatch[1].trim() === '') {
       errors.push('Black player name is required and cannot be empty')
     }
@@ -96,17 +99,24 @@ export class PGNProcessor {
    * Add required broadcast headers to PGN
    */
   addBroadcastHeaders(pgn: string, gameInfo: GameInfo): string {
+    console.log('addBroadcastHeaders input PGN length:', pgn.length)
+    console.log('addBroadcastHeaders input PGN start:', pgn.substring(0, 300))
+
     // If the PGN is already complete and properly formatted, just update essential headers
     if (pgn && pgn.includes('[White') && pgn.includes('[Black') && pgn.length > 100) {
+      console.log('Using simplified header update approach')
+
       // PGN already has proper formatting, just ensure it has the right broadcast headers
       let updatedPGN = pgn
 
-      // Update/add essential broadcast headers
+      // Update/add essential broadcast headers (keep existing White/Black as-is)
       updatedPGN = updatedPGN.replace(/\[Event\s+"[^"]*"\]/, `[Event "${gameInfo.event || 'Classical League'}"]`)
       updatedPGN = updatedPGN.replace(/\[Site\s+"[^"]*"\]/, `[Site "${gameInfo.site || 'Schachklub K4'}"]`)
       updatedPGN = updatedPGN.replace(/\[Date\s+"[^"]*"\]/, `[Date "${this.formatDate(gameInfo.roundDate)}"]`)
       updatedPGN = updatedPGN.replace(/\[Round\s+"[^"]*"\]/, `[Round "${gameInfo.roundNumber}"]`)
       updatedPGN = updatedPGN.replace(/\[Result\s+"[^"]*"\]/, `[Result "${gameInfo.result}"]`)
+
+      console.log('PGN after header updates:', updatedPGN.substring(0, 500))
 
       // Add Board header if not present
       if (!updatedPGN.includes('[Board')) {
