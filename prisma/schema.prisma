@@ -12,9 +12,9 @@ datasource db {
 // Global settings
 model Settings {
   id              String   @id @default(cuid())
-  tournamentLink  String?  // SwissSystem.org tournament link
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  tournamentLink  String?  @map("tournamentLink") // SwissSystem.org tournament link
+  createdAt       DateTime @default(now()) @map("createdAt")
+  updatedAt       DateTime @updatedAt @map("updatedAt")
 
   @@map("settings")
 }
@@ -25,8 +25,8 @@ model AdminSettings {
   key         String   @unique
   value       String
   description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now()) @map("createdAt")
+  updatedAt   DateTime @updatedAt @map("updatedAt")
 
   @@map("admin_settings")
 }
@@ -34,13 +34,13 @@ model AdminSettings {
 // Season management
 model Season {
   id           String   @id @default(cuid())
-  seasonNumber Int      @unique
+  seasonNumber Int      @unique @map("seasonNumber")
   name         String
-  startDate    DateTime
-  endDate      DateTime
-  isActive     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  startDate    DateTime @map("startDate")
+  endDate      DateTime @map("endDate")
+  isActive     Boolean  @default(false) @map("isActive")
+  createdAt    DateTime @default(now()) @map("createdAt")
+  updatedAt    DateTime @updatedAt @map("updatedAt")
 
   players     Player[]
   rounds      Round[]
@@ -51,18 +51,18 @@ model Season {
 // Players in the league
 model Player {
   id             String    @id @default(cuid())
-  seasonId       String
-  fullName       String
+  seasonId       String    @map("seasonId")
+  fullName       String    @map("fullName")
   email          String
   nickname       String
-  phoneNumber    String
-  lichessRating  Int       @default(1500) // Estimated classical rating for Swiss pairings
-  registrationDate DateTime @default(now())
-  rulesAccepted  Boolean   @default(true)
-  isApproved     Boolean   @default(false)
-  approvedDate   DateTime?
-  isWithdrawn    Boolean   @default(false)
-  withdrawalDate DateTime?
+  phoneNumber    String    @map("phoneNumber")
+  lichessRating  Int       @default(1500) @map("lichessRating") // Estimated classical rating for Swiss pairings
+  registrationDate DateTime @default(now()) @map("registrationDate")
+  rulesAccepted  Boolean   @default(true) @map("rulesAccepted")
+  isApproved     Boolean   @default(false) @map("isApproved")
+  approvedDate   DateTime? @map("approvedDate")
+  isWithdrawn    Boolean   @default(false) @map("isWithdrawn")
+  withdrawalDate DateTime? @map("withdrawalDate")
 
   season         Season      @relation(fields: [seasonId], references: [id], onDelete: Cascade)
   byeRequests    ByeRequest[]
@@ -79,11 +79,11 @@ model Player {
 // Tournament rounds
 model Round {
   id                   String    @id @default(cuid())
-  seasonId             String
-  roundNumber          Int
-  roundDate            DateTime
-  byeDeadline          DateTime  // Wednesday noon before round
-  createdAt            DateTime  @default(now())
+  seasonId             String    @map("seasonId")
+  roundNumber          Int       @map("roundNumber")
+  roundDate            DateTime  @map("roundDate")
+  byeDeadline          DateTime  @map("byeDeadline") // Wednesday noon before round
+  createdAt            DateTime  @default(now()) @map("createdAt")
   pgnFilePath          String?   @map("pgn_file_path")
   pgnUpdatedAt         DateTime? @map("pgn_updated_at")
   lichessBroadcastUrl  String?   @map("lichess_broadcast_url")
@@ -99,12 +99,12 @@ model Round {
 // Bye requests from players
 model ByeRequest {
   id             String    @id @default(cuid())
-  playerId       String
-  roundId        String?
-  requestedDate  DateTime  @default(now())
-  isApproved     Boolean?  // null = pending, true = approved, false = rejected
-  approvedDate   DateTime?
-  adminNotes     String?
+  playerId       String    @map("playerId")
+  roundId        String?   @map("roundId")
+  requestedDate  DateTime  @default(now()) @map("requestedDate")
+  isApproved     Boolean?  @map("isApproved") // null = pending, true = approved, false = rejected
+  approvedDate   DateTime? @map("approvedDate")
+  adminNotes     String?   @map("adminNotes")
 
   player         Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
   round          Round?    @relation(fields: [roundId], references: [id], onDelete: Cascade)
@@ -116,19 +116,19 @@ model ByeRequest {
 // Game results submitted by players
 model GameResult {
   id               String    @id @default(cuid())
-  roundId          String
-  boardNumber      Int
+  roundId          String    @map("roundId")
+  boardNumber      Int       @map("boardNumber")
   result           GameResultEnum
   pgn              String?   @db.Text  // Now optional for forfeit games
   forfeitReason    String?   @db.Text @map("forfeit_reason")  // Explanation for forfeit (scheduling issues, no-show, etc.)
-  submittedDate    DateTime  @default(now())
-  submittedById    String?
-  isVerified       Boolean   @default(false)
-  verifiedDate     DateTime?
-  adminNotes       String?
-  whitePlayerId    String?   // Added by admin
-  blackPlayerId    String?   // Added by admin  
-  winningPlayerId  String?   // Submitted by player to help identify pairing
+  submittedDate    DateTime  @default(now()) @map("submittedDate")
+  submittedById    String?   @map("submittedById")
+  isVerified       Boolean   @default(false) @map("isVerified")
+  verifiedDate     DateTime? @map("verifiedDate")
+  adminNotes       String?   @map("adminNotes")
+  whitePlayerId    String?   @map("whitePlayerId") // Added by admin
+  blackPlayerId    String?   @map("blackPlayerId") // Added by admin
+  winningPlayerId  String?   @map("winningPlayerId") // Submitted by player to help identify pairing
 
   round            Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
   submittedBy      Player?   @relation("SubmittedBy", fields: [submittedById], references: [id])
@@ -144,10 +144,10 @@ model GameResult {
 model Admin {
   id           String    @id @default(cuid())
   username     String    @unique
-  passwordHash String
-  lastLogin    DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  passwordHash String    @map("passwordHash")
+  lastLogin    DateTime? @map("lastLogin")
+  createdAt    DateTime  @default(now()) @map("createdAt")
+  updatedAt    DateTime  @updatedAt @map("updatedAt")
 
   @@map("admins")
 }

@@ -19,7 +19,8 @@
       "WebFetch(domain:www.prisma.io)",
       "WebFetch(domain:neon.com)",
       "Bash(npm run db:migrate:dev:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Read(//Users/sgis/Downloads/**)"
     ],
     "deny": [],
     "ask": []
