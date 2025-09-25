@@ -21,7 +21,8 @@
       "Bash(npm run db:migrate:dev:*)",
       "Bash(npm run:*)",
       "Read(//Users/sgis/Downloads/**)",
-      "Bash(node test-pgn.js)"
+      "Bash(node test-pgn.js)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

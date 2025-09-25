@@ -105,14 +105,15 @@ export class PGNProcessor {
     const existingWhite = existingHeaders['White']
     const existingBlack = existingHeaders['Black']
 
-    // Use existing names if they're already in the correct format (contain quotes)
+    // Use existing names if they're already in the correct format (contain nickname quotes and initial)
     let whitePlayer = gameInfo.whitePlayer
     let blackPlayer = gameInfo.blackPlayer
 
-    if (existingWhite && existingWhite.includes('"') && existingWhite.includes('.')) {
+    // Check if existing names are already properly formatted with nickname in quotes
+    if (existingWhite && existingWhite.includes('"') && existingWhite.match(/"[^"]+" [A-Z]\.$/)) {
       whitePlayer = existingWhite
     }
-    if (existingBlack && existingBlack.includes('"') && existingBlack.includes('.')) {
+    if (existingBlack && existingBlack.includes('"') && existingBlack.match(/"[^"]+" [A-Z]\.$/)) {
       blackPlayer = existingBlack
     }
 
