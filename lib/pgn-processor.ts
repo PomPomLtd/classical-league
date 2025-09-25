@@ -109,13 +109,25 @@ export class PGNProcessor {
     let whitePlayer = gameInfo.whitePlayer
     let blackPlayer = gameInfo.blackPlayer
 
+    // Debug logging
+    console.log('Existing headers:', existingHeaders)
+    console.log('Existing white:', existingWhite)
+    console.log('Existing black:', existingBlack)
+    console.log('GameInfo white:', gameInfo.whitePlayer)
+    console.log('GameInfo black:', gameInfo.blackPlayer)
+
     // Check if existing names are already properly formatted with nickname in quotes
     if (existingWhite && existingWhite.includes('"') && existingWhite.match(/"[^"]+" [A-Z]\.$/)) {
       whitePlayer = existingWhite
+      console.log('Using existing white name:', whitePlayer)
     }
     if (existingBlack && existingBlack.includes('"') && existingBlack.match(/"[^"]+" [A-Z]\.$/)) {
       blackPlayer = existingBlack
+      console.log('Using existing black name:', blackPlayer)
     }
+
+    console.log('Final white player:', whitePlayer)
+    console.log('Final black player:', blackPlayer)
 
     // Separate headers from moves
     for (const line of lines) {
