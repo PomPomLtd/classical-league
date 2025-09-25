@@ -57,9 +57,9 @@ export class PGNProcessor {
       errors.push('Missing or invalid game result at end of PGN')
     }
     
-    // Check for valid player names (required for Lichess) - handle escaped quotes
-    const whiteMatch = pgnText.match(/\[White\s+"((?:[^"\\]|\\.)*)"\]/)
-    const blackMatch = pgnText.match(/\[Black\s+"((?:[^"\\]|\\.)*)"\]/)
+    // Check for valid player names (required for Lichess) - simplified regex for «» characters
+    const whiteMatch = pgnText.match(/\[White\s+"([^"]+)"\]/)
+    const blackMatch = pgnText.match(/\[Black\s+"([^"]+)"\]/)
 
     console.log('White match:', whiteMatch)
     console.log('Black match:', blackMatch)

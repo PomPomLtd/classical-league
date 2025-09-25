@@ -11,7 +11,7 @@ export function formatPlayerName(fullName: string, nickname: string): string {
   const firstName = nameParts[0]
   const lastName = nameParts[nameParts.length - 1]
   const lastInitial = lastName ? lastName[0].toUpperCase() : ''
-  return `${firstName} "${nickname}" ${lastInitial}.`
+  return `${firstName} «${nickname}» ${lastInitial}.`
 }
 
 /**
