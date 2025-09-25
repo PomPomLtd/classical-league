@@ -124,8 +124,27 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Regenerate PGN for broadcast (async, don't wait for completion)
+    // Invalidate cache and regenerate PGN for broadcast (async, don't wait for completion)
     const pgnService = new PGNFileService()
+
+    // Clear any cached PGN data for this round to force fresh generation
+    try {
+      // Signal cache invalidation by making a HEAD request to the PGN endpoint
+      // This ensures the next Lichess poll will get fresh data
+      const baseUrl = process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : 'http://localhost:3000'
+
+      fetch(`${baseUrl}/api/broadcast/round/${roundId}/pgn`, {
+        method: 'HEAD',
+        headers: { 'x-cache-invalidate': 'true' }
+      }).catch(() => {
+        // Ignore errors from cache invalidation
+      })
+    } catch {
+      // Ignore URL construction errors
+    }
+
     pgnService.generateRoundPGN(roundId).catch(error => {
       console.error(`Failed to regenerate PGN for round ${roundId} after result submission:`, error)
     })
