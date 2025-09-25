@@ -99,17 +99,22 @@ export class PGNProcessor {
     const lines = pgn.split('\n')
     const moves: string[] = []
     let inHeaders = true
-    
+
     // Separate headers from moves
     for (const line of lines) {
       if (line.trim().startsWith('[') && inHeaders) {
         // Skip existing headers, we'll regenerate them
         continue
-      } else if (line.trim() && !line.startsWith('[')) {
+      } else if (line.trim() === '' && inHeaders) {
+        // Empty line might indicate end of headers
+        continue
+      } else {
+        // Once we encounter a non-header line, we're in the moves section
         inHeaders = false
-        moves.push(line)
-      } else if (!inHeaders && line.trim()) {
-        moves.push(line)
+        // Add all remaining lines (including empty lines that separate moves)
+        if (line.trim() !== '' || moves.length > 0) {
+          moves.push(line)
+        }
       }
     }
     
