@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { PGNFileService } from '@/lib/pgn-file-service'
+import { PGNProcessor } from '@/lib/pgn-processor'
 import { gameResultSubmissionSchema } from '@/lib/validations'
 import { formatPlayerNameForPGN } from '@/lib/player-utils'
 
@@ -64,9 +65,12 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Verify round exists
+    // Verify round exists and get season info
     const round = await db.round.findUnique({
-      where: { id: roundId }
+      where: { id: roundId },
+      include: {
+        season: true
+      }
     })
 
     if (!round) {
@@ -93,19 +97,32 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Process PGN with properly formatted player names
+    // Normalize PGN with all required headers using standard format
     let processedPGN = null
     if (pgn) {
+      const pgnProcessor = new PGNProcessor()
+
+      // Format player names in standard format: Firstname «Nickname» L.
       const whiteName = formatPlayerNameForPGN(whitePlayer.fullName, whitePlayer.nickname)
       const blackName = formatPlayerNameForPGN(blackPlayer.fullName, blackPlayer.nickname)
 
-      // Replace [White "..."] and [Black "..."] in the PGN with our formatted names
-      let updatedPGN = pgn.trim()
-      updatedPGN = updatedPGN.replace(/\[White\s+"[^"]*"\]/g, `[White "${whiteName}"]`)
-      updatedPGN = updatedPGN.replace(/\[Black\s+"[^"]*"\]/g, `[Black "${blackName}"]`)
+      // Extract moves from user's PGN (strips all headers)
+      const moves = pgnProcessor.extractMoves(pgn)
 
-      // If no White/Black tags exist, we'll let the PGN service handle adding them
-      processedPGN = updatedPGN
+      // Build standardized PGN with all required headers
+      processedPGN = pgnProcessor.buildStandardPGN({
+        whitePlayer: whiteName,
+        blackPlayer: blackName,
+        result: pgnProcessor.formatResult(result),
+        boardNumber: boardNumber,
+        roundNumber: round.roundNumber,
+        roundDate: round.roundDate,
+        event: `Classical League Season ${round.season.seasonNumber}`,
+        site: 'Schachklub K4',
+        moves: moves,
+        whiteElo: whitePlayer.lichessRating,
+        blackElo: blackPlayer.lichessRating
+      })
     }
 
     // Create the game result
