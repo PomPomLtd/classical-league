@@ -67,20 +67,25 @@ export default function ResultsPage() {
         // Auto-select current round based on date
         if (roundsData.length > 0) {
           const now = new Date()
-          
-          // Find the round that's currently active (within 2 weeks of round date)
-          const currentRound = roundsData.find((round: Round) => {
+
+          // Find the round that's currently active
+          // A round is active from its roundDate until the next round starts
+          const currentRound = roundsData.find((round: Round, index: number) => {
             const roundDate = new Date(round.roundDate)
-            const twoWeeksBefore = new Date(roundDate.getTime() - 14 * 24 * 60 * 60 * 1000)
-            const oneWeekAfter = new Date(roundDate.getTime() + 7 * 24 * 60 * 60 * 1000)
-            
-            return now >= twoWeeksBefore && now <= oneWeekAfter
+
+            // Get next round's date (if exists), otherwise use 2 weeks after current round
+            const nextRoundDate = index < roundsData.length - 1
+              ? new Date(roundsData[index + 1].roundDate)
+              : new Date(roundDate.getTime() + 14 * 24 * 60 * 60 * 1000)
+
+            // Round is active if now is between roundDate and nextRoundDate
+            return now >= roundDate && now < nextRoundDate
           })
-          
+
           if (currentRound) {
             setSelectedRound(currentRound.id)
           } else {
-            // If no current round, select the most recent one
+            // If no current round (e.g., before first round or after last), select the most recent one
             setSelectedRound(roundsData[0].id)
           }
         }
