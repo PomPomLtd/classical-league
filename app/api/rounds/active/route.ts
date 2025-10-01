@@ -14,20 +14,36 @@ export async function GET() {
 
     // Get current and recent rounds (for result submission)
     const now = new Date()
-    const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
-    
-    const rounds = await db.round.findMany({
+
+    // Get all rounds from the current season
+    const allRounds = await db.round.findMany({
       where: {
-        seasonId: currentSeason.id,
-        // Allow submissions for current round and up to 1 week after round date
-        roundDate: {
-          gte: oneWeekAgo
-        }
+        seasonId: currentSeason.id
       },
       orderBy: {
-        roundNumber: 'asc' // 1, 2, 3, 4, 5, 6, 7...
+        roundNumber: 'asc'
       }
     })
+
+    // Find the current round (the round that has started but next round hasn't started yet)
+    let currentRoundIndex = -1
+    for (let i = 0; i < allRounds.length; i++) {
+      const roundDate = allRounds[i].roundDate
+      const nextRoundDate = i < allRounds.length - 1
+        ? allRounds[i + 1].roundDate
+        : new Date(roundDate.getTime() + 14 * 24 * 60 * 60 * 1000)
+
+      if (now >= roundDate && now < nextRoundDate) {
+        currentRoundIndex = i
+        break
+      }
+    }
+
+    // If we found a current round, return current round + all future rounds
+    // Otherwise, return all future rounds
+    const rounds = currentRoundIndex >= 0
+      ? allRounds.slice(currentRoundIndex) // Current round onwards
+      : allRounds.filter(r => r.roundDate >= now) // Only future rounds
 
     const formattedRounds = rounds.map(round => ({
       id: round.id,
