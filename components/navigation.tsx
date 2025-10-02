@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Player Directory', href: '/players', current: false },
   { name: 'Request Bye', href: '/byes', current: false },
   { name: 'Submit Result', href: '/submit-result', current: false },
+  { name: 'Stats', href: '/stats', current: false },
   { name: 'Rules', href: '/rules', current: false },
   { name: 'Tournament Links', href: '/links', current: false },
 ]

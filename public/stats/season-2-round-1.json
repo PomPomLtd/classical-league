@@ -1,0 +1,272 @@
+{
+  "roundNumber": 1,
+  "seasonNumber": 2,
+  "generatedAt": "2025-10-02T13:45:10.170Z",
+  "overview": {
+    "totalGames": 18,
+    "totalMoves": 1503,
+    "averageGameLength": 41.75,
+    "longestGame": {
+      "moves": 70,
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P.",
+      "result": "1-0"
+    },
+    "shortestGame": {
+      "moves": 13,
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G.",
+      "result": "1-0"
+    }
+  },
+  "gamePhases": {
+    "averageOpening": 8.833333333333334,
+    "averageMiddlegame": 11.055555555555555,
+    "averageEndgame": 21.86111111111111,
+    "longestOpening": {
+      "moves": 10,
+      "white": "Adela «Adele» P.",
+      "black": "Igor «Premove Blunder» S.",
+      "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
+    },
+    "longestMiddlegame": {
+      "moves": 17,
+      "white": "Adela «Adele» P.",
+      "black": "Igor «Premove Blunder» S.",
+      "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
+    },
+    "longestEndgame": {
+      "moves": 56,
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P.",
+      "game": "Mario «ChessDude» M. vs Dogan «Kido» P."
+    }
+  },
+  "results": {
+    "whiteWins": 9,
+    "blackWins": 8,
+    "draws": 1,
+    "whiteWinPercentage": 50,
+    "blackWinPercentage": 44.44444444444444,
+    "drawPercentage": 5.555555555555555
+  },
+  "openings": {
+    "firstMoves": {
+      "e4": {
+        "count": 9,
+        "percentage": 50,
+        "winRate": 44.44444444444444
+      },
+      "c4": {
+        "count": 2,
+        "percentage": 11.11111111111111,
+        "winRate": 50
+      },
+      "d4": {
+        "count": 7,
+        "percentage": 38.88888888888889,
+        "winRate": 57.14285714285714
+      }
+    },
+    "popularSequences": [
+      {
+        "moves": "e4 c5 Nf3 d6 Bc4 Nc6",
+        "count": 1
+      },
+      {
+        "moves": "e4 e5 Nf3 Nf6 Nxe5 d6",
+        "count": 1
+      },
+      {
+        "moves": "e4 c5 Nf3 Nc6 c3 Nf6",
+        "count": 1
+      },
+      {
+        "moves": "c4 c5 g3 e5 Bg2 Nc6",
+        "count": 1
+      },
+      {
+        "moves": "e4 c6 d4 d5 exd5 cxd5",
+        "count": 1
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 c3 Bc5",
+        "count": 1
+      },
+      {
+        "moves": "d4 d5 c4 Nf6 Nc3 e6",
+        "count": 1
+      },
+      {
+        "moves": "d4 b6 e4 c5 Nf3 d5",
+        "count": 1
+      },
+      {
+        "moves": "d4 Nf6 Nc3 g6 Nf3 Bg7",
+        "count": 1
+      },
+      {
+        "moves": "d4 d5 c4 c6 Nc3 Nf6",
+        "count": 1
+      }
+    ]
+  },
+  "tactics": {
+    "totalCaptures": 342,
+    "enPassantGames": [],
+    "promotions": 2,
+    "castling": {
+      "kingside": 27,
+      "queenside": 4
+    },
+    "bloodiestGame": {
+      "captures": 28,
+      "gameIndex": 6,
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P."
+    },
+    "quietestGame": {
+      "captures": 4,
+      "gameIndex": 14,
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G."
+    },
+    "longestNonCaptureStreak": {
+      "moves": 40,
+      "gameIndex": 5,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Oliver «Monkey sees Pawn» K."
+    }
+  },
+  "pieces": {
+    "activity": {
+      "pawns": 370,
+      "knights": 252,
+      "bishops": 202,
+      "rooks": 264,
+      "queens": 203,
+      "kings": 212
+    },
+    "captured": {
+      "pawns": 165,
+      "knights": 56,
+      "bishops": 55,
+      "rooks": 44,
+      "queens": 22
+    },
+    "survivalRate": {
+      "rooks": 0.3888888888888889,
+      "queens": 0.4444444444444444,
+      "bishops": 0.2361111111111111,
+      "knights": 0.2222222222222222
+    }
+  },
+  "checkmates": {
+    "byPiece": {
+      "queen": 0,
+      "rook": 0,
+      "bishop": 0,
+      "knight": 0,
+      "pawn": 0,
+      "king": 0,
+      "other": 3
+    },
+    "fastest": {
+      "moves": 19,
+      "gameIndex": 0,
+      "white": "Adela «Adele» P.",
+      "black": "Igor «Premove Blunder» S.",
+      "winner": "Black"
+    }
+  },
+  "boardHeatmap": {
+    "bloodiestSquare": {
+      "square": "d5",
+      "captures": 30,
+      "description": "d5 saw 30 captures"
+    },
+    "mostPopularSquare": {
+      "square": "d4",
+      "visits": 72,
+      "description": "d4 was visited 72 times"
+    },
+    "leastPopularSquare": {
+      "square": "a1",
+      "visits": 3,
+      "description": "a1 was only visited 3 times"
+    },
+    "quietestSquares": [],
+    "top5Bloodiest": [
+      {
+        "square": "d5",
+        "captures": 30
+      },
+      {
+        "square": "d4",
+        "captures": 29
+      },
+      {
+        "square": "e5",
+        "captures": 22
+      },
+      {
+        "square": "g5",
+        "captures": 16
+      },
+      {
+        "square": "c5",
+        "captures": 15
+      }
+    ],
+    "top5Popular": [
+      {
+        "square": "d4",
+        "visits": 72
+      },
+      {
+        "square": "d5",
+        "visits": 66
+      },
+      {
+        "square": "e5",
+        "visits": 57
+      },
+      {
+        "square": "c5",
+        "visits": 43
+      },
+      {
+        "square": "g5",
+        "visits": 43
+      }
+    ]
+  },
+  "awards": {
+    "bloodbath": {
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P.",
+      "captures": 28
+    },
+    "pacifist": {
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G.",
+      "captures": 4
+    },
+    "speedDemon": {
+      "white": "Adela «Adele» P.",
+      "black": "Igor «Premove Blunder» S.",
+      "moves": 19,
+      "winner": "Black"
+    },
+    "endgameWizard": {
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P.",
+      "endgameMoves": 56
+    },
+    "openingSprinter": {
+      "white": "Jonathan «EnCroissant1997» D.",
+      "black": "Gaston «SleepingDawg» F.",
+      "openingMoves": 5
+    }
+  }
+}

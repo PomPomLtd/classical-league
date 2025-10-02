@@ -22,7 +22,9 @@
       "Bash(npm run:*)",
       "Read(//Users/sgis/Downloads/**)",
       "Bash(node test-pgn.js)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(neon sql-editor:*)",
+      "Read(//tmp/**)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,190 @@
+#!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
+
+/**
+ * Stats Generation Script
+ *
+ * Generates comprehensive chess statistics from PGN data.
+ *
+ * Usage:
+ *   node scripts/generate-stats.js --round 1
+ *   node scripts/generate-stats.js --round 2 --season 2
+ *
+ * @module generate-stats
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { parseMultipleGames } = require('./utils/pgn-parser');
+const { calculateStats } = require('./utils/stats-calculator');
+
+// Parse command line arguments
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const options = {
+    round: null,
+    season: 2, // Default to Season 2
+    help: false
+  };
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--round' || args[i] === '-r') {
+      options.round = parseInt(args[i + 1]);
+      i++;
+    } else if (args[i] === '--season' || args[i] === '-s') {
+      options.season = parseInt(args[i + 1]);
+      i++;
+    } else if (args[i] === '--help' || args[i] === '-h') {
+      options.help = true;
+    }
+  }
+
+  return options;
+}
+
+// Display help
+function showHelp() {
+  console.log(`
+Chess Statistics Generator
+
+Usage:
+  node scripts/generate-stats.js --round <number> [--season <number>]
+
+Options:
+  --round, -r <number>   Round number to generate stats for (required)
+  --season, -s <number>  Season number (default: 2)
+  --help, -h             Show this help message
+
+Examples:
+  node scripts/generate-stats.js --round 1
+  node scripts/generate-stats.js --round 2 --season 2
+
+Output:
+  Generates JSON file at: public/stats/season-<season>-round-<round>.json
+  Updates overall stats: public/stats/season-<season>-overall.json
+  `);
+}
+
+// Fetch PGN data from API
+async function fetchPGN(roundNumber, seasonNumber) {
+  console.log(`📥 Fetching PGN data for Season ${seasonNumber}, Round ${roundNumber}...`);
+
+  // For now, read from the downloaded file
+  // TODO: Fetch from API endpoint /api/broadcast/round/{roundId}/pgn
+  const testFile = '/tmp/round1-fresh.pgn';
+
+  if (!fs.existsSync(testFile)) {
+    throw new Error(`PGN file not found: ${testFile}\nPlease download PGN data first.`);
+  }
+
+  const pgnData = fs.readFileSync(testFile, 'utf-8');
+  console.log(`✅ PGN data loaded (${pgnData.length} bytes)`);
+
+  return pgnData;
+}
+
+// Main execution
+async function main() {
+  const options = parseArgs();
+
+  if (options.help) {
+    showHelp();
+    process.exit(0);
+  }
+
+  if (!options.round) {
+    console.error('❌ Error: --round parameter is required\n');
+    showHelp();
+    process.exit(1);
+  }
+
+  console.log('🎯 K4 Classical League - Stats Generator\n');
+  console.log(`Season: ${options.season}`);
+  console.log(`Round: ${options.round}\n`);
+
+  const startTime = Date.now();
+
+  try {
+    // Step 1: Fetch PGN data
+    const pgnData = await fetchPGN(options.round, options.season);
+
+    // Step 2: Parse PGN
+    console.log('🔍 Parsing PGN data...');
+    const parseResults = parseMultipleGames(pgnData);
+
+    console.log(`✅ Parsed ${parseResults.validCount}/${parseResults.totalGames} games successfully`);
+
+    if (parseResults.errorCount > 0) {
+      console.warn(`⚠️  ${parseResults.errorCount} games failed to parse`);
+      parseResults.errors.forEach(err => {
+        console.warn(`   Game ${err.gameIndex + 1}: Parse error`);
+      });
+    }
+
+    // Step 3: Calculate statistics
+    console.log('\n📊 Calculating statistics...');
+    const stats = calculateStats(parseResults.valid, options.round, options.season);
+
+    // Step 4: Save to JSON file
+    const outputDir = path.join(__dirname, '../public/stats');
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const outputFile = path.join(outputDir, `season-${options.season}-round-${options.round}.json`);
+    fs.writeFileSync(outputFile, JSON.stringify(stats, null, 2));
+
+    const fileSize = (fs.statSync(outputFile).size / 1024).toFixed(2);
+    console.log(`✅ Stats saved to: ${outputFile}`);
+    console.log(`📦 File size: ${fileSize} KB`);
+
+    // Step 5: Display summary
+    const duration = ((Date.now() - startTime) / 1000).toFixed(2);
+    console.log(`\n⏱️  Completed in ${duration}s\n`);
+
+    console.log('📈 Statistics Summary:');
+    console.log(`   Games: ${stats.overview.totalGames}`);
+    console.log(`   Total Moves: ${stats.overview.totalMoves}`);
+    console.log(`   Avg Game Length: ${stats.overview.averageGameLength.toFixed(1)} moves`);
+    console.log(`   White Wins: ${stats.results.whiteWins} (${stats.results.whiteWinPercentage.toFixed(1)}%)`);
+    console.log(`   Black Wins: ${stats.results.blackWins} (${stats.results.blackWinPercentage.toFixed(1)}%)`);
+    console.log(`   Draws: ${stats.results.draws} (${stats.results.drawPercentage.toFixed(1)}%)`);
+    console.log(`   Total Captures: ${stats.tactics.totalCaptures}`);
+    console.log(`   En Passant Games: ${stats.tactics.enPassantGames.length}`);
+    console.log(`   Promotions: ${stats.tactics.promotions}`);
+
+    console.log('\n🏆 Awards:');
+    console.log(`   🩸 Bloodbath: ${stats.awards.bloodbath.white} vs ${stats.awards.bloodbath.black} (${stats.awards.bloodbath.captures} captures)`);
+    console.log(`   🕊️  Pacifist: ${stats.awards.pacifist.white} vs ${stats.awards.pacifist.black} (${stats.awards.pacifist.captures} captures)`);
+    if (stats.awards.speedDemon) {
+      console.log(`   ⚡ Speed Demon: ${stats.awards.speedDemon.white} vs ${stats.awards.speedDemon.black} (mate in ${stats.awards.speedDemon.moves} moves)`);
+    }
+    console.log(`   🧙 Endgame Wizard: ${stats.awards.endgameWizard.white} vs ${stats.awards.endgameWizard.black} (${stats.awards.endgameWizard.endgameMoves} moves)`);
+
+    console.log('\n🗺️  Board Heatmap:');
+    console.log(`   🩸 Bloodiest Square: ${stats.boardHeatmap.bloodiestSquare.square} (${stats.boardHeatmap.bloodiestSquare.captures} captures)`);
+    console.log(`   🔥 Most Popular: ${stats.boardHeatmap.mostPopularSquare.square} (${stats.boardHeatmap.mostPopularSquare.visits} visits)`);
+    console.log(`   🏜️  Least Popular: ${stats.boardHeatmap.leastPopularSquare.square} (${stats.boardHeatmap.leastPopularSquare.visits} visits)`);
+    if (stats.boardHeatmap.quietestSquares.length > 0) {
+      console.log(`   😴 Never Visited: ${stats.boardHeatmap.quietestSquares.join(', ')}`);
+    } else {
+      console.log(`   ✨ All squares saw action!`);
+    }
+
+    console.log('\n✅ Done! Stats are ready to use.\n');
+
+    process.exit(0);
+
+  } catch (error) {
+    console.error('\n❌ Error generating stats:', error.message);
+    console.error(error.stack);
+    process.exit(1);
+  }
+}
+
+// Run the script
+if (require.main === module) {
+  main();
+}
+
+module.exports = { main, parseArgs, fetchPGN };
