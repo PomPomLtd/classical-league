@@ -31,7 +31,8 @@ function calculateStats(parsedGames, roundNumber, seasonNumber) {
     pieces: calculatePieceStats(parsedGames),
     checkmates: calculateCheckmates(parsedGames),
     boardHeatmap: calculateBoardHeatmap(parsedGames),
-    awards: calculateAwards(parsedGames)
+    awards: calculateAwards(parsedGames),
+    funStats: calculateFunStats(parsedGames)
   };
 
   return stats;
@@ -459,6 +460,222 @@ function calculateAwards(games) {
   };
 }
 
+/**
+ * Calculate fun and interesting statistics
+ */
+function calculateFunStats(games) {
+  let fastestQueenTrade = { moves: Infinity, gameIndex: null };
+  let slowestQueenTrade = { moves: 0, gameIndex: null };
+  let longestCaptureSequence = { length: 0, gameIndex: null, startMove: 0 };
+  let longestCheckSequence = { length: 0, gameIndex: null, startMove: 0 };
+  let pawnStorm = { count: 0, gameIndex: null };
+  let pieceLoyalty = { moves: 0, gameIndex: null, piece: null, square: null };
+  let squareTourist = { squares: 0, gameIndex: null, piece: null };
+
+  games.forEach((game, idx) => {
+    // Track queen trades
+    let whiteQueenCaptured = false;
+    let blackQueenCaptured = false;
+    let queenTradeMoveNumber = null;
+
+    // Track capture sequences
+    let currentCaptureSequence = 0;
+    let maxCaptureSequence = 0;
+    let captureSequenceStart = 0;
+    let tempCaptureStart = 0;
+
+    // Track check sequences
+    let currentCheckSequence = 0;
+    let maxCheckSequence = 0;
+    let checkSequenceStart = 0;
+    let tempCheckStart = 0;
+
+    // Get phase info for pawn storm calculation
+    const { Chess } = require('chess.js');
+    const phases = analyzeGamePhases(game.moveList, game.pgn);
+
+    // Track piece positions for loyalty and tourist awards
+    const piecePositions = {}; // { 'w_r_a1': ['a1', 'a2', ...], ... }
+    const pieceStartSquares = {}; // { 'w_r_a1': 'a1', ... }
+
+    game.moveList.forEach((move, moveIdx) => {
+      // Queen trade detection
+      if (move.captured === 'q') {
+        if (move.color === 'w') {
+          blackQueenCaptured = true;
+        } else {
+          whiteQueenCaptured = true;
+        }
+      }
+
+      if (whiteQueenCaptured && blackQueenCaptured && queenTradeMoveNumber === null) {
+        queenTradeMoveNumber = Math.ceil((moveIdx + 1) / 2); // Convert to full moves
+      }
+
+      // Capture sequence detection
+      if (move.captured) {
+        if (currentCaptureSequence === 0) {
+          tempCaptureStart = moveIdx;
+        }
+        currentCaptureSequence++;
+        if (currentCaptureSequence > maxCaptureSequence) {
+          maxCaptureSequence = currentCaptureSequence;
+          captureSequenceStart = tempCaptureStart;
+        }
+      } else {
+        currentCaptureSequence = 0;
+      }
+
+      // King Hunt detection - series of checks by one side (even with opponent moves between)
+      if (move.san.includes('+') || move.san.includes('#')) {
+        if (currentCheckSequence === 0) {
+          // Start new sequence
+          tempCheckStart = moveIdx;
+          currentCheckSequence = 1;
+          checkSequenceStart = tempCheckStart;
+        } else {
+          // Find the last checking move to see if same color
+          let lastCheckingColor = null;
+          for (let i = moveIdx - 1; i >= 0; i--) {
+            if (game.moveList[i].san.includes('+') || game.moveList[i].san.includes('#')) {
+              lastCheckingColor = game.moveList[i].color;
+              break;
+            }
+          }
+
+          if (lastCheckingColor === move.color) {
+            // Same side checking again, increment sequence
+            currentCheckSequence++;
+            if (currentCheckSequence > maxCheckSequence) {
+              maxCheckSequence = currentCheckSequence;
+              checkSequenceStart = tempCheckStart;
+            }
+          } else {
+            // Different side, start new sequence
+            currentCheckSequence = 1;
+            tempCheckStart = moveIdx;
+          }
+        }
+      }
+      // Don't reset on non-check moves since opponent moves between checks are expected
+
+      // Track piece positions for tourist award
+      const pieceKey = `${move.color}_${move.piece}_${move.from}`;
+      if (!piecePositions[pieceKey]) {
+        piecePositions[pieceKey] = new Set();
+        pieceStartSquares[pieceKey] = move.from;
+      }
+      piecePositions[pieceKey].add(move.from);
+      piecePositions[pieceKey].add(move.to);
+    });
+
+    // Calculate pawn storm (pawn moves in opening phase)
+    let openingPawnMoves = 0;
+    for (let i = 0; i < Math.min(phases.openingEnd, game.moveList.length); i++) {
+      if (game.moveList[i].piece === 'p') {
+        openingPawnMoves++;
+      }
+    }
+
+    if (openingPawnMoves > pawnStorm.count) {
+      pawnStorm = {
+        count: openingPawnMoves,
+        gameIndex: idx,
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Calculate piece loyalty (piece that stayed on starting square longest)
+    Object.entries(pieceStartSquares).forEach(([pieceKey, startSquare]) => {
+      const positions = Array.from(piecePositions[pieceKey]);
+      const firstMove = positions.findIndex(sq => sq !== startSquare);
+      const movesOnStart = firstMove === -1 ? game.moveList.length : firstMove;
+
+      if (movesOnStart > pieceLoyalty.moves) {
+        const [color, piece] = pieceKey.split('_');
+        const pieceNames = { p: 'pawn', n: 'knight', b: 'bishop', r: 'rook', q: 'queen', k: 'king' };
+        pieceLoyalty = {
+          moves: movesOnStart,
+          gameIndex: idx,
+          piece: pieceNames[piece] || piece,
+          square: startSquare,
+          white: game.headers.White || 'Unknown',
+          black: game.headers.Black || 'Unknown'
+        };
+      }
+    });
+
+    // Calculate square tourist (piece that visited most squares)
+    Object.entries(piecePositions).forEach(([pieceKey, positions]) => {
+      const uniqueSquares = positions.size;
+      if (uniqueSquares > squareTourist.squares) {
+        const [color, piece] = pieceKey.split('_');
+        const pieceNames = { p: 'pawn', n: 'knight', b: 'bishop', r: 'rook', q: 'queen', k: 'king' };
+        squareTourist = {
+          squares: uniqueSquares,
+          gameIndex: idx,
+          piece: pieceNames[piece] || piece,
+          white: game.headers.White || 'Unknown',
+          black: game.headers.Black || 'Unknown'
+        };
+      }
+    });
+
+    // Update fastest queen trade
+    if (queenTradeMoveNumber !== null && queenTradeMoveNumber < fastestQueenTrade.moves) {
+      fastestQueenTrade = {
+        moves: queenTradeMoveNumber,
+        gameIndex: idx,
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Update slowest queen trade
+    if (queenTradeMoveNumber !== null && queenTradeMoveNumber > slowestQueenTrade.moves) {
+      slowestQueenTrade = {
+        moves: queenTradeMoveNumber,
+        gameIndex: idx,
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Update longest capture sequence
+    if (maxCaptureSequence > longestCaptureSequence.length) {
+      longestCaptureSequence = {
+        length: maxCaptureSequence,
+        gameIndex: idx,
+        startMove: Math.ceil((captureSequenceStart + 1) / 2),
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Update longest check sequence
+    if (maxCheckSequence > longestCheckSequence.length) {
+      longestCheckSequence = {
+        length: maxCheckSequence,
+        gameIndex: idx,
+        startMove: Math.ceil((checkSequenceStart + 1) / 2),
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+  });
+
+  return {
+    fastestQueenTrade: fastestQueenTrade.moves !== Infinity ? fastestQueenTrade : null,
+    slowestQueenTrade: slowestQueenTrade.moves > 0 ? slowestQueenTrade : null,
+    longestCaptureSequence: longestCaptureSequence.length > 0 ? longestCaptureSequence : null,
+    longestCheckSequence: longestCheckSequence.length > 0 ? longestCheckSequence : null,
+    pawnStorm: pawnStorm.count > 0 ? pawnStorm : null,
+    pieceLoyalty: pieceLoyalty.moves >= 30 ? pieceLoyalty : null, // Only show if 30+ moves (15 full moves)
+    squareTourist: squareTourist.squares > 0 ? squareTourist : null
+  };
+}
+
 module.exports = {
   calculateStats,
   calculateOverview,
@@ -469,5 +686,6 @@ module.exports = {
   calculatePieceStats,
   calculateCheckmates,
   calculateBoardHeatmap,
-  calculateAwards
+  calculateAwards,
+  calculateFunStats
 };

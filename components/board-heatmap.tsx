@@ -93,7 +93,7 @@ export function BoardHeatmap({ top5Popular, top5Bloodiest, mode }: BoardHeatmapP
               return (
                 <div
                   key={square}
-                  className={`relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center ${squareColor} transition-all hover:ring-2 hover:ring-indigo-500 group`}
+                  className={`relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 flex items-center justify-center ${squareColor} transition-all hover:ring-2 hover:ring-indigo-500 group`}
                   title={squareData || square}
                 >
                   {/* Square Label */}
@@ -117,7 +117,7 @@ export function BoardHeatmap({ top5Popular, top5Bloodiest, mode }: BoardHeatmapP
       {/* File labels */}
       <div className="flex pl-0">
         {files.map((file) => (
-          <div key={file} className="w-12 md:w-16 text-center text-sm font-mono font-bold text-gray-600 dark:text-gray-400">
+          <div key={file} className="w-10 sm:w-12 md:w-16 text-center text-sm font-mono font-bold text-gray-600 dark:text-gray-400">
             {file}
           </div>
         ))}

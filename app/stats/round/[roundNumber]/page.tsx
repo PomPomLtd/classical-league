@@ -311,6 +311,36 @@ export default function RoundStatsPage() {
           </div>
         </div>
 
+        {/* Broadcast Link */}
+        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6">
+          <div className="flex items-start space-x-3">
+            <div className="flex-shrink-0">
+              <svg className="h-6 w-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-indigo-800 dark:text-indigo-200">
+                Watch the Games
+              </h3>
+              <div className="mt-2 text-sm text-indigo-700 dark:text-indigo-300">
+                <p className="mb-2">View all games from this round on the Lichess broadcast:</p>
+                <a
+                  href="https://lichess.org/broadcast/classical-league-season-2/LVSkiDuJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
+                >
+                  View Broadcast on Lichess
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Overview Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow p-6 text-white">
@@ -388,100 +418,6 @@ export default function RoundStatsPage() {
             </div>
           </div>
         </div>
-
-        {/* Board Heatmap */}
-        <StatCard title="🗺️ Board Heatmap">
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.boardHeatmap.bloodiestSquare.square}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Bloodiest Square</div>
-                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.bloodiestSquare.captures} captures</div>
-              </div>
-              <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.boardHeatmap.mostPopularSquare.square}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Most Popular</div>
-                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.mostPopularSquare.visits} visits</div>
-              </div>
-              <div className="text-center p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
-                <div className="text-2xl font-bold text-gray-600 dark:text-gray-400">{stats.boardHeatmap.leastPopularSquare.square}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Least Popular</div>
-                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.leastPopularSquare.visits} visits</div>
-              </div>
-            </div>
-
-            {/* Visual Heatmap Tabs */}
-            <div>
-              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 mb-4">
-                <button
-                  onClick={() => setHeatmapMode('popularity')}
-                  className={`px-4 py-2 rounded-md font-medium transition-colors text-sm sm:text-base ${
-                    heatmapMode === 'popularity'
-                      ? 'bg-green-600 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
-                >
-                  Most Popular Squares
-                </button>
-                <button
-                  onClick={() => setHeatmapMode('captures')}
-                  className={`px-4 py-2 rounded-md font-medium transition-colors text-sm sm:text-base ${
-                    heatmapMode === 'captures'
-                      ? 'bg-red-600 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
-                >
-                  Bloodiest Squares
-                </button>
-              </div>
-
-              <div className="flex justify-center">
-                <BoardHeatmap
-                  top5Popular={stats.boardHeatmap.top5Popular}
-                  top5Bloodiest={stats.boardHeatmap.top5Bloodiest}
-                  mode={heatmapMode}
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Top 5 Bloodiest Squares</h4>
-                <div className="space-y-2">
-                  {stats.boardHeatmap.top5Bloodiest.map((sq, idx) => (
-                    <div key={sq.square} className="flex justify-between items-center text-sm">
-                      <span className="text-gray-600 dark:text-gray-400">
-                        {idx + 1}. {sq.square}
-                      </span>
-                      <span className="font-semibold text-red-600 dark:text-red-400">{sq.captures} captures</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Top 5 Most Popular Squares</h4>
-                <div className="space-y-2">
-                  {stats.boardHeatmap.top5Popular.map((sq, idx) => (
-                    <div key={sq.square} className="flex justify-between items-center text-sm">
-                      <span className="text-gray-600 dark:text-gray-400">
-                        {idx + 1}. {sq.square}
-                      </span>
-                      <span className="font-semibold text-green-600 dark:text-green-400">{sq.visits} visits</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {stats.boardHeatmap.quietestSquares.length > 0 && (
-              <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  <span className="font-semibold">Never Visited:</span> {stats.boardHeatmap.quietestSquares.join(', ')}
-                </div>
-              </div>
-            )}
-          </div>
-        </StatCard>
 
         {/* Game Phases */}
         <StatCard title="⏱️ Game Phases">
@@ -630,35 +566,190 @@ export default function RoundStatsPage() {
           </div>
         </StatCard>
 
-        {/* Broadcast Link */}
-        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6">
-          <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
+        {/* Fun Stats */}
+        {stats.funStats && (
+          <StatCard title="🎉 Fun Stats">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {stats.funStats.fastestQueenTrade && (
+                <div className="p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
+                  <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">⚡ Fastest Queen Trade</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.fastestQueenTrade.white} vs {stats.funStats.fastestQueenTrade.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    Queens traded by move {stats.funStats.fastestQueenTrade.moves}
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.slowestQueenTrade && (
+                <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                  <div className="font-semibold text-amber-900 dark:text-amber-300 mb-1">🐌 Slowest Queen Trade</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.slowestQueenTrade.white} vs {stats.funStats.slowestQueenTrade.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    Queens kept until move {stats.funStats.slowestQueenTrade.moves}
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.longestCaptureSequence && (
+                <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                  <div className="font-semibold text-red-900 dark:text-red-300 mb-1">🔪 Longest Capture Spree</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.longestCaptureSequence.white} vs {stats.funStats.longestCaptureSequence.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {stats.funStats.longestCaptureSequence.length} consecutive captures starting move {stats.funStats.longestCaptureSequence.startMove}
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.longestCheckSequence && (
+                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                  <div className="font-semibold text-orange-900 dark:text-orange-300 mb-1">👑 Longest King Hunt</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.longestCheckSequence.white} vs {stats.funStats.longestCheckSequence.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {stats.funStats.longestCheckSequence.length} checks by one side starting move {stats.funStats.longestCheckSequence.startMove}
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.pawnStorm && (
+                <div className="p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg">
+                  <div className="font-semibold text-cyan-900 dark:text-cyan-300 mb-1">🌪️ Pawn Storm Award</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.pawnStorm.white} vs {stats.funStats.pawnStorm.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {stats.funStats.pawnStorm.count} pawn moves in the opening phase
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.pieceLoyalty && (
+                <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div className="font-semibold text-indigo-900 dark:text-indigo-300 mb-1">🏠 Piece Loyalty Award</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.pieceLoyalty.white} vs {stats.funStats.pieceLoyalty.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {stats.funStats.pieceLoyalty.piece} stayed on {stats.funStats.pieceLoyalty.square} for {stats.funStats.pieceLoyalty.moves} moves
+                  </div>
+                </div>
+              )}
+
+              {stats.funStats.squareTourist && (
+                <div className="p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
+                  <div className="font-semibold text-teal-900 dark:text-teal-300 mb-1">✈️ Square Tourist Award</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {stats.funStats.squareTourist.white} vs {stats.funStats.squareTourist.black}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {stats.funStats.squareTourist.piece} visited {stats.funStats.squareTourist.squares} different squares
+                  </div>
+                </div>
+              )}
             </div>
-            <div>
-              <h3 className="text-sm font-medium text-indigo-800 dark:text-indigo-200">
-                Watch the Games
-              </h3>
-              <div className="mt-2 text-sm text-indigo-700 dark:text-indigo-300">
-                <p className="mb-2">View all games from this round on the Lichess broadcast:</p>
-                <a
-                  href="https://lichess.org/broadcast/classical-league-season-2/LVSkiDuJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
-                >
-                  View Broadcast on Lichess
-                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
+          </StatCard>
+        )}
+
+        {/* Board Heatmap */}
+        <StatCard title="🗺️ Board Heatmap">
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.boardHeatmap.bloodiestSquare.square}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Bloodiest Square</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.bloodiestSquare.captures} captures</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.boardHeatmap.mostPopularSquare.square}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Most Popular</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.mostPopularSquare.visits} visits</div>
+              </div>
+              <div className="text-center p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
+                <div className="text-2xl font-bold text-gray-600 dark:text-gray-400">{stats.boardHeatmap.leastPopularSquare.square}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Least Popular</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">{stats.boardHeatmap.leastPopularSquare.visits} visits</div>
               </div>
             </div>
+
+            {/* Visual Heatmap Tabs */}
+            <div>
+              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 mb-4">
+                <button
+                  onClick={() => setHeatmapMode('popularity')}
+                  className={`px-4 py-2 rounded-md font-medium transition-colors text-sm sm:text-base ${
+                    heatmapMode === 'popularity'
+                      ? 'bg-green-600 text-white'
+                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  Most Popular Squares
+                </button>
+                <button
+                  onClick={() => setHeatmapMode('captures')}
+                  className={`px-4 py-2 rounded-md font-medium transition-colors text-sm sm:text-base ${
+                    heatmapMode === 'captures'
+                      ? 'bg-red-600 text-white'
+                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  Bloodiest Squares
+                </button>
+              </div>
+
+              <div className="flex justify-center overflow-x-auto">
+                <BoardHeatmap
+                  top5Popular={stats.boardHeatmap.top5Popular}
+                  top5Bloodiest={stats.boardHeatmap.top5Bloodiest}
+                  mode={heatmapMode}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Top 5 Bloodiest Squares</h4>
+                <div className="space-y-2">
+                  {stats.boardHeatmap.top5Bloodiest.map((sq, idx) => (
+                    <div key={sq.square} className="flex justify-between items-center text-sm">
+                      <span className="text-gray-600 dark:text-gray-400">
+                        {idx + 1}. {sq.square}
+                      </span>
+                      <span className="font-semibold text-red-600 dark:text-red-400">{sq.captures} captures</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Top 5 Most Popular Squares</h4>
+                <div className="space-y-2">
+                  {stats.boardHeatmap.top5Popular.map((sq, idx) => (
+                    <div key={sq.square} className="flex justify-between items-center text-sm">
+                      <span className="text-gray-600 dark:text-gray-400">
+                        {idx + 1}. {sq.square}
+                      </span>
+                      <span className="font-semibold text-green-600 dark:text-green-400">{sq.visits} visits</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {stats.boardHeatmap.quietestSquares.length > 0 && (
+              <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-semibold">Never Visited:</span> {stats.boardHeatmap.quietestSquares.join(', ')}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
+        </StatCard>
       </div>
     </div>
   )

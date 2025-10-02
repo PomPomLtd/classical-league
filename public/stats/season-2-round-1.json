@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-02T13:58:19.455Z",
+  "generatedAt": "2025-10-02T14:15:42.547Z",
   "overview": {
     "totalGames": 19,
     "totalMoves": 1574,
@@ -267,6 +267,48 @@
       "white": "Jonathan «EnCroissant1997» D.",
       "black": "Gaston «SleepingDawg» F.",
       "openingMoves": 5
+    }
+  },
+  "funStats": {
+    "fastestQueenTrade": {
+      "moves": 14,
+      "gameIndex": 7,
+      "white": "Daniel «Bishop Mangler Supreme» T.",
+      "black": "Viktor «VHH93» H."
+    },
+    "slowestQueenTrade": {
+      "moves": 45,
+      "gameIndex": 11,
+      "white": "bela «bela» O.",
+      "black": "Osama «Ruiner of Bird's» A."
+    },
+    "longestCaptureSequence": {
+      "length": 7,
+      "gameIndex": 12,
+      "startMove": 19,
+      "white": "Jonathan «EnCroissant1997» D.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "longestCheckSequence": {
+      "length": 10,
+      "gameIndex": 11,
+      "startMove": 31,
+      "white": "bela «bela» O.",
+      "black": "Osama «Ruiner of Bird's» A."
+    },
+    "pawnStorm": {
+      "count": 13,
+      "gameIndex": 14,
+      "white": "Janic «Clasher» S.",
+      "black": "Boris «Out of Nowhere» G."
+    },
+    "pieceLoyalty": null,
+    "squareTourist": {
+      "squares": 5,
+      "gameIndex": 5,
+      "piece": "rook",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Oliver «Monkey sees Pawn» K."
     }
   }
 }
