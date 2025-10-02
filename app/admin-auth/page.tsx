@@ -52,15 +52,20 @@ export default function AdminLogin() {
         } else {
           setError('Invalid credentials')
         }
+        setIsLoading(false)
       } else if (result?.ok) {
+        // Force router to refresh to pick up new session
+        router.refresh()
+        // Small delay to ensure session cookie is set before redirect
+        await new Promise(resolve => setTimeout(resolve, 100))
         // Use replace to prevent back button from returning to login
         router.replace(callbackUrl)
       } else {
         setError('Authentication failed')
+        setIsLoading(false)
       }
     } catch {
       setError('An error occurred during login')
-    } finally {
       setIsLoading(false)
     }
   }
