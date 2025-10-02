@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-02T13:45:10.170Z",
+  "generatedAt": "2025-10-02T13:58:19.455Z",
   "overview": {
-    "totalGames": 18,
-    "totalMoves": 1503,
-    "averageGameLength": 41.75,
+    "totalGames": 19,
+    "totalMoves": 1574,
+    "averageGameLength": 41.421052631578945,
     "longestGame": {
       "moves": 70,
       "white": "Mario «ChessDude» M.",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.833333333333334,
-    "averageMiddlegame": 11.055555555555555,
-    "averageEndgame": 21.86111111111111,
+    "averageOpening": 8.842105263157896,
+    "averageMiddlegame": 11.657894736842104,
+    "averageEndgame": 20.92105263157895,
     "longestOpening": {
       "moves": 10,
       "white": "Adela «Adele» P.",
@@ -30,10 +30,10 @@
       "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
     },
     "longestMiddlegame": {
-      "moves": 17,
-      "white": "Adela «Adele» P.",
-      "black": "Igor «Premove Blunder» S.",
-      "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
+      "moves": 23,
+      "white": "Iannis «Modern Pulverizer» D.",
+      "black": "Matteo «Afraid of Caro-Kann» M.",
+      "game": "Iannis «Modern Pulverizer» D. vs Matteo «Afraid of Caro-Kann» M."
     },
     "longestEndgame": {
       "moves": 56,
@@ -43,29 +43,29 @@
     }
   },
   "results": {
-    "whiteWins": 9,
+    "whiteWins": 10,
     "blackWins": 8,
     "draws": 1,
-    "whiteWinPercentage": 50,
-    "blackWinPercentage": 44.44444444444444,
-    "drawPercentage": 5.555555555555555
+    "whiteWinPercentage": 52.63157894736842,
+    "blackWinPercentage": 42.10526315789473,
+    "drawPercentage": 5.263157894736842
   },
   "openings": {
     "firstMoves": {
       "e4": {
         "count": 9,
-        "percentage": 50,
+        "percentage": 47.368421052631575,
         "winRate": 44.44444444444444
       },
       "c4": {
         "count": 2,
-        "percentage": 11.11111111111111,
+        "percentage": 10.526315789473683,
         "winRate": 50
       },
       "d4": {
-        "count": 7,
-        "percentage": 38.88888888888889,
-        "winRate": 57.14285714285714
+        "count": 8,
+        "percentage": 42.10526315789473,
+        "winRate": 62.5
       }
     },
     "popularSequences": [
@@ -112,11 +112,11 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 342,
+    "totalCaptures": 354,
     "enPassantGames": [],
     "promotions": 2,
     "castling": {
-      "kingside": 27,
+      "kingside": 29,
       "queenside": 4
     },
     "bloodiestGame": {
@@ -127,7 +127,7 @@
     },
     "quietestGame": {
       "captures": 4,
-      "gameIndex": 14,
+      "gameIndex": 15,
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G."
     },
@@ -140,25 +140,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 370,
-      "knights": 252,
-      "bishops": 202,
-      "rooks": 264,
-      "queens": 203,
-      "kings": 212
+      "pawns": 389,
+      "knights": 263,
+      "bishops": 216,
+      "rooks": 276,
+      "queens": 212,
+      "kings": 218
     },
     "captured": {
-      "pawns": 165,
-      "knights": 56,
-      "bishops": 55,
-      "rooks": 44,
+      "pawns": 170,
+      "knights": 58,
+      "bishops": 58,
+      "rooks": 46,
       "queens": 22
     },
     "survivalRate": {
-      "rooks": 0.3888888888888889,
-      "queens": 0.4444444444444444,
-      "bishops": 0.2361111111111111,
-      "knights": 0.2222222222222222
+      "rooks": 0.39473684210526316,
+      "queens": 0.47368421052631576,
+      "bishops": 0.23684210526315788,
+      "knights": 0.23684210526315788
     }
   },
   "checkmates": {
@@ -169,7 +169,7 @@
       "knight": 0,
       "pawn": 0,
       "king": 0,
-      "other": 3
+      "other": 4
     },
     "fastest": {
       "moves": 19,
@@ -181,14 +181,14 @@
   },
   "boardHeatmap": {
     "bloodiestSquare": {
-      "square": "d5",
-      "captures": 30,
-      "description": "d5 saw 30 captures"
+      "square": "d4",
+      "captures": 32,
+      "description": "d4 saw 32 captures"
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 72,
-      "description": "d4 was visited 72 times"
+      "visits": 76,
+      "description": "d4 was visited 76 times"
     },
     "leastPopularSquare": {
       "square": "a1",
@@ -198,12 +198,12 @@
     "quietestSquares": [],
     "top5Bloodiest": [
       {
-        "square": "d5",
-        "captures": 30
+        "square": "d4",
+        "captures": 32
       },
       {
-        "square": "d4",
-        "captures": 29
+        "square": "d5",
+        "captures": 32
       },
       {
         "square": "e5",
@@ -221,11 +221,11 @@
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 72
+        "visits": 76
       },
       {
         "square": "d5",
-        "visits": 66
+        "visits": 69
       },
       {
         "square": "e5",
@@ -233,11 +233,11 @@
       },
       {
         "square": "c5",
-        "visits": 43
+        "visits": 44
       },
       {
-        "square": "g5",
-        "visits": 43
+        "square": "f3",
+        "visits": 44
       }
     ]
   },
