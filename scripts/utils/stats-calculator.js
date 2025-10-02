@@ -319,16 +319,26 @@ function calculatePieceStats(games) {
  * Calculate checkmate statistics
  */
 function calculateCheckmates(games) {
-  const byPiece = { queen: 0, rook: 0, bishop: 0, knight: 0, pawn: 0, king: 0, other: 0 };
+  const byPiece = { queen: 0, rook: 0, bishop: 0, knight: 0, pawn: 0, king: 0 };
   let fastestMate = { moves: Infinity, gameIndex: 0 };
+
+  // Map chess.js piece codes to full names
+  const pieceMap = {
+    'q': 'queen',
+    'r': 'rook',
+    'b': 'bishop',
+    'n': 'knight',
+    'p': 'pawn',
+    'k': 'king'
+  };
 
   games.forEach((game, idx) => {
     game.specialMoves.checkmates.forEach(mate => {
-      const piece = mate.piece;
-      if (byPiece[piece] !== undefined) {
-        byPiece[piece]++;
-      } else {
-        byPiece.other++;
+      const pieceCode = mate.piece;
+      const pieceName = pieceMap[pieceCode];
+
+      if (pieceName && byPiece[pieceName] !== undefined) {
+        byPiece[pieceName]++;
       }
 
       if (mate.moveNumber < fastestMate.moves) {

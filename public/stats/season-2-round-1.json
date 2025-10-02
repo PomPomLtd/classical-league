@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-02T14:15:42.547Z",
+  "generatedAt": "2025-10-02T14:43:44.374Z",
   "overview": {
     "totalGames": 19,
     "totalMoves": 1574,
@@ -163,13 +163,12 @@
   },
   "checkmates": {
     "byPiece": {
-      "queen": 0,
+      "queen": 4,
       "rook": 0,
       "bishop": 0,
       "knight": 0,
       "pawn": 0,
-      "king": 0,
-      "other": 4
+      "king": 0
     },
     "fastest": {
       "moves": 19,
