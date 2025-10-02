@@ -185,6 +185,32 @@ npm run db:studio
 npm run db:seed
 ```
 
+### Statistics Generation
+
+Generate comprehensive round statistics from PGN data:
+
+```bash
+# 1. Download latest PGN from broadcast API
+curl -o /tmp/round1-fresh.pgn https://classical.schachklub-k4.ch/api/broadcast/round/cmfekevr50001l5045y65op37/pgn
+
+# 2. Generate statistics JSON
+node scripts/generate-stats.js --round 1
+
+# 3. Stats are saved to public/stats/season-2-round-1.json
+# 4. View at http://localhost:3000/stats
+```
+
+**Features:**
+- Game overview (total games, average length, longest/shortest games)
+- Game phases (opening, middlegame, endgame analysis)
+- Results breakdown (white/black win percentages)
+- Opening analysis (first moves, popular sequences)
+- Tactical statistics (captures, castling, promotions, en passant)
+- Piece activity and survival rates
+- Checkmate analysis
+- Board heatmap (most popular and bloodiest squares)
+- Game awards (bloodbath, pacifist, speed demon, etc.)
+
 **Migration Rules:**
 - ✅ Always use `db:migrate:dev` for schema changes
 - ✅ Test migrations locally before pushing to main

@@ -257,7 +257,7 @@ export default function RoundStatsPage() {
   }
 
   const StatCard = ({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) => (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 ${className}`}>
+    <div className={`bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 ${className}`}>
       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{title}</h3>
       {children}
     </div>
@@ -353,38 +353,38 @@ export default function RoundStatsPage() {
         </StatCard>
 
         {/* Awards */}
-        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-xl p-8 text-white">
+        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 dark:from-yellow-900 dark:to-orange-900 rounded-lg shadow-xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-6">🏆 Round Awards</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <div className="text-lg font-semibold mb-2">🩸 Bloodbath Award</div>
-              <div className="text-yellow-100">
+              <div className="text-yellow-100 dark:text-yellow-200">
                 {stats.awards.bloodbath.white} vs {stats.awards.bloodbath.black}
               </div>
-              <div className="text-sm text-yellow-200 mt-1">{stats.awards.bloodbath.captures} captures!</div>
+              <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{stats.awards.bloodbath.captures} captures!</div>
             </div>
             <div>
               <div className="text-lg font-semibold mb-2">🕊️ Pacifist Award</div>
-              <div className="text-yellow-100">
+              <div className="text-yellow-100 dark:text-yellow-200">
                 {stats.awards.pacifist.white} vs {stats.awards.pacifist.black}
               </div>
-              <div className="text-sm text-yellow-200 mt-1">{stats.awards.pacifist.captures} captures</div>
+              <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{stats.awards.pacifist.captures} captures</div>
             </div>
             {stats.awards.speedDemon && (
               <div>
                 <div className="text-lg font-semibold mb-2">⚡ Speed Demon</div>
-                <div className="text-yellow-100">
+                <div className="text-yellow-100 dark:text-yellow-200">
                   {stats.awards.speedDemon.white} vs {stats.awards.speedDemon.black}
                 </div>
-                <div className="text-sm text-yellow-200 mt-1">Mate in {stats.awards.speedDemon.moves} moves</div>
+                <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">Mate in {stats.awards.speedDemon.moves} moves</div>
               </div>
             )}
             <div>
               <div className="text-lg font-semibold mb-2">🧙 Endgame Wizard</div>
-              <div className="text-yellow-100">
+              <div className="text-yellow-100 dark:text-yellow-200">
                 {stats.awards.endgameWizard.white} vs {stats.awards.endgameWizard.black}
               </div>
-              <div className="text-sm text-yellow-200 mt-1">{stats.awards.endgameWizard.endgameMoves} endgame moves!</div>
+              <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{stats.awards.endgameWizard.endgameMoves} endgame moves!</div>
             </div>
           </div>
         </div>
