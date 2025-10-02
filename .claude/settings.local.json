@@ -24,7 +24,8 @@
       "Bash(node test-pgn.js)",
       "Bash(node:*)",
       "Bash(neon sql-editor:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []

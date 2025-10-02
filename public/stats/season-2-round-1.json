@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-02T14:43:44.374Z",
+  "generatedAt": "2025-10-02T15:00:26.470Z",
   "overview": {
     "totalGames": 19,
     "totalMoves": 1574,
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.842105263157896,
-    "averageMiddlegame": 11.657894736842104,
-    "averageEndgame": 20.92105263157895,
+    "averageOpening": 8.763157894736842,
+    "averageMiddlegame": 17.026315789473685,
+    "averageEndgame": 15.631578947368421,
     "longestOpening": {
       "moves": 10,
       "white": "Adela «Adele» P.",
@@ -30,13 +30,13 @@
       "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
     },
     "longestMiddlegame": {
-      "moves": 23,
-      "white": "Iannis «Modern Pulverizer» D.",
-      "black": "Matteo «Afraid of Caro-Kann» M.",
-      "game": "Iannis «Modern Pulverizer» D. vs Matteo «Afraid of Caro-Kann» M."
+      "moves": 30,
+      "white": "Sam «Active King» B.",
+      "black": "Fabienne «Chessy» S.",
+      "game": "Sam «Active King» B. vs Fabienne «Chessy» S."
     },
     "longestEndgame": {
-      "moves": 56,
+      "moves": 52,
       "white": "Mario «ChessDude» M.",
       "black": "Dogan «Kido» P.",
       "game": "Mario «ChessDude» M. vs Dogan «Kido» P."
@@ -260,7 +260,7 @@
     "endgameWizard": {
       "white": "Mario «ChessDude» M.",
       "black": "Dogan «Kido» P.",
-      "endgameMoves": 56
+      "endgameMoves": 52
     },
     "openingSprinter": {
       "white": "Jonathan «EnCroissant1997» D.",

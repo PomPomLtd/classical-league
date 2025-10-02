@@ -3,11 +3,12 @@
  * Game Phase Detection Utility
  *
  * Detects opening, middlegame, and endgame phases in chess games.
+ * Based on Lichess's implementation with simplified heuristics.
  *
- * Phase definitions:
- * - Opening: Game start until pieces are developed and both sides have castled (or ~10-20 moves)
- * - Middlegame: Complex tactical phase with most pieces on board
- * - Endgame: Reduced material, typically < 8 minor/major pieces remaining
+ * Phase definitions (inspired by Lichess's Divider.scala):
+ * - Opening: Game start until pieces are developed (both castled OR move 20 OR piece count ≤ 10)
+ * - Middlegame: From opening end until endgame starts
+ * - Endgame: When 6 or fewer minor/major pieces remain (queens, rooks, bishops, knights)
  *
  * @module game-phases
  */
@@ -35,8 +36,8 @@ function analyzeGamePhases(history, pgn) {
   const chess = new Chess();
   chess.loadPgn(pgn);
 
-  // Detect opening end
-  const openingEnd = detectOpeningEnd(history);
+  // Detect opening end (middlegame start)
+  const openingEnd = detectOpeningEnd(history, pgn);
 
   // Detect endgame start
   const endgameStart = detectEndgameStart(history, pgn);
@@ -56,17 +57,18 @@ function analyzeGamePhases(history, pgn) {
 }
 
 /**
- * Detect when the opening phase ends
+ * Detect when the opening phase ends (middlegame starts)
  *
- * Opening typically ends when:
+ * Based on Lichess's approach with simplified heuristics:
  * - Both sides have castled, OR
- * - Pieces are developed (moves 10-20), OR
- * - Queens are traded early
+ * - Move 20 reached, OR
+ * - Piece count drops to 10 or fewer minor/major pieces
  *
  * @param {Array} history - Move history
+ * @param {string} pgn - Original PGN for position replay
  * @returns {number} Move number when opening ends
  */
-function detectOpeningEnd(history) {
+function detectOpeningEnd(history, pgn) {
   let whiteCastled = false;
   let blackCastled = false;
 
@@ -81,13 +83,15 @@ function detectOpeningEnd(history) {
       blackCastled = true;
     }
 
-    // Check for queen trade (currently unused but may be useful for future analysis)
-    // if (move.captured === 'q') {
-    //   queensTraded = true;
-    // }
+    // Replay to current position and check piece count
+    const tempChess = new Chess();
+    for (let j = 0; j <= i; j++) {
+      tempChess.move(history[j].san);
+    }
+    const pieceCount = countMinorMajorPieces(tempChess.board());
 
-    // Opening ends when both castled or after move 20
-    if ((whiteCastled && blackCastled) || i >= 20) {
+    // Opening ends when: both castled OR move 20 OR piece count ≤ 10
+    if ((whiteCastled && blackCastled) || i >= 20 || pieceCount <= 10) {
       return i;
     }
   }
@@ -99,8 +103,9 @@ function detectOpeningEnd(history) {
 /**
  * Detect when the endgame phase starts
  *
- * Endgame typically starts when:
- * - Fewer than 8 minor/major pieces remain (excluding pawns and kings)
+ * Based on Lichess's threshold:
+ * - 6 or fewer minor/major pieces remain (queens, rooks, bishops, knights)
+ * - Pawns and kings are excluded from count
  *
  * @param {Array} history - Move history
  * @param {string} pgn - Original PGN for position replay
@@ -123,8 +128,8 @@ function detectEndgameStart(history, pgn) {
 
     const pieceCount = countMinorMajorPieces(tempChess.board());
 
-    // Endgame threshold: 8 or fewer minor/major pieces
-    if (pieceCount <= 8) {
+    // Endgame threshold: 6 or fewer minor/major pieces (Lichess standard)
+    if (pieceCount <= 6) {
       // Continue searching backwards
       continue;
     } else {
