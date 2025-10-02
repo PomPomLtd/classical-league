@@ -186,6 +186,55 @@ interface StatsData {
       openingMoves: number
     } | null
   }
+  funStats?: {
+    fastestQueenTrade: {
+      moves: number
+      gameIndex: number
+      white: string
+      black: string
+    } | null
+    slowestQueenTrade: {
+      moves: number
+      gameIndex: number
+      white: string
+      black: string
+    } | null
+    longestCaptureSequence: {
+      length: number
+      gameIndex: number
+      startMove: number
+      white: string
+      black: string
+    } | null
+    longestCheckSequence: {
+      length: number
+      gameIndex: number
+      startMove: number
+      white: string
+      black: string
+    } | null
+    pawnStorm: {
+      count: number
+      gameIndex: number
+      white: string
+      black: string
+    } | null
+    pieceLoyalty: {
+      moves: number
+      gameIndex: number
+      piece: string
+      square: string
+      white: string
+      black: string
+    } | null
+    squareTourist: {
+      squares: number
+      gameIndex: number
+      piece: string
+      white: string
+      black: string
+    } | null
+  }
 }
 
 export default function RoundStatsPage() {
