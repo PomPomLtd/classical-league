@@ -1,4 +1,5 @@
 import { StatCard } from './stat-card'
+import { WinRateChart } from './win-rate-chart'
 
 interface ResultsBreakdownProps {
   results: {
@@ -14,6 +15,11 @@ interface ResultsBreakdownProps {
 export function ResultsBreakdown({ results }: ResultsBreakdownProps) {
   return (
     <StatCard title="📊 Results Breakdown">
+      {/* Pie Chart */}
+      <div className="mb-6">
+        <WinRateChart results={results} />
+      </div>
+
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div className="text-center">
           <div className="text-2xl font-bold text-gray-900 dark:text-white">{results.whiteWins}</div>

@@ -481,6 +481,9 @@ function calculateFunStats(games) {
   let pawnStorm = { count: 0, gameIndex: null };
   let pieceLoyalty = { moves: 0, gameIndex: null, piece: null, square: null };
   let squareTourist = { squares: 0, gameIndex: null, piece: null };
+  let castlingRace = { moves: Infinity, gameIndex: null, winner: null };
+  let mirrorOpening = { gameIndex: null, opening: null, moves: 0 };
+  let dadbodShuffler = { moves: 0, gameIndex: null, color: null };
 
   games.forEach((game, idx) => {
     // Track queen trades
@@ -507,6 +510,16 @@ function calculateFunStats(games) {
     // Track piece positions for loyalty and tourist awards
     const piecePositions = {}; // { 'w_r_a1': ['a1', 'a2', ...], ... }
     const pieceStartSquares = {}; // { 'w_r_a1': 'a1', ... }
+
+    // Track castling for castling race
+    let whiteCastled = false;
+    let blackCastled = false;
+    let firstCastleMove = null;
+    let firstCastleColor = null;
+
+    // Track king moves for dadbod shuffler
+    let whiteKingMoves = 0;
+    let blackKingMoves = 0;
 
     game.moveList.forEach((move, moveIdx) => {
       // Queen trade detection
@@ -569,12 +582,55 @@ function calculateFunStats(games) {
       }
       // Don't reset on non-check moves since opponent moves between checks are expected
 
+      // Track castling for castling race
+      if (move.flags && (move.flags.includes('k') || move.flags.includes('q'))) {
+        if (move.color === 'w' && !whiteCastled) {
+          whiteCastled = true;
+          if (firstCastleMove === null) {
+            firstCastleMove = Math.ceil((moveIdx + 1) / 2);
+            firstCastleColor = 'white';
+          }
+        } else if (move.color === 'b' && !blackCastled) {
+          blackCastled = true;
+          if (firstCastleMove === null) {
+            firstCastleMove = Math.ceil((moveIdx + 1) / 2);
+            firstCastleColor = 'black';
+          }
+        }
+      }
+
+      // Track king moves for dadbod shuffler
+      if (move.piece === 'k') {
+        if (move.color === 'w') {
+          whiteKingMoves++;
+        } else {
+          blackKingMoves++;
+        }
+      }
+
       // Track piece positions for tourist award
-      const pieceKey = `${move.color}_${move.piece}_${move.from}`;
-      if (!piecePositions[pieceKey]) {
+      // Use a unique key based on the first square we see this piece on
+      let pieceKey = null;
+
+      // Find if this piece already has a key (by checking if any existing key's piece moved TO this square)
+      for (const existingKey in piecePositions) {
+        const [existingColor, existingPiece] = existingKey.split('_');
+        if (existingColor === move.color && existingPiece === move.piece) {
+          const positions = Array.from(piecePositions[existingKey]);
+          if (positions.includes(move.from)) {
+            pieceKey = existingKey;
+            break;
+          }
+        }
+      }
+
+      // If no existing key, create new one with current 'from' square as start
+      if (!pieceKey) {
+        pieceKey = `${move.color}_${move.piece}_${move.from}`;
         piecePositions[pieceKey] = new Set();
         pieceStartSquares[pieceKey] = move.from;
       }
+
       piecePositions[pieceKey].add(move.from);
       piecePositions[pieceKey].add(move.to);
     });
@@ -620,12 +676,15 @@ function calculateFunStats(games) {
     Object.entries(piecePositions).forEach(([pieceKey, positions]) => {
       const uniqueSquares = positions.size;
       if (uniqueSquares > squareTourist.squares) {
-        const [color, piece] = pieceKey.split('_');
+        const [color, piece, startSquare] = pieceKey.split('_');
         const pieceNames = { p: 'pawn', n: 'knight', b: 'bishop', r: 'rook', q: 'queen', k: 'king' };
+        const colorName = color === 'w' ? 'White' : 'Black';
         squareTourist = {
           squares: uniqueSquares,
           gameIndex: idx,
           piece: pieceNames[piece] || piece,
+          color: colorName,
+          startSquare: startSquare,
           white: game.headers.White || 'Unknown',
           black: game.headers.Black || 'Unknown'
         };
@@ -673,6 +732,44 @@ function calculateFunStats(games) {
         black: game.headers.Black || 'Unknown'
       };
     }
+
+    // Update castling race (earliest castling move wins)
+    if (firstCastleMove !== null && firstCastleMove < castlingRace.moves) {
+      castlingRace = {
+        moves: firstCastleMove,
+        gameIndex: idx,
+        winner: firstCastleColor,
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Update dadbod shuffler (most king moves)
+    const totalKingMoves = Math.max(whiteKingMoves, blackKingMoves);
+    if (totalKingMoves > dadbodShuffler.moves) {
+      dadbodShuffler = {
+        moves: totalKingMoves,
+        gameIndex: idx,
+        color: whiteKingMoves > blackKingMoves ? 'White' : 'Black',
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Check for mirror opening (both players play same first move)
+    if (game.moveList.length >= 2) {
+      const firstWhiteMove = game.moveList[0].san;
+      const firstBlackMove = game.moveList[1].san;
+      if (firstWhiteMove === firstBlackMove && mirrorOpening.gameIndex === null) {
+        mirrorOpening = {
+          gameIndex: idx,
+          opening: firstWhiteMove,
+          moves: 2,
+          white: game.headers.White || 'Unknown',
+          black: game.headers.Black || 'Unknown'
+        };
+      }
+    }
   });
 
   return {
@@ -682,7 +779,10 @@ function calculateFunStats(games) {
     longestCheckSequence: longestCheckSequence.length > 0 ? longestCheckSequence : null,
     pawnStorm: pawnStorm.count > 0 ? pawnStorm : null,
     pieceLoyalty: pieceLoyalty.moves >= 30 ? pieceLoyalty : null, // Only show if 30+ moves (15 full moves)
-    squareTourist: squareTourist.squares > 0 ? squareTourist : null
+    squareTourist: squareTourist.squares > 0 ? squareTourist : null,
+    castlingRace: castlingRace.moves !== Infinity ? castlingRace : null,
+    mirrorOpening: mirrorOpening.gameIndex !== null ? mirrorOpening : null,
+    dadbodShuffler: dadbodShuffler.moves > 0 ? dadbodShuffler : null
   };
 }
 

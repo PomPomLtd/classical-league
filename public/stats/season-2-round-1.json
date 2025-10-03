@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-03T07:16:51.970Z",
+  "generatedAt": "2025-10-03T07:45:51.523Z",
   "overview": {
     "totalGames": 20,
     "totalMoves": 1667,
@@ -308,11 +308,28 @@
     },
     "pieceLoyalty": null,
     "squareTourist": {
-      "squares": 5,
-      "gameIndex": 5,
-      "piece": "rook",
-      "white": "Anton «TheCatalan» B.",
-      "black": "Oliver «Monkey sees Pawn» K."
+      "squares": 25,
+      "gameIndex": 6,
+      "piece": "king",
+      "color": "Black",
+      "startSquare": "e8",
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P."
+    },
+    "castlingRace": {
+      "moves": 4,
+      "gameIndex": 13,
+      "winner": "black",
+      "white": "Jonathan «EnCroissant1997» D.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "mirrorOpening": null,
+    "dadbodShuffler": {
+      "moves": 32,
+      "gameIndex": 6,
+      "color": "Black",
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P."
     }
   }
 }

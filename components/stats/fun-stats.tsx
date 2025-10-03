@@ -137,7 +137,43 @@ export function FunStats({ funStats }: FunStatsProps) {
               {funStats.squareTourist.white} vs {funStats.squareTourist.black}
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-              {funStats.squareTourist.piece} visited {funStats.squareTourist.squares} different squares
+              {funStats.squareTourist.color}'s {funStats.squareTourist.startSquare} {funStats.squareTourist.piece} visited {funStats.squareTourist.squares} different squares
+            </div>
+          </div>
+        )}
+
+        {funStats.castlingRace && (
+          <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+            <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">🏁 Castling Race Winner</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.castlingRace.white} vs {funStats.castlingRace.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.castlingRace.winner === 'white' ? funStats.castlingRace.white : funStats.castlingRace.black} castled first on move {funStats.castlingRace.moves}
+            </div>
+          </div>
+        )}
+
+        {funStats.mirrorOpening && (
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+            <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">🪞 Mirror Opening</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.mirrorOpening.white} vs {funStats.mirrorOpening.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Both played {funStats.mirrorOpening.opening} as their first move
+            </div>
+          </div>
+        )}
+
+        {funStats.dadbodShuffler && (
+          <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+            <div className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1">👑 Dadbod Shuffler</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.dadbodShuffler.white} vs {funStats.dadbodShuffler.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.dadbodShuffler.color} king moved {funStats.dadbodShuffler.moves} times
             </div>
           </div>
         )}

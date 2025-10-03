@@ -241,6 +241,29 @@ interface StatsData {
       squares: number
       gameIndex: number
       piece: string
+      color: string
+      startSquare: string
+      white: string
+      black: string
+    } | null
+    castlingRace: {
+      moves: number
+      gameIndex: number
+      winner: string
+      white: string
+      black: string
+    } | null
+    mirrorOpening: {
+      gameIndex: number
+      opening: string
+      moves: number
+      white: string
+      black: string
+    } | null
+    dadbodShuffler: {
+      moves: number
+      gameIndex: number
+      color: string
       white: string
       black: string
     } | null
