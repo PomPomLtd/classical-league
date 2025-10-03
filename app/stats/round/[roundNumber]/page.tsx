@@ -14,6 +14,7 @@ import { NotableGames } from '@/components/stats/notable-games'
 import { FunStats } from '@/components/stats/fun-stats'
 import { CheckmatesSection } from '@/components/stats/checkmates-section'
 import { BoardHeatmapSection } from '@/components/stats/board-heatmap-section'
+import { AnalysisSection } from '@/components/stats/analysis-section'
 
 interface StatsData {
   roundNumber: number
@@ -288,6 +289,90 @@ interface StatsData {
       black: string
     } | null
   }
+  analysis?: {
+    games: Array<{
+      gameIndex: number
+      white: string
+      black: string
+      whiteACPL: number
+      blackACPL: number
+      whiteAccuracy: number
+      blackAccuracy: number
+      whiteMoveQuality: {
+        blunders: number
+        mistakes: number
+        inaccuracies: number
+        good: number
+        excellent: number
+      }
+      blackMoveQuality: {
+        blunders: number
+        mistakes: number
+        inaccuracies: number
+        good: number
+        excellent: number
+      }
+      biggestBlunder: {
+        moveNumber: number
+        player: string
+        cpLoss: number
+        move: string
+        evalBefore: number
+        evalAfter: number
+      } | null
+    }>
+    summary: {
+      accuracyKing: {
+        player: string
+        accuracy: number
+        acpl: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      biggestBlunder: {
+        moveNumber: number
+        player: string
+        cpLoss: number
+        move: string
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      lowestACPL: {
+        player: string
+        acpl: number
+        accuracy: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      highestACPL: {
+        player: string
+        acpl: number
+        accuracy: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      lowestCombinedACPL: {
+        combinedACPL: number
+        whiteACPL: number
+        blackACPL: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      highestCombinedACPL: {
+        combinedACPL: number
+        whiteACPL: number
+        blackACPL: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+    }
+  }
 }
 
 export default function RoundStatsPage() {
@@ -366,6 +451,8 @@ export default function RoundStatsPage() {
           <ResultsBreakdown results={stats.results} />
 
           <AwardsSection awards={stats.awards} />
+
+          {stats.analysis && <AnalysisSection analysis={stats.analysis} />}
 
           <FunStats funStats={stats.funStats} />
 

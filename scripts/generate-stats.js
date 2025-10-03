@@ -15,6 +15,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const { parseMultipleGames } = require('./utils/pgn-parser');
 const { calculateStats } = require('./utils/stats-calculator');
 
@@ -24,6 +25,7 @@ function parseArgs() {
   const options = {
     round: null,
     season: 2, // Default to Season 2
+    analyze: false, // Stockfish analysis flag
     help: false
   };
 
@@ -34,6 +36,8 @@ function parseArgs() {
     } else if (args[i] === '--season' || args[i] === '-s') {
       options.season = parseInt(args[i + 1]);
       i++;
+    } else if (args[i] === '--analyze' || args[i] === '-a') {
+      options.analyze = true;
     } else if (args[i] === '--help' || args[i] === '-h') {
       options.help = true;
     }
@@ -48,20 +52,27 @@ function showHelp() {
 Chess Statistics Generator
 
 Usage:
-  node scripts/generate-stats.js --round <number> [--season <number>]
+  node scripts/generate-stats.js --round <number> [--season <number>] [--analyze]
 
 Options:
   --round, -r <number>   Round number to generate stats for (required)
   --season, -s <number>  Season number (default: 2)
+  --analyze, -a          Run Stockfish analysis (requires venv and stockfish)
   --help, -h             Show this help message
 
 Examples:
   node scripts/generate-stats.js --round 1
-  node scripts/generate-stats.js --round 2 --season 2
+  node scripts/generate-stats.js --round 1 --analyze
+  node scripts/generate-stats.js --round 2 --season 2 --analyze
 
 Output:
   Generates JSON file at: public/stats/season-<season>-round-<round>.json
   Updates overall stats: public/stats/season-<season>-overall.json
+
+Note:
+  --analyze runs Stockfish engine analysis to calculate accuracy, ACPL,
+  and move quality. Requires Python venv and stockfish binary installed.
+  Analysis takes ~5-10 minutes for 20 games.
   `);
 }
 
@@ -81,6 +92,51 @@ async function fetchPGN(roundNumber, seasonNumber) {
   console.log(`✅ PGN data loaded (${pgnData.length} bytes)`);
 
   return pgnData;
+}
+
+// Run Stockfish analysis on parsed games
+function analyzeGames(parsedGames) {
+  console.log('\n🔬 Running Stockfish analysis...');
+  console.log('⏱️  This may take 5-10 minutes for 20 games...\n');
+
+  const startTime = Date.now();
+
+  try {
+    // Extract normalized PGN from parsed games
+    const normalizedPgn = parsedGames.map(g => g.pgn).join('\n\n');
+
+    // Run Python analyzer (depth 15, sample every 2 moves)
+    const analysisOutput = execSync(
+      'venv/bin/python scripts/analyze-pgn.py --depth 15 --sample 2',
+      {
+        input: normalizedPgn,
+        encoding: 'utf-8',
+        maxBuffer: 10 * 1024 * 1024, // 10MB buffer
+        cwd: path.join(__dirname, '..')
+      }
+    );
+
+    const analysisData = JSON.parse(analysisOutput);
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+
+    console.log(`✅ Analysis complete in ${elapsed}s`);
+    console.log(`📊 Games analyzed: ${analysisData.games.length}`);
+
+    if (analysisData.summary.accuracyKing) {
+      const king = analysisData.summary.accuracyKing;
+      const playerName = king.player === 'white' ? king.white : king.black;
+      console.log(`👑 Accuracy King: ${playerName} (${king.accuracy}% accuracy, ${king.acpl} ACPL)`);
+    }
+
+    return analysisData;
+
+  } catch (error) {
+    console.error('❌ Analysis failed:', error.message);
+    if (error.stderr) {
+      console.error('Error output:', error.stderr);
+    }
+    throw error;
+  }
 }
 
 // Main execution
@@ -121,11 +177,23 @@ async function main() {
       });
     }
 
-    // Step 3: Calculate statistics
+    // Step 3: Run Stockfish analysis (if requested)
+    let analysisData = null;
+    if (options.analyze) {
+      analysisData = analyzeGames(parseResults.valid);
+    }
+
+    // Step 4: Calculate statistics
     console.log('\n📊 Calculating statistics...');
     const stats = calculateStats(parseResults.valid, options.round, options.season);
 
-    // Step 4: Save to JSON file
+    // Step 5: Merge analysis data into stats
+    if (analysisData) {
+      stats.analysis = analysisData;
+      console.log('✅ Analysis data merged into stats');
+    }
+
+    // Step 6: Save to JSON file
     const outputDir = path.join(__dirname, '../public/stats');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });

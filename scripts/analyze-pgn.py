@@ -81,6 +81,9 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
             board.push(move)
             continue
 
+        # Get SAN notation before making the move
+        move_san = board.san(move)
+
         # Get evaluation before move
         stockfish.set_fen_position(board.fen())
         eval_before = stockfish.get_evaluation()
@@ -120,12 +123,12 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
             quality = classify_move_quality(cp_loss)
             white_quality[quality] += 1
 
-            if quality == 'blunder' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
+            if quality == 'blunders' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
                 biggest_blunder = {
                     'moveNumber': move_num // 2 + 1,
                     'player': 'white',
                     'cpLoss': cp_loss,
-                    'move': board.san(move),
+                    'move': move_san,
                     'evalBefore': cp_before,
                     'evalAfter': -cp_after
                 }
@@ -138,12 +141,12 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
             quality = classify_move_quality(cp_loss)
             black_quality[quality] += 1
 
-            if quality == 'blunder' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
+            if quality == 'blunders' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
                 biggest_blunder = {
                     'moveNumber': move_num // 2 + 1,
                     'player': 'black',
                     'cpLoss': cp_loss,
-                    'move': board.san(move),
+                    'move': move_san,
                     'evalBefore': -cp_before,
                     'evalAfter': cp_after
                 }
@@ -208,12 +211,16 @@ def main():
 
         game_index += 1
 
-    # Find accuracy king and biggest blunder across all games
+    # Find accuracy king, biggest blunder, and ACPL extremes across all games
     accuracy_king = None
     biggest_blunder = None
+    lowest_acpl = None
+    highest_acpl = None
+    lowest_combined_acpl = None
+    highest_combined_acpl = None
 
     for game_data in games_analyzed:
-        # Check white
+        # Check white accuracy
         if accuracy_king is None or game_data['whiteAccuracy'] > accuracy_king['accuracy']:
             accuracy_king = {
                 'player': 'white',
@@ -224,12 +231,79 @@ def main():
                 'gameIndex': game_data['gameIndex']
             }
 
-        # Check black
+        # Check black accuracy
         if accuracy_king is None or game_data['blackAccuracy'] > accuracy_king['accuracy']:
             accuracy_king = {
                 'player': 'black',
                 'accuracy': game_data['blackAccuracy'],
                 'acpl': game_data['blackACPL'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check white lowest ACPL
+        if lowest_acpl is None or game_data['whiteACPL'] < lowest_acpl['acpl']:
+            lowest_acpl = {
+                'player': 'white',
+                'acpl': game_data['whiteACPL'],
+                'accuracy': game_data['whiteAccuracy'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check black lowest ACPL
+        if lowest_acpl is None or game_data['blackACPL'] < lowest_acpl['acpl']:
+            lowest_acpl = {
+                'player': 'black',
+                'acpl': game_data['blackACPL'],
+                'accuracy': game_data['blackAccuracy'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check white highest ACPL
+        if highest_acpl is None or game_data['whiteACPL'] > highest_acpl['acpl']:
+            highest_acpl = {
+                'player': 'white',
+                'acpl': game_data['whiteACPL'],
+                'accuracy': game_data['whiteAccuracy'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check black highest ACPL
+        if highest_acpl is None or game_data['blackACPL'] > highest_acpl['acpl']:
+            highest_acpl = {
+                'player': 'black',
+                'acpl': game_data['blackACPL'],
+                'accuracy': game_data['blackAccuracy'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check combined ACPL
+        combined_acpl = game_data['whiteACPL'] + game_data['blackACPL']
+
+        if lowest_combined_acpl is None or combined_acpl < lowest_combined_acpl['combinedACPL']:
+            lowest_combined_acpl = {
+                'combinedACPL': combined_acpl,
+                'whiteACPL': game_data['whiteACPL'],
+                'blackACPL': game_data['blackACPL'],
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        if highest_combined_acpl is None or combined_acpl > highest_combined_acpl['combinedACPL']:
+            highest_combined_acpl = {
+                'combinedACPL': combined_acpl,
+                'whiteACPL': game_data['whiteACPL'],
+                'blackACPL': game_data['blackACPL'],
                 'white': game_data['white'],
                 'black': game_data['black'],
                 'gameIndex': game_data['gameIndex']
@@ -250,7 +324,11 @@ def main():
         'games': games_analyzed,
         'summary': {
             'accuracyKing': accuracy_king,
-            'biggestBlunder': biggest_blunder
+            'biggestBlunder': biggest_blunder,
+            'lowestACPL': lowest_acpl,
+            'highestACPL': highest_acpl,
+            'lowestCombinedACPL': lowest_combined_acpl,
+            'highestCombinedACPL': highest_combined_acpl
         }
     }
 

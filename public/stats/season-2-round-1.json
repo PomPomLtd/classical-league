@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-03T08:50:08.895Z",
+  "generatedAt": "2025-10-03T09:55:46.358Z",
   "overview": {
     "totalGames": 20,
     "totalMoves": 1667,
@@ -427,6 +427,662 @@
       "color": "White",
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
+    }
+  },
+  "analysis": {
+    "games": [
+      {
+        "gameIndex": 0,
+        "white": "Adela «Adele» P.",
+        "black": "Igor «Premove Blunder» S.",
+        "whiteACPL": 11,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.9,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 4,
+          "inaccuracies": 3,
+          "good": 0,
+          "excellent": 31
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": null
+      },
+      {
+        "gameIndex": 1,
+        "white": "Christopher «Ong Passong» G.",
+        "black": "Torsten «torstyehocara» J.",
+        "whiteACPL": 220.4,
+        "blackACPL": 0,
+        "whiteAccuracy": 78,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 21,
+          "mistakes": 7,
+          "inaccuracies": 6,
+          "good": 1,
+          "excellent": 8
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 43,
+          "player": "white",
+          "cpLoss": 934,
+          "move": "Qxa5",
+          "evalBefore": 461,
+          "evalAfter": -473
+        }
+      },
+      {
+        "gameIndex": 2,
+        "white": "Roger «Ruthless En Passant Shredder» H.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "whiteACPL": 13.2,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.7,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 3,
+          "inaccuracies": 1,
+          "good": 0,
+          "excellent": 15
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": null
+      },
+      {
+        "gameIndex": 3,
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Michael «Mivobu» B.",
+        "whiteACPL": 504.1,
+        "blackACPL": 0,
+        "whiteAccuracy": 49.6,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 24,
+          "mistakes": 6,
+          "inaccuracies": 1,
+          "good": 0,
+          "excellent": 0
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 27,
+          "player": "white",
+          "cpLoss": 1080,
+          "move": "b4",
+          "evalBefore": 544,
+          "evalAfter": -536
+        }
+      },
+      {
+        "gameIndex": 4,
+        "white": "Davide «AME» V.",
+        "black": "Yannik «The Golden Castling Obliterator» T.",
+        "whiteACPL": 115.1,
+        "blackACPL": 0,
+        "whiteAccuracy": 88.5,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 7,
+          "mistakes": 3,
+          "inaccuracies": 1,
+          "good": 0,
+          "excellent": 10
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 11,
+          "player": "white",
+          "cpLoss": 554,
+          "move": "Bxd7+",
+          "evalBefore": 566,
+          "evalAfter": 12
+        }
+      },
+      {
+        "gameIndex": 5,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Oliver «Monkey sees Pawn» K.",
+        "whiteACPL": 16,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.4,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 3,
+          "mistakes": 5,
+          "inaccuracies": 1,
+          "good": 1,
+          "excellent": 56
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 7,
+          "player": "white",
+          "cpLoss": 241,
+          "move": "Bb5",
+          "evalBefore": 161,
+          "evalAfter": -80
+        }
+      },
+      {
+        "gameIndex": 6,
+        "white": "Mario «ChessDude» M.",
+        "black": "Dogan «Kido» P.",
+        "whiteACPL": 2688.9,
+        "blackACPL": 0,
+        "whiteAccuracy": 0,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 57,
+          "mistakes": 5,
+          "inaccuracies": 3,
+          "good": 1,
+          "excellent": 4
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 66,
+          "player": "white",
+          "cpLoss": 20000,
+          "move": "Qb5",
+          "evalBefore": 10000,
+          "evalAfter": -10000
+        }
+      },
+      {
+        "gameIndex": 7,
+        "white": "Daniel «Bishop Mangler Supreme» T.",
+        "black": "Viktor «VHH93» H.",
+        "whiteACPL": 622.9,
+        "blackACPL": 0,
+        "whiteAccuracy": 37.7,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 49,
+          "mistakes": 1,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 1
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 22,
+          "player": "white",
+          "cpLoss": 1219,
+          "move": "Rxf8",
+          "evalBefore": 628,
+          "evalAfter": -591
+        }
+      },
+      {
+        "gameIndex": 8,
+        "white": "Max «Bird is the word» W.",
+        "black": "Oliver «Mouse Slip Expert» S.",
+        "whiteACPL": 236.7,
+        "blackACPL": 0,
+        "whiteAccuracy": 76.3,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 24,
+          "mistakes": 7,
+          "inaccuracies": 5,
+          "good": 3,
+          "excellent": 8
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 47,
+          "player": "white",
+          "cpLoss": 1091,
+          "move": "Bxc4",
+          "evalBefore": 536,
+          "evalAfter": -555
+        }
+      },
+      {
+        "gameIndex": 9,
+        "white": "Diego «The Bishop Slayer» R.",
+        "black": "Stefano «acheron» B.",
+        "whiteACPL": 58.6,
+        "blackACPL": 0,
+        "whiteAccuracy": 94.1,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 7,
+          "mistakes": 2,
+          "inaccuracies": 0,
+          "good": 1,
+          "excellent": 20
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 8,
+          "player": "white",
+          "cpLoss": 436,
+          "move": "O-O-O",
+          "evalBefore": 310,
+          "evalAfter": -126
+        }
+      },
+      {
+        "gameIndex": 10,
+        "white": "Sam «Active King» B.",
+        "black": "Fabienne «Chessy» S.",
+        "whiteACPL": 573.5,
+        "blackACPL": 0,
+        "whiteAccuracy": 42.7,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 43,
+          "mistakes": 11,
+          "inaccuracies": 3,
+          "good": 0,
+          "excellent": 1
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 57,
+          "player": "white",
+          "cpLoss": 1411,
+          "move": "Nd6+",
+          "evalBefore": 744,
+          "evalAfter": -667
+        }
+      },
+      {
+        "gameIndex": 11,
+        "white": "Iannis «Modern Pulverizer» D.",
+        "black": "Matteo «Afraid of Caro-Kann» M.",
+        "whiteACPL": 1141.4,
+        "blackACPL": 0,
+        "whiteAccuracy": 0,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 5,
+          "mistakes": 6,
+          "inaccuracies": 5,
+          "good": 4,
+          "excellent": 16
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 34,
+          "player": "white",
+          "cpLoss": 20000,
+          "move": "Qe8+",
+          "evalBefore": 10000,
+          "evalAfter": -10000
+        }
+      },
+      {
+        "gameIndex": 12,
+        "white": "bela «bela» O.",
+        "black": "Osama «Ruiner of Bird's» A.",
+        "whiteACPL": 1088.2,
+        "blackACPL": 0,
+        "whiteAccuracy": 0,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 20,
+          "mistakes": 8,
+          "inaccuracies": 3,
+          "good": 1,
+          "excellent": 33
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 28,
+          "player": "white",
+          "cpLoss": 20000,
+          "move": "Qa8+",
+          "evalBefore": 10000,
+          "evalAfter": -10000
+        }
+      },
+      {
+        "gameIndex": 13,
+        "white": "Jonathan «EnCroissant1997» D.",
+        "black": "Gaston «SleepingDawg» F.",
+        "whiteACPL": 16.4,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.4,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 3,
+          "inaccuracies": 5,
+          "good": 6,
+          "excellent": 11
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": null
+      },
+      {
+        "gameIndex": 14,
+        "white": "Laurens «Castling Specialist» B.",
+        "black": "Alexander «Not Grischuk» .",
+        "whiteACPL": 147,
+        "blackACPL": 0,
+        "whiteAccuracy": 85.3,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 14,
+          "mistakes": 6,
+          "inaccuracies": 6,
+          "good": 0,
+          "excellent": 19
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 45,
+          "player": "white",
+          "cpLoss": 1418,
+          "move": "Nf4+",
+          "evalBefore": 699,
+          "evalAfter": -719
+        }
+      },
+      {
+        "gameIndex": 15,
+        "white": "Janic «Clasher» S.",
+        "black": "Boris «Out of Nowhere» G.",
+        "whiteACPL": 14.8,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.5,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 4,
+          "mistakes": 1,
+          "inaccuracies": 2,
+          "good": 0,
+          "excellent": 37
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 9,
+          "player": "white",
+          "cpLoss": 165,
+          "move": "g4",
+          "evalBefore": 85,
+          "evalAfter": -80
+        }
+      },
+      {
+        "gameIndex": 16,
+        "white": "Nikola «Pawn Carnivore»",
+        "black": "Ruslan «Thunder-Blunder» G.",
+        "whiteACPL": 548,
+        "blackACPL": 0,
+        "whiteAccuracy": 45.2,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 7,
+          "mistakes": 2,
+          "inaccuracies": 4,
+          "good": 0,
+          "excellent": 0
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 13,
+          "player": "white",
+          "cpLoss": 1376,
+          "move": "Nxd8",
+          "evalBefore": 687,
+          "evalAfter": -689
+        }
+      },
+      {
+        "gameIndex": 17,
+        "white": "Valentin «valentin_benglen» C.",
+        "black": "Islam «xXBlackXx» H.",
+        "whiteACPL": 78.3,
+        "blackACPL": 0,
+        "whiteAccuracy": 92.2,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 7,
+          "mistakes": 5,
+          "inaccuracies": 0,
+          "good": 2,
+          "excellent": 17
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 16,
+          "player": "white",
+          "cpLoss": 442,
+          "move": "Rad1",
+          "evalBefore": 214,
+          "evalAfter": -228
+        }
+      },
+      {
+        "gameIndex": 18,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Florian «Knightmare» G.",
+        "whiteACPL": 470.9,
+        "blackACPL": 0,
+        "whiteAccuracy": 52.9,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 47,
+          "mistakes": 8,
+          "inaccuracies": 6,
+          "good": 0,
+          "excellent": 6
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 67,
+          "player": "white",
+          "cpLoss": 1589,
+          "move": "Kb6",
+          "evalBefore": 814,
+          "evalAfter": -775
+        }
+      },
+      {
+        "gameIndex": 19,
+        "white": "Christina «Crisi» V.",
+        "black": "Peter «Peaky Blunder» N.",
+        "whiteACPL": 18.3,
+        "blackACPL": 0,
+        "whiteAccuracy": 98.2,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 2,
+          "mistakes": 5,
+          "inaccuracies": 1,
+          "good": 1,
+          "excellent": 30
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": {
+          "moveNumber": 6,
+          "player": "white",
+          "cpLoss": 123,
+          "move": "O-O",
+          "evalBefore": 68,
+          "evalAfter": -55
+        }
+      }
+    ],
+    "summary": {
+      "accuracyKing": {
+        "player": "black",
+        "accuracy": 100,
+        "acpl": 0,
+        "white": "Adela «Adele» P.",
+        "black": "Igor «Premove Blunder» S.",
+        "gameIndex": 0
+      },
+      "biggestBlunder": {
+        "moveNumber": 66,
+        "player": "white",
+        "cpLoss": 20000,
+        "move": "Qb5",
+        "evalBefore": 10000,
+        "evalAfter": -10000,
+        "white": "Mario «ChessDude» M.",
+        "black": "Dogan «Kido» P.",
+        "gameIndex": 6
+      },
+      "lowestACPL": {
+        "player": "black",
+        "acpl": 0,
+        "accuracy": 100,
+        "white": "Adela «Adele» P.",
+        "black": "Igor «Premove Blunder» S.",
+        "gameIndex": 0
+      },
+      "highestACPL": {
+        "player": "white",
+        "acpl": 2688.9,
+        "accuracy": 0,
+        "white": "Mario «ChessDude» M.",
+        "black": "Dogan «Kido» P.",
+        "gameIndex": 6
+      },
+      "lowestCombinedACPL": {
+        "combinedACPL": 11,
+        "whiteACPL": 11,
+        "blackACPL": 0,
+        "white": "Adela «Adele» P.",
+        "black": "Igor «Premove Blunder» S.",
+        "gameIndex": 0
+      },
+      "highestCombinedACPL": {
+        "combinedACPL": 2688.9,
+        "whiteACPL": 2688.9,
+        "blackACPL": 0,
+        "white": "Mario «ChessDude» M.",
+        "black": "Dogan «Kido» P.",
+        "gameIndex": 6
+      }
     }
   }
 }
