@@ -39,16 +39,20 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 
 **Statistics Generation:**
 - `node scripts/generate-stats.js --round <number>` - Generate stats JSON for a round
-- Download PGN first: `curl -o /tmp/round<N>-fresh.pgn <broadcast-api-url>`
-- Stats are generated to `public/stats/season-<N>-round-<N>.json`
-- Round 1 PGN URL: `https://classical.schachklub-k4.ch/api/broadcast/round/cmfekevr50001l5045y65op37/pgn`
+- Stats piped from API URL or local PGN file
+- Output to `public/stats/season-<N>-round-<N>.json`
 - Example workflow:
   ```bash
-  # Download latest PGN
-  curl -o /tmp/round1-fresh.pgn https://classical.schachklub-k4.ch/api/broadcast/round/cmfekevr50001l5045y65op37/pgn
+  # From API (recommended)
+  curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
+    node scripts/generate-stats.js --round 1
 
-  # Generate stats
-  node scripts/generate-stats.js --round 1
+  # From local file
+  node scripts/generate-stats.js --round 1 --season 2 < round1.pgn
+
+  # View generated stats
+  # Saved to: public/stats/season-2-round-1.json
+  # View at: http://localhost:3000/stats/round/1
   ```
 
 **Git:**
@@ -106,6 +110,13 @@ The application uses Prisma with PostgreSQL and follows a multi-season tournamen
 - `lib/auth-config.ts` - NextAuth.js configuration
 - `lib/nickname-generator.ts` - Creative chess nickname generation
 - `lib/validations.ts` - Zod schemas for form validation
+
+**Statistics System:**
+- `/app/stats/round/[roundNumber]` - Dynamic round statistics pages
+- `/components/stats/` - 15 modular statistics components
+- `/scripts/generate-stats.js` - Main stats generator script
+- `/scripts/utils/` - PGN parsing, game analysis, opening database utilities
+- See `STATS.md` and `STATS-PROGRESS.md` for implementation details
 
 ## Database Migration Workflow
 
@@ -227,6 +238,74 @@ npm run dev
 - Database browser: `npm run db:studio`
 - Check migrations: `npx prisma migrate status`
 
+## Statistics System
+
+The application includes a comprehensive statistics system that analyzes chess games from PGN data.
+
+### Architecture
+- **15 Modular Components** (`/components/stats/`):
+  - `round-header.tsx` - Navigation and broadcast link
+  - `overview-stats.tsx` - Game overview metrics
+  - `results-breakdown.tsx` - Win/loss/draw with pie chart
+  - `awards-section.tsx` - Tournament awards
+  - `fun-stats.tsx` - 11 fun statistics (see below)
+  - `game-phases.tsx` - Opening/middlegame/endgame analysis
+  - `tactics-section.tsx` - Captures, castling, promotions
+  - `openings-section.tsx` - ECO opening analysis with charts
+  - `piece-stats.tsx` - Piece activity and survival rates
+  - `notable-games.tsx` - Interesting games
+  - `checkmates-section.tsx` - Checkmate analysis
+  - `board-heatmap-section.tsx` - Interactive heatmap
+  - `opening-popularity-chart.tsx` - Bar chart (recharts)
+  - `win-rate-chart.tsx` - Pie chart (recharts)
+  - `stat-card.tsx` - Reusable wrapper
+
+- **Utilities** (`/scripts/utils/`):
+  - `pgn-parser.js` - Parse PGN with chess.js
+  - `game-phases.js` - Detect opening/middlegame/endgame (Lichess approach)
+  - `stats-calculator.js` - Calculate all statistics
+  - `chess-openings.js` - ECO opening database (3,546 openings from Lichess)
+  - `build-openings-db.js` - Build opening database from Lichess TSV files
+
+### Features
+- **Game Analysis**: Overview, phases, results breakdown with visualizations
+- **ECO Opening Classification**: 3,546+ openings from Lichess database (CC0 Public Domain)
+- **Tactical Statistics**: Captures, castling, promotions, en passant
+- **Board Heatmap**: Interactive visualization of square activity
+- **Piece Statistics**: Activity, captures, survival rates
+- **Fun Statistics** (11 awards):
+  1. ⚡ Fastest Queen Trade
+  2. 🐌 Slowest Queen Trade
+  3. 🔪 Longest Capture Spree
+  4. 👑 Longest King Hunt (checks)
+  5. 🌪️ Pawn Storm Award
+  6. 🏠 Piece Loyalty Award
+  7. ✈️ Square Tourist Award
+  8. 🏁 Castling Race Winner
+  9. 🎩 Opening Hipster (most obscure opening)
+  10. 👸 Sporty Queen (traveled most distance)
+  11. 👑 Dadbod Shuffler (most active king)
+
+### Performance
+- ✅ 100% PGN parsing success rate (20/20 games)
+- ✅ Generates in <20 seconds
+- ✅ Output file <10KB
+- ✅ Static JSON for fast page loads
+- ✅ Dark mode support throughout
+
+### Generating Statistics
+```bash
+# From API (recommended)
+curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
+  node scripts/generate-stats.js --round 1
+
+# From local PGN file
+node scripts/generate-stats.js --round 1 --season 2 < round1.pgn
+
+# Output saved to: public/stats/season-2-round-1.json
+# View at: http://localhost:3000/stats/round/1
+```
+
 ## Development Workflow
 
 **For New Features:**
@@ -241,3 +320,11 @@ npm run dev
 2. Check both public and admin interfaces
 3. Verify mobile responsiveness
 4. Test authentication flows and session management
+
+**For Statistics Updates:**
+1. Modify stats calculator in `/scripts/utils/stats-calculator.js`
+2. Update TypeScript interfaces in `/app/stats/round/[roundNumber]/page.tsx`
+3. Create/modify components in `/components/stats/`
+4. Test with `npm run build` to ensure type safety
+5. Regenerate stats JSON with updated script
+6. View changes at http://localhost:3000/stats/round/1
