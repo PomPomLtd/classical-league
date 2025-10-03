@@ -1,10 +1,10 @@
 # Chess Statistics Implementation Progress
 
-## Current Status: Phase 1 - Core Stats Generator
+## Current Status: Phase 3 - Enhanced Stats (In Progress)
 
-**Last Updated:** 2025-10-02
-**Current Phase:** Phase 1 - Core Stats (MVP)
-**Status:** ✅ COMPLETE - Ready for User Testing
+**Last Updated:** 2025-10-03
+**Current Phase:** Phase 3 - Enhanced Stats & Refinements
+**Status:** 🚀 IN PROGRESS - Live on Production
 
 ---
 
@@ -53,16 +53,30 @@
 **Started:** 2025-10-02
 **Completed:** 2025-10-02
 
-### ⏳ Phase 3: Enhanced Stats (PENDING)
-**Goal:** Add opening detection, awards, and advanced metrics
+### 🚀 Phase 3: Enhanced Stats (IN PROGRESS)
+**Goal:** Refactor UI, fix bugs, and add advanced metrics
 
-**Objectives:**
-- [ ] Implement opening name detection
-- [ ] Create awards system
-- [ ] Add more detailed piece analysis
-- [ ] Implement checkmate pattern detection
+**Completed Objectives:**
+- [x] Refactor stats page into 13 modular components
+- [x] Fix checkmate piece tracking (was showing all as "other")
+- [x] Update game phase detection to match Lichess approach
+- [x] Change endgame threshold from 8 to 6 pieces
+- [x] Add piece count check (≤10) for opening end detection
+- [x] Improve piece activity labels ("Pawn moves" instead of "pawns")
+- [x] Add board heatmap with interactive toggle
+- [x] Implement fun stats section with 7 different awards
+- [x] Deploy to production at classical.schachklub-k4.ch
 
-**Estimated Time:** 4-5 hours
+**Pending Objectives:**
+- [ ] Add more opening analysis (ECO codes)
+- [ ] Improve awards system with more categories
+- [ ] Add player-specific statistics linking
+- [ ] Implement position-based pattern detection
+
+**Status:** 🚀 In Progress
+**Time Taken So Far:** ~3 hours
+**Started:** 2025-10-02
+**Latest Update:** 2025-10-03
 
 ### ⏳ Phase 4: Visual Enhancements (PENDING)
 **Goal:** Add charts and interactive elements
@@ -157,15 +171,83 @@
 
 ---
 
+## Component Architecture (Phase 3 Refactoring)
+
+### Stats Components Created
+All located in `/components/stats/`:
+
+1. **stat-card.tsx** - Reusable wrapper component for all stat sections
+2. **round-header.tsx** - Page title, navigation, broadcast link (87 lines)
+3. **overview-stats.tsx** - 4 colored stat boxes (total games, moves, etc.) (40 lines)
+4. **results-breakdown.tsx** - Win/loss/draw with progress bars (61 lines)
+5. **awards-section.tsx** - Gold gradient awards section (73 lines)
+6. **game-phases.tsx** - Opening/middlegame/endgame analysis (59 lines)
+7. **tactics-section.tsx** - Captures, castling, promotions (64 lines)
+8. **openings-section.tsx** - First move statistics (40 lines)
+9. **piece-stats.tsx** - Activity with proper labels (71 lines)
+10. **notable-games.tsx** - Longest/shortest games (61 lines)
+11. **fun-stats.tsx** - 7 fun statistics cards (162 lines)
+12. **checkmates-section.tsx** - Checkmate analysis (47 lines)
+13. **board-heatmap-section.tsx** - Interactive heatmap (137 lines)
+
+### Benefits Achieved
+- Each component is self-contained and testable
+- Main page is now just data fetching + composition
+- Easy to add new stat sections
+- Better git diffs when making changes
+- Improved code discoverability
+
+---
+
+## Recent Achievements (2025-10-03)
+
+### Component Refactoring
+- Broke down monolithic 760+ line stats page into 13 focused components
+- Created `components/stats/` directory with reusable components
+- Improved maintainability and code organization
+- Main page reduced from 760+ to 350 lines
+
+### Bug Fixes
+- **Checkmate tracking:** Fixed piece code mapping (chess.js returns 'q', 'r', 'b', 'n', 'p', 'k')
+- **Game phase detection:** Updated to match Lichess's Divider.scala approach
+- **Piece labels:** Changed from "pawns" to "Pawn moves" for better clarity
+
+### Technical Improvements
+- Endgame threshold: Changed from 8 to 6 pieces (Lichess standard)
+- Opening detection: Added piece count check (≤10) as trigger
+- Updated documentation with exact phase definitions
+- Regenerated Round 1 stats with 20 games (was 19)
+
+---
+
 ## Next Immediate Steps
 
-1. **Create directory structure** (`/scripts`, `/scripts/utils`, `/public/stats`)
-2. **Build `pgn-parser.js`** - Core utility to parse PGN strings
-3. **Build `game-phases.js`** - Game phase detection (tested earlier)
-4. **Build `stats-calculator.js`** - Aggregate statistics from parsed games
-5. **Build `generate-stats.js`** - Main orchestration script
-6. **Test with Round 1** - Validate output
-7. **User testing** - Let user run script and review output
+### Short-term (Next Session)
+1. **Add more fun stats categories**
+   - Castling race (who castled first)
+   - Piece sacrifice statistics
+   - Opening traps and blunders
+
+2. **Improve visualization**
+   - Add charts library (recharts or chart.js)
+   - Create opening popularity chart
+   - Add win rate visualizations
+
+3. **ECO Opening Classification**
+   - Research ECO database options
+   - Implement opening name matching
+   - Display proper opening names in stats
+
+### Medium-term (Future Rounds)
+4. **Player Statistics Integration**
+   - Link stats to player profiles
+   - Head-to-head records
+   - Individual performance tracking
+
+5. **Overall Season Stats**
+   - Aggregate all rounds into season-wide stats
+   - Season leaderboards
+   - Historical trends
 
 ---
 
@@ -230,13 +312,16 @@
 ## Time Tracking
 
 **Phase 0 (Research):** ~3 hours
-**Phase 1 (Complete):**
-- Planning: 30 min
-- Implementation: 2 hours
-- Testing & Fixes: 1 hour
-- **Total:** ~3.5 hours
+**Phase 1 (Core Stats Generator - Complete):** ~3.5 hours
+**Phase 2 (Stats Pages - Complete):** ~2 hours
+**Phase 3 (Enhanced Stats - In Progress):** ~3 hours so far
+  - Component refactoring: ~1.5 hours
+  - Bug fixes (checkmate, game phases): ~1 hour
+  - Testing and validation: ~0.5 hours
 
-**Estimated Remaining for Phase 2:** 2-3 hours
+**Total Time Invested:** ~11.5 hours
+**Estimated Remaining for Phase 3:** 1-2 hours
+**Estimated for Phase 4 (Charts):** 4-6 hours
 
 ---
 
