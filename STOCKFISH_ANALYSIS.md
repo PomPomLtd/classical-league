@@ -211,7 +211,7 @@ If Python setup is problematic, we can use:
 
 ### Integration with Stats Generator (Recommended)
 
-The best approach is to use our existing PGN parser which already normalizes the PGN:
+The best approach is to use our existing PGN parser which normalizes the PGN using `chess.pgn()`:
 
 ```javascript
 // In generate-stats.js
@@ -220,7 +220,7 @@ const { parseMultipleGames } = require('./utils/pgn-parser');
 // Parse and normalize PGN
 const parsedGames = parseMultipleGames(pgnData);
 
-// Extract normalized PGN for each game
+// Extract normalized PGN for each game (uses chess.pgn() internally)
 const normalizedPgn = parsedGames.valid.map(g => g.pgn).join('\n\n');
 
 // Pass to Python analyzer if --analyze flag present
@@ -237,10 +237,10 @@ if (process.argv.includes('--analyze')) {
 ```
 
 **Why this works:**
-- Our PGN parser already handles all formatting issues
-- PGN is normalized with required headers and blank lines
-- 100% success rate (20/20 games parsed)
-- Python analyzer gets clean, valid PGN
+- Our PGN parser uses `chess.pgn()` to generate properly formatted PGN
+- Includes required blank line between headers and moves
+- 100% success rate (20/20 games parsed and analyzed)
+- Python-chess accepts the normalized output without errors
 
 ### Other Notes
 
@@ -249,8 +249,7 @@ if (process.argv.includes('--analyze')) {
 - Stockfish binary must be installed separately
 - Python dependencies: `pip install python-chess stockfish`
 - Analysis takes ~7 minutes for 20 games at depth 15
-- **Tested**: Works correctly with properly formatted PGN
-- **Known issue**: Raw API PGN has formatting errors (5/20 games parsed successfully)
+- **Tested**: Successfully analyzed all 20 Round 1 games with depth 12, sample 3
 
 ## Resources
 

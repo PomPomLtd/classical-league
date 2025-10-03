@@ -45,6 +45,9 @@ function parseSingleGame(pgnString, gameIndex = 0) {
     // Generate FEN positions for each move (for Stockfish analysis)
     const positions = generatePositions(pgnString);
 
+    // Generate normalized PGN from chess.js (includes proper formatting with blank line)
+    const normalizedPGN = chess.pgn();
+
     return {
       // Metadata
       headers,
@@ -69,8 +72,8 @@ function parseSingleGame(pgnString, gameIndex = 0) {
       // Position data for analysis
       positions,
 
-      // Raw PGN for reference
-      pgn: pgnString
+      // Normalized PGN for reference (properly formatted for python-chess)
+      pgn: normalizedPGN
     };
 
   } catch (error) {
