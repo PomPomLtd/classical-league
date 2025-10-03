@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-02T15:00:26.470Z",
+  "generatedAt": "2025-10-03T07:16:51.970Z",
   "overview": {
-    "totalGames": 19,
-    "totalMoves": 1574,
-    "averageGameLength": 41.421052631578945,
+    "totalGames": 20,
+    "totalMoves": 1667,
+    "averageGameLength": 41.675,
     "longestGame": {
       "moves": 70,
       "white": "Mario «ChessDude» M.",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.763157894736842,
-    "averageMiddlegame": 17.026315789473685,
-    "averageEndgame": 15.631578947368421,
+    "averageOpening": 8.575,
+    "averageMiddlegame": 17.325,
+    "averageEndgame": 15.775,
     "longestOpening": {
       "moves": 10,
       "white": "Adela «Adele» P.",
@@ -43,29 +43,34 @@
     }
   },
   "results": {
-    "whiteWins": 10,
+    "whiteWins": 11,
     "blackWins": 8,
     "draws": 1,
-    "whiteWinPercentage": 52.63157894736842,
-    "blackWinPercentage": 42.10526315789473,
-    "drawPercentage": 5.263157894736842
+    "whiteWinPercentage": 55.00000000000001,
+    "blackWinPercentage": 40,
+    "drawPercentage": 5
   },
   "openings": {
     "firstMoves": {
       "e4": {
         "count": 9,
-        "percentage": 47.368421052631575,
+        "percentage": 45,
         "winRate": 44.44444444444444
       },
       "c4": {
         "count": 2,
-        "percentage": 10.526315789473683,
+        "percentage": 10,
         "winRate": 50
       },
       "d4": {
         "count": 8,
-        "percentage": 42.10526315789473,
+        "percentage": 40,
         "winRate": 62.5
+      },
+      "f4": {
+        "count": 1,
+        "percentage": 5,
+        "winRate": 100
       }
     },
     "popularSequences": [
@@ -102,21 +107,21 @@
         "count": 1
       },
       {
-        "moves": "d4 Nf6 Nc3 g6 Nf3 Bg7",
+        "moves": "f4 d6 Nf3 Nf6 d3 g6",
         "count": 1
       },
       {
-        "moves": "d4 d5 c4 c6 Nc3 Nf6",
+        "moves": "d4 Nf6 Nc3 g6 Nf3 Bg7",
         "count": 1
       }
     ]
   },
   "tactics": {
-    "totalCaptures": 354,
+    "totalCaptures": 379,
     "enPassantGames": [],
     "promotions": 2,
     "castling": {
-      "kingside": 29,
+      "kingside": 31,
       "queenside": 4
     },
     "bloodiestGame": {
@@ -127,7 +132,7 @@
     },
     "quietestGame": {
       "captures": 4,
-      "gameIndex": 15,
+      "gameIndex": 16,
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G."
     },
@@ -140,25 +145,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 389,
-      "knights": 263,
-      "bishops": 216,
-      "rooks": 276,
-      "queens": 212,
-      "kings": 218
+      "pawns": 418,
+      "knights": 280,
+      "bishops": 232,
+      "rooks": 282,
+      "queens": 221,
+      "kings": 234
     },
     "captured": {
-      "pawns": 170,
-      "knights": 58,
-      "bishops": 58,
-      "rooks": 46,
-      "queens": 22
+      "pawns": 182,
+      "knights": 62,
+      "bishops": 61,
+      "rooks": 50,
+      "queens": 24
     },
     "survivalRate": {
-      "rooks": 0.39473684210526316,
-      "queens": 0.47368421052631576,
-      "bishops": 0.23684210526315788,
-      "knights": 0.23684210526315788
+      "rooks": 0.375,
+      "queens": 0.45,
+      "bishops": 0.2375,
+      "knights": 0.225
     }
   },
   "checkmates": {
@@ -186,8 +191,8 @@
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 76,
-      "description": "d4 was visited 76 times"
+      "visits": 77,
+      "description": "d4 was visited 77 times"
     },
     "leastPopularSquare": {
       "square": "a1",
@@ -206,7 +211,7 @@
       },
       {
         "square": "e5",
-        "captures": 22
+        "captures": 28
       },
       {
         "square": "g5",
@@ -220,7 +225,7 @@
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 76
+        "visits": 77
       },
       {
         "square": "d5",
@@ -228,15 +233,15 @@
       },
       {
         "square": "e5",
-        "visits": 57
+        "visits": 67
       },
       {
-        "square": "c5",
-        "visits": 44
+        "square": "f6",
+        "visits": 48
       },
       {
-        "square": "f3",
-        "visits": 44
+        "square": "c3",
+        "visits": 46
       }
     ]
   },
@@ -263,8 +268,8 @@
       "endgameMoves": 52
     },
     "openingSprinter": {
-      "white": "Jonathan «EnCroissant1997» D.",
-      "black": "Gaston «SleepingDawg» F.",
+      "white": "Max «Bird is the word» W.",
+      "black": "Oliver «Mouse Slip Expert» S.",
       "openingMoves": 5
     }
   },
@@ -277,27 +282,27 @@
     },
     "slowestQueenTrade": {
       "moves": 45,
-      "gameIndex": 11,
+      "gameIndex": 12,
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
     },
     "longestCaptureSequence": {
       "length": 7,
-      "gameIndex": 12,
+      "gameIndex": 8,
       "startMove": 19,
-      "white": "Jonathan «EnCroissant1997» D.",
-      "black": "Gaston «SleepingDawg» F."
+      "white": "Max «Bird is the word» W.",
+      "black": "Oliver «Mouse Slip Expert» S."
     },
     "longestCheckSequence": {
       "length": 10,
-      "gameIndex": 11,
+      "gameIndex": 12,
       "startMove": 31,
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
     },
     "pawnStorm": {
       "count": 13,
-      "gameIndex": 14,
+      "gameIndex": 15,
       "white": "Janic «Clasher» S.",
       "black": "Boris «Out of Nowhere» G."
     },
