@@ -11,6 +11,8 @@ interface OpeningsSectionProps {
     popularSequences: Array<{
       moves: string
       count: number
+      eco: string | null
+      name: string | null
     }>
   }
 }
@@ -27,7 +29,7 @@ export function OpeningsSection({ openings }: OpeningsSectionProps) {
 
         {/* Detailed Stats */}
         <div>
-          <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Details</h4>
+          <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">First Move Statistics</h4>
           <div className="space-y-3">
             {Object.entries(openings.firstMoves)
               .sort((a, b) => b[1].count - a[1].count)
@@ -44,6 +46,35 @@ export function OpeningsSection({ openings }: OpeningsSectionProps) {
               ))}
           </div>
         </div>
+
+        {/* Popular Opening Sequences */}
+        {openings.popularSequences.length > 0 && (
+          <div>
+            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Opening Variations</h4>
+            <div className="space-y-3">
+              {openings.popularSequences.map((seq, idx) => (
+                <div key={idx} className="border-l-2 border-indigo-500 dark:border-indigo-400 pl-3 py-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1">
+                      {seq.name && (
+                        <div className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          {seq.eco && <span className="text-indigo-600 dark:text-indigo-400 mr-2">{seq.eco}</span>}
+                          {seq.name}
+                        </div>
+                      )}
+                      <div className="font-mono text-xs text-gray-600 dark:text-gray-400">
+                        {seq.moves}
+                      </div>
+                    </div>
+                    <div className="text-xs font-semibold text-gray-500 dark:text-gray-500">
+                      {seq.count} {seq.count === 1 ? 'game' : 'games'}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </StatCard>
   )

@@ -46,6 +46,29 @@ interface FunStatsProps {
       squares: number
       gameIndex: number
       piece: string
+      color: string
+      startSquare: string
+      white: string
+      black: string
+    } | null
+    castlingRace: {
+      moves: number
+      gameIndex: number
+      winner: string
+      white: string
+      black: string
+    } | null
+    mirrorOpening: {
+      gameIndex: number
+      opening: string
+      moves: number
+      white: string
+      black: string
+    } | null
+    dadbodShuffler: {
+      moves: number
+      gameIndex: number
+      color: string
       white: string
       black: string
     } | null
@@ -137,7 +160,7 @@ export function FunStats({ funStats }: FunStatsProps) {
               {funStats.squareTourist.white} vs {funStats.squareTourist.black}
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-              {funStats.squareTourist.color}'s {funStats.squareTourist.startSquare} {funStats.squareTourist.piece} visited {funStats.squareTourist.squares} different squares
+              {funStats.squareTourist.color}&apos;s {funStats.squareTourist.startSquare} {funStats.squareTourist.piece} visited {funStats.squareTourist.squares} different squares
             </div>
           </div>
         )}

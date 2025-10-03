@@ -76,6 +76,8 @@ interface StatsData {
     popularSequences: Array<{
       moves: string
       count: number
+      eco: string | null
+      name: string | null
     }>
   }
   tactics: {

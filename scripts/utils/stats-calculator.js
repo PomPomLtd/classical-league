@@ -9,6 +9,7 @@
  */
 
 const { analyzeGamePhases, getPhaseStatistics } = require('./game-phases');
+const { getOpeningName } = require('./chess-openings');
 
 /**
  * Calculate comprehensive statistics from parsed games
@@ -172,11 +173,19 @@ function calculateOpenings(games) {
     };
   });
 
-  // Get popular sequences
+  // Get popular sequences with opening names
   const popularSequences = Object.entries(openingSequences)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
-    .map(([moves, count]) => ({ moves, count }));
+    .map(([moves, count]) => {
+      const opening = getOpeningName(moves);
+      return {
+        moves,
+        count,
+        eco: opening?.eco || null,
+        name: opening?.name || null
+      };
+    });
 
   return {
     firstMoves: formattedFirstMoves,

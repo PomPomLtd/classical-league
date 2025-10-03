@@ -26,6 +26,7 @@ export function WinRateChart({ results }: WinRateChartProps) {
     'Draws': '#6b7280'  // Medium gray for draws
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percentage, name }: any) => {
     const RADIAN = Math.PI / 180
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5
@@ -82,6 +83,7 @@ export function WinRateChart({ results }: WinRateChartProps) {
             itemStyle={{
               color: '#ffffff'
             }}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter={(value: number, name: string, props: any) => [
               `${value} games (${props.payload.percentage.toFixed(1)}%)`,
               name
@@ -90,7 +92,7 @@ export function WinRateChart({ results }: WinRateChartProps) {
           <Legend
             verticalAlign="bottom"
             height={36}
-            formatter={(value, entry: any) => {
+            formatter={(value) => {
               const item = data.find(d => d.name === value)
               return `${value}: ${item?.value} (${item?.percentage.toFixed(1)}%)`
             }}
