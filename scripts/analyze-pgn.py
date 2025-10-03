@@ -134,10 +134,12 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
         eval_before = stockfish.get_evaluation()
 
         # Convert to centipawns from white's perspective
+        # Use more granular mate scoring: mate-in-N = 10000 - (N * 10)
         if eval_before['type'] == 'cp':
             cp_before = eval_before['value']
         elif eval_before['type'] == 'mate':
-            cp_before = 10000 if eval_before['value'] > 0 else -10000
+            mate_in = eval_before['value']
+            cp_before = (10000 - abs(mate_in) * 10) * (1 if mate_in > 0 else -1)
         else:
             cp_before = 0
 
@@ -152,7 +154,8 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
         if eval_after['type'] == 'cp':
             cp_after = eval_after['value']
         elif eval_after['type'] == 'mate':
-            cp_after = 10000 if eval_after['value'] > 0 else -10000
+            mate_in = eval_after['value']
+            cp_after = (10000 - abs(mate_in) * 10) * (1 if mate_in > 0 else -1)
         else:
             cp_after = 0
 
@@ -161,9 +164,11 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
         win_after = cp_to_win_percentage(cp_after)
 
         if is_white_move:
-            # Calculate actual centipawn loss
-            cp_loss = max(0, cp_before - cp_after)
-            white_cp_losses.append(cp_loss)
+            # Calculate actual centipawn loss (only if both evals are non-mate)
+            # Skip ACPL calculation when mate scores involved (unreliable centipawn comparison)
+            if eval_before['type'] == 'cp' and eval_after['type'] == 'cp':
+                cp_loss = max(0, cp_before - cp_after)
+                white_cp_losses.append(cp_loss)
 
             # Classify move and track win% loss
             quality, win_loss = classify_move_by_win_percentage(win_before, win_after, True)
@@ -183,8 +188,10 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
                 }
         else:
             # Calculate actual centipawn loss (from black's perspective)
-            cp_loss = max(0, cp_after - cp_before)  # Black wants negative eval
-            black_cp_losses.append(cp_loss)
+            # Skip ACPL calculation when mate scores involved (unreliable centipawn comparison)
+            if eval_before['type'] == 'cp' and eval_after['type'] == 'cp':
+                cp_loss = max(0, cp_after - cp_before)  # Black wants negative eval
+                black_cp_losses.append(cp_loss)
 
             # Classify move and track win% loss
             quality, win_loss = classify_move_by_win_percentage(win_before, win_after, False)
