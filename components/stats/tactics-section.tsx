@@ -31,6 +31,7 @@ interface TacticsSectionProps {
       white: string
       black: string
     }
+    totalUnderpromotions: number
   }
 }
 
@@ -46,6 +47,12 @@ export function TacticsSection({ tactics }: TacticsSectionProps) {
           <span className="text-gray-600 dark:text-gray-400">Promotions</span>
           <span className="font-semibold text-gray-900 dark:text-white">{tactics.promotions}</span>
         </div>
+        {tactics.totalUnderpromotions > 0 && (
+          <div className="flex justify-between items-center">
+            <span className="text-gray-600 dark:text-gray-400">Underpromotions</span>
+            <span className="font-semibold text-gray-900 dark:text-white">{tactics.totalUnderpromotions}</span>
+          </div>
+        )}
         <div className="flex justify-between items-center">
           <span className="text-gray-600 dark:text-gray-400">Kingside Castling</span>
           <span className="font-semibold text-gray-900 dark:text-white">{tactics.castling.kingside}</span>

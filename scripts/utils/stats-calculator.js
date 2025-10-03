@@ -209,43 +209,51 @@ function calculateTactics(games) {
   let totalPromotions = 0;
   let totalCastlingKingside = 0;
   let totalCastlingQueenside = 0;
+  let totalUnderpromotions = 0;
 
   const enPassantGames = [];
+  const underpromotions = [];
+
   let bloodiestGame = { captures: 0, gameIndex: 0 };
   let quietestGame = { captures: Infinity, gameIndex: 0 };
   let longestNonCaptureStreak = { moves: 0, gameIndex: 0 };
 
   games.forEach((game, idx) => {
     const sm = game.specialMoves;
+    const white = game.headers.White || 'Unknown';
+    const black = game.headers.Black || 'Unknown';
+
     totalCaptures += sm.totalCaptures;
     totalPromotions += sm.totalPromotions;
     totalCastlingKingside += sm.totalCastlingKingside;
     totalCastlingQueenside += sm.totalCastlingQueenside;
 
     if (sm.totalEnPassant > 0) {
-      enPassantGames.push({
-        white: game.headers.White || 'Unknown',
-        black: game.headers.Black || 'Unknown',
-        count: sm.totalEnPassant
-      });
+      enPassantGames.push({ white, black, count: sm.totalEnPassant });
     }
 
+    // Track underpromotions
+    game.moveList.forEach((move, moveIdx) => {
+      if (move.promotion && move.promotion !== 'q') {
+        totalUnderpromotions++;
+        underpromotions.push({
+          gameIndex: idx,
+          moveNumber: Math.floor(moveIdx / 2) + 1,
+          promotedTo: move.promotion,
+          color: move.color,
+          san: move.san,
+          white,
+          black
+        });
+      }
+    });
+
     if (sm.totalCaptures > bloodiestGame.captures) {
-      bloodiestGame = {
-        captures: sm.totalCaptures,
-        gameIndex: idx,
-        white: game.headers.White || 'Unknown',
-        black: game.headers.Black || 'Unknown'
-      };
+      bloodiestGame = { captures: sm.totalCaptures, gameIndex: idx, white, black };
     }
 
     if (sm.totalCaptures < quietestGame.captures) {
-      quietestGame = {
-        captures: sm.totalCaptures,
-        gameIndex: idx,
-        white: game.headers.White || 'Unknown',
-        black: game.headers.Black || 'Unknown'
-      };
+      quietestGame = { captures: sm.totalCaptures, gameIndex: idx, white, black };
     }
 
     // Find longest non-capture streak
@@ -261,12 +269,7 @@ function calculateTactics(games) {
     });
 
     if (maxStreak > longestNonCaptureStreak.moves) {
-      longestNonCaptureStreak = {
-        moves: maxStreak,
-        gameIndex: idx,
-        white: game.headers.White || 'Unknown',
-        black: game.headers.Black || 'Unknown'
-      };
+      longestNonCaptureStreak = { moves: maxStreak, gameIndex: idx, white, black };
     }
   });
 
@@ -280,7 +283,9 @@ function calculateTactics(games) {
     },
     bloodiestGame,
     quietestGame,
-    longestNonCaptureStreak
+    longestNonCaptureStreak,
+    totalUnderpromotions,
+    underpromotions
   };
 }
 

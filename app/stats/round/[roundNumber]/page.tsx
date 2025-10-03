@@ -110,6 +110,16 @@ interface StatsData {
       white: string
       black: string
     }
+    totalUnderpromotions: number
+    underpromotions: Array<{
+      gameIndex: number
+      moveNumber: number
+      promotedTo: string
+      color: string
+      san: string
+      white: string
+      black: string
+    }>
   }
   pieces: {
     activity: {

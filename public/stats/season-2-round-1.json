@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-03T08:13:43.175Z",
+  "generatedAt": "2025-10-03T08:50:08.895Z",
   "overview": {
     "totalGames": 20,
     "totalMoves": 1667,
@@ -221,7 +221,9 @@
       "gameIndex": 5,
       "white": "Anton «TheCatalan» B.",
       "black": "Oliver «Monkey sees Pawn» K."
-    }
+    },
+    "totalUnderpromotions": 0,
+    "underpromotions": []
   },
   "pieces": {
     "activity": {
