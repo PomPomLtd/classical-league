@@ -25,7 +25,13 @@
       "Bash(node:*)",
       "Bash(neon sql-editor:*)",
       "Read(//tmp/**)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(pip3 install:*)",
+      "Bash(source:*)",
+      "Bash(python3:*)",
+      "Bash(tee:*)",
+      "Bash(venv/bin/python scripts/analyze-pgn.py:*)"
     ],
     "deny": [],
     "ask": []

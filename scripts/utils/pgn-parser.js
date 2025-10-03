@@ -19,54 +19,60 @@ const { Chess } = require('chess.js');
  */
 function parseSingleGame(pgnString, gameIndex = 0) {
   const chess = new Chess();
-  
+
   try {
     // Load the PGN into chess.js
     chess.loadPgn(pgnString);
-    
+
     // Extract headers
     const headers = extractHeaders(pgnString);
-    
+
     // Get move history with detailed information
     const history = chess.history({ verbose: true });
-    
+
     // Get final board state
     const board = chess.board();
-    
+
     // Count pieces remaining
     const piecesRemaining = countPieces(board);
-    
+
     // Analyze special moves
     const specialMoves = analyzeSpecialMoves(history);
-    
+
     // Determine result
     const result = headers.Result || determineResult(chess);
-    
+
+    // Generate FEN positions for each move (for Stockfish analysis)
+    const positions = generatePositions(pgnString);
+
     return {
       // Metadata
       headers,
       gameIndex,
-      
+
       // Move data
       moves: history.length,
       moveList: history,
-      
+
       // Game outcome
       result,
       isCheckmate: chess.isCheckmate(),
       isDraw: chess.isDraw(),
       isStalemate: chess.isStalemate(),
-      
+
       // Piece information
       piecesRemaining,
-      
+
       // Special moves
       specialMoves,
-      
+
+      // Position data for analysis
+      positions,
+
       // Raw PGN for reference
       pgn: pgnString
     };
-    
+
   } catch (error) {
     console.warn(`⚠️  Failed to parse game ${gameIndex + 1}: ${error.message}`);
     return null;
@@ -324,8 +330,42 @@ function parseMultipleGames(pgnData) {
 }
 
 /**
+ * Generate FEN positions for each move in a game
+ * Used for Stockfish analysis
+ *
+ * @param {string} pgnString - The PGN notation
+ * @returns {Array<string>} Array of FEN positions (one per move)
+ */
+function generatePositions(pgnString) {
+  const chess = new Chess();
+  const positions = [];
+
+  try {
+    chess.loadPgn(pgnString);
+    chess.reset(); // Start from initial position
+
+    // Get starting position
+    positions.push(chess.fen());
+
+    // Get moves and replay to generate FEN for each position
+    const moves = chess.history({ verbose: true });
+    chess.reset(); // Reset again to replay
+
+    moves.forEach(move => {
+      chess.move(move.san);
+      positions.push(chess.fen());
+    });
+
+    return positions;
+  } catch (error) {
+    console.warn(`Failed to generate positions: ${error.message}`);
+    return [];
+  }
+}
+
+/**
  * Get player names from PGN headers
- * 
+ *
  * @param {Object} headers - PGN headers
  * @returns {Object} Player information
  */
