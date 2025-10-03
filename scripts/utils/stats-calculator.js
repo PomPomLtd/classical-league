@@ -173,10 +173,8 @@ function calculateOpenings(games) {
     };
   });
 
-  // Get popular sequences with opening names
+  // Get popular sequences with opening names, sorted by popularity then ECO code
   const popularSequences = Object.entries(openingSequences)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10)
     .map(([moves, count]) => {
       const opening = getOpeningName(moves);
       return {
@@ -185,6 +183,16 @@ function calculateOpenings(games) {
         eco: opening?.eco || null,
         name: opening?.name || null
       };
+    })
+    .sort((a, b) => {
+      // First sort by count (popularity, descending)
+      if (a.count !== b.count) return b.count - a.count;
+
+      // Then sort by ECO code alphabetically (nulls last)
+      if (a.eco && b.eco) return a.eco.localeCompare(b.eco);
+      if (a.eco) return -1;
+      if (b.eco) return 1;
+      return 0;
     });
 
   return {
@@ -491,8 +499,9 @@ function calculateFunStats(games) {
   let pieceLoyalty = { moves: 0, gameIndex: null, piece: null, square: null };
   let squareTourist = { squares: 0, gameIndex: null, piece: null };
   let castlingRace = { moves: Infinity, gameIndex: null, winner: null };
-  let mirrorOpening = { gameIndex: null, opening: null, moves: 0 };
+  let openingHipster = { gameIndex: null, eco: null, name: null, moves: null, obscurityScore: 0 };
   let dadbodShuffler = { moves: 0, gameIndex: null, color: null };
+  let sportyQueen = { distance: 0, gameIndex: null, color: null };
 
   games.forEach((game, idx) => {
     // Track queen trades
@@ -529,6 +538,19 @@ function calculateFunStats(games) {
     // Track king moves for dadbod shuffler
     let whiteKingMoves = 0;
     let blackKingMoves = 0;
+
+    // Track queen travel distance (Manhattan distance on board)
+    let whiteQueenDistance = 0;
+    let blackQueenDistance = 0;
+
+    // Helper function to calculate Manhattan distance between two squares
+    const calculateDistance = (from, to) => {
+      const fromFile = from.charCodeAt(0) - 'a'.charCodeAt(0);
+      const fromRank = parseInt(from[1]) - 1;
+      const toFile = to.charCodeAt(0) - 'a'.charCodeAt(0);
+      const toRank = parseInt(to[1]) - 1;
+      return Math.abs(toFile - fromFile) + Math.abs(toRank - fromRank);
+    };
 
     game.moveList.forEach((move, moveIdx) => {
       // Queen trade detection
@@ -614,6 +636,16 @@ function calculateFunStats(games) {
           whiteKingMoves++;
         } else {
           blackKingMoves++;
+        }
+      }
+
+      // Track queen movement distance for sporty queen
+      if (move.piece === 'q') {
+        const distance = calculateDistance(move.from, move.to);
+        if (move.color === 'w') {
+          whiteQueenDistance += distance;
+        } else {
+          blackQueenDistance += distance;
         }
       }
 
@@ -765,18 +797,41 @@ function calculateFunStats(games) {
       };
     }
 
-    // Check for mirror opening (both players play same first move)
-    if (game.moveList.length >= 2) {
-      const firstWhiteMove = game.moveList[0].san;
-      const firstBlackMove = game.moveList[1].san;
-      if (firstWhiteMove === firstBlackMove && mirrorOpening.gameIndex === null) {
-        mirrorOpening = {
-          gameIndex: idx,
-          opening: firstWhiteMove,
-          moves: 2,
-          white: game.headers.White || 'Unknown',
-          black: game.headers.Black || 'Unknown'
-        };
+    // Update sporty queen (queen that traveled the most distance)
+    const maxQueenDistance = Math.max(whiteQueenDistance, blackQueenDistance);
+    if (maxQueenDistance > sportyQueen.distance) {
+      sportyQueen = {
+        distance: maxQueenDistance,
+        gameIndex: idx,
+        color: whiteQueenDistance > blackQueenDistance ? 'White' : 'Black',
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Check for opening hipster award (most obscure opening)
+    // Get opening for this game (first 6 moves)
+    if (game.moveList.length >= 6) {
+      const sequence = game.moveList.slice(0, 6).map(m => m.san).join(' ');
+      const opening = getOpeningName(sequence);
+
+      if (opening && opening.name) {
+        // Calculate obscurity score: length of name + specificity (has colon = more specific)
+        const hasColon = opening.name.includes(':');
+        const nameLength = opening.name.length;
+        const obscurityScore = nameLength + (hasColon ? 20 : 0);
+
+        if (obscurityScore > openingHipster.obscurityScore) {
+          openingHipster = {
+            gameIndex: idx,
+            eco: opening.eco,
+            name: opening.name,
+            moves: sequence,
+            obscurityScore,
+            white: game.headers.White || 'Unknown',
+            black: game.headers.Black || 'Unknown'
+          };
+        }
       }
     }
   });
@@ -790,8 +845,9 @@ function calculateFunStats(games) {
     pieceLoyalty: pieceLoyalty.moves >= 30 ? pieceLoyalty : null, // Only show if 30+ moves (15 full moves)
     squareTourist: squareTourist.squares > 0 ? squareTourist : null,
     castlingRace: castlingRace.moves !== Infinity ? castlingRace : null,
-    mirrorOpening: mirrorOpening.gameIndex !== null ? mirrorOpening : null,
-    dadbodShuffler: dadbodShuffler.moves > 0 ? dadbodShuffler : null
+    openingHipster: openingHipster.gameIndex !== null ? openingHipster : null,
+    dadbodShuffler: dadbodShuffler.moves > 0 ? dadbodShuffler : null,
+    sportyQueen: sportyQueen.distance > 0 ? sportyQueen : null
   };
 }
 

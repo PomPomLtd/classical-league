@@ -255,15 +255,23 @@ interface StatsData {
       white: string
       black: string
     } | null
-    mirrorOpening: {
+    openingHipster: {
       gameIndex: number
-      opening: string
-      moves: number
+      eco: string
+      name: string
+      moves: string
       white: string
       black: string
     } | null
     dadbodShuffler: {
       moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    sportyQueen: {
+      distance: number
       gameIndex: number
       color: string
       white: string
@@ -349,12 +357,14 @@ export default function RoundStatsPage() {
 
           <AwardsSection awards={stats.awards} />
 
-          <GamePhases gamePhases={stats.gamePhases} />
+          <FunStats funStats={stats.funStats} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <GamePhases gamePhases={stats.gamePhases} />
             <TacticsSection tactics={stats.tactics} />
-            <OpeningsSection openings={stats.openings} />
           </div>
+
+          <OpeningsSection openings={stats.openings} />
 
           <PieceStats pieces={stats.pieces} />
 
@@ -362,8 +372,6 @@ export default function RoundStatsPage() {
             overview={stats.overview}
             longestNonCaptureStreak={stats.tactics.longestNonCaptureStreak}
           />
-
-          <FunStats funStats={stats.funStats} />
 
           <CheckmatesSection checkmates={stats.checkmates} />
 

@@ -58,15 +58,23 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
-    mirrorOpening: {
+    openingHipster: {
       gameIndex: number
-      opening: string
-      moves: number
+      eco: string
+      name: string
+      moves: string
       white: string
       black: string
     } | null
     dadbodShuffler: {
       moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    sportyQueen: {
+      distance: number
       gameIndex: number
       color: string
       white: string
@@ -177,14 +185,14 @@ export function FunStats({ funStats }: FunStatsProps) {
           </div>
         )}
 
-        {funStats.mirrorOpening && (
+        {funStats.openingHipster && (
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">🪞 Mirror Opening</div>
+            <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">🎩 Opening Hipster</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
-              {funStats.mirrorOpening.white} vs {funStats.mirrorOpening.black}
+              {funStats.openingHipster.white} vs {funStats.openingHipster.black}
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-              Both played {funStats.mirrorOpening.opening} as their first move
+              Most obscure opening: {funStats.openingHipster.eco} {funStats.openingHipster.name}
             </div>
           </div>
         )}
@@ -197,6 +205,18 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               {funStats.dadbodShuffler.color} king moved {funStats.dadbodShuffler.moves} times
+            </div>
+          </div>
+        )}
+
+        {funStats.sportyQueen && (
+          <div className="p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
+            <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">👸 Sporty Queen</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.sportyQueen.white} vs {funStats.sportyQueen.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.sportyQueen.color} queen traveled {funStats.sportyQueen.distance} squares
             </div>
           </div>
         )}

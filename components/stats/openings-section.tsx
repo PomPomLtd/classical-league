@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import { StatCard } from './stat-card'
 import { OpeningPopularityChart } from './opening-popularity-chart'
 
@@ -18,6 +21,34 @@ interface OpeningsSectionProps {
 }
 
 export function OpeningsSection({ openings }: OpeningsSectionProps) {
+  const [showAll, setShowAll] = useState(false)
+  const displayedSequences = showAll ? openings.popularSequences : openings.popularSequences.slice(0, 5)
+
+  // Format move sequence with move numbers (e.g., "e4 c5 Nf3" -> "1.e4 c5 2.Nf3")
+  const formatMoves = (moves: string) => {
+    const moveArray = moves.split(' ')
+    let formatted = ''
+    let moveNumber = 1
+
+    for (let i = 0; i < moveArray.length; i++) {
+      if (i % 2 === 0) {
+        // White's move
+        formatted += `${moveNumber}.${moveArray[i]}`
+      } else {
+        // Black's move
+        formatted += ` ${moveArray[i]}`
+        moveNumber++
+      }
+
+      // Add space between move pairs, but not at the end
+      if (i < moveArray.length - 1 && i % 2 === 1) {
+        formatted += ' '
+      }
+    }
+
+    return formatted
+  }
+
   return (
     <StatCard title="♟️ Opening Moves">
       <div className="space-y-6">
@@ -50,9 +81,19 @@ export function OpeningsSection({ openings }: OpeningsSectionProps) {
         {/* Popular Opening Sequences */}
         {openings.popularSequences.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Opening Variations</h4>
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Opening Variations</h4>
+              {openings.popularSequences.length > 5 && (
+                <button
+                  onClick={() => setShowAll(!showAll)}
+                  className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
+                >
+                  {showAll ? 'Show Less' : `Show All (${openings.popularSequences.length})`}
+                </button>
+              )}
+            </div>
             <div className="space-y-3">
-              {openings.popularSequences.map((seq, idx) => (
+              {displayedSequences.map((seq, idx) => (
                 <div key={idx} className="border-l-2 border-indigo-500 dark:border-indigo-400 pl-3 py-1">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
@@ -63,7 +104,7 @@ export function OpeningsSection({ openings }: OpeningsSectionProps) {
                         </div>
                       )}
                       <div className="font-mono text-xs text-gray-600 dark:text-gray-400">
-                        {seq.moves}
+                        {formatMoves(seq.moves)}
                       </div>
                     </div>
                     <div className="text-xs font-semibold text-gray-500 dark:text-gray-500">
