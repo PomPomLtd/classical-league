@@ -116,8 +116,13 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
     biggest_blunder = None
 
     for move_num, move in enumerate(moves):
-        # Sample every Nth move to save time
-        if move_num % sample_rate != 0:
+        is_white_move = move_num % 2 == 0
+
+        # Sample every Nth move FOR EACH PLAYER to save time
+        # White moves: 0, 2, 4, 6... -> sample 0, 4, 8...
+        # Black moves: 1, 3, 5, 7... -> sample 1, 5, 9...
+        move_index_for_player = move_num // 2
+        if move_index_for_player % sample_rate != 0:
             board.push(move)
             continue
 
@@ -154,8 +159,6 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
         # Convert centipawns to win percentages
         win_before = cp_to_win_percentage(cp_before)
         win_after = cp_to_win_percentage(cp_after)
-
-        is_white_move = move_num % 2 == 0
 
         if is_white_move:
             # Calculate actual centipawn loss
