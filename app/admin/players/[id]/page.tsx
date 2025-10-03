@@ -3,6 +3,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { playerRegistrationSchema, type PlayerRegistrationData } from '@/lib/validations'
 
 interface Player {
   id: string
@@ -24,8 +27,20 @@ export default function AdminPlayerDetailPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [actionLoading, setActionLoading] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [editLoading, setEditLoading] = useState(false)
 
   const playerId = params.id as string
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+    reset,
+    setValue
+  } = useForm<PlayerRegistrationData>({
+    resolver: zodResolver(playerRegistrationSchema)
+  })
 
   const fetchPlayer = useCallback(async () => {
     try {
@@ -95,6 +110,57 @@ export default function AdminPlayerDetailPage() {
     } finally {
       setActionLoading(false)
     }
+  }
+
+  const handleEditClick = () => {
+    if (!player) return
+    
+    // Pre-populate form with current player data
+    setValue('fullName', player.fullName)
+    setValue('email', player.email)
+    setValue('phoneNumber', player.phoneNumber)
+    setValue('nickname', player.nickname)
+    setValue('lichessRating', (player.lichessRating || 1500).toString())
+    setValue('rulesAccepted', true) // Always true for existing players
+    
+    setIsEditModalOpen(true)
+  }
+
+  const handleEditSubmit = async (data: PlayerRegistrationData) => {
+    if (!player) return
+    
+    setEditLoading(true)
+    try {
+      const response = await fetch(`/api/admin/players/${player.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...data,
+          lichessRating: parseInt(data.lichessRating)
+        })
+      })
+      
+      if (response.ok) {
+        await fetchPlayer() // Reload player data
+        setIsEditModalOpen(false)
+        reset()
+      } else {
+        const errorData = await response.json()
+        alert(errorData.error || 'Failed to update player')
+      }
+    } catch (error) {
+      console.error('Error updating player:', error)
+      alert('Failed to update player')
+    } finally {
+      setEditLoading(false)
+    }
+  }
+
+  const handleDiscardEdit = () => {
+    setIsEditModalOpen(false)
+    reset()
   }
 
   if (loading) {
@@ -173,7 +239,18 @@ export default function AdminPlayerDetailPage() {
       {/* Player Details */}
       <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Player Information</h2>
+          <div className="flex items-center space-x-2">
+            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Player Information</h2>
+            <button
+              onClick={handleEditClick}
+              title="Edit"
+              className="p-2 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div className="px-6 py-4 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -322,6 +399,137 @@ export default function AdminPlayerDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      {isEditModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Edit Player Information
+              </h3>
+            </div>
+            
+            <form onSubmit={handleSubmit(handleEditSubmit)} className="px-6 py-4 space-y-6">
+              {/* Full Name */}
+              <div>
+                <label htmlFor="edit-fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  {...register('fullName')}
+                  type="text"
+                  id="edit-fullName"
+                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+                  placeholder="Full name"
+                />
+                {formErrors.fullName && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {formErrors.fullName.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label htmlFor="edit-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  {...register('email')}
+                  type="email"
+                  id="edit-email"
+                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+                  placeholder="email@example.com"
+                />
+                {formErrors.email && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {formErrors.email.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label htmlFor="edit-phoneNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Phone Number (with Country Code) *
+                </label>
+                <input
+                  {...register('phoneNumber')}
+                  type="tel"
+                  id="edit-phoneNumber"
+                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+                  placeholder="+41 79 123 4567"
+                />
+                {formErrors.phoneNumber && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {formErrors.phoneNumber.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Nickname */}
+              <div>
+                <label htmlFor="edit-nickname" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Chess Player Name *
+                </label>
+                <input
+                  {...register('nickname')}
+                  type="text"
+                  id="edit-nickname"
+                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+                  placeholder="Chess nickname"
+                />
+                {formErrors.nickname && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {formErrors.nickname.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Lichess Classical Rating */}
+              <div>
+                <label htmlFor="edit-lichessRating" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Lichess Classical Rating *
+                </label>
+                <input
+                  {...register('lichessRating')}
+                  type="number"
+                  id="edit-lichessRating"
+                  min="100"
+                  max="3000"
+                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm px-3 py-2"
+                  placeholder="1500"
+                />
+                {formErrors.lichessRating && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {formErrors.lichessRating.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Modal Actions */}
+              <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <button
+                  type="button"
+                  onClick={handleDiscardEdit}
+                  disabled={editLoading}
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  Discard
+                </button>
+                <button
+                  type="submit"
+                  disabled={editLoading}
+                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {editLoading ? 'Saving...' : 'Save'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
