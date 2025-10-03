@@ -32,7 +32,8 @@
       "Bash(python3:*)",
       "Bash(tee:*)",
       "Bash(venv/bin/python scripts/analyze-pgn.py:*)",
-      "Bash(venv/bin/python:*)"
+      "Bash(venv/bin/python:*)",
+      "Bash(gh pr:*)"
     ],
     "deny": [],
     "ask": []

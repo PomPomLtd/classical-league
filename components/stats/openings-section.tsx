@@ -58,20 +58,20 @@ export function OpeningsSection({ openings }: OpeningsSectionProps) {
           <OpeningPopularityChart openings={openings} />
         </div>
 
-        {/* Detailed Stats */}
+        {/* First Move Statistics - Compact Grid */}
         <div>
           <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">First Move Statistics</h4>
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {Object.entries(openings.firstMoves)
               .sort((a, b) => b[1].count - a[1].count)
               .map(([move, data]) => (
-                <div key={move} className="flex justify-between items-center">
-                  <span className="font-mono text-sm font-semibold text-gray-900 dark:text-white">{move}</span>
-                  <div className="text-right">
-                    <div className="text-sm font-semibold text-gray-900 dark:text-white">{data.count} games</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-500">
-                      {data.percentage.toFixed(0)}% • {data.winRate.toFixed(0)}% win rate
-                    </div>
+                <div key={move} className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <div className="flex justify-between items-start mb-1">
+                    <span className="font-mono text-sm font-semibold text-gray-900 dark:text-white">{move}</span>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white">{data.count}</span>
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                    {data.percentage.toFixed(0)}% popularity • {data.winRate.toFixed(0)}% win rate
                   </div>
                 </div>
               ))}
