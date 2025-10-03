@@ -106,7 +106,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
   const totalBlackMistakes = games.reduce((sum, g) => sum + g.blackMoveQuality.mistakes, 0)
 
   return (
-    <StatCard title="🔬 Stockfish Analysis">
+    <StatCard title="🔬 Stockfish Analysis (Experimental)">
       {/* Top Row: Accuracy King and Blunder of the Round */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {summary.accuracyKing && (
