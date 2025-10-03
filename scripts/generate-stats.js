@@ -105,9 +105,9 @@ function analyzeGames(parsedGames) {
     // Extract normalized PGN from parsed games
     const normalizedPgn = parsedGames.map(g => g.pgn).join('\n\n');
 
-    // Run Python analyzer (depth 15, sample every 2 moves)
+    // Run Python analyzer (depth 15, analyze all moves for maximum accuracy)
     const analysisOutput = execSync(
-      'venv/bin/python scripts/analyze-pgn.py --depth 15 --sample 2',
+      'venv/bin/python scripts/analyze-pgn.py --depth 15 --sample 1',
       {
         input: normalizedPgn,
         encoding: 'utf-8',

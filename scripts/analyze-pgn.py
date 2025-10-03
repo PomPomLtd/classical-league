@@ -11,7 +11,7 @@ Requirements:
 
 Usage:
     python analyze-pgn.py < games.pgn > analysis.json
-    python analyze-pgn.py --depth 15 --sample 3 < games.pgn > analysis.json
+    python analyze-pgn.py --depth 15 --sample 1 < games.pgn > analysis.json
 
 Output JSON format:
     {
@@ -99,7 +99,7 @@ def calculate_accuracy_from_win_percentage(win_losses):
 
     return max(0, min(100, accuracy))
 
-def analyze_game(game, stockfish, depth=15, sample_rate=2):
+def analyze_game(game, stockfish, depth=15, sample_rate=1):
     """Analyze a single game with Stockfish using Lichess-style win percentage."""
 
     board = game.board()
@@ -231,7 +231,7 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
 def main():
     parser = argparse.ArgumentParser(description='Analyze chess PGN with Stockfish')
     parser.add_argument('--depth', type=int, default=15, help='Stockfish search depth (default: 15)')
-    parser.add_argument('--sample', type=int, default=2, help='Analyze every Nth move (default: 2)')
+    parser.add_argument('--sample', type=int, default=1, help='Analyze every Nth move (default: 1 = all moves)')
     parser.add_argument('--stockfish-path', type=str, default='/opt/homebrew/bin/stockfish', help='Path to Stockfish binary')
     args = parser.parse_args()
 
