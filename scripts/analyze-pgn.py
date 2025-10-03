@@ -43,37 +43,77 @@ import chess
 import chess.pgn
 from stockfish import Stockfish
 
-def classify_move_quality(cp_loss):
-    """Classify move quality based on centipawn loss."""
-    if cp_loss < 20:
-        return 'excellent' if cp_loss == 0 else 'good'
-    elif cp_loss < 50:
-        return 'inaccuracies'  # Plural to match dict key
-    elif cp_loss < 100:
-        return 'mistakes'  # Plural to match dict key
-    else:
-        return 'blunders'  # Plural to match dict key
+def cp_to_win_percentage(cp):
+    """
+    Convert centipawn evaluation to win percentage.
+    Based on Lichess formula: https://lichess.org/page/accuracy
+    """
+    return 50 + 50 * (2 / (1 + pow(10, -abs(cp) / 400)) - 1) * (-1 if cp < 0 else 1)
 
-def calculate_accuracy(acpl):
-    """Calculate accuracy percentage from ACPL."""
-    return max(0, min(100, 100 - (acpl / 10)))
+def classify_move_by_win_percentage(win_before, win_after, is_white):
+    """
+    Classify move quality based on win percentage change.
+    Based on Lichess algorithm: https://github.com/lichess-org/lila/blob/master/modules/analyse/src/main/AccuracyPercent.scala
+
+    Returns: (quality, win_loss) where quality is 'excellent', 'good', 'inaccuracies', 'mistakes', or 'blunders'
+    """
+    # Calculate win percentage loss (from player's perspective)
+    if is_white:
+        win_loss = win_before - win_after
+    else:
+        # For black, we need to flip the percentages
+        win_loss = (100 - win_before) - (100 - win_after)
+
+    # Normalize to 0-100 range
+    win_loss = max(0, win_loss)
+
+    # Lichess classification thresholds (based on win% loss)
+    if win_loss < 2:
+        return 'excellent', win_loss
+    elif win_loss < 5:
+        return 'good', win_loss
+    elif win_loss < 10:
+        return 'inaccuracies', win_loss
+    elif win_loss < 20:
+        return 'mistakes', win_loss
+    else:
+        # Only count as blunder if the position actually swings significantly
+        # Don't count blunders when already completely winning/losing
+        if win_before > 10 and win_before < 90:  # Position wasn't already decided
+            return 'blunders', win_loss
+        else:
+            return 'mistakes', win_loss
+
+def calculate_accuracy_from_win_percentage(win_losses):
+    """
+    Calculate accuracy percentage from list of win percentage losses.
+    Based on Lichess formula.
+    """
+    if not win_losses:
+        return 100
+
+    # Lichess formula: 103.1668 * e^(-0.04354 * average_win_loss) - 3.1669
+    import math
+    avg_loss = sum(win_losses) / len(win_losses)
+    accuracy = 103.1668 * math.exp(-0.04354 * avg_loss) - 3.1669
+
+    return max(0, min(100, accuracy))
 
 def analyze_game(game, stockfish, depth=15, sample_rate=2):
-    """Analyze a single game with Stockfish."""
+    """Analyze a single game with Stockfish using Lichess-style win percentage."""
 
     board = game.board()
     moves = list(game.mainline_moves())
 
-    white_cpl_sum = 0
-    black_cpl_sum = 0
-    white_move_count = 0
-    black_move_count = 0
+    white_win_losses = []  # Track win% losses for accuracy calculation
+    black_win_losses = []
+    white_cp_losses = []  # Track actual centipawn losses for ACPL
+    black_cp_losses = []
 
     white_quality = {'blunders': 0, 'mistakes': 0, 'inaccuracies': 0, 'good': 0, 'excellent': 0}
     black_quality = {'blunders': 0, 'mistakes': 0, 'inaccuracies': 0, 'good': 0, 'excellent': 0}
 
     biggest_blunder = None
-    prev_eval = None
 
     for move_num, move in enumerate(moves):
         # Sample every Nth move to save time
@@ -111,55 +151,68 @@ def analyze_game(game, stockfish, depth=15, sample_rate=2):
         else:
             cp_after = 0
 
-        # Calculate centipawn loss
+        # Convert centipawns to win percentages
+        win_before = cp_to_win_percentage(cp_before)
+        win_after = cp_to_win_percentage(cp_after)
+
         is_white_move = move_num % 2 == 0
 
         if is_white_move:
-            # For white, loss is decrease from white's perspective
-            cp_loss = max(0, cp_before - (-cp_after))  # Flip after since it's black's turn
-            white_cpl_sum += cp_loss
-            white_move_count += 1
+            # Calculate actual centipawn loss
+            cp_loss = max(0, cp_before - cp_after)
+            white_cp_losses.append(cp_loss)
 
-            quality = classify_move_quality(cp_loss)
+            # Classify move and track win% loss
+            quality, win_loss = classify_move_by_win_percentage(win_before, win_after, True)
             white_quality[quality] += 1
+            white_win_losses.append(win_loss)
 
-            if quality == 'blunders' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
+            # Track biggest blunder
+            if quality == 'blunders' and (biggest_blunder is None or win_loss > biggest_blunder.get('winLoss', 0)):
                 biggest_blunder = {
                     'moveNumber': move_num // 2 + 1,
                     'player': 'white',
-                    'cpLoss': cp_loss,
+                    'cpLoss': int(cp_loss),
+                    'winLoss': win_loss,
                     'move': move_san,
                     'evalBefore': cp_before,
-                    'evalAfter': -cp_after
+                    'evalAfter': cp_after
                 }
         else:
-            # For black, loss is decrease from black's perspective
-            cp_loss = max(0, -cp_before - cp_after)
-            black_cpl_sum += cp_loss
-            black_move_count += 1
+            # Calculate actual centipawn loss (from black's perspective)
+            cp_loss = max(0, cp_after - cp_before)  # Black wants negative eval
+            black_cp_losses.append(cp_loss)
 
-            quality = classify_move_quality(cp_loss)
+            # Classify move and track win% loss
+            quality, win_loss = classify_move_by_win_percentage(win_before, win_after, False)
             black_quality[quality] += 1
+            black_win_losses.append(win_loss)
 
-            if quality == 'blunders' and (biggest_blunder is None or cp_loss > biggest_blunder['cpLoss']):
+            # Track biggest blunder
+            if quality == 'blunders' and (biggest_blunder is None or win_loss > biggest_blunder.get('winLoss', 0)):
                 biggest_blunder = {
                     'moveNumber': move_num // 2 + 1,
                     'player': 'black',
-                    'cpLoss': cp_loss,
+                    'cpLoss': int(cp_loss),
+                    'winLoss': win_loss,
                     'move': move_san,
-                    'evalBefore': -cp_before,
+                    'evalBefore': cp_before,
                     'evalAfter': cp_after
                 }
 
-    # Calculate ACPL and accuracy
-    white_acpl = white_cpl_sum / white_move_count if white_move_count > 0 else 0
-    black_acpl = black_cpl_sum / black_move_count if black_move_count > 0 else 0
+    # Calculate accuracy using Lichess formula (based on win% losses)
+    white_accuracy = calculate_accuracy_from_win_percentage(white_win_losses)
+    black_accuracy = calculate_accuracy_from_win_percentage(black_win_losses)
+
+    # Calculate ACPL (actual centipawn loss)
+    white_acpl = sum(white_cp_losses) / len(white_cp_losses) if white_cp_losses else 0
+    black_acpl = sum(black_cp_losses) / len(black_cp_losses) if black_cp_losses else 0
 
     return {
         'whiteACPL': round(white_acpl, 1),
         'blackACPL': round(black_acpl, 1),
-        'whiteAccuracy': round(calculate_accuracy(white_acpl), 1),
-        'blackAccuracy': round(calculate_accuracy(black_acpl), 1),
+        'whiteAccuracy': round(white_accuracy, 1),
+        'blackAccuracy': round(black_accuracy, 1),
         'whiteMoveQuality': white_quality,
         'blackMoveQuality': black_quality,
         'biggestBlunder': biggest_blunder
