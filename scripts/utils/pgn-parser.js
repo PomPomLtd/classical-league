@@ -249,7 +249,53 @@ function determineResult(chess) {
  */
 function normalizePGN(pgnString) {
   // Fix issue where moves start immediately after headers without blank line
-  // Pattern: ][BlackElo "?"]1. e4 -> ][BlackElo "?"]\n\n1. e4
+  // Pattern 1: ][BlackElo "?"]1. e4 -> ][BlackElo "?"]\n\n1. e4
+  // Pattern 2: Headers on same line as moves (no newline at all)
+
+  // Strip out PGN comments and variations using character-by-character parsing
+  // to handle nested structures correctly
+  let result = '';
+  let inBraceComment = 0;  // Track nesting depth of { } comments
+  let inParenVariation = 0; // Track nesting depth of ( ) variations
+  let inHeader = false;     // Track if we're inside a PGN header
+
+  for (let i = 0; i < pgnString.length; i++) {
+    const char = pgnString[i];
+    const prevChar = i > 0 ? pgnString[i - 1] : '';
+
+    // Track when we're inside headers (don't strip braces/parens from header values)
+    if (char === '[' && !inBraceComment && !inParenVariation) {
+      inHeader = true;
+      result += char;
+    } else if (char === ']' && inHeader && !inBraceComment && !inParenVariation) {
+      inHeader = false;
+      result += char;
+    } else if (inHeader) {
+      // Inside header - keep everything
+      result += char;
+    } else if (char === '{') {
+      // Start of brace comment
+      inBraceComment++;
+    } else if (char === '}' && inBraceComment > 0) {
+      // End of brace comment
+      inBraceComment--;
+    } else if (char === '(' && !inBraceComment) {
+      // Start of variation (only count if not in comment)
+      inParenVariation++;
+    } else if (char === ')' && inParenVariation > 0 && !inBraceComment) {
+      // End of variation (only count if not in comment)
+      inParenVariation--;
+    } else if (!inBraceComment && !inParenVariation) {
+      // Not in comment or variation - keep the character
+      result += char;
+    }
+  }
+
+  pgnString = result;
+
+  // Fix headers that have moves on the same line (most critical issue)
+  // Pattern: [Header "value"]1. e4 -> [Header "value"]\n\n1. e4
+  pgnString = pgnString.replace(/(\][^\n]*?)(\d+\.\s*[a-hNBRQKO])/g, '$1\n\n$2');
 
   // Find the last header line and ensure there's a blank line before moves
   const lines = pgnString.split('\n');

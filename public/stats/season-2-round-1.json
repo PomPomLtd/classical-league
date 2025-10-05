@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-03T11:14:07.300Z",
+  "generatedAt": "2025-10-05T17:29:04.226Z",
   "overview": {
-    "totalGames": 20,
-    "totalMoves": 1667,
-    "averageGameLength": 41.675,
+    "totalGames": 21,
+    "totalMoves": 1776,
+    "averageGameLength": 42.285714285714285,
     "longestGame": {
       "moves": 70,
       "white": "Mario «ChessDude» M.",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.575,
-    "averageMiddlegame": 17.325,
-    "averageEndgame": 15.775,
+    "averageOpening": 8.642857142857142,
+    "averageMiddlegame": 17.476190476190474,
+    "averageEndgame": 16.166666666666668,
     "longestOpening": {
       "moves": 10,
       "white": "Adela «Adele» P.",
@@ -43,33 +43,33 @@
     }
   },
   "results": {
-    "whiteWins": 11,
+    "whiteWins": 12,
     "blackWins": 8,
     "draws": 1,
-    "whiteWinPercentage": 55.00000000000001,
-    "blackWinPercentage": 40,
-    "drawPercentage": 5
+    "whiteWinPercentage": 57.14285714285714,
+    "blackWinPercentage": 38.095238095238095,
+    "drawPercentage": 4.761904761904762
   },
   "openings": {
     "firstMoves": {
       "e4": {
-        "count": 9,
-        "percentage": 45,
-        "winRate": 44.44444444444444
+        "count": 10,
+        "percentage": 47.61904761904761,
+        "winRate": 50
       },
       "c4": {
         "count": 2,
-        "percentage": 10,
+        "percentage": 9.523809523809524,
         "winRate": 50
       },
       "d4": {
         "count": 8,
-        "percentage": 40,
+        "percentage": 38.095238095238095,
         "winRate": 62.5
       },
       "f4": {
         "count": 1,
-        "percentage": 5,
+        "percentage": 4.761904761904762,
         "winRate": 100
       }
     },
@@ -153,6 +153,12 @@
         "name": "Sicilian Defense: Modern Variations"
       },
       {
+        "moves": "e4 e6 d4 d5 e5 c5",
+        "count": 1,
+        "eco": "C02",
+        "name": "French Defense: Advance Variation"
+      },
+      {
         "moves": "e4 e5 Nc3 Nc6 Bc4 Nf6",
         "count": 1,
         "eco": "C28",
@@ -197,11 +203,11 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 379,
+    "totalCaptures": 403,
     "enPassantGames": [],
     "promotions": 2,
     "castling": {
-      "kingside": 31,
+      "kingside": 33,
       "queenside": 4
     },
     "bloodiestGame": {
@@ -212,7 +218,7 @@
     },
     "quietestGame": {
       "captures": 4,
-      "gameIndex": 16,
+      "gameIndex": 17,
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G."
     },
@@ -227,25 +233,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 418,
-      "knights": 280,
-      "bishops": 232,
-      "rooks": 282,
-      "queens": 221,
-      "kings": 234
+      "pawns": 448,
+      "knights": 297,
+      "bishops": 245,
+      "rooks": 312,
+      "queens": 227,
+      "kings": 247
     },
     "captured": {
-      "pawns": 182,
-      "knights": 62,
-      "bishops": 61,
-      "rooks": 50,
-      "queens": 24
+      "pawns": 194,
+      "knights": 66,
+      "bishops": 65,
+      "rooks": 52,
+      "queens": 26
     },
     "survivalRate": {
-      "rooks": 0.375,
-      "queens": 0.45,
-      "bishops": 0.2375,
-      "knights": 0.225
+      "rooks": 0.38095238095238093,
+      "queens": 0.42857142857142855,
+      "bishops": 0.2261904761904762,
+      "knights": 0.21428571428571427
     }
   },
   "checkmates": {
@@ -268,24 +274,24 @@
   "boardHeatmap": {
     "bloodiestSquare": {
       "square": "d4",
-      "captures": 32,
-      "description": "d4 saw 32 captures"
+      "captures": 38,
+      "description": "d4 saw 38 captures"
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 77,
-      "description": "d4 was visited 77 times"
+      "visits": 87,
+      "description": "d4 was visited 87 times"
     },
     "leastPopularSquare": {
       "square": "a1",
-      "visits": 3,
-      "description": "a1 was only visited 3 times"
+      "visits": 4,
+      "description": "a1 was only visited 4 times"
     },
     "quietestSquares": [],
     "top5Bloodiest": [
       {
         "square": "d4",
-        "captures": 32
+        "captures": 38
       },
       {
         "square": "d5",
@@ -293,7 +299,7 @@
       },
       {
         "square": "e5",
-        "captures": 28
+        "captures": 30
       },
       {
         "square": "g5",
@@ -307,23 +313,23 @@
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 77
-      },
-      {
-        "square": "d5",
-        "visits": 69
+        "visits": 87
       },
       {
         "square": "e5",
-        "visits": 67
+        "visits": 72
+      },
+      {
+        "square": "d5",
+        "visits": 70
       },
       {
         "square": "f6",
-        "visits": 48
+        "visits": 53
       },
       {
         "square": "c3",
-        "visits": 46
+        "visits": 50
       }
     ]
   },
@@ -364,7 +370,7 @@
     },
     "slowestQueenTrade": {
       "moves": 45,
-      "gameIndex": 12,
+      "gameIndex": 13,
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
     },
@@ -377,14 +383,14 @@
     },
     "longestCheckSequence": {
       "length": 10,
-      "gameIndex": 12,
+      "gameIndex": 13,
       "startMove": 31,
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
     },
     "pawnStorm": {
       "count": 13,
-      "gameIndex": 15,
+      "gameIndex": 16,
       "white": "Janic «Clasher» S.",
       "black": "Boris «Out of Nowhere» G."
     },
@@ -400,13 +406,13 @@
     },
     "castlingRace": {
       "moves": 4,
-      "gameIndex": 13,
+      "gameIndex": 14,
       "winner": "black",
       "white": "Jonathan «EnCroissant1997» D.",
       "black": "Gaston «SleepingDawg» F."
     },
     "openingHipster": {
-      "gameIndex": 12,
+      "gameIndex": 13,
       "eco": "B31",
       "name": "Sicilian Defense: Nyezhmetdinov-Rossolimo Attack, Fianchetto Variation",
       "moves": "e4 c5 Nf3 Nc6 Bb5 g6",
@@ -423,7 +429,7 @@
     },
     "sportyQueen": {
       "distance": 42,
-      "gameIndex": 12,
+      "gameIndex": 13,
       "color": "White",
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
@@ -801,6 +807,38 @@
       },
       {
         "gameIndex": 12,
+        "white": "Simon «The Endgame Alchemist» L.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "whiteACPL": 54.5,
+        "blackACPL": 61.9,
+        "whiteAccuracy": 73.4,
+        "blackAccuracy": 70.9,
+        "whiteMoveQuality": {
+          "blunders": 5,
+          "mistakes": 7,
+          "inaccuracies": 7,
+          "good": 9,
+          "excellent": 27
+        },
+        "blackMoveQuality": {
+          "blunders": 7,
+          "mistakes": 6,
+          "inaccuracies": 9,
+          "good": 7,
+          "excellent": 25
+        },
+        "biggestBlunder": {
+          "moveNumber": 30,
+          "player": "black",
+          "cpLoss": 498,
+          "winLoss": 59.13021441366128,
+          "move": "Bg6",
+          "evalBefore": -336,
+          "evalAfter": 162
+        }
+      },
+      {
+        "gameIndex": 13,
         "white": "bela «bela» O.",
         "black": "Osama «Ruiner of Bird's» A.",
         "whiteACPL": 75.4,
@@ -832,7 +870,7 @@
         }
       },
       {
-        "gameIndex": 13,
+        "gameIndex": 14,
         "white": "Jonathan «EnCroissant1997» D.",
         "black": "Gaston «SleepingDawg» F.",
         "whiteACPL": 31.6,
@@ -864,7 +902,7 @@
         }
       },
       {
-        "gameIndex": 14,
+        "gameIndex": 15,
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
         "whiteACPL": 61,
@@ -896,7 +934,7 @@
         }
       },
       {
-        "gameIndex": 15,
+        "gameIndex": 16,
         "white": "Janic «Clasher» S.",
         "black": "Boris «Out of Nowhere» G.",
         "whiteACPL": 58.1,
@@ -920,7 +958,7 @@
         "biggestBlunder": null
       },
       {
-        "gameIndex": 16,
+        "gameIndex": 17,
         "white": "Nikola «Pawn Carnivore»",
         "black": "Ruslan «Thunder-Blunder» G.",
         "whiteACPL": 32.8,
@@ -952,7 +990,7 @@
         }
       },
       {
-        "gameIndex": 17,
+        "gameIndex": 18,
         "white": "Valentin «valentin_benglen» C.",
         "black": "Islam «xXBlackXx» H.",
         "whiteACPL": 50,
@@ -984,7 +1022,7 @@
         }
       },
       {
-        "gameIndex": 18,
+        "gameIndex": 19,
         "white": "Itamar «Itaberg» B.",
         "black": "Florian «Knightmare» G.",
         "whiteACPL": 39.6,
@@ -1016,7 +1054,7 @@
         }
       },
       {
-        "gameIndex": 19,
+        "gameIndex": 20,
         "white": "Christina «Crisi» V.",
         "black": "Peter «Peaky Blunder» N.",
         "whiteACPL": 55.4,
@@ -1059,7 +1097,7 @@
         "evalAfter": -298,
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
-        "gameIndex": 14
+        "gameIndex": 15
       },
       "lowestACPL": {
         "player": "black",
@@ -1067,7 +1105,7 @@
         "accuracy": 91.5,
         "white": "Jonathan «EnCroissant1997» D.",
         "black": "Gaston «SleepingDawg» F.",
-        "gameIndex": 13
+        "gameIndex": 14
       },
       "highestACPL": {
         "player": "white",

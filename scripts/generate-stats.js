@@ -76,16 +76,26 @@ Note:
   `);
 }
 
-// Fetch PGN data from API
+// Fetch PGN data from stdin or file
 async function fetchPGN(roundNumber, seasonNumber) {
   console.log(`📥 Fetching PGN data for Season ${seasonNumber}, Round ${roundNumber}...`);
 
-  // For now, read from the downloaded file
-  // TODO: Fetch from API endpoint /api/broadcast/round/{roundId}/pgn
+  // Check if data is being piped via stdin
+  if (!process.stdin.isTTY) {
+    // Read from stdin
+    let pgnData = '';
+    for await (const chunk of process.stdin) {
+      pgnData += chunk;
+    }
+    console.log(`✅ PGN data loaded (${pgnData.length} bytes)`);
+    return pgnData;
+  }
+
+  // Otherwise, try to read from the test file
   const testFile = '/tmp/round1-fresh.pgn';
 
   if (!fs.existsSync(testFile)) {
-    throw new Error(`PGN file not found: ${testFile}\nPlease download PGN data first.`);
+    throw new Error(`PGN file not found: ${testFile}\nPlease download PGN data or pipe via stdin.`);
   }
 
   const pgnData = fs.readFileSync(testFile, 'utf-8');
