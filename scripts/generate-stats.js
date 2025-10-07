@@ -106,9 +106,6 @@ async function fetchPGN(roundNumber, seasonNumber) {
 
 // Run Stockfish analysis on parsed games
 function analyzeGames(parsedGames) {
-  console.log('\n🔬 Running Stockfish analysis...');
-  console.log('⏱️  This may take 5-10 minutes for 20 games...\n');
-
   const startTime = Date.now();
 
   try {
@@ -122,7 +119,8 @@ function analyzeGames(parsedGames) {
         input: normalizedPgn,
         encoding: 'utf-8',
         maxBuffer: 10 * 1024 * 1024, // 10MB buffer
-        cwd: path.join(__dirname, '..')
+        cwd: path.join(__dirname, '..'),
+        stdio: ['pipe', 'pipe', 'inherit'] // stdin: pipe, stdout: pipe, stderr: inherit (show progress)
       }
     );
 
