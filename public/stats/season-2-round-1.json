@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-07T22:03:58.779Z",
+  "generatedAt": "2025-10-07T22:21:43.874Z",
   "overview": {
-    "totalGames": 29,
+    "totalGames": 30,
     "totalMoves": 2319,
-    "averageGameLength": 39.98275862068966,
+    "averageGameLength": 38.65,
     "longestGame": {
       "moves": 76,
       "white": "Jakob «Jaquemate » .",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.793103448275861,
-    "averageMiddlegame": 17.224137931034484,
-    "averageEndgame": 13.96551724137931,
+    "averageOpening": 8.5,
+    "averageMiddlegame": 16.65,
+    "averageEndgame": 13.5,
     "longestOpening": {
       "moves": 10,
       "white": "Adela «Adele» P.",
@@ -43,33 +43,33 @@
     }
   },
   "results": {
-    "whiteWins": 16,
+    "whiteWins": 17,
     "blackWins": 12,
     "draws": 1,
-    "whiteWinPercentage": 55.172413793103445,
-    "blackWinPercentage": 41.37931034482759,
-    "drawPercentage": 3.4482758620689653
+    "whiteWinPercentage": 56.666666666666664,
+    "blackWinPercentage": 40,
+    "drawPercentage": 3.3333333333333335
   },
   "openings": {
     "firstMoves": {
       "e4": {
         "count": 15,
-        "percentage": 51.724137931034484,
+        "percentage": 50,
         "winRate": 46.666666666666664
       },
       "c4": {
         "count": 2,
-        "percentage": 6.896551724137931,
+        "percentage": 6.666666666666667,
         "winRate": 50
       },
       "d4": {
         "count": 11,
-        "percentage": 37.93103448275862,
+        "percentage": 36.666666666666664,
         "winRate": 63.63636363636363
       },
       "f4": {
         "count": 1,
-        "percentage": 3.4482758620689653,
+        "percentage": 3.3333333333333335,
         "winRate": 100
       }
     },
@@ -290,10 +290,10 @@
       "queens": 34
     },
     "survivalRate": {
-      "rooks": 0.4224137931034483,
-      "queens": 0.46551724137931033,
-      "bishops": 0.25,
-      "knights": 0.23275862068965517
+      "rooks": 0.44166666666666665,
+      "queens": 0.48333333333333334,
+      "bishops": 0.275,
+      "knights": 0.25833333333333336
     }
   },
   "checkmates": {
@@ -1029,11 +1029,13 @@
           "evalAfter": -400
         },
         "biggestComeback": {
-          "player": "black",
-          "swing": 19990,
-          "evalFrom": 9990,
-          "evalTo": -10000,
-          "moveNumber": 36
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-435",
+          "evalTo": "M3",
+          "evalFromCp": -435,
+          "evalToCp": 9970,
+          "moveNumber": 33
         },
         "luckyEscape": {
           "player": "black",
@@ -1116,10 +1118,12 @@
         },
         "biggestComeback": {
           "player": "white",
-          "swing": 10308,
-          "evalFrom": -368,
-          "evalTo": 9940,
-          "moveNumber": 30
+          "swing": 2000,
+          "evalFrom": "-368",
+          "evalTo": "M8",
+          "evalFromCp": -368,
+          "evalToCp": 9920,
+          "moveNumber": 27
         },
         "luckyEscape": {
           "player": "white",
@@ -1231,6 +1235,32 @@
       },
       {
         "gameIndex": 20,
+        "white": "Camill «Camillionaire» T.",
+        "black": "Silvan «Fork This Fork That» S.",
+        "whiteACPL": 0,
+        "blackACPL": 0,
+        "whiteAccuracy": 100,
+        "blackAccuracy": 100,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 0,
+          "excellent": 0
+        },
+        "biggestBlunder": null,
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 21,
         "white": "Pieter «snok» S.",
         "black": "Linus «The Middlegame Mixer» K.",
         "whiteACPL": 64.9,
@@ -1264,7 +1294,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 21,
+        "gameIndex": 22,
         "white": "Nikola «Pawn Carnivore»",
         "black": "Ruslan «Thunder-Blunder» G.",
         "whiteACPL": 32.8,
@@ -1298,7 +1328,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 22,
+        "gameIndex": 23,
         "white": "Oliver «ScreaminG HI JoK ING» .",
         "black": "Ramura «viennugambu» G.",
         "whiteACPL": 62.8,
@@ -1332,7 +1362,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 23,
+        "gameIndex": 24,
         "white": "Victor «Loves Threefold Repetition» P.",
         "black": "Eva «Miss of King» S.",
         "whiteACPL": 49.2,
@@ -1356,9 +1386,11 @@
         "biggestBlunder": null,
         "biggestComeback": {
           "player": "black",
-          "swing": 19990,
-          "evalFrom": 9990,
-          "evalTo": -10000,
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
           "moveNumber": 23
         },
         "luckyEscape": {
@@ -1370,7 +1402,7 @@
         }
       },
       {
-        "gameIndex": 24,
+        "gameIndex": 25,
         "white": "Valentin «valentin_benglen» C.",
         "black": "Islam «xXBlackXx» H.",
         "whiteACPL": 50,
@@ -1410,7 +1442,7 @@
         }
       },
       {
-        "gameIndex": 25,
+        "gameIndex": 26,
         "white": "Itamar «Itaberg» B.",
         "black": "Florian «Knightmare» G.",
         "whiteACPL": 39.6,
@@ -1450,7 +1482,7 @@
         }
       },
       {
-        "gameIndex": 26,
+        "gameIndex": 27,
         "white": "Christina «Crisi» V.",
         "black": "Peter «Peaky Blunder» N.",
         "whiteACPL": 55.4,
@@ -1476,7 +1508,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 27,
+        "gameIndex": 28,
         "white": "Christopher «King Decimator» H.",
         "black": "Andrei «PawnWreckerAlpha» A.",
         "whiteACPL": 21.4,
@@ -1510,7 +1542,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 28,
+        "gameIndex": 29,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
         "whiteACPL": 102,
@@ -1572,11 +1604,13 @@
         "gameIndex": 18
       },
       "comebackKing": {
-        "player": "black",
-        "swing": 19990,
-        "evalFrom": 9990,
-        "evalTo": -10000,
-        "moveNumber": 36,
+        "player": "white",
+        "swing": 2000,
+        "evalFrom": "-435",
+        "evalTo": "M3",
+        "evalFromCp": -435,
+        "evalToCp": 9970,
+        "moveNumber": 33,
         "white": "Iannis «Modern Pulverizer» D.",
         "black": "Matteo «Afraid of Caro-Kann» M.",
         "gameIndex": 14
@@ -1605,7 +1639,7 @@
         "accuracy": 63.2,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
-        "gameIndex": 28
+        "gameIndex": 29
       },
       "lowestCombinedACPL": {
         "combinedACPL": 38.8,
@@ -1621,7 +1655,7 @@
         "blackACPL": 70.5,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
-        "gameIndex": 28
+        "gameIndex": 29
       }
     }
   }

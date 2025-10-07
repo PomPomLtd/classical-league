@@ -117,8 +117,8 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
     biggest_comeback = None  # Track biggest eval swing from losing position
     lucky_escape = None  # Track when opponent didn't punish a blunder
 
-    # Track eval history for comeback detection (last 5 evals)
-    eval_history = []
+    # Track eval history for comeback detection (last 10 evals with type info)
+    eval_history = []  # Stores tuples: (cp_value, eval_type, mate_in_value)
     # Track previous move eval to detect missed punishments
     prev_eval = None
 
@@ -247,39 +247,65 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
         # Update previous eval for next iteration
         prev_eval = cp_after
 
-        # Track eval history and detect comebacks (store last 10 evals)
-        eval_history.append(cp_after)
+        # Track eval history and detect comebacks (store last 10 evals with metadata)
+        eval_history.append({
+            'cp': cp_after,
+            'type': eval_after['type'],
+            'mate': eval_after.get('value') if eval_after['type'] == 'mate' else None
+        })
         if len(eval_history) > 10:
             eval_history.pop(0)
 
         # Check for comeback: look back at eval history
-        # A comeback is when eval swung from losing (< -300 cp) to winning (> +300 cp) or vice versa
+        # A comeback is when eval swung from losing to winning
         if len(eval_history) >= 5:
-            # Check for white comeback (from negative to positive)
-            min_eval_white = min(eval_history)
-            max_eval_white = max(eval_history)
+            # Extract cp values for min/max calculation
+            cp_values = [e['cp'] for e in eval_history]
+            min_eval_idx = cp_values.index(min(cp_values))
+            max_eval_idx = cp_values.index(max(cp_values))
 
-            # White comeback: was losing badly (< -300), now winning (> +300)
+            min_eval_white = eval_history[min_eval_idx]['cp']
+            max_eval_white = eval_history[max_eval_idx]['cp']
+
+            # White comeback: was losing badly (< -300 or getting mated), now winning
             if min_eval_white < -300 and cp_after > 300:
                 swing = cp_after - min_eval_white
+                # Cap swing at 2000 cp to avoid unrealistic mate-score swings
+                swing = min(swing, 2000)
+
+                # Format eval strings (use mate notation if applicable)
+                eval_from_str = f"M{eval_history[min_eval_idx]['mate']}" if eval_history[min_eval_idx]['type'] == 'mate' else str(min_eval_white)
+                eval_to_str = f"M{eval_after.get('value')}" if eval_after['type'] == 'mate' else str(cp_after)
+
                 if biggest_comeback is None or swing > biggest_comeback.get('swing', 0):
                     biggest_comeback = {
                         'player': 'white',
                         'swing': swing,
-                        'evalFrom': min_eval_white,
-                        'evalTo': cp_after,
+                        'evalFrom': eval_from_str,
+                        'evalTo': eval_to_str,
+                        'evalFromCp': min_eval_white,
+                        'evalToCp': cp_after,
                         'moveNumber': move_num // 2 + 1
                     }
 
-            # Black comeback: was losing badly (> +300), now winning (< -300)
+            # Black comeback: was losing badly (> +300 or getting mated), now winning
             if max_eval_white > 300 and cp_after < -300:
                 swing = max_eval_white - cp_after
+                # Cap swing at 2000 cp to avoid unrealistic mate-score swings
+                swing = min(swing, 2000)
+
+                # Format eval strings (use mate notation if applicable)
+                eval_from_str = f"M{eval_history[max_eval_idx]['mate']}" if eval_history[max_eval_idx]['type'] == 'mate' else str(max_eval_white)
+                eval_to_str = f"M{eval_after.get('value')}" if eval_after['type'] == 'mate' else str(cp_after)
+
                 if biggest_comeback is None or swing > biggest_comeback.get('swing', 0):
                     biggest_comeback = {
                         'player': 'black',
                         'swing': swing,
-                        'evalFrom': max_eval_white,
-                        'evalTo': cp_after,
+                        'evalFrom': eval_from_str,
+                        'evalTo': eval_to_str,
+                        'evalFromCp': max_eval_white,
+                        'evalToCp': cp_after,
                         'moveNumber': move_num // 2 + 1
                     }
 
