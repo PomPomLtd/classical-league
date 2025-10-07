@@ -353,12 +353,14 @@ def main():
         progress_pct = ((game_index + 1) / total_games) * 100
         progress_bar = '█' * int(progress_pct / 5) + '░' * (20 - int(progress_pct / 5))
 
-        # Truncate long names to fit on one line
-        white_short = white[:25] + '...' if len(white) > 28 else white
-        black_short = black[:25] + '...' if len(black) > 28 else black
+        # Truncate long names to fit on one line (shorter to avoid wrapping)
+        max_name_len = 20
+        white_short = white[:max_name_len] + '...' if len(white) > max_name_len else white
+        black_short = black[:max_name_len] + '...' if len(black) > max_name_len else black
 
-        print(f"\r[{progress_bar}] {progress_pct:.0f}% | Game {game_index + 1}/{total_games} | {white_short} vs {black_short} ({move_count}m)",
-              end='', flush=True, file=sys.stderr)
+        # Clear line with spaces, then print progress
+        progress_line = f"[{progress_bar}] {progress_pct:3.0f}% | {game_index + 1}/{total_games} | {white_short} vs {black_short}"
+        print(f"\r{progress_line:<100}", end='', flush=True, file=sys.stderr)
 
         analysis = analyze_game(game, stockfish, args.depth, args.sample)
 

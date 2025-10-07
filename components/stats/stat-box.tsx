@@ -5,7 +5,7 @@ interface StatBoxProps {
   emoji?: string
   player: string
   details: ReactNode
-  colorScheme: 'yellow' | 'red' | 'green' | 'orange' | 'blue' | 'purple'
+  colorScheme: 'yellow' | 'red' | 'green' | 'orange' | 'blue' | 'purple' | 'indigo'
   featured?: boolean
 }
 
@@ -44,6 +44,12 @@ const colorClasses = {
     bg: 'bg-purple-50 dark:bg-purple-900/20',
     border: '',
     title: 'text-purple-900 dark:text-purple-300',
+    text: 'text-gray-700 dark:text-gray-300',
+  },
+  indigo: {
+    bg: 'bg-indigo-50 dark:bg-indigo-900/20',
+    border: 'border-indigo-400 dark:border-indigo-600',
+    title: 'text-indigo-900 dark:text-indigo-300',
     text: 'text-gray-700 dark:text-gray-300',
   },
 }
