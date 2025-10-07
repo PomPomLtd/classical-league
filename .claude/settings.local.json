@@ -33,7 +33,8 @@
       "Bash(tee:*)",
       "Bash(venv/bin/python scripts/analyze-pgn.py:*)",
       "Bash(venv/bin/python:*)",
-      "Bash(gh pr:*)"
+      "Bash(gh pr:*)",
+      "Read(//Users/sgis/.claude/**)"
     ],
     "deny": [],
     "ask": []
