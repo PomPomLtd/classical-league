@@ -349,11 +349,16 @@ def main():
         for _ in game.mainline_moves():
             move_count += 1
 
-        # Print progress with game info
+        # Print progress with game info (use \r to overwrite line)
         progress_pct = ((game_index + 1) / total_games) * 100
         progress_bar = '█' * int(progress_pct / 5) + '░' * (20 - int(progress_pct / 5))
-        print(f"[{progress_bar}] {progress_pct:.0f}% | Game {game_index + 1}/{total_games}", file=sys.stderr)
-        print(f"   ♟️  {white} vs {black} ({move_count} moves)", file=sys.stderr)
+
+        # Truncate long names to fit on one line
+        white_short = white[:25] + '...' if len(white) > 28 else white
+        black_short = black[:25] + '...' if len(black) > 28 else black
+
+        print(f"\r[{progress_bar}] {progress_pct:.0f}% | Game {game_index + 1}/{total_games} | {white_short} vs {black_short} ({move_count}m)",
+              end='', flush=True, file=sys.stderr)
 
         analysis = analyze_game(game, stockfish, args.depth, args.sample)
 
@@ -366,7 +371,7 @@ def main():
 
         game_index += 1
 
-    print(f"\n✅ Analysis complete! Processed {total_games} games\n", file=sys.stderr)
+    print(f"\n\n✅ Analysis complete! Processed {total_games} games\n", file=sys.stderr)
 
     # Find accuracy king, biggest blunder, ACPL extremes, comeback king, and lucky escape across all games
     accuracy_king = None
