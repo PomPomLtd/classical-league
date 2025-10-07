@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-07T16:04:47.373Z",
+  "generatedAt": "2025-10-07T16:12:38.137Z",
   "overview": {
     "totalGames": 24,
     "totalMoves": 1930,
@@ -410,7 +410,7 @@
     "squareTourist": {
       "squares": 25,
       "gameIndex": 6,
-      "piece": "king",
+      "piece": "King",
       "color": "Black",
       "startSquare": "e8",
       "white": "Mario «ChessDude» M.",
