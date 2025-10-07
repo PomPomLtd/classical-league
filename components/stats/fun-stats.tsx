@@ -80,6 +80,38 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
+    edgeLord: {
+      moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    rookLift: {
+      moveNumber: number
+      gameIndex: number
+      color: string
+      rook: string
+      square: string
+      white: string
+      black: string
+    } | null
+    centerStage: {
+      moves: number
+      gameIndex: number
+      piece: string
+      startSquare: string
+      color: string
+      white: string
+      black: string
+    } | null
+    darkLord: {
+      captures: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
   }
 }
 
@@ -217,6 +249,54 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               {funStats.sportyQueen.color} queen traveled {funStats.sportyQueen.distance} squares
+            </div>
+          </div>
+        )}
+
+        {funStats.edgeLord && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">📐 Professional Edger</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.edgeLord.white} vs {funStats.edgeLord.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.edgeLord.color} made {funStats.edgeLord.moves} moves on edge files (a/h)
+            </div>
+          </div>
+        )}
+
+        {funStats.rookLift && (
+          <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+            <div className="font-semibold text-emerald-900 dark:text-emerald-300 mb-1">🚀 Do You Even Rook Lift Bro</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.rookLift.white} vs {funStats.rookLift.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.rookLift.rook} activated on move {funStats.rookLift.moveNumber}
+            </div>
+          </div>
+        )}
+
+        {funStats.centerStage && (
+          <div className="p-4 bg-violet-50 dark:bg-violet-900/20 rounded-lg">
+            <div className="font-semibold text-violet-900 dark:text-violet-300 mb-1">⭐ Center Stage</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.centerStage.white} vs {funStats.centerStage.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.centerStage.piece} dominated the center with {funStats.centerStage.moves} moves on d4/d5/e4/e5
+            </div>
+          </div>
+        )}
+
+        {funStats.darkLord && (
+          <div className="p-4 bg-gray-800 dark:bg-gray-950 rounded-lg border border-gray-700 dark:border-gray-800">
+            <div className="font-semibold text-gray-100 dark:text-gray-200 mb-1">🌑 Dark Mode Enthusiast</div>
+            <div className="text-sm text-gray-200 dark:text-gray-300">
+              {funStats.darkLord.white} vs {funStats.darkLord.black}
+            </div>
+            <div className="text-xs text-gray-300 dark:text-gray-400 mt-1">
+              {funStats.darkLord.color} captured {funStats.darkLord.captures} pieces on dark squares
             </div>
           </div>
         )}

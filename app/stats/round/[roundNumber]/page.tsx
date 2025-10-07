@@ -288,6 +288,38 @@ interface StatsData {
       white: string
       black: string
     } | null
+    edgeLord: {
+      moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    rookLift: {
+      moveNumber: number
+      gameIndex: number
+      color: string
+      rook: string
+      square: string
+      white: string
+      black: string
+    } | null
+    centerStage: {
+      moves: number
+      gameIndex: number
+      piece: string
+      startSquare: string
+      color: string
+      white: string
+      black: string
+    } | null
+    darkLord: {
+      captures: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
   }
   analysis?: {
     games: Array<{
@@ -367,6 +399,26 @@ interface StatsData {
         combinedACPL: number
         whiteACPL: number
         blackACPL: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      comebackKing: {
+        player: string
+        swing: number
+        evalFrom: number
+        evalTo: number
+        moveNumber: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      luckyEscape: {
+        player: string
+        escapeAmount: number
+        evalBefore: number
+        evalAfter: number
+        moveNumber: number
         white: string
         black: string
         gameIndex: number

@@ -83,6 +83,26 @@ interface AnalysisData {
       black: string
       gameIndex: number
     } | null
+    comebackKing: {
+      player: string
+      swing: number
+      evalFrom: number
+      evalTo: number
+      moveNumber: number
+      white: string
+      black: string
+      gameIndex: number
+    } | null
+    luckyEscape: {
+      player: string
+      escapeAmount: number
+      evalBefore: number
+      evalAfter: number
+      moveNumber: number
+      white: string
+      black: string
+      gameIndex: number
+    } | null
   }
 }
 
@@ -107,15 +127,15 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
 
   return (
     <StatCard title="🔬 Stockfish Analysis (Experimental)">
-      {/* Top Row: Accuracy King and Blunder of the Round */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      {/* Top Row: Featured Stats (4 total for even grid) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
         {summary.accuracyKing && (
           <StatBox
             title="Accuracy King"
             emoji="👑"
             player={summary.accuracyKing.player === 'white' ? summary.accuracyKing.white : summary.accuracyKing.black}
             details={
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-1">
                 <span>Accuracy: <strong className="text-yellow-900 dark:text-yellow-200">{summary.accuracyKing.accuracy}%</strong></span>
                 <span>ACPL: <strong className="text-yellow-900 dark:text-yellow-200">{summary.accuracyKing.acpl}</strong></span>
               </div>
@@ -131,12 +151,44 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
             emoji="💥"
             player={summary.biggestBlunder.player === 'white' ? summary.biggestBlunder.white : summary.biggestBlunder.black}
             details={
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-1">
                 <span>Move <strong className="font-mono text-red-900 dark:text-red-200">{summary.biggestBlunder.moveNumber}. {summary.biggestBlunder.move}</strong></span>
                 <span><strong className="text-red-900 dark:text-red-200">{summary.biggestBlunder.cpLoss} cp</strong></span>
               </div>
             }
             colorScheme="red"
+            featured
+          />
+        )}
+
+        {summary.comebackKing && (
+          <StatBox
+            title="Comeback King"
+            emoji="🎯"
+            player={summary.comebackKing.player === 'white' ? summary.comebackKing.white : summary.comebackKing.black}
+            details={
+              <div className="flex flex-col gap-1">
+                <span>Swing: <strong className="text-green-900 dark:text-green-200">{summary.comebackKing.swing} cp</strong></span>
+                <span className="text-xs">From {summary.comebackKing.evalFrom} to {summary.comebackKing.evalTo}</span>
+              </div>
+            }
+            colorScheme="green"
+            featured
+          />
+        )}
+
+        {summary.luckyEscape && (
+          <StatBox
+            title="Lucky Escape"
+            emoji="😱"
+            player={summary.luckyEscape.player === 'white' ? summary.luckyEscape.white : summary.luckyEscape.black}
+            details={
+              <div className="flex flex-col gap-1">
+                <span>Escaped: <strong className="text-indigo-900 dark:text-indigo-200">{summary.luckyEscape.escapeAmount} cp</strong></span>
+                <span className="text-xs">Opponent missed advantage</span>
+              </div>
+            }
+            colorScheme="indigo"
             featured
           />
         )}

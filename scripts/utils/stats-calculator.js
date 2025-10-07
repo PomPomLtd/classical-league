@@ -507,6 +507,10 @@ function calculateFunStats(games) {
   let openingHipster = { gameIndex: null, eco: null, name: null, moves: null, obscurityScore: 0 };
   let dadbodShuffler = { moves: 0, gameIndex: null, color: null };
   let sportyQueen = { distance: 0, gameIndex: null, color: null };
+  let edgeLord = { moves: 0, gameIndex: null, color: null };
+  let rookLift = { moveNumber: Infinity, gameIndex: null, color: null, rook: null };
+  let centerStage = { moves: 0, gameIndex: null, piece: null, startSquare: null, color: null };
+  let darkLord = { captures: 0, gameIndex: null, color: null };
 
   games.forEach((game, idx) => {
     // Track queen trades
@@ -547,6 +551,30 @@ function calculateFunStats(games) {
     // Track queen travel distance (Manhattan distance on board)
     let whiteQueenDistance = 0;
     let blackQueenDistance = 0;
+
+    // Track edge moves (a/h files)
+    let whiteEdgeMoves = 0;
+    let blackEdgeMoves = 0;
+
+    // Track rook lifts (first time rook leaves back rank)
+    let whiteRookLifted = { a1: false, h1: false };
+    let blackRookLifted = { a8: false, h8: false };
+    let firstRookLift = null;
+
+    // Track piece center activity (d4, d5, e4, e5)
+    const centerSquares = new Set(['d4', 'd5', 'e4', 'e5']);
+    const pieceCenterActivity = {}; // { 'w_r_a1': { moves: 5, piece: 'r', startSquare: 'a1', color: 'w' } }
+
+    // Track dark square captures (a1, c1, e1, g1, b2, d2, f2, h2, etc.)
+    let whiteDarkCaptures = 0;
+    let blackDarkCaptures = 0;
+
+    // Helper to check if square is dark
+    const isDarkSquare = (square) => {
+      const file = square.charCodeAt(0) - 'a'.charCodeAt(0); // 0-7
+      const rank = parseInt(square[1]) - 1; // 0-7
+      return (file + rank) % 2 === 1; // Dark squares have odd sum
+    };
 
     // Helper function to calculate Manhattan distance between two squares
     const calculateDistance = (from, to) => {
@@ -651,6 +679,111 @@ function calculateFunStats(games) {
           whiteQueenDistance += distance;
         } else {
           blackQueenDistance += distance;
+        }
+      }
+
+      // Track edge moves (a/h files)
+      const toFile = move.to[0];
+      const fromFile = move.from[0];
+      if (toFile === 'a' || toFile === 'h' || fromFile === 'a' || fromFile === 'h') {
+        if (move.color === 'w') {
+          whiteEdgeMoves++;
+        } else {
+          blackEdgeMoves++;
+        }
+      }
+
+      // Track dark square captures
+      if (move.captured && isDarkSquare(move.to)) {
+        if (move.color === 'w') {
+          whiteDarkCaptures++;
+        } else {
+          blackDarkCaptures++;
+        }
+      }
+
+      // Track rook lifts (first time rook leaves back rank)
+      if (move.piece === 'r') {
+        const fromRank = move.from[1];
+        const toRank = move.to[1];
+
+        // White rooks leaving rank 1
+        if (move.color === 'w' && fromRank === '1' && toRank !== '1') {
+          const startSquare = move.from;
+          if (!whiteRookLifted[startSquare] && firstRookLift === null) {
+            whiteRookLifted[startSquare] = true;
+            firstRookLift = {
+              moveNumber: Math.ceil((moveIdx + 1) / 2),
+              gameIndex: idx,
+              color: 'White',
+              rook: `White's ${startSquare} Rook`,
+              square: startSquare,
+              white: game.headers.White || 'Unknown',
+              black: game.headers.Black || 'Unknown'
+            };
+          }
+        }
+
+        // Black rooks leaving rank 8
+        if (move.color === 'b' && fromRank === '8' && toRank !== '8') {
+          const startSquare = move.from;
+          if (!blackRookLifted[startSquare] && firstRookLift === null) {
+            blackRookLifted[startSquare] = true;
+            firstRookLift = {
+              moveNumber: Math.ceil((moveIdx + 1) / 2),
+              gameIndex: idx,
+              color: 'Black',
+              rook: `Black's ${startSquare} Rook`,
+              square: startSquare,
+              white: game.headers.White || 'Unknown',
+              black: game.headers.Black || 'Unknown'
+            };
+          }
+        }
+      }
+
+      // Track center square activity for all pieces
+      if (centerSquares.has(move.to)) {
+        // Create unique piece key based on first time we see it
+        let pieceKey = null;
+
+        // Find existing piece key
+        for (const existingKey in pieceCenterActivity) {
+          const [existingColor, existingPiece] = existingKey.split('_');
+          if (existingColor === move.color && existingPiece === move.piece) {
+            // Check if this piece came from a square we've seen
+            const existingData = pieceCenterActivity[existingKey];
+            if (existingData.lastSquare === move.from) {
+              pieceKey = existingKey;
+              break;
+            }
+          }
+        }
+
+        // Create new key if needed
+        if (!pieceKey) {
+          // Find starting square by looking for first occurrence of this piece
+          let startSquare = move.from;
+          // If this is the first move of this piece, use 'from' as start square
+          pieceKey = `${move.color}_${move.piece}_${startSquare}`;
+          pieceCenterActivity[pieceKey] = {
+            moves: 0,
+            piece: move.piece,
+            startSquare: startSquare,
+            color: move.color,
+            lastSquare: move.from
+          };
+        }
+
+        pieceCenterActivity[pieceKey].moves++;
+        pieceCenterActivity[pieceKey].lastSquare = move.to;
+      } else {
+        // Update lastSquare even when not in center
+        for (const key in pieceCenterActivity) {
+          const data = pieceCenterActivity[key];
+          if (data.lastSquare === move.from && data.color === move.color && data.piece === move.piece) {
+            data.lastSquare = move.to;
+          }
         }
       }
 
@@ -839,6 +972,52 @@ function calculateFunStats(games) {
         }
       }
     }
+
+    // Update edge lord (most edge moves)
+    const totalEdgeMoves = Math.max(whiteEdgeMoves, blackEdgeMoves);
+    if (totalEdgeMoves > edgeLord.moves) {
+      edgeLord = {
+        moves: totalEdgeMoves,
+        gameIndex: idx,
+        color: whiteEdgeMoves > blackEdgeMoves ? 'White' : 'Black',
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
+
+    // Update rook lift (earliest rook lift in the tournament)
+    if (firstRookLift !== null && firstRookLift.moveNumber < rookLift.moveNumber) {
+      rookLift = firstRookLift;
+    }
+
+    // Update center stage (piece with most center square activity)
+    Object.entries(pieceCenterActivity).forEach(([pieceKey, data]) => {
+      if (data.moves > centerStage.moves) {
+        const pieceNames = { p: 'Pawn', n: 'Knight', b: 'Bishop', r: 'Rook', q: 'Queen', k: 'King' };
+        const colorName = data.color === 'w' ? 'White' : 'Black';
+        centerStage = {
+          moves: data.moves,
+          gameIndex: idx,
+          piece: `${colorName}'s ${data.startSquare} ${pieceNames[data.piece]}`,
+          startSquare: data.startSquare,
+          color: colorName,
+          white: game.headers.White || 'Unknown',
+          black: game.headers.Black || 'Unknown'
+        };
+      }
+    });
+
+    // Update dark lord (most dark square captures)
+    const totalDarkCaptures = Math.max(whiteDarkCaptures, blackDarkCaptures);
+    if (totalDarkCaptures > darkLord.captures) {
+      darkLord = {
+        captures: totalDarkCaptures,
+        gameIndex: idx,
+        color: whiteDarkCaptures > blackDarkCaptures ? 'White' : 'Black',
+        white: game.headers.White || 'Unknown',
+        black: game.headers.Black || 'Unknown'
+      };
+    }
   });
 
   return {
@@ -852,7 +1031,11 @@ function calculateFunStats(games) {
     castlingRace: castlingRace.moves !== Infinity ? castlingRace : null,
     openingHipster: openingHipster.gameIndex !== null ? openingHipster : null,
     dadbodShuffler: dadbodShuffler.moves > 0 ? dadbodShuffler : null,
-    sportyQueen: sportyQueen.distance > 0 ? sportyQueen : null
+    sportyQueen: sportyQueen.distance > 0 ? sportyQueen : null,
+    edgeLord: edgeLord.moves > 0 ? edgeLord : null,
+    rookLift: rookLift.moveNumber !== Infinity ? rookLift : null,
+    centerStage: centerStage.moves > 0 ? centerStage : null,
+    darkLord: darkLord.captures > 0 ? darkLord : null
   };
 }
 

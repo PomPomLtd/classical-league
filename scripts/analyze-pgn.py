@@ -114,6 +114,13 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
     black_quality = {'blunders': 0, 'mistakes': 0, 'inaccuracies': 0, 'good': 0, 'excellent': 0}
 
     biggest_blunder = None
+    biggest_comeback = None  # Track biggest eval swing from losing position
+    lucky_escape = None  # Track when opponent didn't punish a blunder
+
+    # Track eval history for comeback detection (last 5 evals)
+    eval_history = []
+    # Track previous move eval to detect missed punishments
+    prev_eval = None
 
     for move_num, move in enumerate(moves):
         is_white_move = move_num % 2 == 0
@@ -210,6 +217,72 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
                     'evalAfter': cp_after
                 }
 
+        # Track lucky escape: opponent didn't punish a position
+        # If previous move gave opponent an advantage (> +200cp) but they didn't maintain it
+        if prev_eval is not None:
+            # White had advantage, black didn't punish (eval went back to neutral/white favor)
+            if prev_eval < -200 and cp_after > -50:
+                escape_amount = abs(prev_eval) - abs(cp_after)
+                if lucky_escape is None or escape_amount > lucky_escape.get('escapeAmount', 0):
+                    lucky_escape = {
+                        'player': 'white',
+                        'escapeAmount': escape_amount,
+                        'evalBefore': prev_eval,
+                        'evalAfter': cp_after,
+                        'moveNumber': move_num // 2 + 1
+                    }
+
+            # Black had advantage, white didn't punish (eval went back to neutral/black favor)
+            if prev_eval > 200 and cp_after < 50:
+                escape_amount = abs(prev_eval) - abs(cp_after)
+                if lucky_escape is None or escape_amount > lucky_escape.get('escapeAmount', 0):
+                    lucky_escape = {
+                        'player': 'black',
+                        'escapeAmount': escape_amount,
+                        'evalBefore': prev_eval,
+                        'evalAfter': cp_after,
+                        'moveNumber': move_num // 2 + 1
+                    }
+
+        # Update previous eval for next iteration
+        prev_eval = cp_after
+
+        # Track eval history and detect comebacks (store last 10 evals)
+        eval_history.append(cp_after)
+        if len(eval_history) > 10:
+            eval_history.pop(0)
+
+        # Check for comeback: look back at eval history
+        # A comeback is when eval swung from losing (< -300 cp) to winning (> +300 cp) or vice versa
+        if len(eval_history) >= 5:
+            # Check for white comeback (from negative to positive)
+            min_eval_white = min(eval_history)
+            max_eval_white = max(eval_history)
+
+            # White comeback: was losing badly (< -300), now winning (> +300)
+            if min_eval_white < -300 and cp_after > 300:
+                swing = cp_after - min_eval_white
+                if biggest_comeback is None or swing > biggest_comeback.get('swing', 0):
+                    biggest_comeback = {
+                        'player': 'white',
+                        'swing': swing,
+                        'evalFrom': min_eval_white,
+                        'evalTo': cp_after,
+                        'moveNumber': move_num // 2 + 1
+                    }
+
+            # Black comeback: was losing badly (> +300), now winning (< -300)
+            if max_eval_white > 300 and cp_after < -300:
+                swing = max_eval_white - cp_after
+                if biggest_comeback is None or swing > biggest_comeback.get('swing', 0):
+                    biggest_comeback = {
+                        'player': 'black',
+                        'swing': swing,
+                        'evalFrom': max_eval_white,
+                        'evalTo': cp_after,
+                        'moveNumber': move_num // 2 + 1
+                    }
+
     # Calculate accuracy using Lichess formula (based on win% losses)
     white_accuracy = calculate_accuracy_from_win_percentage(white_win_losses)
     black_accuracy = calculate_accuracy_from_win_percentage(black_win_losses)
@@ -225,7 +298,9 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
         'blackAccuracy': round(black_accuracy, 1),
         'whiteMoveQuality': white_quality,
         'blackMoveQuality': black_quality,
-        'biggestBlunder': biggest_blunder
+        'biggestBlunder': biggest_blunder,
+        'biggestComeback': biggest_comeback,
+        'luckyEscape': lucky_escape
     }
 
 def main():
@@ -274,9 +349,11 @@ def main():
 
         game_index += 1
 
-    # Find accuracy king, biggest blunder, and ACPL extremes across all games
+    # Find accuracy king, biggest blunder, ACPL extremes, comeback king, and lucky escape across all games
     accuracy_king = None
     biggest_blunder = None
+    comeback_king = None
+    lucky_escape = None
     lowest_acpl = None
     highest_acpl = None
     lowest_combined_acpl = None
@@ -382,12 +459,34 @@ def main():
                     'gameIndex': game_data['gameIndex']
                 }
 
+        # Check biggest comeback
+        if game_data['biggestComeback']:
+            if comeback_king is None or game_data['biggestComeback']['swing'] > comeback_king.get('swing', 0):
+                comeback_king = {
+                    **game_data['biggestComeback'],
+                    'white': game_data['white'],
+                    'black': game_data['black'],
+                    'gameIndex': game_data['gameIndex']
+                }
+
+        # Check lucky escape
+        if game_data['luckyEscape']:
+            if lucky_escape is None or game_data['luckyEscape']['escapeAmount'] > lucky_escape.get('escapeAmount', 0):
+                lucky_escape = {
+                    **game_data['luckyEscape'],
+                    'white': game_data['white'],
+                    'black': game_data['black'],
+                    'gameIndex': game_data['gameIndex']
+                }
+
     # Output JSON
     output = {
         'games': games_analyzed,
         'summary': {
             'accuracyKing': accuracy_king,
             'biggestBlunder': biggest_blunder,
+            'comebackKing': comeback_king,
+            'luckyEscape': lucky_escape,
             'lowestACPL': lowest_acpl,
             'highestACPL': highest_acpl,
             'lowestCombinedACPL': lowest_combined_acpl,
