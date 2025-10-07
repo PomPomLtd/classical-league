@@ -328,6 +328,13 @@ def main():
     import io
     pgn_io = io.StringIO(pgn_text)
 
+    # First pass: count total games
+    total_games = pgn_text.count('[Event ')
+    print(f"\n🔬 Stockfish Analysis Starting...", file=sys.stderr)
+    print(f"📊 Total games to analyze: {total_games}", file=sys.stderr)
+    print(f"⚙️  Depth: {args.depth} | Sample rate: every {args.sample} move(s)", file=sys.stderr)
+    print(f"⏱️  Estimated time: {total_games * 15}-{total_games * 30} seconds\n", file=sys.stderr)
+
     while True:
         game = chess.pgn.read_game(pgn_io)
         if game is None:
@@ -336,7 +343,17 @@ def main():
         white = game.headers.get('White', 'Unknown')
         black = game.headers.get('Black', 'Unknown')
 
-        print(f"Analyzing game {game_index + 1}: {white} vs {black}...", file=sys.stderr)
+        # Count moves in this game
+        board = game.board()
+        move_count = 0
+        for _ in game.mainline_moves():
+            move_count += 1
+
+        # Print progress with game info
+        progress_pct = ((game_index + 1) / total_games) * 100
+        progress_bar = '█' * int(progress_pct / 5) + '░' * (20 - int(progress_pct / 5))
+        print(f"[{progress_bar}] {progress_pct:.0f}% | Game {game_index + 1}/{total_games}", file=sys.stderr)
+        print(f"   ♟️  {white} vs {black} ({move_count} moves)", file=sys.stderr)
 
         analysis = analyze_game(game, stockfish, args.depth, args.sample)
 
@@ -348,6 +365,8 @@ def main():
         })
 
         game_index += 1
+
+    print(f"\n✅ Analysis complete! Processed {total_games} games\n", file=sys.stderr)
 
     # Find accuracy king, biggest blunder, ACPL extremes, comeback king, and lucky escape across all games
     accuracy_king = None
