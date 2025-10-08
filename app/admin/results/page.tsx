@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 interface GameResult {
   id: string
@@ -278,7 +279,7 @@ export default function AdminResultsPage() {
                         <button
                           onClick={() => handleProcess(result.id)}
                           disabled={processingId === result.id}
-                          className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center"
+                          className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300 mr-3 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center"
                         >
                           {processingId === result.id ? (
                             <>
@@ -293,6 +294,12 @@ export default function AdminResultsPage() {
                           )}
                         </button>
                       )}
+                      <Link
+                        href={`/admin/results/${result.id}`}
+                        className="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300"
+                      >
+                        View
+                      </Link>
                     </td>
                   </tr>
                 ))}
