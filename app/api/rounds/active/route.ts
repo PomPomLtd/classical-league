@@ -26,6 +26,7 @@ export async function GET() {
     })
 
     // Find the current round (the round that has started but next round hasn't started yet)
+    // Allow result submission on the round date itself and until the next round starts
     let currentRoundIndex = -1
     for (let i = 0; i < allRounds.length; i++) {
       const roundDate = allRounds[i].roundDate
@@ -33,7 +34,12 @@ export async function GET() {
         ? allRounds[i + 1].roundDate
         : new Date(roundDate.getTime() + 14 * 24 * 60 * 60 * 1000)
 
-      if (now >= roundDate && now < nextRoundDate) {
+      // Check if now is >= roundDate and <= nextRoundDate (inclusive of both dates)
+      const roundDateOnly = new Date(roundDate.toDateString())
+      const nextRoundDateOnly = new Date(nextRoundDate.toDateString())
+      const nowDateOnly = new Date(now.toDateString())
+
+      if (nowDateOnly >= roundDateOnly && nowDateOnly <= nextRoundDateOnly) {
         currentRoundIndex = i
         break
       }
@@ -43,7 +49,11 @@ export async function GET() {
     // Otherwise, return all future rounds
     const rounds = currentRoundIndex >= 0
       ? allRounds.slice(currentRoundIndex) // Current round onwards
-      : allRounds.filter(r => r.roundDate >= now) // Only future rounds
+      : allRounds.filter(r => {
+          const roundDateOnly = new Date(r.roundDate.toDateString())
+          const nowDateOnly = new Date(now.toDateString())
+          return roundDateOnly >= nowDateOnly
+        })
 
     const formattedRounds = rounds.map(round => ({
       id: round.id,
