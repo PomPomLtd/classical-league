@@ -10,14 +10,14 @@ const { getPlayerNames, filterGamesWithMoves } = require('./helpers');
 
 /**
  * Map chess.js piece codes to full names
+ * Note: King is excluded as it cannot deliver checkmate
  */
 const PIECE_MAP = {
   'q': 'queen',
   'r': 'rook',
   'b': 'bishop',
   'n': 'knight',
-  'p': 'pawn',
-  'k': 'king'
+  'p': 'pawn'
 };
 
 /**
@@ -28,7 +28,7 @@ const PIECE_MAP = {
 function calculateCheckmates(games) {
   const gamesWithMoves = filterGamesWithMoves(games);
 
-  const byPiece = { queen: 0, rook: 0, bishop: 0, knight: 0, pawn: 0, king: 0 };
+  const byPiece = { queen: 0, rook: 0, bishop: 0, knight: 0, pawn: 0 };
   let fastestMate = { moves: Infinity, gameIndex: 0 };
 
   gamesWithMoves.forEach((game, idx) => {
@@ -43,7 +43,7 @@ function calculateCheckmates(games) {
       if (mate.moveNumber < fastestMate.moves) {
         const players = getPlayerNames(game);
         fastestMate = {
-          moves: Math.ceil(mate.moveNumber / 2), // Divide by 2 for full moves
+          moves: mate.moveNumber, // Already in full moves from PGN parser
           gameIndex: idx,
           white: players.white,
           black: players.black,

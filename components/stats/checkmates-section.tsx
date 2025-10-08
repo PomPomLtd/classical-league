@@ -20,7 +20,9 @@ export function CheckmatesSection({ checkmates }: CheckmatesSectionProps) {
         <div>
           <h4 className="font-semibold text-gray-900 dark:text-white mb-3">By Piece</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {Object.entries(checkmates.byPiece).map(([piece, count]) => (
+            {Object.entries(checkmates.byPiece)
+              .filter(([piece]) => piece !== 'king')
+              .map(([piece, count]) => (
               <div key={piece} className="text-center p-2 bg-gray-50 dark:bg-gray-900/20 rounded">
                 <div className="font-bold text-gray-900 dark:text-white">{count}</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 capitalize">{piece}</div>

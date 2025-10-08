@@ -31,11 +31,11 @@ export function OverviewStats({ overview }: OverviewStatsProps) {
       </div>
       <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg shadow p-6 text-white">
         <div className="text-3xl font-bold">{Math.round(overview.averageGameLength)}</div>
-        <div className="text-emerald-100 mt-1">Avg Game Length</div>
+        <div className="text-emerald-100 mt-1">Avg Game Length (moves)</div>
       </div>
       <div className="bg-gradient-to-br from-rose-500 to-rose-600 rounded-lg shadow p-6 text-white">
         <div className="text-3xl font-bold">{overview.longestGame.moves}</div>
-        <div className="text-rose-100 mt-1">Longest Game</div>
+        <div className="text-rose-100 mt-1">Longest Game (moves)</div>
       </div>
     </div>
   )

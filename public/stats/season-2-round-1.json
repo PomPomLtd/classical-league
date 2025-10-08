@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-08T08:23:06.645Z",
+  "generatedAt": "2025-10-08T09:08:05.715Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2400,
@@ -308,15 +308,14 @@
       "rook": 0,
       "bishop": 0,
       "knight": 1,
-      "pawn": 0,
-      "king": 0
+      "pawn": 0
     },
     "fastest": {
-      "moves": 19,
-      "gameIndex": 0,
-      "white": "Adela «Adele» P.",
-      "black": "Igor «Premove Blunder» S.",
-      "winner": "Black"
+      "moves": 23,
+      "gameIndex": 24,
+      "white": "Victor «Loves Threefold Repetition» P.",
+      "black": "Eva «Miss of King» S.",
+      "winner": "White"
     }
   },
   "boardHeatmap": {
@@ -393,10 +392,10 @@
       "captures": 4
     },
     "speedDemon": {
-      "white": "Adela «Adele» P.",
-      "black": "Igor «Premove Blunder» S.",
-      "moves": 19,
-      "winner": "Black"
+      "white": "Victor «Loves Threefold Repetition» P.",
+      "black": "Eva «Miss of King» S.",
+      "moves": 23,
+      "winner": "White"
     },
     "endgameWizard": {
       "white": "Mario «ChessDude» M.",
