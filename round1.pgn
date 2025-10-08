@@ -32,7 +32,7 @@
 [PlyCount "39"]
 [FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"]
 [Variant "Standard"]
-[Termination "?"]1. e4 c5 2. Nf3 Nc6 3. c3 Nf6 4. Qc2 d5 5. exd5 Nxd5 6. Bb5 Bd7 7. O-O e6 8. Re1 Be7 9. d3 O-O 10. Be3 b6 11. Nbd2 a6 12. Bxc6 Bxc6 13. Ne5 Bb7 14. d4 cxd4 15. Bxd4 Nf4 16. Nef3 Rc8 17. Be3 Nd5 18. Bd4 b5 19. Qe4 Ba8
+[Termination "?"]1. e4 c5 2. Nf3 Nc6 3. c3 Nf6 4. Qc2 d5 5. exd5 Nxd5 6. Bb5 Bd7 7. O-O e6 8. Re1 Be7 9. d3 O-O 10. Be3 b6 11. Nbd2 a6 12. Bxc6 Bxc6 13. Ne5 Bb7 14. d4 cxd4 15. Bxd4 Nf4 16. Nef3 Rc8 17. Be3 Nd5 18. Bd4 b5 19. Qe4 Ba8 20. Qe2 Re8 21. Rac1 Nf6 22. Ne5 Bd5 23. a3 Bd6 24. Ndf3 Ne4 25. Qc2 f6 26. Nd3 e5 27. Be3 Qc7 28. Nb4 Bb7 29. Nxa6 Bxa6 30. Qxe4 Bb7 31. Qg4 e4 32. Nd4 Bxh2+ 33. Kh1 Be5 34. Nf5 Kh8 35. Rcd1 g6 36. Nd4 f5 37. Qg5 Qg7 38. Nxb5 Bf6 39. Qh6 Qxh6+ 40. Bxh6 Rb8 41.Nd6 Re7 42.Bf4 Rg8 43.f3 exf3 44. Rxe7 fxg2+ 45. Kh2 Bf3 46.Nf7+ Kg7 47. Bh6#
 
 [Event "Classical League Season 2"]
 [Site "Schachklub K4"]

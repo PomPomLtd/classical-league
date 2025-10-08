@@ -47,8 +47,11 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
   curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
     node scripts/generate-stats.js --round 1
 
-  # From local file
-  node scripts/generate-stats.js --round 1 --season 2 < round1.pgn
+  # From local file (basic stats)
+  cat round1.pgn | node scripts/generate-stats.js --round 1
+
+  # From local file with Stockfish analysis (recommended)
+  cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 
   # View generated stats
   # Saved to: public/stats/season-2-round-1.json

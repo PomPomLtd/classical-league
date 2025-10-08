@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-08T09:08:05.715Z",
+  "generatedAt": "2025-10-08T14:22:54.375Z",
   "overview": {
     "totalGames": 31,
-    "totalMoves": 2400,
-    "averageGameLength": 40,
+    "totalMoves": 2455,
+    "averageGameLength": 40.916666666666664,
     "longestGame": {
       "moves": 76,
       "white": "Jakob «Jaquemate » .",
@@ -21,7 +21,7 @@
   },
   "gamePhases": {
     "averageOpening": 8.75,
-    "averageMiddlegame": 17.466666666666665,
+    "averageMiddlegame": 18.383333333333333,
     "averageEndgame": 13.783333333333333,
     "longestWaitTillCapture": {
       "moves": 14,
@@ -30,10 +30,10 @@
       "game": "Jacopo «Bildothebest» B. vs Jack «NoBackwardMoves» C."
     },
     "longestMiddlegame": {
-      "moves": 30,
-      "white": "Sam «Active King» B.",
-      "black": "Fabienne «Chessy» S.",
-      "game": "Sam «Active King» B. vs Fabienne «Chessy» S."
+      "moves": 38,
+      "white": "Roger «Ruthless En Passant Shredder» H.",
+      "black": "Manuel «Pawn Shredder» G.",
+      "game": "Roger «Ruthless En Passant Shredder» H. vs Manuel «Pawn Shredder» G."
     },
     "longestEndgame": {
       "moves": 52,
@@ -251,7 +251,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 557,
+    "totalCaptures": 567,
     "enPassantGames": [],
     "promotions": 3,
     "castling": {
@@ -281,32 +281,32 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 628,
-      "knights": 418,
-      "bishops": 345,
-      "rooks": 385,
-      "queens": 290,
-      "kings": 334
+      "pawns": 637,
+      "knights": 431,
+      "bishops": 358,
+      "rooks": 392,
+      "queens": 299,
+      "kings": 338
     },
     "captured": {
-      "pawns": 270,
-      "knights": 91,
+      "pawns": 275,
+      "knights": 93,
       "bishops": 91,
-      "rooks": 69,
-      "queens": 36
+      "rooks": 70,
+      "queens": 38
     },
     "survivalRate": {
-      "rooks": 0.425,
-      "queens": 0.45,
+      "rooks": 0.4166666666666667,
+      "queens": 0.4166666666666667,
       "bishops": 0.24166666666666667,
-      "knights": 0.24166666666666667
+      "knights": 0.225
     }
   },
   "checkmates": {
     "byPiece": {
       "queen": 7,
       "rook": 0,
-      "bishop": 0,
+      "bishop": 1,
       "knight": 1,
       "pawn": 0
     },
@@ -326,8 +326,8 @@
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 116,
-      "description": "d4 was visited 116 times"
+      "visits": 118,
+      "description": "d4 was visited 118 times"
     },
     "leastPopularSquare": {
       "square": "a1",
@@ -350,33 +350,33 @@
       },
       {
         "square": "e4",
-        "captures": 19
+        "captures": 20
       },
       {
-        "square": "g5",
+        "square": "b5",
         "captures": 19
       }
     ],
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 116
+        "visits": 118
       },
       {
         "square": "e5",
-        "visits": 103
+        "visits": 106
       },
       {
         "square": "d5",
-        "visits": 93
+        "visits": 94
       },
       {
         "square": "f6",
-        "visits": 77
+        "visits": 80
       },
       {
         "square": "e4",
-        "visits": 73
+        "visits": 76
       }
     ]
   },
@@ -594,27 +594,49 @@
         "gameIndex": 2,
         "white": "Roger «Ruthless En Passant Shredder» H.",
         "black": "Manuel «Pawn Shredder» G.",
-        "whiteACPL": 24.2,
-        "blackACPL": 22.9,
-        "whiteAccuracy": 86.2,
-        "blackAccuracy": 87.1,
+        "whiteACPL": 27.5,
+        "blackACPL": 38.2,
+        "whiteAccuracy": 78.2,
+        "blackAccuracy": 81.6,
         "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 2,
-          "inaccuracies": 3,
-          "good": 3,
-          "excellent": 11
+          "blunders": 1,
+          "mistakes": 6,
+          "inaccuracies": 6,
+          "good": 4,
+          "excellent": 30
         },
         "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 3,
-          "inaccuracies": 1,
-          "good": 2,
-          "excellent": 13
+          "blunders": 3,
+          "mistakes": 4,
+          "inaccuracies": 6,
+          "good": 7,
+          "excellent": 26
         },
-        "biggestBlunder": null,
-        "biggestComeback": null,
-        "luckyEscape": null
+        "biggestBlunder": {
+          "moveNumber": 37,
+          "player": "black",
+          "cpLoss": 238,
+          "winLoss": 32.92392278003865,
+          "move": "Qg7",
+          "evalBefore": -133,
+          "evalAfter": 105
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 47
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 47
+        }
       },
       {
         "gameIndex": 3,

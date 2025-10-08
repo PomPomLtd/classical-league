@@ -210,8 +210,11 @@ The application includes a comprehensive statistics system that analyzes chess g
 curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
   node scripts/generate-stats.js --round 1
 
-# Alternative: Use local PGN file
-node scripts/generate-stats.js --round 1 --season 2 < round1.pgn
+# From local PGN file (basic stats)
+cat round1.pgn | node scripts/generate-stats.js --round 1
+
+# From local PGN file with Stockfish analysis (recommended)
+cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 
 # View generated stats
 # JSON saved to: public/stats/season-2-round-1.json
