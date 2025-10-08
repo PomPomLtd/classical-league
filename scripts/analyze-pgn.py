@@ -359,7 +359,21 @@ def main():
     print(f"\n🔬 Stockfish Analysis Starting...", file=sys.stderr)
     print(f"📊 Total games to analyze: {total_games}", file=sys.stderr)
     print(f"⚙️  Depth: {args.depth} | Sample rate: every {args.sample} move(s)", file=sys.stderr)
-    print(f"⏱️  Estimated time: {total_games * 15}-{total_games * 30} seconds\n", file=sys.stderr)
+
+    # Format estimated time in human-readable form
+    min_seconds = total_games * 15
+    max_seconds = total_games * 30
+    min_minutes = min_seconds // 60
+    min_secs = min_seconds % 60
+    max_minutes = max_seconds // 60
+    max_secs = max_seconds % 60
+
+    if max_minutes > 0:
+        time_estimate = f"{min_minutes}:{min_secs:02d}-{max_minutes}:{max_secs:02d} minutes"
+    else:
+        time_estimate = f"{min_seconds}-{max_seconds} seconds"
+
+    print(f"⏱️  Estimated time: {time_estimate}\n", file=sys.stderr)
 
     while True:
         game = chess.pgn.read_game(pgn_io)
@@ -386,6 +400,13 @@ def main():
 
         # Clear line with spaces, then print progress
         progress_line = f"[{progress_bar}] {progress_pct:3.0f}% | {game_index + 1}/{total_games} | {white_short} vs {black_short}"
+
+        # Skip games with no moves (forfeits, etc.)
+        if move_count == 0:
+            print(f"\r{progress_line:<100} [SKIPPED - no moves]", end='', flush=True, file=sys.stderr)
+            game_index += 1
+            continue
+
         print(f"\r{progress_line:<100}", end='', flush=True, file=sys.stderr)
 
         analysis = analyze_game(game, stockfish, args.depth, args.sample)

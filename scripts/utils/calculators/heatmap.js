@@ -6,12 +6,15 @@
  * to identify hotspots and quiet zones on the board.
  */
 
+const { filterGamesWithMoves } = require('./helpers');
+
 /**
  * Calculate board heatmap statistics
  * @param {Array} games - Array of parsed game objects
  * @returns {Object} Heatmap statistics with most/least active squares
  */
 function calculateBoardHeatmap(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
   const squareActivity = {}; // Total moves to/from each square
   const captureSquares = {}; // Captures on each square
 
@@ -28,7 +31,7 @@ function calculateBoardHeatmap(games) {
   });
 
   // Track activity and captures
-  games.forEach(game => {
+  gamesWithMoves.forEach(game => {
     game.moveList.forEach(move => {
       // Track destination square activity
       if (move.to) {

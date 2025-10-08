@@ -7,7 +7,7 @@
  */
 
 const { analyzeGamePhases } = require('../game-phases');
-const { getPlayerNames, toFullMoves } = require('./helpers');
+const { getPlayerNames, toFullMoves, filterGamesWithMoves } = require('./helpers');
 const { calculateTactics } = require('./tactics');
 const { calculateCheckmates } = require('./checkmates');
 
@@ -17,9 +17,11 @@ const { calculateCheckmates } = require('./checkmates');
  * @returns {Object} Award statistics
  */
 function calculateAwards(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
+
   const tactics = calculateTactics(games);
   const checkmates = calculateCheckmates(games);
-  const phases = games.map(g => analyzeGamePhases(g.moveList, g.pgn));
+  const phases = gamesWithMoves.map(g => analyzeGamePhases(g.moveList, g.pgn));
 
   const longestEndgame = phases.reduce((longest, phase, idx) => {
     return phase.endgame > longest.moves ? { moves: phase.endgame, gameIndex: idx } : longest;
@@ -48,11 +50,11 @@ function calculateAwards(games) {
       winner: checkmates.fastest.winner
     } : null,
     endgameWizard: {
-      ...getPlayerNames(games[longestEndgame.gameIndex]),
+      ...getPlayerNames(gamesWithMoves[longestEndgame.gameIndex]),
       endgameMoves: toFullMoves(longestEndgame.moves)
     },
     openingSprinter: shortestOpening.moves !== Infinity ? {
-      ...getPlayerNames(games[shortestOpening.gameIndex]),
+      ...getPlayerNames(gamesWithMoves[shortestOpening.gameIndex]),
       openingMoves: toFullMoves(shortestOpening.moves)
     } : null
   };

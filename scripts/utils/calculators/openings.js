@@ -7,6 +7,7 @@
  */
 
 const { getOpeningName } = require('../chess-openings');
+const { filterGamesWithMoves } = require('./helpers');
 
 /**
  * Calculate opening statistics
@@ -14,10 +15,12 @@ const { getOpeningName } = require('../chess-openings');
  * @returns {Object} Opening statistics with first moves and popular sequences
  */
 function calculateOpenings(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
+
   const firstMoves = {};
   const openingSequences = {};
 
-  games.forEach(game => {
+  gamesWithMoves.forEach(game => {
     if (game.moveList.length > 0) {
       // First move
       const firstMove = game.moveList[0].san;
@@ -41,7 +44,7 @@ function calculateOpenings(games) {
 
   // Format first moves with percentages and win rates
   const formattedFirstMoves = {};
-  const total = games.length;
+  const total = gamesWithMoves.length;
   Object.entries(firstMoves).forEach(([move, data]) => {
     formattedFirstMoves[move] = {
       count: data.count,

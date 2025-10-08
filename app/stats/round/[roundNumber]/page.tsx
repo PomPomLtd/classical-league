@@ -41,7 +41,7 @@ interface StatsData {
     averageOpening: number
     averageMiddlegame: number
     averageEndgame: number
-    longestOpening: {
+    longestWaitTillCapture: {
       moves: number
       white: string
       black: string

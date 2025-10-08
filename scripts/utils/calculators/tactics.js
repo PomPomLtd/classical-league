@@ -6,7 +6,7 @@
  * en passant, underpromotions, and capture streaks.
  */
 
-const { getPlayerNames } = require('./helpers');
+const { getPlayerNames, filterGamesWithMoves } = require('./helpers');
 
 /**
  * Calculate tactical statistics
@@ -14,6 +14,8 @@ const { getPlayerNames } = require('./helpers');
  * @returns {Object} Tactical statistics including captures, castling, promotions
  */
 function calculateTactics(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
+
   let totalCaptures = 0;
   let totalPromotions = 0;
   let totalCastlingKingside = 0;
@@ -27,7 +29,7 @@ function calculateTactics(games) {
   let quietestGame = { captures: Infinity, gameIndex: 0 };
   let longestNonCaptureStreak = { moves: 0, gameIndex: 0 };
 
-  games.forEach((game, idx) => {
+  gamesWithMoves.forEach((game, idx) => {
     const sm = game.specialMoves;
     const players = getPlayerNames(game);
 

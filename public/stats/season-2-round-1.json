@@ -1,11 +1,11 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-07T22:21:43.874Z",
+  "generatedAt": "2025-10-08T08:23:06.645Z",
   "overview": {
-    "totalGames": 30,
-    "totalMoves": 2319,
-    "averageGameLength": 38.65,
+    "totalGames": 31,
+    "totalMoves": 2400,
+    "averageGameLength": 40,
     "longestGame": {
       "moves": 76,
       "white": "Jakob «Jaquemate » .",
@@ -20,14 +20,14 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.5,
-    "averageMiddlegame": 16.65,
-    "averageEndgame": 13.5,
-    "longestOpening": {
-      "moves": 10,
-      "white": "Adela «Adele» P.",
-      "black": "Igor «Premove Blunder» S.",
-      "game": "Adela «Adele» P. vs Igor «Premove Blunder» S."
+    "averageOpening": 8.75,
+    "averageMiddlegame": 17.466666666666665,
+    "averageEndgame": 13.783333333333333,
+    "longestWaitTillCapture": {
+      "moves": 14,
+      "white": "Jacopo «Bildothebest» B.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "game": "Jacopo «Bildothebest» B. vs Jack «NoBackwardMoves» C."
     },
     "longestMiddlegame": {
       "moves": 30,
@@ -43,12 +43,12 @@
     }
   },
   "results": {
-    "whiteWins": 17,
+    "whiteWins": 18,
     "blackWins": 12,
     "draws": 1,
-    "whiteWinPercentage": 56.666666666666664,
-    "blackWinPercentage": 40,
-    "drawPercentage": 3.3333333333333335
+    "whiteWinPercentage": 58.06451612903226,
+    "blackWinPercentage": 38.70967741935484,
+    "drawPercentage": 3.225806451612903
   },
   "openings": {
     "firstMoves": {
@@ -63,9 +63,9 @@
         "winRate": 50
       },
       "d4": {
-        "count": 11,
-        "percentage": 36.666666666666664,
-        "winRate": 63.63636363636363
+        "count": 12,
+        "percentage": 40,
+        "winRate": 66.66666666666666
       },
       "f4": {
         "count": 1,
@@ -219,6 +219,12 @@
         "name": "Italian Game: Two Knights Defense"
       },
       {
+        "moves": "d4 d5 Nf3 Nc6 a3 Bf5",
+        "count": 1,
+        "eco": "D02",
+        "name": "Queen's Pawn Game: Chigorin Variation"
+      },
+      {
         "moves": "d4 d5 Nf3 Nc6 Bf4 Nf6",
         "count": 1,
         "eco": "D02",
@@ -245,12 +251,12 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 538,
+    "totalCaptures": 557,
     "enPassantGames": [],
     "promotions": 3,
     "castling": {
-      "kingside": 44,
-      "queenside": 7
+      "kingside": 45,
+      "queenside": 8
     },
     "bloodiestGame": {
       "captures": 28,
@@ -260,7 +266,7 @@
     },
     "quietestGame": {
       "captures": 4,
-      "gameIndex": 21,
+      "gameIndex": 22,
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G."
     },
@@ -275,25 +281,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 604,
-      "knights": 397,
-      "bishops": 337,
-      "rooks": 371,
-      "queens": 283,
-      "kings": 327
+      "pawns": 628,
+      "knights": 418,
+      "bishops": 345,
+      "rooks": 385,
+      "queens": 290,
+      "kings": 334
     },
     "captured": {
-      "pawns": 261,
-      "knights": 89,
-      "bishops": 87,
-      "rooks": 67,
-      "queens": 34
+      "pawns": 270,
+      "knights": 91,
+      "bishops": 91,
+      "rooks": 69,
+      "queens": 36
     },
     "survivalRate": {
-      "rooks": 0.44166666666666665,
-      "queens": 0.48333333333333334,
-      "bishops": 0.275,
-      "knights": 0.25833333333333336
+      "rooks": 0.425,
+      "queens": 0.45,
+      "bishops": 0.24166666666666667,
+      "knights": 0.24166666666666667
     }
   },
   "checkmates": {
@@ -301,7 +307,7 @@
       "queen": 7,
       "rook": 0,
       "bishop": 0,
-      "knight": 0,
+      "knight": 1,
       "pawn": 0,
       "king": 0
     },
@@ -321,8 +327,8 @@
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 114,
-      "description": "d4 was visited 114 times"
+      "visits": 116,
+      "description": "d4 was visited 116 times"
     },
     "leastPopularSquare": {
       "square": "a1",
@@ -336,42 +342,42 @@
         "captures": 51
       },
       {
+        "square": "e5",
+        "captures": 43
+      },
+      {
         "square": "d5",
         "captures": 42
       },
       {
-        "square": "e5",
-        "captures": 40
+        "square": "e4",
+        "captures": 19
       },
       {
         "square": "g5",
         "captures": 19
-      },
-      {
-        "square": "e4",
-        "captures": 17
       }
     ],
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 114
+        "visits": 116
       },
       {
         "square": "e5",
-        "visits": 97
+        "visits": 103
       },
       {
         "square": "d5",
-        "visits": 91
+        "visits": 93
       },
       {
         "square": "f6",
-        "visits": 75
+        "visits": 77
       },
       {
         "square": "e4",
-        "visits": 69
+        "visits": 73
       }
     ]
   },
@@ -432,7 +438,7 @@
     },
     "pawnStorm": {
       "count": 13,
-      "gameIndex": 19,
+      "gameIndex": 20,
       "white": "Janic «Clasher» S.",
       "black": "Boris «Out of Nowhere» G."
     },
@@ -448,7 +454,7 @@
     },
     "castlingRace": {
       "moves": 4,
-      "gameIndex": 17,
+      "gameIndex": 18,
       "winner": "black",
       "white": "Jonathan «EnCroissant1997» D.",
       "black": "Gaston «SleepingDawg» F."
@@ -1135,6 +1141,54 @@
       },
       {
         "gameIndex": 17,
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "whiteACPL": 26.1,
+        "blackACPL": 40.5,
+        "whiteAccuracy": 85.5,
+        "blackAccuracy": 90.5,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 2,
+          "good": 5,
+          "excellent": 33
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 0,
+          "inaccuracies": 4,
+          "good": 7,
+          "excellent": 28
+        },
+        "biggestBlunder": {
+          "moveNumber": 8,
+          "player": "black",
+          "cpLoss": 172,
+          "winLoss": 21.106257914597343,
+          "move": "O-O-O",
+          "evalBefore": 49,
+          "evalAfter": 221
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 41
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 41
+        }
+      },
+      {
+        "gameIndex": 18,
         "white": "Jonathan «EnCroissant1997» D.",
         "black": "Gaston «SleepingDawg» F.",
         "whiteACPL": 31.6,
@@ -1168,7 +1222,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 18,
+        "gameIndex": 19,
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
         "whiteACPL": 61,
@@ -1208,7 +1262,7 @@
         }
       },
       {
-        "gameIndex": 19,
+        "gameIndex": 20,
         "white": "Janic «Clasher» S.",
         "black": "Boris «Out of Nowhere» G.",
         "whiteACPL": 58.1,
@@ -1234,33 +1288,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 20,
-        "white": "Camill «Camillionaire» T.",
-        "black": "Silvan «Fork This Fork That» S.",
-        "whiteACPL": 0,
-        "blackACPL": 0,
-        "whiteAccuracy": 100,
-        "blackAccuracy": 100,
-        "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 0,
-          "excellent": 0
-        },
-        "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 0,
-          "excellent": 0
-        },
-        "biggestBlunder": null,
-        "biggestComeback": null,
-        "luckyEscape": null
-      },
-      {
-        "gameIndex": 21,
+        "gameIndex": 22,
         "white": "Pieter «snok» S.",
         "black": "Linus «The Middlegame Mixer» K.",
         "whiteACPL": 64.9,
@@ -1294,7 +1322,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 22,
+        "gameIndex": 23,
         "white": "Nikola «Pawn Carnivore»",
         "black": "Ruslan «Thunder-Blunder» G.",
         "whiteACPL": 32.8,
@@ -1328,7 +1356,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 23,
+        "gameIndex": 24,
         "white": "Oliver «ScreaminG HI JoK ING» .",
         "black": "Ramura «viennugambu» G.",
         "whiteACPL": 62.8,
@@ -1362,7 +1390,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 24,
+        "gameIndex": 25,
         "white": "Victor «Loves Threefold Repetition» P.",
         "black": "Eva «Miss of King» S.",
         "whiteACPL": 49.2,
@@ -1402,7 +1430,7 @@
         }
       },
       {
-        "gameIndex": 25,
+        "gameIndex": 26,
         "white": "Valentin «valentin_benglen» C.",
         "black": "Islam «xXBlackXx» H.",
         "whiteACPL": 50,
@@ -1442,7 +1470,7 @@
         }
       },
       {
-        "gameIndex": 26,
+        "gameIndex": 27,
         "white": "Itamar «Itaberg» B.",
         "black": "Florian «Knightmare» G.",
         "whiteACPL": 39.6,
@@ -1482,7 +1510,7 @@
         }
       },
       {
-        "gameIndex": 27,
+        "gameIndex": 28,
         "white": "Christina «Crisi» V.",
         "black": "Peter «Peaky Blunder» N.",
         "whiteACPL": 55.4,
@@ -1508,7 +1536,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 28,
+        "gameIndex": 29,
         "white": "Christopher «King Decimator» H.",
         "black": "Andrei «PawnWreckerAlpha» A.",
         "whiteACPL": 21.4,
@@ -1542,7 +1570,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 29,
+        "gameIndex": 30,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
         "whiteACPL": 102,
@@ -1601,7 +1629,7 @@
         "evalAfter": -298,
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
-        "gameIndex": 18
+        "gameIndex": 19
       },
       "comebackKing": {
         "player": "white",
@@ -1623,7 +1651,7 @@
         "moveNumber": 31,
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
-        "gameIndex": 18
+        "gameIndex": 19
       },
       "lowestACPL": {
         "player": "black",
@@ -1631,7 +1659,7 @@
         "accuracy": 91.5,
         "white": "Jonathan «EnCroissant1997» D.",
         "black": "Gaston «SleepingDawg» F.",
-        "gameIndex": 17
+        "gameIndex": 18
       },
       "highestACPL": {
         "player": "white",
@@ -1639,7 +1667,7 @@
         "accuracy": 63.2,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
-        "gameIndex": 29
+        "gameIndex": 30
       },
       "lowestCombinedACPL": {
         "combinedACPL": 38.8,
@@ -1655,7 +1683,7 @@
         "blackACPL": 70.5,
         "white": "Ludwig «solucionfisiologica» S.",
         "black": "Loris «LorisNiUr» U.",
-        "gameIndex": 29
+        "gameIndex": 30
       }
     }
   }

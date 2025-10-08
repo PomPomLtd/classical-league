@@ -6,7 +6,7 @@
  * captures (pieces taken), and survival rates.
  */
 
-const { PIECE_NAMES_LOWERCASE } = require('./helpers');
+const { PIECE_NAMES_LOWERCASE, filterGamesWithMoves } = require('./helpers');
 
 /**
  * Calculate piece statistics
@@ -14,11 +14,13 @@ const { PIECE_NAMES_LOWERCASE } = require('./helpers');
  * @returns {Object} Piece statistics including activity, captures, and survival rates
  */
 function calculatePieceStats(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
+
   const activity = { p: 0, n: 0, b: 0, r: 0, q: 0, k: 0 };
   const captured = { p: 0, n: 0, b: 0, r: 0, q: 0 };
   const survival = { rooks: [], queens: [], bishops: [], knights: [] };
 
-  games.forEach(game => {
+  gamesWithMoves.forEach(game => {
     // Activity
     game.moveList.forEach(move => {
       activity[move.piece]++;

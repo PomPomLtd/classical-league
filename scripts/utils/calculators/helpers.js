@@ -7,6 +7,16 @@
  */
 
 /**
+ * Filter out games with no moves (forfeits with no play)
+ * These games are still counted in totals but excluded from move-based analysis
+ * @param {Array} games - Array of parsed game objects
+ * @returns {Array} Games with at least one move
+ */
+function filterGamesWithMoves(games) {
+  return games.filter(g => g.moves > 0);
+}
+
+/**
  * Calculate Manhattan distance between two squares on a chess board
  * @param {string} from - Starting square (e.g., 'e2')
  * @param {string} to - Ending square (e.g., 'e4')
@@ -94,6 +104,7 @@ const PIECE_NAMES_LOWERCASE = {
 const CENTER_SQUARES = new Set(['d4', 'd5', 'e4', 'e5']);
 
 module.exports = {
+  filterGamesWithMoves,
   calculateDistance,
   isDarkSquare,
   getPlayerName,

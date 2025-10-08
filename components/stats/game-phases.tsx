@@ -5,7 +5,7 @@ interface GamePhasesProps {
     averageOpening: number
     averageMiddlegame: number
     averageEndgame: number
-    longestOpening: {
+    longestWaitTillCapture: {
       moves: number
       white: string
       black: string
@@ -45,8 +45,8 @@ export function GamePhases({ gamePhases }: GamePhasesProps) {
       </div>
       <div className="space-y-4">
         <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Longest Opening: {gamePhases.longestOpening.moves} moves</div>
-          <div className="text-sm text-gray-700 dark:text-gray-300">{gamePhases.longestOpening.game}</div>
+          <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Longest Wait Till First Capture: {gamePhases.longestWaitTillCapture.moves} moves</div>
+          <div className="text-sm text-gray-700 dark:text-gray-300">{gamePhases.longestWaitTillCapture.game}</div>
         </div>
         <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
           <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">Longest Middlegame: {gamePhases.longestMiddlegame.moves} moves</div>

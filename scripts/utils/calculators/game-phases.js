@@ -7,7 +7,7 @@
  */
 
 const { analyzeGamePhases, getPhaseStatistics } = require('../game-phases');
-const { getPlayerNames, toFullMoves } = require('./helpers');
+const { getPlayerNames, toFullMoves, filterGamesWithMoves } = require('./helpers');
 
 /**
  * Calculate game phase statistics
@@ -16,27 +16,39 @@ const { getPlayerNames, toFullMoves } = require('./helpers');
  * @returns {Object} Phase statistics including averages and longest phases
  */
 function calculateGamePhases(games) {
-  const allPhases = games.map(g => analyzeGamePhases(g.moveList, g.pgn));
+  const gamesWithMoves = filterGamesWithMoves(games);
+
+  const allPhases = gamesWithMoves.map(g => analyzeGamePhases(g.moveList, g.pgn));
   const phaseStats = getPhaseStatistics(allPhases);
+
+  // Find longest wait until first capture
+  let longestWaitTillCapture = { moves: 0, gameIndex: 0 };
+  gamesWithMoves.forEach((game, idx) => {
+    const firstCaptureIndex = game.moveList.findIndex(move => move.captured);
+    const movesBeforeCapture = firstCaptureIndex === -1 ? game.moveList.length : firstCaptureIndex;
+    if (movesBeforeCapture > longestWaitTillCapture.moves) {
+      longestWaitTillCapture = { moves: movesBeforeCapture, gameIndex: idx };
+    }
+  });
 
   return {
     averageOpening: phaseStats.averageOpening / 2,
     averageMiddlegame: phaseStats.averageMiddlegame / 2,
     averageEndgame: phaseStats.averageEndgame / 2,
-    longestOpening: {
-      moves: toFullMoves(phaseStats.longestOpening.moves),
-      ...getPlayerNames(games[phaseStats.longestOpening.gameIndex]),
-      game: `${games[phaseStats.longestOpening.gameIndex].headers.White} vs ${games[phaseStats.longestOpening.gameIndex].headers.Black}`
+    longestWaitTillCapture: {
+      moves: toFullMoves(longestWaitTillCapture.moves),
+      ...getPlayerNames(gamesWithMoves[longestWaitTillCapture.gameIndex]),
+      game: `${gamesWithMoves[longestWaitTillCapture.gameIndex].headers.White} vs ${gamesWithMoves[longestWaitTillCapture.gameIndex].headers.Black}`
     },
     longestMiddlegame: {
       moves: toFullMoves(phaseStats.longestMiddlegame.moves),
-      ...getPlayerNames(games[phaseStats.longestMiddlegame.gameIndex]),
-      game: `${games[phaseStats.longestMiddlegame.gameIndex].headers.White} vs ${games[phaseStats.longestMiddlegame.gameIndex].headers.Black}`
+      ...getPlayerNames(gamesWithMoves[phaseStats.longestMiddlegame.gameIndex]),
+      game: `${gamesWithMoves[phaseStats.longestMiddlegame.gameIndex].headers.White} vs ${gamesWithMoves[phaseStats.longestMiddlegame.gameIndex].headers.Black}`
     },
     longestEndgame: {
       moves: toFullMoves(phaseStats.longestEndgame.moves),
-      ...getPlayerNames(games[phaseStats.longestEndgame.gameIndex]),
-      game: `${games[phaseStats.longestEndgame.gameIndex].headers.White} vs ${games[phaseStats.longestEndgame.gameIndex].headers.Black}`
+      ...getPlayerNames(gamesWithMoves[phaseStats.longestEndgame.gameIndex]),
+      game: `${gamesWithMoves[phaseStats.longestEndgame.gameIndex].headers.White} vs ${gamesWithMoves[phaseStats.longestEndgame.gameIndex].headers.Black}`
     }
   };
 }

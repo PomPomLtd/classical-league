@@ -6,7 +6,7 @@
  * and tracks the fastest checkmate in the round.
  */
 
-const { getPlayerNames } = require('./helpers');
+const { getPlayerNames, filterGamesWithMoves } = require('./helpers');
 
 /**
  * Map chess.js piece codes to full names
@@ -26,10 +26,12 @@ const PIECE_MAP = {
  * @returns {Object} Checkmate statistics including by piece and fastest mate
  */
 function calculateCheckmates(games) {
+  const gamesWithMoves = filterGamesWithMoves(games);
+
   const byPiece = { queen: 0, rook: 0, bishop: 0, knight: 0, pawn: 0, king: 0 };
   let fastestMate = { moves: Infinity, gameIndex: 0 };
 
-  games.forEach((game, idx) => {
+  gamesWithMoves.forEach((game, idx) => {
     game.specialMoves.checkmates.forEach(mate => {
       const pieceCode = mate.piece;
       const pieceName = PIECE_MAP[pieceCode];
