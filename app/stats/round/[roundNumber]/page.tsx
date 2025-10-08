@@ -320,6 +320,50 @@ interface StatsData {
       white: string
       black: string
     } | null
+    homebody?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      piecesInEnemy: number
+      description: string
+    }
+    lateBloomer?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      moveNumber: number
+      description: string
+    }
+    quickDraw?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      moveNumber: number
+      description: string
+    }
+    crosshairs?: {
+      white: string
+      black: string
+      square: string
+      attackers: number
+      whiteAttackers: number
+      blackAttackers: number
+      moveNumber: number
+      move: string
+      description: string
+    }
+    longestTension?: {
+      white: string
+      black: string
+      moves: number
+      squares: string
+      startMove: number
+      endMove: number
+      description: string
+    }
   }
   analysis?: {
     games: Array<{

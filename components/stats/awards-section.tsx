@@ -33,7 +33,8 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
   return (
     <div className="bg-gradient-to-br from-yellow-400 to-orange-500 dark:from-yellow-900 dark:to-orange-900 rounded-lg shadow-xl p-8 text-white">
       <h2 className="text-2xl font-bold mb-6">🏆 Round Awards</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Original Awards */}
         <div>
           <div className="text-lg font-semibold mb-2">🩸 Bloodbath Award</div>
           <div className="text-yellow-100 dark:text-yellow-200">
@@ -41,6 +42,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
           </div>
           <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{awards.bloodbath.captures} captures!</div>
         </div>
+
         <div>
           <div className="text-lg font-semibold mb-2">🕊️ Pacifist Award</div>
           <div className="text-yellow-100 dark:text-yellow-200">
@@ -48,6 +50,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
           </div>
           <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{awards.pacifist.captures} captures</div>
         </div>
+
         {awards.speedDemon && (
           <div>
             <div className="text-lg font-semibold mb-2">⚡ Speed Demon</div>
@@ -57,6 +60,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
             <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">Mate in {awards.speedDemon.moves} moves</div>
           </div>
         )}
+
         <div>
           <div className="text-lg font-semibold mb-2">🧙 Endgame Wizard</div>
           <div className="text-yellow-100 dark:text-yellow-200">

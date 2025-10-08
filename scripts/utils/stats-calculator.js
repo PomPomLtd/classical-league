@@ -25,9 +25,10 @@ const { calculateFunStats } = require('./calculators/fun-stats');
  * @param {Array} parsedGames - Array of parsed game objects from pgn-parser
  * @param {number} roundNumber - Round number
  * @param {number} seasonNumber - Season number
+ * @param {Object} tacticalPatterns - Optional tactical patterns data from Python analysis
  * @returns {Object} Complete statistics object
  */
-function calculateStats(parsedGames, roundNumber, seasonNumber) {
+function calculateStats(parsedGames, roundNumber, seasonNumber, tacticalPatterns = null) {
   const stats = {
     roundNumber,
     seasonNumber,
@@ -41,7 +42,7 @@ function calculateStats(parsedGames, roundNumber, seasonNumber) {
     checkmates: calculateCheckmates(parsedGames),
     boardHeatmap: calculateBoardHeatmap(parsedGames),
     awards: calculateAwards(parsedGames),
-    funStats: calculateFunStats(parsedGames)
+    funStats: calculateFunStats(parsedGames, tacticalPatterns)
   };
 
   return stats;

@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-08T14:22:54.375Z",
+  "generatedAt": "2025-10-08T18:54:22.707Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2455,
@@ -512,6 +512,876 @@
       "color": "Black",
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
+    },
+    "homebody": {
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G.",
+      "player": "black",
+      "playerName": "Ruslan «Thunder-Blunder» G.",
+      "piecesInEnemy": 1,
+      "description": "Ruslan «Thunder-Blunder» G. only crossed 1 piece(s) into opponent's half of the board"
+    },
+    "lateBloomer": {
+      "white": "Jacopo «Bildothebest» B.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "player": "black",
+      "playerName": "Jack «NoBackwardMoves» C.",
+      "moveNumber": 42,
+      "description": "Jack «NoBackwardMoves» C. waited until move 21 to cross into opponent's half"
+    },
+    "quickDraw": {
+      "white": "Manuel «Grundpatzer» C.",
+      "black": "Alex «The Benoni Pulverizer» G.",
+      "player": "black",
+      "playerName": "Alex «The Benoni Pulverizer» G.",
+      "moveNumber": 4,
+      "description": "Alex «The Benoni Pulverizer» G. crossed into opponent's half on move 2"
+    },
+    "crosshairs": {
+      "white": "Jonathan «EnCroissant1997» D.",
+      "black": "Gaston «SleepingDawg» F.",
+      "square": "d4",
+      "attackers": 8,
+      "whiteAttackers": 4,
+      "blackAttackers": 4,
+      "moveNumber": 28,
+      "move": "Rad8",
+      "description": "d4 under attack by 8 pieces (move 28)"
+    },
+    "longestTension": {
+      "white": "Korbinian «King's Gambit is a real opening» A.",
+      "black": "Adam «PawnRuinerAlpha» A.",
+      "moves": 25,
+      "squares": "a6-b5",
+      "startMove": 41,
+      "endMove": 66,
+      "description": "a6-b5 pieces faced off for 25 moves without capturing"
+    }
+  },
+  "tacticalPatterns": {
+    "games": [
+      {
+        "white": "Adela «Adele» P.",
+        "black": "Igor «Premove Blunder» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 10
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 16,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "e4-f6",
+          "startMove": 17,
+          "endMove": 28
+        },
+        "gameIndex": 0
+      },
+      {
+        "white": "Christopher «Ong Passong» G.",
+        "black": "Torsten «torstyehocara» J.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 6,
+          "whiteAttackers": 1,
+          "blackAttackers": 5,
+          "moveNumber": 5,
+          "move": "Nxe5"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "d4-f3",
+          "startMove": 42,
+          "endMove": 53
+        },
+        "gameIndex": 1
+      },
+      {
+        "white": "Roger «Ruthless En Passant Shredder» H.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 28
+        },
+        "mostAttackedSquare": {
+          "square": "c4",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 44,
+          "move": "Bd5"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "c5-e3",
+          "startMove": 19,
+          "endMove": 27
+        },
+        "gameIndex": 2
+      },
+      {
+        "white": "Korbinian «King's Gambit is a real opening» A.",
+        "black": "Adam «PawnRuinerAlpha» A.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 25,
+          "blackFirstInvasion": 34
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 28,
+          "move": "Qxd5"
+        },
+        "longestTension": {
+          "moves": 25,
+          "squares": "a6-b5",
+          "startMove": 41,
+          "endMove": 66
+        },
+        "gameIndex": 3
+      },
+      {
+        "white": "Jakob «Jaquemate » .",
+        "black": "Joshua «Pristine Pawn Pusher» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "e5",
+          "attackers": 7,
+          "whiteAttackers": 3,
+          "blackAttackers": 4,
+          "moveNumber": 50,
+          "move": "Nxg4"
+        },
+        "longestTension": {
+          "moves": 9,
+          "squares": "c6-d4",
+          "startMove": 19,
+          "endMove": 28
+        },
+        "gameIndex": 4
+      },
+      {
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Michael «Mivobu» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 29,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 17,
+          "move": "d4"
+        },
+        "longestTension": {
+          "moves": 4,
+          "squares": "d6-d8",
+          "startMove": 37,
+          "endMove": 41
+        },
+        "gameIndex": 5
+      },
+      {
+        "white": "Manuel «Grundpatzer» C.",
+        "black": "Alex «The Benoni Pulverizer» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 21,
+          "blackFirstInvasion": 4
+        },
+        "mostAttackedSquare": {
+          "square": "e5",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 53,
+          "move": "f4"
+        },
+        "longestTension": {
+          "moves": 3,
+          "squares": "e6-e8",
+          "startMove": 45,
+          "endMove": 48
+        },
+        "gameIndex": 6
+      },
+      {
+        "white": "Davide «AME» V.",
+        "black": "Yannik «The Golden Castling Obliterator» T.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 2,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 32
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 5,
+          "whiteAttackers": 0,
+          "blackAttackers": 5,
+          "moveNumber": 8,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "b5-d7",
+          "startMove": 14,
+          "endMove": 21
+        },
+        "gameIndex": 7
+      },
+      {
+        "white": "Anton «TheCatalan» B.",
+        "black": "Oliver «Monkey sees Pawn» K.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 13,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 7,
+          "move": "d4"
+        },
+        "longestTension": {
+          "moves": 15,
+          "squares": "c2-d4",
+          "startMove": 23,
+          "endMove": 38
+        },
+        "gameIndex": 8
+      },
+      {
+        "white": "Mario «ChessDude» M.",
+        "black": "Dogan «Kido» P.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 24
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 5,
+          "whiteAttackers": 0,
+          "blackAttackers": 5,
+          "moveNumber": 4,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "c3-d5",
+          "startMove": 10,
+          "endMove": 17
+        },
+        "gameIndex": 9
+      },
+      {
+        "white": "Daniel «Bishop Mangler Supreme» T.",
+        "black": "Viktor «VHH93» H.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 6,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 5,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "c5-d4",
+          "startMove": 4,
+          "endMove": 11
+        },
+        "gameIndex": 10
+      },
+      {
+        "white": "Max «Bird is the word» W.",
+        "black": "Oliver «Mouse Slip Expert» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 20
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 55,
+          "move": "Rad1"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "d4-e5",
+          "startMove": 25,
+          "endMove": 33
+        },
+        "gameIndex": 11
+      },
+      {
+        "white": "Diego «The Bishop Slayer» R.",
+        "black": "Stefano «acheron» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "c3",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 24,
+          "move": "Nxe4"
+        },
+        "longestTension": {
+          "moves": 12,
+          "squares": "g7-h6",
+          "startMove": 17,
+          "endMove": 29
+        },
+        "gameIndex": 12
+      },
+      {
+        "white": "Sam «Active King» B.",
+        "black": "Fabienne «Chessy» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 28
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 8,
+          "move": "e6"
+        },
+        "longestTension": {
+          "moves": 12,
+          "squares": "e5-g7",
+          "startMove": 65,
+          "endMove": 77
+        },
+        "gameIndex": 13
+      },
+      {
+        "white": "Iannis «Modern Pulverizer» D.",
+        "black": "Matteo «Afraid of Caro-Kann» M.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 21,
+          "blackFirstInvasion": 12
+        },
+        "mostAttackedSquare": {
+          "square": "g3",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 44,
+          "move": "Bh4"
+        },
+        "longestTension": {
+          "moves": 20,
+          "squares": "c5-d4",
+          "startMove": 16,
+          "endMove": 36
+        },
+        "gameIndex": 14
+      },
+      {
+        "white": "Simon «The Endgame Alchemist» L.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 6,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 12
+        },
+        "mostAttackedSquare": {
+          "square": "f2",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 39,
+          "move": "Ng4"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "b1-h7",
+          "startMove": 49,
+          "endMove": 60
+        },
+        "gameIndex": 15
+      },
+      {
+        "white": "bela «bela» O.",
+        "black": "Osama «Ruiner of Bird's» A.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 6,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 14
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 3,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "b3-d5",
+          "startMove": 21,
+          "endMove": 29
+        },
+        "gameIndex": 16
+      },
+      {
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 19,
+          "blackFirstInvasion": 42
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 23,
+          "move": "Ne5"
+        },
+        "longestTension": {
+          "moves": 15,
+          "squares": "f2-h3",
+          "startMove": 50,
+          "endMove": 65
+        },
+        "gameIndex": 17
+      },
+      {
+        "white": "Jonathan «EnCroissant1997» D.",
+        "black": "Gaston «SleepingDawg» F.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 8,
+          "whiteAttackers": 4,
+          "blackAttackers": 4,
+          "moveNumber": 28,
+          "move": "Rad8"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "e5-f3",
+          "startMove": 22,
+          "endMove": 30
+        },
+        "gameIndex": 18
+      },
+      {
+        "white": "Laurens «Castling Specialist» B.",
+        "black": "Alexander «Not Grischuk» .",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 10
+        },
+        "mostAttackedSquare": {
+          "square": "f5",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 35,
+          "move": "Ng3"
+        },
+        "longestTension": {
+          "moves": 14,
+          "squares": "e4-h7",
+          "startMove": 52,
+          "endMove": 66
+        },
+        "gameIndex": 19
+      },
+      {
+        "white": "Janic «Clasher» S.",
+        "black": "Boris «Out of Nowhere» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 19,
+          "blackFirstInvasion": 14
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 37,
+          "move": "Qc4"
+        },
+        "longestTension": {
+          "moves": 15,
+          "squares": "d5-g5",
+          "startMove": 33,
+          "endMove": 48
+        },
+        "gameIndex": 20
+      },
+      {
+        "white": "Camill «Camillionaire» T.",
+        "black": "Silvan «Fork This Fork That» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 0,
+          "blackPiecesInEnemy": 0,
+          "whiteFirstInvasion": null,
+          "blackFirstInvasion": null
+        },
+        "mostAttackedSquare": null,
+        "longestTension": null,
+        "gameIndex": 21
+      },
+      {
+        "white": "Pieter «snok» S.",
+        "black": "Linus «The Middlegame Mixer» K.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 21,
+          "blackFirstInvasion": 4
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 43,
+          "move": "Qd6"
+        },
+        "longestTension": {
+          "moves": 3,
+          "squares": "e4-f6",
+          "startMove": 18,
+          "endMove": 21
+        },
+        "gameIndex": 22
+      },
+      {
+        "white": "Nikola «Pawn Carnivore»",
+        "black": "Ruslan «Thunder-Blunder» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 1,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 3,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "c5-d4",
+          "startMove": 10,
+          "endMove": 18
+        },
+        "gameIndex": 23
+      },
+      {
+        "white": "Oliver «ScreaminG HI JoK ING» .",
+        "black": "Ramura «viennugambu» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 6,
+          "whiteAttackers": 5,
+          "blackAttackers": 1,
+          "moveNumber": 6,
+          "move": "dxe4"
+        },
+        "longestTension": {
+          "moves": 10,
+          "squares": "f2-h2",
+          "startMove": 46,
+          "endMove": 56
+        },
+        "gameIndex": 24
+      },
+      {
+        "white": "Victor «Loves Threefold Repetition» P.",
+        "black": "Eva «Miss of King» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 1,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 36
+        },
+        "mostAttackedSquare": {
+          "square": "d8",
+          "attackers": 6,
+          "whiteAttackers": 1,
+          "blackAttackers": 5,
+          "moveNumber": 31,
+          "move": "Nxf7"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "c5-d4",
+          "startMove": 10,
+          "endMove": 17
+        },
+        "gameIndex": 25
+      },
+      {
+        "white": "Valentin «valentin_benglen» C.",
+        "black": "Islam «xXBlackXx» H.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 21,
+          "move": "d4"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "f4-g6",
+          "startMove": 34,
+          "endMove": 41
+        },
+        "gameIndex": 26
+      },
+      {
+        "white": "Itamar «Itaberg» B.",
+        "black": "Florian «Knightmare» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 23,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 32,
+          "move": "O-O-O"
+        },
+        "longestTension": {
+          "moves": 15,
+          "squares": "g4-h3",
+          "startMove": 64,
+          "endMove": 79
+        },
+        "gameIndex": 27
+      },
+      {
+        "white": "Christina «Crisi» V.",
+        "black": "Peter «Peaky Blunder» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 14
+        },
+        "mostAttackedSquare": {
+          "square": "e5",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 16,
+          "move": "Qd6"
+        },
+        "longestTension": {
+          "moves": 15,
+          "squares": "b3-d4",
+          "startMove": 58,
+          "endMove": 73
+        },
+        "gameIndex": 28
+      },
+      {
+        "white": "Christopher «King Decimator» H.",
+        "black": "Andrei «PawnWreckerAlpha» A.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 27,
+          "blackFirstInvasion": 12
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 7,
+          "whiteAttackers": 3,
+          "blackAttackers": 4,
+          "moveNumber": 20,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 17,
+          "squares": "c4-d5",
+          "startMove": 5,
+          "endMove": 22
+        },
+        "gameIndex": 29
+      },
+      {
+        "white": "Ludwig «solucionfisiologica» S.",
+        "black": "Loris «LorisNiUr» U.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "e2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 5,
+          "move": "Nc3"
+        },
+        "longestTension": {
+          "moves": 10,
+          "squares": "c4-d5",
+          "startMove": 3,
+          "endMove": 13
+        },
+        "gameIndex": 30
+      }
+    ],
+    "summary": {
+      "totalGames": 31,
+      "homebody": {
+        "white": "Nikola «Pawn Carnivore»",
+        "black": "Ruslan «Thunder-Blunder» G.",
+        "player": "black",
+        "piecesInEnemy": 1,
+        "gameIndex": 23
+      },
+      "lateBlocker": null,
+      "mostAttackedSquareGame": {
+        "white": "Jonathan «EnCroissant1997» D.",
+        "black": "Gaston «SleepingDawg» F.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 8,
+          "whiteAttackers": 4,
+          "blackAttackers": 4,
+          "moveNumber": 28,
+          "move": "Rad8"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "e5-f3",
+          "startMove": 22,
+          "endMove": 30
+        },
+        "gameIndex": 18
+      },
+      "lateBloomer": {
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "player": "black",
+        "moveNumber": 42,
+        "gameIndex": 17
+      },
+      "quickDraw": {
+        "white": "Manuel «Grundpatzer» C.",
+        "black": "Alex «The Benoni Pulverizer» G.",
+        "player": "black",
+        "moveNumber": 4,
+        "gameIndex": 6
+      },
+      "longestTension": {
+        "white": "Korbinian «King's Gambit is a real opening» A.",
+        "black": "Adam «PawnRuinerAlpha» A.",
+        "moves": 25,
+        "squares": "a6-b5",
+        "startMove": 41,
+        "endMove": 66,
+        "gameIndex": 3
+      }
     }
   },
   "analysis": {
@@ -1653,16 +2523,16 @@
         "gameIndex": 19
       },
       "comebackKing": {
-        "player": "white",
+        "player": "black",
         "swing": 2000,
-        "evalFrom": "-435",
-        "evalTo": "M3",
-        "evalFromCp": -435,
-        "evalToCp": 9970,
-        "moveNumber": 33,
-        "white": "Iannis «Modern Pulverizer» D.",
-        "black": "Matteo «Afraid of Caro-Kann» M.",
-        "gameIndex": 14
+        "evalFrom": "M1",
+        "evalTo": "M0",
+        "evalFromCp": 9990,
+        "evalToCp": -10000,
+        "moveNumber": 47,
+        "white": "Roger «Ruthless En Passant Shredder» H.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "gameIndex": 2
       },
       "luckyEscape": {
         "player": "white",

@@ -112,6 +112,50 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
+    homebody?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      piecesInEnemy: number
+      description: string
+    }
+    lateBloomer?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      moveNumber: number
+      description: string
+    }
+    quickDraw?: {
+      white: string
+      black: string
+      player: string
+      playerName: string
+      moveNumber: number
+      description: string
+    }
+    crosshairs?: {
+      white: string
+      black: string
+      square: string
+      attackers: number
+      whiteAttackers: number
+      blackAttackers: number
+      moveNumber: number
+      move: string
+      description: string
+    }
+    longestTension?: {
+      white: string
+      black: string
+      moves: number
+      squares: string
+      startMove: number
+      endMove: number
+      description: string
+    }
   }
 }
 
@@ -297,6 +341,69 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-300 dark:text-gray-400 mt-1">
               {funStats.darkLord.color} captured {funStats.darkLord.captures} pieces on dark squares
+            </div>
+          </div>
+        )}
+
+        {funStats.homebody && (
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+            <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">🏠 Homeboy</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.homebody.white} vs {funStats.homebody.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.homebody.playerName} only crossed {funStats.homebody.piecesInEnemy} piece(s) into opponent&apos;s half
+            </div>
+          </div>
+        )}
+
+        {funStats.lateBloomer && (
+          <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+            <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">🐢 Late Bloomer</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.lateBloomer.white} vs {funStats.lateBloomer.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.lateBloomer.playerName} waited until move {Math.floor((funStats.lateBloomer.moveNumber + 1) / 2)} to cross into opponent&apos;s half
+            </div>
+          </div>
+        )}
+
+        {funStats.quickDraw && (
+          <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+            <div className="font-semibold text-green-900 dark:text-green-300 mb-1">🔫 Fastest Gun</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.quickDraw.white} vs {funStats.quickDraw.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.quickDraw.playerName} crossed into opponent&apos;s half on move {Math.floor((funStats.quickDraw.moveNumber + 1) / 2)}
+            </div>
+          </div>
+        )}
+
+        {funStats.crosshairs && (
+          <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+            <div className="font-semibold text-orange-900 dark:text-orange-300 mb-1">🎯 Crosshairs</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.crosshairs.white} vs {funStats.crosshairs.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.crosshairs.square} attacked by {funStats.crosshairs.attackers} pieces
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+              {Math.floor((funStats.crosshairs.moveNumber + 1) / 2)}{funStats.crosshairs.moveNumber % 2 === 1 ? '.' : '...'} {funStats.crosshairs.move}
+            </div>
+          </div>
+        )}
+
+        {funStats.longestTension && (
+          <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+            <div className="font-semibold text-red-900 dark:text-red-300 mb-1">💢 Hypertension Award</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.longestTension.white} vs {funStats.longestTension.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.longestTension.squares} faced off for {funStats.longestTension.moves} moves
             </div>
           </div>
         )}

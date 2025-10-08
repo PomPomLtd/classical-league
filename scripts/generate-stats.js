@@ -104,6 +104,44 @@ async function fetchPGN(roundNumber, seasonNumber) {
   return pgnData;
 }
 
+// Run tactical analysis on parsed games (pins, forks, skewers)
+function analyzeTactics(parsedGames) {
+  const startTime = Date.now();
+
+  try {
+    // Extract normalized PGN from parsed games
+    const normalizedPgn = parsedGames.map(g => g.pgn).join('\n\n');
+
+    console.log('🎯 Running tactical analysis (pins, forks, skewers)...');
+
+    // Run Python tactical analyzer
+    const tacticsOutput = execSync(
+      'venv/bin/python scripts/analyze-tactics.py',
+      {
+        input: normalizedPgn,
+        encoding: 'utf-8',
+        maxBuffer: 10 * 1024 * 1024, // 10MB buffer
+        cwd: path.join(__dirname, '..'),
+        stdio: ['pipe', 'pipe', 'inherit'] // stdin: pipe, stdout: pipe, stderr: inherit (show progress)
+      }
+    );
+
+    const tacticsData = JSON.parse(tacticsOutput);
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+
+    console.log(`✅ Tactical analysis complete in ${elapsed}s`);
+
+    return tacticsData;
+
+  } catch (error) {
+    console.error('❌ Tactical analysis failed:', error.message);
+    if (error.stderr) {
+      console.error('Error output:', error.stderr);
+    }
+    throw error;
+  }
+}
+
 // Run Stockfish analysis on parsed games
 function analyzeGames(parsedGames) {
   const startTime = Date.now();
@@ -111,6 +149,8 @@ function analyzeGames(parsedGames) {
   try {
     // Extract normalized PGN from parsed games
     const normalizedPgn = parsedGames.map(g => g.pgn).join('\n\n');
+
+    console.log('\n🔬 Running Stockfish analysis (accuracy, blunders)...');
 
     // Run Python analyzer (depth 15, analyze all moves for maximum accuracy)
     const analysisOutput = execSync(
@@ -127,7 +167,7 @@ function analyzeGames(parsedGames) {
     const analysisData = JSON.parse(analysisOutput);
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
 
-    console.log(`✅ Analysis complete in ${elapsed}s`);
+    console.log(`✅ Stockfish analysis complete in ${elapsed}s`);
     console.log(`📊 Games analyzed: ${analysisData.games.length}`);
 
     if (analysisData.summary.accuracyKing) {
@@ -139,7 +179,7 @@ function analyzeGames(parsedGames) {
     return analysisData;
 
   } catch (error) {
-    console.error('❌ Analysis failed:', error.message);
+    console.error('❌ Stockfish analysis failed:', error.message);
     if (error.stderr) {
       console.error('Error output:', error.stderr);
     }
@@ -185,23 +225,31 @@ async function main() {
       });
     }
 
-    // Step 3: Run Stockfish analysis (if requested)
+    // Step 3: Run tactical analysis (always - it's fast!)
+    console.log('');
+    const tacticsData = analyzeTactics(parseResults.valid);
+
+    // Step 4: Run Stockfish analysis (optional - slow!)
     let analysisData = null;
     if (options.analyze) {
       analysisData = analyzeGames(parseResults.valid);
     }
 
-    // Step 4: Calculate statistics
+    // Step 5: Calculate statistics (pass tactical data for awards)
     console.log('\n📊 Calculating statistics...');
-    const stats = calculateStats(parseResults.valid, options.round, options.season);
+    const stats = calculateStats(parseResults.valid, options.round, options.season, tacticsData);
 
-    // Step 5: Merge analysis data into stats
+    // Step 6: Merge tactical and analysis data into stats
+    if (tacticsData) {
+      stats.tacticalPatterns = tacticsData;
+      console.log('✅ Tactical data merged into stats');
+    }
     if (analysisData) {
       stats.analysis = analysisData;
-      console.log('✅ Analysis data merged into stats');
+      console.log('✅ Stockfish analysis data merged into stats');
     }
 
-    // Step 6: Save to JSON file
+    // Step 7: Save to JSON file
     const outputDir = path.join(__dirname, '../public/stats');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
@@ -245,6 +293,25 @@ async function main() {
       console.log(`   😴 Never Visited: ${stats.boardHeatmap.quietestSquares.join(', ')}`);
     } else {
       console.log(`   ✨ All squares saw action!`);
+    }
+
+    if (tacticsData && tacticsData.summary) {
+      console.log('\n🐔 Chicken Awards:');
+      if (tacticsData.summary.homebody) {
+        const h = tacticsData.summary.homebody;
+        const name = h.player === 'white' ? h.white : h.black;
+        console.log(`   🏠 Homeboy: ${name} (${h.piecesInEnemy} pieces in enemy territory)`);
+      }
+      if (tacticsData.summary.lateBloomer) {
+        const lb = tacticsData.summary.lateBloomer;
+        const name = lb.player === 'white' ? lb.white : lb.black;
+        console.log(`   🐢 Late Bloomer: ${name} (first invasion move ${Math.floor((lb.moveNumber + 1) / 2)})`);
+      }
+      if (tacticsData.summary.quickDraw) {
+        const qd = tacticsData.summary.quickDraw;
+        const name = qd.player === 'white' ? qd.white : qd.black;
+        console.log(`   🔫 Fastest Gun: ${name} (first invasion move ${Math.floor((qd.moveNumber + 1) / 2)})`);
+      }
     }
 
     console.log('\n✅ Done! Stats are ready to use.\n');
