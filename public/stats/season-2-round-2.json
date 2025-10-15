@@ -1,0 +1,1208 @@
+{
+  "roundNumber": 2,
+  "seasonNumber": 2,
+  "generatedAt": "2025-10-15T17:47:44.985Z",
+  "overview": {
+    "totalGames": 10,
+    "totalMoves": 716,
+    "averageGameLength": 35.8,
+    "longestGame": {
+      "moves": 67,
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W.",
+      "result": "1/2-1/2"
+    },
+    "shortestGame": {
+      "moves": 22,
+      "white": "Adam «PawnRuinerAlpha» A.",
+      "black": "Ruslan «Thunder-Blunder» G.",
+      "result": "1-0"
+    }
+  },
+  "gamePhases": {
+    "averageOpening": 9.55,
+    "averageMiddlegame": 15.15,
+    "averageEndgame": 11.1,
+    "longestWaitTillCapture": {
+      "moves": 13,
+      "white": "Osama «Ruiner of Bird's» A.",
+      "black": "Daniel «Bishop Mangler Supreme» T.",
+      "game": "Osama «Ruiner of Bird's» A. vs Daniel «Bishop Mangler Supreme» T."
+    },
+    "longestMiddlegame": {
+      "moves": 26,
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W.",
+      "game": "Itamar «Itaberg» B. vs Max «Bird is the word» W."
+    },
+    "longestEndgame": {
+      "moves": 38,
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H.",
+      "game": "Ramura «viennugambu» G. vs Christopher «King Decimator» H."
+    }
+  },
+  "results": {
+    "whiteWins": 5,
+    "blackWins": 4,
+    "draws": 1,
+    "whiteWinPercentage": 50,
+    "blackWinPercentage": 40,
+    "drawPercentage": 10
+  },
+  "openings": {
+    "firstMoves": {
+      "e4": {
+        "count": 7,
+        "percentage": 70,
+        "winRate": 42.857142857142854
+      },
+      "d4": {
+        "count": 3,
+        "percentage": 30,
+        "winRate": 66.66666666666666
+      }
+    },
+    "popularSequences": [
+      {
+        "moves": "e4 d5 exd5 Qxd5 Nc3 Qa5",
+        "count": 1,
+        "eco": "B01",
+        "name": "Scandinavian Defense: Main Line"
+      },
+      {
+        "moves": "e4 c6 Nc3 d5 d4 e6",
+        "count": 1,
+        "eco": "B10",
+        "name": "Caro-Kann Defense"
+      },
+      {
+        "moves": "e4 c6 Nc3 d5 Nf3 dxe4",
+        "count": 1,
+        "eco": "B10",
+        "name": "Caro-Kann Defense: Two Knights Attack"
+      },
+      {
+        "moves": "e4 c5 Nc3 d6 Bc4 Nf6",
+        "count": 1,
+        "eco": "B23",
+        "name": "Sicilian Defense: Closed"
+      },
+      {
+        "moves": "e4 e6 d4 d5 e5 c5",
+        "count": 1,
+        "eco": "C02",
+        "name": "French Defense: Advance Variation"
+      },
+      {
+        "moves": "e4 e5 Nc3 Nf6 f4 d5",
+        "count": 1,
+        "eco": "C29",
+        "name": "Vienna Game: Vienna Gambit, Main Line"
+      },
+      {
+        "moves": "e4 e5 Nf3 Nf6 Nc3 Nc6",
+        "count": 1,
+        "eco": "C42",
+        "name": "Petrov's Defense: Three Knights Game"
+      },
+      {
+        "moves": "d4 Nf6 c4 e6 Nf3 Bb4+",
+        "count": 1,
+        "eco": "E11",
+        "name": "Bogo-Indian Defense"
+      },
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4",
+        "count": 1,
+        "eco": "E20",
+        "name": "Nimzo-Indian Defense"
+      },
+      {
+        "moves": "d4 Nf6 c4 g6 Nc3 Bg7",
+        "count": 1,
+        "eco": "E61",
+        "name": "King's Indian Defense"
+      }
+    ]
+  },
+  "tactics": {
+    "totalCaptures": 174,
+    "enPassantGames": [
+      {
+        "white": "Ramura «viennugambu» G.",
+        "black": "Christopher «King Decimator» H.",
+        "count": 1
+      }
+    ],
+    "promotions": 2,
+    "castling": {
+      "kingside": 12,
+      "queenside": 3
+    },
+    "bloodiestGame": {
+      "captures": 27,
+      "gameIndex": 2,
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "quietestGame": {
+      "captures": 12,
+      "gameIndex": 0,
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Camill «Camillionaire» T."
+    },
+    "longestNonCaptureStreak": {
+      "moves": 29,
+      "gameIndex": 3,
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W."
+    },
+    "totalUnderpromotions": 0,
+    "underpromotions": []
+  },
+  "pieces": {
+    "activity": {
+      "pawns": 215,
+      "knights": 116,
+      "bishops": 103,
+      "rooks": 86,
+      "queens": 93,
+      "kings": 103
+    },
+    "captured": {
+      "pawns": 78,
+      "knights": 33,
+      "bishops": 27,
+      "rooks": 23,
+      "queens": 13
+    },
+    "survivalRate": {
+      "rooks": 0.425,
+      "queens": 0.45,
+      "bishops": 0.325,
+      "knights": 0.175
+    }
+  },
+  "checkmates": {
+    "byPiece": {
+      "queen": 3,
+      "rook": 0,
+      "bishop": 0,
+      "knight": 0,
+      "pawn": 1
+    },
+    "fastest": {
+      "moves": 26,
+      "gameIndex": 8,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "winner": "White"
+    }
+  },
+  "boardHeatmap": {
+    "bloodiestSquare": {
+      "square": "e5",
+      "captures": 13,
+      "description": "e5 saw 13 captures"
+    },
+    "mostPopularSquare": {
+      "square": "d4",
+      "visits": 33,
+      "description": "d4 was visited 33 times"
+    },
+    "leastPopularSquare": {
+      "square": "f8",
+      "visits": 1,
+      "description": "f8 was only visited 1 times"
+    },
+    "quietestSquares": [],
+    "top5Bloodiest": [
+      {
+        "square": "e5",
+        "captures": 13
+      },
+      {
+        "square": "d4",
+        "captures": 12
+      },
+      {
+        "square": "d5",
+        "captures": 12
+      },
+      {
+        "square": "f6",
+        "captures": 12
+      },
+      {
+        "square": "b3",
+        "captures": 10
+      }
+    ],
+    "top5Popular": [
+      {
+        "square": "d4",
+        "visits": 33
+      },
+      {
+        "square": "e5",
+        "visits": 30
+      },
+      {
+        "square": "d5",
+        "visits": 27
+      },
+      {
+        "square": "c3",
+        "visits": 26
+      },
+      {
+        "square": "f6",
+        "visits": 25
+      }
+    ]
+  },
+  "awards": {
+    "bloodbath": {
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H.",
+      "captures": 27
+    },
+    "pacifist": {
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Camill «Camillionaire» T.",
+      "captures": 12
+    },
+    "speedDemon": {
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "moves": 26,
+      "winner": "White"
+    },
+    "endgameWizard": {
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H.",
+      "endgameMoves": 38
+    },
+    "openingSprinter": {
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Camill «Camillionaire» T.",
+      "openingMoves": 8
+    }
+  },
+  "funStats": {
+    "fastestQueenTrade": {
+      "moves": 18,
+      "gameIndex": 1,
+      "white": "Linus «The Middlegame Mixer» K.",
+      "black": "Korbinian «King's Gambit is a real opening» A."
+    },
+    "slowestQueenTrade": {
+      "moves": 34,
+      "gameIndex": 3,
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W."
+    },
+    "longestCaptureSequence": {
+      "length": 10,
+      "gameIndex": 4,
+      "startMove": 17,
+      "white": "Manuel «Grundpatzer» C.",
+      "black": "Simon «The Endgame Alchemist» L."
+    },
+    "longestCheckSequence": {
+      "length": 8,
+      "gameIndex": 2,
+      "startMove": 10,
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "pawnStorm": {
+      "count": 11,
+      "gameIndex": 3,
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W."
+    },
+    "pieceLoyalty": null,
+    "squareTourist": {
+      "squares": 17,
+      "gameIndex": 2,
+      "piece": "King",
+      "color": "White",
+      "startSquare": "e1",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "castlingRace": {
+      "moves": 5,
+      "gameIndex": 4,
+      "winner": "black",
+      "white": "Manuel «Grundpatzer» C.",
+      "black": "Simon «The Endgame Alchemist» L."
+    },
+    "openingHipster": {
+      "gameIndex": 2,
+      "eco": "C29",
+      "name": "Vienna Game: Vienna Gambit, Main Line",
+      "moves": "e4 e5 Nc3 Nf6 f4 d5",
+      "obscurityScore": 57,
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "dadbodShuffler": {
+      "moves": 27,
+      "gameIndex": 2,
+      "color": "White",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "sportyQueen": {
+      "distance": 35,
+      "gameIndex": 4,
+      "color": "White",
+      "white": "Manuel «Grundpatzer» C.",
+      "black": "Simon «The Endgame Alchemist» L."
+    },
+    "edgeLord": {
+      "moves": 17,
+      "gameIndex": 2,
+      "color": "White",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "rookLift": {
+      "moveNumber": 16,
+      "gameIndex": 8,
+      "color": "Black",
+      "rook": "Black's f8 Rook",
+      "square": "f8",
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Jack «NoBackwardMoves» C."
+    },
+    "centerStage": {
+      "moves": 5,
+      "gameIndex": 2,
+      "piece": "Black's d6 King",
+      "startSquare": "d6",
+      "color": "Black",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "darkLord": {
+      "captures": 6,
+      "gameIndex": 2,
+      "color": "Black",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "homebody": {
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Camill «Camillionaire» T.",
+      "player": "white",
+      "playerName": "Igor «Premove Blunder» S.",
+      "piecesInEnemy": 2,
+      "description": "Igor «Premove Blunder» S. only crossed 2 piece(s) into opponent's half of the board"
+    },
+    "lateBloomer": {
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Camill «Camillionaire» T.",
+      "player": "white",
+      "playerName": "Igor «Premove Blunder» S.",
+      "moveNumber": 29,
+      "description": "Igor «Premove Blunder» S. waited until move 15 to cross into opponent's half"
+    },
+    "quickDraw": {
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "player": "white",
+      "playerName": "Alex «The Benoni Pulverizer» G.",
+      "moveNumber": 3,
+      "description": "Alex «The Benoni Pulverizer» G. crossed into opponent's half on move 2"
+    },
+    "crosshairs": {
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W.",
+      "square": "c4",
+      "attackers": 7,
+      "whiteAttackers": 2,
+      "blackAttackers": 5,
+      "moveNumber": 52,
+      "move": "Qc3",
+      "description": "c4 under attack by 7 pieces (move 52)"
+    },
+    "longestTension": {
+      "white": "Giacomo «Bishop Airlines » R.",
+      "black": "Anton «TheCatalan» B.",
+      "moves": 20,
+      "squares": "c4-d5",
+      "startMove": 7,
+      "endMove": 27,
+      "description": "c4-d5 pieces faced off for 20 moves without capturing"
+    }
+  },
+  "tacticalPatterns": {
+    "games": [
+      {
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Camill «Camillionaire» T.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 29,
+          "blackFirstInvasion": 12
+        },
+        "mostAttackedSquare": {
+          "square": "e4",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 35,
+          "move": "Nd2"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "d5-f6",
+          "startMove": 38,
+          "endMove": 49
+        },
+        "gameIndex": 0
+      },
+      {
+        "white": "Linus «The Middlegame Mixer» K.",
+        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 11,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 5,
+          "whiteAttackers": 0,
+          "blackAttackers": 5,
+          "moveNumber": 2,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 6,
+          "squares": "g4-h3",
+          "startMove": 50,
+          "endMove": 56
+        },
+        "gameIndex": 1
+      },
+      {
+        "white": "Ramura «viennugambu» G.",
+        "black": "Christopher «King Decimator» H.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 6,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 6,
+          "whiteAttackers": 1,
+          "blackAttackers": 5,
+          "moveNumber": 13,
+          "move": "Bb5+"
+        },
+        "longestTension": {
+          "moves": 9,
+          "squares": "g4-h5",
+          "startMove": 68,
+          "endMove": 77
+        },
+        "gameIndex": 2
+      },
+      {
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 24
+        },
+        "mostAttackedSquare": {
+          "square": "c4",
+          "attackers": 7,
+          "whiteAttackers": 2,
+          "blackAttackers": 5,
+          "moveNumber": 52,
+          "move": "Qc3"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "d5-e4",
+          "startMove": 4,
+          "endMove": 15
+        },
+        "gameIndex": 3
+      },
+      {
+        "white": "Manuel «Grundpatzer» C.",
+        "black": "Simon «The Endgame Alchemist» L.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 21,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 6,
+          "whiteAttackers": 5,
+          "blackAttackers": 1,
+          "moveNumber": 6,
+          "move": "Bb4+"
+        },
+        "longestTension": {
+          "moves": 13,
+          "squares": "c3-d5",
+          "startMove": 22,
+          "endMove": 35
+        },
+        "gameIndex": 4
+      },
+      {
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 11,
+          "blackFirstInvasion": 24
+        },
+        "mostAttackedSquare": {
+          "square": "e5",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 47,
+          "move": "Bxc4"
+        },
+        "longestTension": {
+          "moves": 16,
+          "squares": "e4-f6",
+          "startMove": 11,
+          "endMove": 27
+        },
+        "gameIndex": 5
+      },
+      {
+        "white": "Loris «LorisNiUr» U.",
+        "black": "Laurens «Castling Specialist» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 13,
+          "blackFirstInvasion": 26
+        },
+        "mostAttackedSquare": {
+          "square": "e2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 3,
+          "move": "Nc3"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "b5-c3",
+          "startMove": 18,
+          "endMove": 25
+        },
+        "gameIndex": 6
+      },
+      {
+        "white": "Giacomo «Bishop Airlines » R.",
+        "black": "Anton «TheCatalan» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "e7",
+          "attackers": 5,
+          "whiteAttackers": 0,
+          "blackAttackers": 5,
+          "moveNumber": 10,
+          "move": "Nc6"
+        },
+        "longestTension": {
+          "moves": 20,
+          "squares": "c4-d5",
+          "startMove": 7,
+          "endMove": 27
+        },
+        "gameIndex": 7
+      },
+      {
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 2,
+          "whiteFirstInvasion": 3,
+          "blackFirstInvasion": 12
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 4,
+          "blackAttackers": 1,
+          "moveNumber": 4,
+          "move": "Qxd5"
+        },
+        "longestTension": {
+          "moves": 4,
+          "squares": "f4-f7",
+          "startMove": 45,
+          "endMove": 49
+        },
+        "gameIndex": 8
+      },
+      {
+        "white": "Adam «PawnRuinerAlpha» A.",
+        "black": "Ruslan «Thunder-Blunder» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 6,
+          "whiteAttackers": 5,
+          "blackAttackers": 1,
+          "moveNumber": 7,
+          "move": "Nxe4"
+        },
+        "longestTension": {
+          "moves": 5,
+          "squares": "e4-f6",
+          "startMove": 14,
+          "endMove": 19
+        },
+        "gameIndex": 9
+      }
+    ],
+    "summary": {
+      "totalGames": 10,
+      "homebody": {
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Camill «Camillionaire» T.",
+        "player": "white",
+        "piecesInEnemy": 2,
+        "gameIndex": 0
+      },
+      "lateBlocker": null,
+      "mostAttackedSquareGame": {
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 24
+        },
+        "mostAttackedSquare": {
+          "square": "c4",
+          "attackers": 7,
+          "whiteAttackers": 2,
+          "blackAttackers": 5,
+          "moveNumber": 52,
+          "move": "Qc3"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "d5-e4",
+          "startMove": 4,
+          "endMove": 15
+        },
+        "gameIndex": 3
+      },
+      "lateBloomer": {
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Camill «Camillionaire» T.",
+        "player": "white",
+        "moveNumber": 29,
+        "gameIndex": 0
+      },
+      "quickDraw": {
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "player": "white",
+        "moveNumber": 3,
+        "gameIndex": 8
+      },
+      "longestTension": {
+        "white": "Giacomo «Bishop Airlines » R.",
+        "black": "Anton «TheCatalan» B.",
+        "moves": 20,
+        "squares": "c4-d5",
+        "startMove": 7,
+        "endMove": 27,
+        "gameIndex": 7
+      }
+    }
+  },
+  "analysis": {
+    "games": [
+      {
+        "gameIndex": 0,
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Camill «Camillionaire» T.",
+        "whiteACPL": 16.2,
+        "blackACPL": 34.9,
+        "whiteAccuracy": 92.1,
+        "blackAccuracy": 85.8,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 5,
+          "good": 3,
+          "excellent": 19
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 5,
+          "excellent": 16
+        },
+        "biggestBlunder": {
+          "moveNumber": 18,
+          "player": "black",
+          "cpLoss": 257,
+          "winLoss": 23.064985713780317,
+          "move": "Nh5",
+          "evalBefore": 121,
+          "evalAfter": 378
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 1,
+        "white": "Linus «The Middlegame Mixer» K.",
+        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "whiteACPL": 27.8,
+        "blackACPL": 8.4,
+        "whiteAccuracy": 90.8,
+        "blackAccuracy": 97.7,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 4,
+          "excellent": 22
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 3,
+          "excellent": 27
+        },
+        "biggestBlunder": null,
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 2,
+        "white": "Ramura «viennugambu» G.",
+        "black": "Christopher «King Decimator» H.",
+        "whiteACPL": 44.2,
+        "blackACPL": 32.3,
+        "whiteAccuracy": 83,
+        "blackAccuracy": 86.7,
+        "whiteMoveQuality": {
+          "blunders": 4,
+          "mistakes": 1,
+          "inaccuracies": 8,
+          "good": 12,
+          "excellent": 35
+        },
+        "blackMoveQuality": {
+          "blunders": 4,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 8,
+          "excellent": 44
+        },
+        "biggestBlunder": {
+          "moveNumber": 40,
+          "player": "white",
+          "cpLoss": 409,
+          "winLoss": 41.03235181454529,
+          "move": "Ke2",
+          "evalBefore": -3,
+          "evalAfter": -412
+        },
+        "biggestComeback": null,
+        "luckyEscape": {
+          "player": "white",
+          "escapeAmount": 375,
+          "evalBefore": -376,
+          "evalAfter": -1,
+          "moveNumber": 36
+        }
+      },
+      {
+        "gameIndex": 3,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "whiteACPL": 49.1,
+        "blackACPL": 47.5,
+        "whiteAccuracy": 81.8,
+        "blackAccuracy": 82.6,
+        "whiteMoveQuality": {
+          "blunders": 2,
+          "mistakes": 5,
+          "inaccuracies": 4,
+          "good": 15,
+          "excellent": 41
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 8,
+          "good": 13,
+          "excellent": 43
+        },
+        "biggestBlunder": {
+          "moveNumber": 31,
+          "player": "black",
+          "cpLoss": 491,
+          "winLoss": 56.75715654124352,
+          "move": "Rxh4",
+          "evalBefore": -361,
+          "evalAfter": 130
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 1015,
+          "evalFrom": "526",
+          "evalTo": "-489",
+          "evalFromCp": 526,
+          "evalToCp": -489,
+          "moveNumber": 65
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 458,
+          "evalBefore": 458,
+          "evalAfter": 0,
+          "moveNumber": 66
+        }
+      },
+      {
+        "gameIndex": 4,
+        "white": "Manuel «Grundpatzer» C.",
+        "black": "Simon «The Endgame Alchemist» L.",
+        "whiteACPL": 14.3,
+        "blackACPL": 26.3,
+        "whiteAccuracy": 92.3,
+        "blackAccuracy": 88,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 3,
+          "good": 5,
+          "excellent": 26
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 5,
+          "good": 9,
+          "excellent": 19
+        },
+        "biggestBlunder": null,
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 5,
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "whiteACPL": 38.3,
+        "blackACPL": 61.9,
+        "whiteAccuracy": 76,
+        "blackAccuracy": 81.8,
+        "whiteMoveQuality": {
+          "blunders": 2,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 4,
+          "excellent": 24
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 3,
+          "inaccuracies": 1,
+          "good": 3,
+          "excellent": 25
+        },
+        "biggestBlunder": {
+          "moveNumber": 19,
+          "player": "black",
+          "cpLoss": 667,
+          "winLoss": 73.92681988476983,
+          "move": "c2",
+          "evalBefore": -291,
+          "evalAfter": 376
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 34
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 34
+        }
+      },
+      {
+        "gameIndex": 6,
+        "white": "Loris «LorisNiUr» U.",
+        "black": "Laurens «Castling Specialist» B.",
+        "whiteACPL": 36.4,
+        "blackACPL": 16.3,
+        "whiteAccuracy": 87.3,
+        "blackAccuracy": 94.7,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 0,
+          "inaccuracies": 3,
+          "good": 8,
+          "excellent": 18
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 26
+        },
+        "biggestBlunder": {
+          "moveNumber": 17,
+          "player": "white",
+          "cpLoss": 260,
+          "winLoss": 22.389076886041025,
+          "move": "Ra3",
+          "evalBefore": -132,
+          "evalAfter": -392
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 7,
+        "white": "Giacomo «Bishop Airlines » R.",
+        "black": "Anton «TheCatalan» B.",
+        "whiteACPL": 54.7,
+        "blackACPL": 24.6,
+        "whiteAccuracy": 87.5,
+        "blackAccuracy": 94.7,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 0,
+          "good": 2,
+          "excellent": 24
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 1,
+          "good": 4,
+          "excellent": 24
+        },
+        "biggestBlunder": {
+          "moveNumber": 11,
+          "player": "white",
+          "cpLoss": 445,
+          "winLoss": 37.04895215923094,
+          "move": "Qc3",
+          "evalBefore": -53,
+          "evalAfter": -498
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 8,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "whiteACPL": 33.3,
+        "blackACPL": 57.7,
+        "whiteAccuracy": 71.2,
+        "blackAccuracy": 77.6,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 3,
+          "inaccuracies": 6,
+          "good": 1,
+          "excellent": 15
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 6,
+          "good": 7,
+          "excellent": 9
+        },
+        "biggestBlunder": {
+          "moveNumber": 20,
+          "player": "black",
+          "cpLoss": 215,
+          "winLoss": 27.812445009502248,
+          "move": "Rf7",
+          "evalBefore": -7,
+          "evalAfter": 208
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 26
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 26
+        }
+      },
+      {
+        "gameIndex": 9,
+        "white": "Adam «PawnRuinerAlpha» A.",
+        "black": "Ruslan «Thunder-Blunder» G.",
+        "whiteACPL": 20.1,
+        "blackACPL": 52.5,
+        "whiteAccuracy": 93,
+        "blackAccuracy": 86.4,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 0,
+          "inaccuracies": 0,
+          "good": 3,
+          "excellent": 18
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 0,
+          "inaccuracies": 1,
+          "good": 3,
+          "excellent": 16
+        },
+        "biggestBlunder": {
+          "moveNumber": 11,
+          "player": "black",
+          "cpLoss": 249,
+          "winLoss": 25.392276749960928,
+          "move": "Qa5+",
+          "evalBefore": 83,
+          "evalAfter": 332
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      }
+    ],
+    "summary": {
+      "accuracyKing": {
+        "player": "black",
+        "accuracy": 97.7,
+        "acpl": 8.4,
+        "white": "Linus «The Middlegame Mixer» K.",
+        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "gameIndex": 1
+      },
+      "biggestBlunder": {
+        "moveNumber": 19,
+        "player": "black",
+        "cpLoss": 667,
+        "winLoss": 73.92681988476983,
+        "move": "c2",
+        "evalBefore": -291,
+        "evalAfter": 376,
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "gameIndex": 5
+      },
+      "comebackKing": {
+        "player": "black",
+        "swing": 2000,
+        "evalFrom": "M1",
+        "evalTo": "M0",
+        "evalFromCp": 9990,
+        "evalToCp": -10000,
+        "moveNumber": 34,
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "gameIndex": 5
+      },
+      "luckyEscape": {
+        "player": "black",
+        "escapeAmount": 458,
+        "evalBefore": 458,
+        "evalAfter": 0,
+        "moveNumber": 66,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "gameIndex": 3
+      },
+      "lowestACPL": {
+        "player": "black",
+        "acpl": 8.4,
+        "accuracy": 97.7,
+        "white": "Linus «The Middlegame Mixer» K.",
+        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "gameIndex": 1
+      },
+      "highestACPL": {
+        "player": "black",
+        "acpl": 61.9,
+        "accuracy": 81.8,
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "gameIndex": 5
+      },
+      "lowestCombinedACPL": {
+        "combinedACPL": 36.2,
+        "whiteACPL": 27.8,
+        "blackACPL": 8.4,
+        "white": "Linus «The Middlegame Mixer» K.",
+        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "gameIndex": 1
+      },
+      "highestCombinedACPL": {
+        "combinedACPL": 100.19999999999999,
+        "whiteACPL": 38.3,
+        "blackACPL": 61.9,
+        "white": "Osama «Ruiner of Bird's» A.",
+        "black": "Daniel «Bishop Mangler Supreme» T.",
+        "gameIndex": 5
+      }
+    }
+  }
+}
