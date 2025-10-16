@@ -34,7 +34,8 @@
       "Bash(venv/bin/python scripts/analyze-pgn.py:*)",
       "Bash(venv/bin/python:*)",
       "Bash(gh pr:*)",
-      "Read(//Users/sgis/.claude/**)"
+      "Read(//Users/sgis/.claude/**)",
+      "WebFetch(domain:python-chess.readthedocs.io)"
     ],
     "deny": [],
     "ask": []

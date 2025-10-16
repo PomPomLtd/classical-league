@@ -10,6 +10,8 @@ interface RoundStats {
   whiteWins: number
   blackWins: number
   draws: number
+  isComplete: boolean
+  generatedAt: string
 }
 
 export default function StatsPage() {
@@ -20,24 +22,51 @@ export default function StatsPage() {
     fetchAvailableRounds()
   }, [])
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  }
+
   const fetchAvailableRounds = async () => {
     try {
       // For now, we'll check which rounds have stats files
       // In the future, this could be an API endpoint
       const rounds: RoundStats[] = []
+      const EXPECTED_GAMES_PER_ROUND = 30 // Based on ~50 players in Swiss system
 
-      // Try to fetch round 1 stats (we know it exists)
-      const response = await fetch('/stats/season-2-round-1.json')
-      if (response.ok) {
-        const data = await response.json()
-        rounds.push({
-          roundNumber: data.roundNumber,
-          totalGames: data.overview.totalGames,
-          totalMoves: data.overview.totalMoves,
-          whiteWins: data.results.whiteWins,
-          blackWins: data.results.blackWins,
-          draws: data.results.draws
-        })
+      // Try to fetch stats for rounds 1-7 (Season 2 has 7 rounds)
+      // We check sequentially and stop at the first missing round to avoid 404s
+      for (let roundNum = 1; roundNum <= 7; roundNum++) {
+        try {
+          const response = await fetch(`/stats/season-2-round-${roundNum}.json`, {
+            cache: 'no-store'
+          })
+          if (response.ok) {
+            const data = await response.json()
+            const isComplete = data.overview.totalGames >= EXPECTED_GAMES_PER_ROUND * 0.8 // 80% threshold
+            rounds.push({
+              roundNumber: data.roundNumber,
+              totalGames: data.overview.totalGames,
+              totalMoves: data.overview.totalMoves,
+              whiteWins: data.results.whiteWins,
+              blackWins: data.results.blackWins,
+              draws: data.results.draws,
+              isComplete,
+              generatedAt: data.generatedAt
+            })
+          } else {
+            // Stop checking if we hit a missing round
+            break
+          }
+        } catch {
+          // Stop on first error to avoid unnecessary 404s
+          break
+        }
       }
 
       setAvailableRounds(rounds)
@@ -129,9 +158,16 @@ export default function StatsPage() {
                 >
                   <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg hover:border-indigo-500 dark:hover:border-indigo-400 transition-all">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                        Round {round.roundNumber}
-                      </h3>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          Round {round.roundNumber}
+                        </h3>
+                        {!round.isComplete && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                            In Progress
+                          </span>
+                        )}
+                      </div>
                       <svg className="w-6 h-6 text-gray-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -147,13 +183,16 @@ export default function StatsPage() {
                         <span className="font-semibold text-gray-900 dark:text-white">{round.totalMoves.toLocaleString()}</span>
                       </div>
                       <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-center mb-1">
                           <div className="text-xs text-gray-500 dark:text-gray-400">
                             W: {round.whiteWins} / B: {round.blackWins} / D: {round.draws}
                           </div>
                           <div className="text-xs font-medium text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300">
                             View Details →
                           </div>
+                        </div>
+                        <div className="text-[10px] text-gray-400 dark:text-gray-600">
+                          Generated {formatDate(round.generatedAt)}
                         </div>
                       </div>
                     </div>
