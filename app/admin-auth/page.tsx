@@ -1,22 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function AdminLogin() {
+function AdminLoginForm() {
   const [credentials, setCredentials] = useState({ username: '', password: '' })
   const [honeypot, setHoneypot] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const searchParams = useSearchParams()
+  const { data: session, status, update } = useSession()
 
   // Get the callback URL from query params (for future enhancement)
   // const searchParams = useSearchParams()
   // const callbackUrl = searchParams.get('callbackUrl') || '/admin'
   const callbackUrl = '/admin'
+  const sessionReason = searchParams?.get('reason')
 
   // Redirect if already authenticated (fallback for middleware)
   useEffect(() => {
@@ -24,6 +26,12 @@ export default function AdminLogin() {
       router.replace(callbackUrl)
     }
   }, [status, session, router, callbackUrl])
+
+  useEffect(() => {
+    if (sessionReason === 'session-expired') {
+      setError('Your session expired. Please sign in again.')
+    }
+  }, [sessionReason])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -39,10 +47,11 @@ export default function AdminLogin() {
 
     try {
       const result = await signIn('credentials', {
-        username: credentials.username,
+        username: credentials.username.trim(),
         password: credentials.password,
         rememberMe: rememberMe.toString(),
-        redirect: false
+        redirect: false,
+        callbackUrl
       })
 
       if (result?.error) {
@@ -52,20 +61,17 @@ export default function AdminLogin() {
         } else {
           setError('Invalid credentials')
         }
-        setIsLoading(false)
       } else if (result?.ok) {
-        // Force router to refresh to pick up new session
+        await update()
+        router.replace(result.url ?? callbackUrl)
         router.refresh()
-        // Small delay to ensure session cookie is set before redirect
-        await new Promise(resolve => setTimeout(resolve, 100))
-        // Use replace to prevent back button from returning to login
-        router.replace(callbackUrl)
+        return
       } else {
         setError('Authentication failed')
-        setIsLoading(false)
       }
     } catch {
       setError('An error occurred during login')
+    } finally {
       setIsLoading(false)
     }
   }
@@ -177,5 +183,17 @@ export default function AdminLogin() {
         </form>
       </div>
     </div>
+  )
+}
+
+export default function AdminLogin() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-gray-500 dark:text-gray-400">Loading...</div>
+      </div>
+    }>
+      <AdminLoginForm />
+    </Suspense>
   )
 }
