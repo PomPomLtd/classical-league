@@ -35,7 +35,8 @@
       "Bash(venv/bin/python:*)",
       "Bash(gh pr:*)",
       "Read(//Users/sgis/.claude/**)",
-      "WebFetch(domain:python-chess.readthedocs.io)"
+      "WebFetch(domain:python-chess.readthedocs.io)",
+      "WebFetch(domain:authjs.dev)"
     ],
     "deny": [],
     "ask": []

@@ -9,7 +9,14 @@ export default async function AdminLayout({
 }) {
   const session = await auth()
 
-  if (!session || !session.user || session.user.role !== 'admin') {
+  // Check if session is expired
+  const isExpired = session?.expires ? new Date(session.expires) <= new Date() : true
+
+  if (!session || !session.user || session.user.role !== 'admin' || isExpired) {
+    // Add reason parameter if session expired
+    if (isExpired && session?.user) {
+      redirect('/admin-auth?reason=session-expired')
+    }
     redirect('/admin-auth')
   }
 

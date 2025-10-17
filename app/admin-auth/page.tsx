@@ -20,9 +20,9 @@ function AdminLoginForm() {
   const callbackUrl = '/admin'
   const sessionReason = searchParams?.get('reason')
 
-  // Redirect if already authenticated (fallback for middleware)
+  // Redirect if already authenticated
   useEffect(() => {
-    if (status === 'authenticated' && session?.user) {
+    if (status === 'authenticated' && session?.user && session.user.role === 'admin') {
       router.replace(callbackUrl)
     }
   }, [status, session, router, callbackUrl])
