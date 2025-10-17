@@ -12,7 +12,7 @@ function AdminLoginForm() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { data: session, status, update } = useSession()
+  const { data: session, status } = useSession()
 
   // Get the callback URL from query params (for future enhancement)
   // const searchParams = useSearchParams()
@@ -62,9 +62,8 @@ function AdminLoginForm() {
           setError('Invalid credentials')
         }
       } else if (result?.ok) {
-        await update()
-        router.replace(result.url ?? callbackUrl)
-        router.refresh()
+        // Use window.location for full page navigation to ensure session is properly set
+        window.location.href = callbackUrl
         return
       } else {
         setError('Authentication failed')

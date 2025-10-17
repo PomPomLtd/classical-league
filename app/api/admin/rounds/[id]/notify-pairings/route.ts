@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/lib/auth-config'
+import { auth } from '@/auth'
 import { db } from '@/lib/db'
 import { sendNewRoundPairingsEmail, sendEmailSafe } from '@/lib/email'
 
@@ -10,7 +9,7 @@ export async function POST(
 ) {
   try {
     // Check admin authentication
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     if (!session || session.user.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

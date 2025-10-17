@@ -1,23 +1,14 @@
-import CredentialsProvider from 'next-auth/providers/credentials'
-import { validateAdmin } from './auth'
-import { checkRateLimit } from './rate-limiter'
-import type { NextAuthOptions } from 'next-auth'
-
-interface ExtendedUser {
-  id: string
-  name: string
-  email: string
-  role: string
-  rememberMe: boolean
-}
+import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
+import { validateAdmin } from './lib/auth'
+import { checkRateLimit } from './lib/rate-limiter'
 
 const EIGHT_HOURS_IN_SECONDS = 8 * 60 * 60
 const TWO_WEEKS_IN_SECONDS = 14 * 24 * 60 * 60
 
-export const authOptions: NextAuthOptions = {
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    CredentialsProvider({
-      name: 'credentials',
+    Credentials({
       credentials: {
         username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
@@ -28,7 +19,7 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        // Basic rate limiting using username as key
+        // Rate limiting using username as key
         const rateLimitKey = `auth:${credentials.username}`
         const { allowed } = checkRateLimit(rateLimitKey, 5, 15 * 60 * 1000)
 
@@ -37,12 +28,15 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        const isValid = await validateAdmin(credentials.username, credentials.password)
+        const isValid = await validateAdmin(
+          credentials.username as string,
+          credentials.password as string
+        )
 
         if (isValid) {
           return {
-            id: credentials.username,
-            name: credentials.username,
+            id: credentials.username as string,
+            name: credentials.username as string,
             email: `${credentials.username}@admin.local`,
             role: 'admin',
             rememberMe: credentials.rememberMe === 'true'
@@ -58,7 +52,7 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: TWO_WEEKS_IN_SECONDS, // Maximum possible duration (for remember me)
+    maxAge: TWO_WEEKS_IN_SECONDS // Maximum possible duration
   },
   callbacks: {
     async jwt({ token, user, trigger }) {
@@ -66,28 +60,24 @@ export const authOptions: NextAuthOptions = {
 
       if (user) {
         // Initial login - set expiration based on remember me preference
-        const extendedUser = user as ExtendedUser
-        token.role = extendedUser.role
+        token.role = user.role
         token.sub = user.id
-        token.rememberMe = extendedUser.rememberMe
-        token.sessionExpiresAt = nowInSeconds + (extendedUser.rememberMe ? TWO_WEEKS_IN_SECONDS : EIGHT_HOURS_IN_SECONDS)
+        token.rememberMe = user.rememberMe
+        token.sessionExpiresAt = nowInSeconds + (user.rememberMe ? TWO_WEEKS_IN_SECONDS : EIGHT_HOURS_IN_SECONDS)
       } else if (token.sessionExpiresAt && typeof token.sessionExpiresAt === 'number') {
         // Existing session - extend if user is active and within last hour of expiration
         const sessionExpiry = token.sessionExpiresAt
         const timeUntilExpiry = sessionExpiry - nowInSeconds
         const sessionDuration = token.rememberMe ? TWO_WEEKS_IN_SECONDS : EIGHT_HOURS_IN_SECONDS
-        const EXTENSION_THRESHOLD = 3600 // Extend when within last hour (3600 seconds)
+        const EXTENSION_THRESHOLD = 3600 // Extend when within last hour
 
-        // Extend session if:
-        // 1. Session is still valid (not expired)
-        // 2. User is within the last hour of their session
-        // 3. Or if manually triggered by update() call
+        // Extend session if still valid and within extension threshold or manually triggered
         if (timeUntilExpiry > 0 && (timeUntilExpiry < EXTENSION_THRESHOLD || trigger === 'update')) {
           token.sessionExpiresAt = nowInSeconds + sessionDuration
         }
       }
 
-      // Fallback for tokens without expiration (shouldn't happen, but defensive)
+      // Fallback for tokens without expiration
       if (!token.sessionExpiresAt) {
         token.sessionExpiresAt = nowInSeconds + EIGHT_HOURS_IN_SECONDS
       }
@@ -99,23 +89,19 @@ export const authOptions: NextAuthOptions = {
       const nowInSeconds = Math.floor(Date.now() / 1000)
 
       // If session is expired, return a session with past expiration
-      // NextAuth will handle this as an expired session
       if (!sessionExpiry || sessionExpiry <= nowInSeconds) {
         return {
           ...session,
-          expires: new Date(nowInSeconds * 1000).toISOString()
+          expires: new Date(nowInSeconds * 1000).toISOString() as any
         }
       }
 
       session.user.id = token.sub || ''
       session.user.role = token.role as string
       session.user.rememberMe = Boolean(token.rememberMe)
-      session.expires = new Date(sessionExpiry * 1000).toISOString()
+      session.expires = new Date(sessionExpiry * 1000).toISOString() as any
 
       return session
     }
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-  // Temporary fallback for build process
-  ...(process.env.NEXTAUTH_URL && { url: process.env.NEXTAUTH_URL })
-}
+  }
+})
