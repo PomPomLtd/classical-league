@@ -1,11 +1,11 @@
 {
   "roundNumber": 2,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-15T17:47:44.985Z",
+  "generatedAt": "2025-10-21T07:08:29.485Z",
   "overview": {
-    "totalGames": 10,
-    "totalMoves": 716,
-    "averageGameLength": 35.8,
+    "totalGames": 14,
+    "totalMoves": 953,
+    "averageGameLength": 34.035714285714285,
     "longestGame": {
       "moves": 67,
       "white": "Itamar «Itaberg» B.",
@@ -13,16 +13,16 @@
       "result": "1/2-1/2"
     },
     "shortestGame": {
-      "moves": 22,
-      "white": "Adam «PawnRuinerAlpha» A.",
-      "black": "Ruslan «Thunder-Blunder» G.",
+      "moves": 21,
+      "white": "Matteo «Afraid of Caro-Kann» M.",
+      "black": "Janic «Clasher» S.",
       "result": "1-0"
     }
   },
   "gamePhases": {
-    "averageOpening": 9.55,
-    "averageMiddlegame": 15.15,
-    "averageEndgame": 11.1,
+    "averageOpening": 9.357142857142858,
+    "averageMiddlegame": 15.214285714285714,
+    "averageEndgame": 9.464285714285714,
     "longestWaitTillCapture": {
       "moves": 13,
       "white": "Osama «Ruiner of Bird's» A.",
@@ -30,10 +30,10 @@
       "game": "Osama «Ruiner of Bird's» A. vs Daniel «Bishop Mangler Supreme» T."
     },
     "longestMiddlegame": {
-      "moves": 26,
-      "white": "Itamar «Itaberg» B.",
-      "black": "Max «Bird is the word» W.",
-      "game": "Itamar «Itaberg» B. vs Max «Bird is the word» W."
+      "moves": 27,
+      "white": "Michael «Mivobu» B.",
+      "black": "Oliver «ScreaminG HI JoK ING» .",
+      "game": "Michael «Mivobu» B. vs Oliver «ScreaminG HI JoK ING» ."
     },
     "longestEndgame": {
       "moves": 38,
@@ -43,23 +43,23 @@
     }
   },
   "results": {
-    "whiteWins": 5,
-    "blackWins": 4,
+    "whiteWins": 8,
+    "blackWins": 5,
     "draws": 1,
-    "whiteWinPercentage": 50,
-    "blackWinPercentage": 40,
-    "drawPercentage": 10
+    "whiteWinPercentage": 57.14285714285714,
+    "blackWinPercentage": 35.714285714285715,
+    "drawPercentage": 7.142857142857142
   },
   "openings": {
     "firstMoves": {
       "e4": {
-        "count": 7,
-        "percentage": 70,
-        "winRate": 42.857142857142854
+        "count": 11,
+        "percentage": 78.57142857142857,
+        "winRate": 54.54545454545454
       },
       "d4": {
         "count": 3,
-        "percentage": 30,
+        "percentage": 21.428571428571427,
         "winRate": 66.66666666666666
       }
     },
@@ -81,6 +81,18 @@
         "count": 1,
         "eco": "B10",
         "name": "Caro-Kann Defense: Two Knights Attack"
+      },
+      {
+        "moves": "e4 c6 d4 d5 e5 c5",
+        "count": 1,
+        "eco": "B12",
+        "name": "Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense"
+      },
+      {
+        "moves": "e4 c5 c3 a6 Nf3 Nc6",
+        "count": 1,
+        "eco": "B22",
+        "name": "Sicilian Defense: Alapin Variation"
       },
       {
         "moves": "e4 c5 Nc3 d6 Bc4 Nf6",
@@ -107,6 +119,18 @@
         "name": "Petrov's Defense: Three Knights Game"
       },
       {
+        "moves": "e4 e5 Nf3 Nc6 d4 exd4",
+        "count": 1,
+        "eco": "C44",
+        "name": "Scotch Game"
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Be7",
+        "count": 1,
+        "eco": "C50",
+        "name": "Italian Game: Hungarian Defense"
+      },
+      {
         "moves": "d4 Nf6 c4 e6 Nf3 Bb4+",
         "count": 1,
         "eco": "E11",
@@ -127,7 +151,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 174,
+    "totalCaptures": 234,
     "enPassantGames": [
       {
         "white": "Ramura «viennugambu» G.",
@@ -135,10 +159,10 @@
         "count": 1
       }
     ],
-    "promotions": 2,
+    "promotions": 3,
     "castling": {
-      "kingside": 12,
-      "queenside": 3
+      "kingside": 17,
+      "queenside": 4
     },
     "bloodiestGame": {
       "captures": 27,
@@ -147,10 +171,10 @@
       "black": "Christopher «King Decimator» H."
     },
     "quietestGame": {
-      "captures": 12,
-      "gameIndex": 0,
-      "white": "Igor «Premove Blunder» S.",
-      "black": "Camill «Camillionaire» T."
+      "captures": 11,
+      "gameIndex": 10,
+      "white": "Matteo «Afraid of Caro-Kann» M.",
+      "black": "Janic «Clasher» S."
     },
     "longestNonCaptureStreak": {
       "moves": 29,
@@ -163,25 +187,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 215,
-      "knights": 116,
-      "bishops": 103,
-      "rooks": 86,
-      "queens": 93,
-      "kings": 103
+      "pawns": 294,
+      "knights": 150,
+      "bishops": 143,
+      "rooks": 105,
+      "queens": 136,
+      "kings": 125
     },
     "captured": {
-      "pawns": 78,
-      "knights": 33,
-      "bishops": 27,
-      "rooks": 23,
-      "queens": 13
+      "pawns": 108,
+      "knights": 45,
+      "bishops": 37,
+      "rooks": 30,
+      "queens": 14
     },
     "survivalRate": {
-      "rooks": 0.425,
-      "queens": 0.45,
-      "bishops": 0.325,
-      "knights": 0.175
+      "rooks": 0.4642857142857143,
+      "queens": 0.6071428571428571,
+      "bishops": 0.3392857142857143,
+      "knights": 0.19642857142857142
     }
   },
   "checkmates": {
@@ -190,7 +214,7 @@
       "rook": 0,
       "bishop": 0,
       "knight": 0,
-      "pawn": 1
+      "pawn": 2
     },
     "fastest": {
       "moves": 26,
@@ -202,63 +226,63 @@
   },
   "boardHeatmap": {
     "bloodiestSquare": {
-      "square": "e5",
-      "captures": 13,
-      "description": "e5 saw 13 captures"
+      "square": "d5",
+      "captures": 19,
+      "description": "d5 saw 19 captures"
     },
     "mostPopularSquare": {
       "square": "d4",
-      "visits": 33,
-      "description": "d4 was visited 33 times"
+      "visits": 43,
+      "description": "d4 was visited 43 times"
     },
     "leastPopularSquare": {
-      "square": "f8",
-      "visits": 1,
-      "description": "f8 was only visited 1 times"
+      "square": "b2",
+      "visits": 2,
+      "description": "b2 was only visited 2 times"
     },
     "quietestSquares": [],
     "top5Bloodiest": [
+      {
+        "square": "d5",
+        "captures": 19
+      },
+      {
+        "square": "d4",
+        "captures": 16
+      },
+      {
+        "square": "f6",
+        "captures": 14
+      },
       {
         "square": "e5",
         "captures": 13
       },
       {
-        "square": "d4",
-        "captures": 12
-      },
-      {
-        "square": "d5",
-        "captures": 12
-      },
-      {
-        "square": "f6",
-        "captures": 12
-      },
-      {
         "square": "b3",
-        "captures": 10
+        "captures": 12
       }
     ],
     "top5Popular": [
       {
         "square": "d4",
-        "visits": 33
-      },
-      {
-        "square": "e5",
-        "visits": 30
+        "visits": 43
       },
       {
         "square": "d5",
-        "visits": 27
+        "visits": 40
+      },
+      {
+        "square": "e5",
+        "visits": 35
       },
       {
         "square": "c3",
-        "visits": 26
+        "visits": 32
       },
       {
-        "square": "f6",
-        "visits": 25
+        "square": "e4",
+        "visits": 31
       }
     ]
   },
@@ -269,9 +293,9 @@
       "captures": 27
     },
     "pacifist": {
-      "white": "Igor «Premove Blunder» S.",
-      "black": "Camill «Camillionaire» T.",
-      "captures": 12
+      "white": "Matteo «Afraid of Caro-Kann» M.",
+      "black": "Janic «Clasher» S.",
+      "captures": 11
     },
     "speedDemon": {
       "white": "Alex «The Benoni Pulverizer» G.",
@@ -285,9 +309,9 @@
       "endgameMoves": 38
     },
     "openingSprinter": {
-      "white": "Igor «Premove Blunder» S.",
-      "black": "Camill «Camillionaire» T.",
-      "openingMoves": 8
+      "white": "Torsten «torstyehocara» J.",
+      "black": "Pieter «snok» S.",
+      "openingMoves": 7
     }
   },
   "funStats": {
@@ -318,10 +342,10 @@
       "black": "Christopher «King Decimator» H."
     },
     "pawnStorm": {
-      "count": 11,
-      "gameIndex": 3,
-      "white": "Itamar «Itaberg» B.",
-      "black": "Max «Bird is the word» W."
+      "count": 12,
+      "gameIndex": 10,
+      "white": "Matteo «Afraid of Caro-Kann» M.",
+      "black": "Janic «Clasher» S."
     },
     "pieceLoyalty": null,
     "squareTourist": {
@@ -341,13 +365,13 @@
       "black": "Simon «The Endgame Alchemist» L."
     },
     "openingHipster": {
-      "gameIndex": 2,
-      "eco": "C29",
-      "name": "Vienna Game: Vienna Gambit, Main Line",
-      "moves": "e4 e5 Nc3 Nf6 f4 d5",
-      "obscurityScore": 57,
-      "white": "Ramura «viennugambu» G.",
-      "black": "Christopher «King Decimator» H."
+      "gameIndex": 13,
+      "eco": "B12",
+      "name": "Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense",
+      "moves": "e4 c6 d4 d5 e5 c5",
+      "obscurityScore": 81,
+      "white": "Michael «Mivobu» B.",
+      "black": "Oliver «ScreaminG HI JoK ING» ."
     },
     "dadbodShuffler": {
       "moves": 27,
@@ -357,11 +381,11 @@
       "black": "Christopher «King Decimator» H."
     },
     "sportyQueen": {
-      "distance": 35,
-      "gameIndex": 4,
-      "color": "White",
-      "white": "Manuel «Grundpatzer» C.",
-      "black": "Simon «The Endgame Alchemist» L."
+      "distance": 38,
+      "gameIndex": 9,
+      "color": "Black",
+      "white": "Alexander «Not Grischuk» .",
+      "black": "Davide «AME» V."
     },
     "edgeLord": {
       "moves": 17,
@@ -389,11 +413,11 @@
       "black": "Christopher «King Decimator» H."
     },
     "darkLord": {
-      "captures": 6,
-      "gameIndex": 2,
-      "color": "Black",
-      "white": "Ramura «viennugambu» G.",
-      "black": "Christopher «King Decimator» H."
+      "captures": 8,
+      "gameIndex": 9,
+      "color": "White",
+      "white": "Alexander «Not Grischuk» .",
+      "black": "Davide «AME» V."
     },
     "homebody": {
       "white": "Igor «Premove Blunder» S.",
@@ -668,6 +692,81 @@
         "gameIndex": 8
       },
       {
+        "white": "Alexander «Not Grischuk» .",
+        "black": "Davide «AME» V.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 18,
+          "move": "Qxc5"
+        },
+        "longestTension": {
+          "moves": 6,
+          "squares": "c6-d4",
+          "startMove": 9,
+          "endMove": 15
+        },
+        "gameIndex": 9
+      },
+      {
+        "white": "Matteo «Afraid of Caro-Kann» M.",
+        "black": "Janic «Clasher» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 28
+        },
+        "mostAttackedSquare": {
+          "square": "e7",
+          "attackers": 6,
+          "whiteAttackers": 1,
+          "blackAttackers": 5,
+          "moveNumber": 18,
+          "move": "Ng6"
+        },
+        "longestTension": {
+          "moves": 6,
+          "squares": "f3-g5",
+          "startMove": 22,
+          "endMove": 28
+        },
+        "gameIndex": 10
+      },
+      {
+        "white": "Torsten «torstyehocara» J.",
+        "black": "Pieter «snok» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 11,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "e4",
+          "attackers": 7,
+          "whiteAttackers": 4,
+          "blackAttackers": 3,
+          "moveNumber": 21,
+          "move": "f3"
+        },
+        "longestTension": {
+          "moves": 11,
+          "squares": "d5-e4",
+          "startMove": 18,
+          "endMove": 29
+        },
+        "gameIndex": 11
+      },
+      {
         "white": "Adam «PawnRuinerAlpha» A.",
         "black": "Ruslan «Thunder-Blunder» G.",
         "enemyTerritory": {
@@ -690,11 +789,36 @@
           "startMove": 14,
           "endMove": 19
         },
-        "gameIndex": 9
+        "gameIndex": 12
+      },
+      {
+        "white": "Michael «Mivobu» B.",
+        "black": "Oliver «ScreaminG HI JoK ING» .",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 14
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 11,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 10,
+          "squares": "c4-d5",
+          "startMove": 23,
+          "endMove": 33
+        },
+        "gameIndex": 13
       }
     ],
     "summary": {
-      "totalGames": 10,
+      "totalGames": 14,
       "homebody": {
         "white": "Igor «Premove Blunder» S.",
         "black": "Camill «Camillionaire» T.",
@@ -1095,6 +1219,114 @@
       },
       {
         "gameIndex": 9,
+        "white": "Alexander «Not Grischuk» .",
+        "black": "Davide «AME» V.",
+        "whiteACPL": 77.8,
+        "blackACPL": 57.2,
+        "whiteAccuracy": 67.4,
+        "blackAccuracy": 73.4,
+        "whiteMoveQuality": {
+          "blunders": 5,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 21
+        },
+        "blackMoveQuality": {
+          "blunders": 3,
+          "mistakes": 3,
+          "inaccuracies": 3,
+          "good": 7,
+          "excellent": 16
+        },
+        "biggestBlunder": {
+          "moveNumber": 32,
+          "player": "white",
+          "cpLoss": 870,
+          "winLoss": 83.46115760127375,
+          "move": "Rd2",
+          "evalBefore": 350,
+          "evalAfter": -520
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 871,
+          "evalFrom": "350",
+          "evalTo": "-521",
+          "evalFromCp": 350,
+          "evalToCp": -521,
+          "moveNumber": 32
+        },
+        "luckyEscape": {
+          "player": "white",
+          "escapeAmount": 254,
+          "evalBefore": -254,
+          "evalAfter": 0,
+          "moveNumber": 28
+        }
+      },
+      {
+        "gameIndex": 10,
+        "white": "Matteo «Afraid of Caro-Kann» M.",
+        "black": "Janic «Clasher» S.",
+        "whiteACPL": 31.7,
+        "blackACPL": 61.4,
+        "whiteAccuracy": 87,
+        "blackAccuracy": 79.7,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 2,
+          "inaccuracies": 4,
+          "good": 2,
+          "excellent": 13
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 4,
+          "inaccuracies": 4,
+          "good": 2,
+          "excellent": 11
+        },
+        "biggestBlunder": null,
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 11,
+        "white": "Torsten «torstyehocara» J.",
+        "black": "Pieter «snok» S.",
+        "whiteACPL": 18.1,
+        "blackACPL": 18.5,
+        "whiteAccuracy": 80.8,
+        "blackAccuracy": 89.3,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 3,
+          "excellent": 19
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 5,
+          "excellent": 18
+        },
+        "biggestBlunder": {
+          "moveNumber": 27,
+          "player": "white",
+          "cpLoss": 0,
+          "winLoss": 61.17705007810643,
+          "move": "Qa5",
+          "evalBefore": 79,
+          "evalAfter": -9980
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 12,
         "white": "Adam «PawnRuinerAlpha» A.",
         "black": "Ruslan «Thunder-Blunder» G.",
         "whiteACPL": 20.1,
@@ -1126,6 +1358,46 @@
         },
         "biggestComeback": null,
         "luckyEscape": null
+      },
+      {
+        "gameIndex": 13,
+        "white": "Michael «Mivobu» B.",
+        "black": "Oliver «ScreaminG HI JoK ING» .",
+        "whiteACPL": 29.1,
+        "blackACPL": 59,
+        "whiteAccuracy": 82.1,
+        "blackAccuracy": 87.3,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 3,
+          "inaccuracies": 2,
+          "good": 5,
+          "excellent": 29
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 6,
+          "inaccuracies": 1,
+          "good": 4,
+          "excellent": 27
+        },
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 39
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 39
+        }
       }
     ],
     "summary": {
@@ -1138,16 +1410,16 @@
         "gameIndex": 1
       },
       "biggestBlunder": {
-        "moveNumber": 19,
-        "player": "black",
-        "cpLoss": 667,
-        "winLoss": 73.92681988476983,
-        "move": "c2",
-        "evalBefore": -291,
-        "evalAfter": 376,
-        "white": "Osama «Ruiner of Bird's» A.",
-        "black": "Daniel «Bishop Mangler Supreme» T.",
-        "gameIndex": 5
+        "moveNumber": 32,
+        "player": "white",
+        "cpLoss": 870,
+        "winLoss": 83.46115760127375,
+        "move": "Rd2",
+        "evalBefore": 350,
+        "evalAfter": -520,
+        "white": "Alexander «Not Grischuk» .",
+        "black": "Davide «AME» V.",
+        "gameIndex": 9
       },
       "comebackKing": {
         "player": "black",
@@ -1180,12 +1452,12 @@
         "gameIndex": 1
       },
       "highestACPL": {
-        "player": "black",
-        "acpl": 61.9,
-        "accuracy": 81.8,
-        "white": "Osama «Ruiner of Bird's» A.",
-        "black": "Daniel «Bishop Mangler Supreme» T.",
-        "gameIndex": 5
+        "player": "white",
+        "acpl": 77.8,
+        "accuracy": 67.4,
+        "white": "Alexander «Not Grischuk» .",
+        "black": "Davide «AME» V.",
+        "gameIndex": 9
       },
       "lowestCombinedACPL": {
         "combinedACPL": 36.2,
@@ -1196,12 +1468,12 @@
         "gameIndex": 1
       },
       "highestCombinedACPL": {
-        "combinedACPL": 100.19999999999999,
-        "whiteACPL": 38.3,
-        "blackACPL": 61.9,
-        "white": "Osama «Ruiner of Bird's» A.",
-        "black": "Daniel «Bishop Mangler Supreme» T.",
-        "gameIndex": 5
+        "combinedACPL": 135,
+        "whiteACPL": 77.8,
+        "blackACPL": 57.2,
+        "white": "Alexander «Not Grischuk» .",
+        "black": "Davide «AME» V.",
+        "gameIndex": 9
       }
     }
   }
