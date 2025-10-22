@@ -127,8 +127,8 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
 
   return (
     <StatCard title="🔬 Stockfish Analysis (Experimental)">
-      {/* Top Row: Featured Stats (4 total for even grid) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      {/* Top Row: Featured Stats (2 per row on desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {summary.accuracyKing && (
           <StatBox
             title="Accuracy King"
@@ -195,7 +195,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
       </div>
 
       {/* ACPL Awards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {summary.lowestACPL && (
           <StatBox
             title="Best Performance"
