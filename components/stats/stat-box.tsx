@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 interface StatBoxProps {
   title: string
   emoji?: string
-  player: string
+  player: ReactNode
   details: ReactNode
   colorScheme: 'yellow' | 'red' | 'green' | 'orange' | 'blue' | 'purple' | 'indigo'
   featured?: boolean

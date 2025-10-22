@@ -1,4 +1,5 @@
 import { StatCard } from './stat-card'
+import { PlayerName } from './player-name'
 
 interface GamePhasesProps {
   gamePhases: {
@@ -46,15 +47,15 @@ export function GamePhases({ gamePhases }: GamePhasesProps) {
       <div className="space-y-4">
         <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
           <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Longest Wait Till First Capture: {gamePhases.longestWaitTillCapture.moves} moves</div>
-          <div className="text-sm text-gray-700 dark:text-gray-300">{gamePhases.longestWaitTillCapture.game}</div>
+          <div className="text-sm text-gray-700 dark:text-gray-300"><PlayerName name={gamePhases.longestWaitTillCapture.game} /></div>
         </div>
         <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
           <div className="font-semibold text-purple-900 dark:text-purple-300 mb-1">Longest Middlegame: {gamePhases.longestMiddlegame.moves} moves</div>
-          <div className="text-sm text-gray-700 dark:text-gray-300">{gamePhases.longestMiddlegame.game}</div>
+          <div className="text-sm text-gray-700 dark:text-gray-300"><PlayerName name={gamePhases.longestMiddlegame.game} /></div>
         </div>
         <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
           <div className="font-semibold text-green-900 dark:text-green-300 mb-1">Longest Endgame: {gamePhases.longestEndgame.moves} moves</div>
-          <div className="text-sm text-gray-700 dark:text-gray-300">{gamePhases.longestEndgame.game}</div>
+          <div className="text-sm text-gray-700 dark:text-gray-300"><PlayerName name={gamePhases.longestEndgame.game} /></div>
         </div>
       </div>
     </StatCard>

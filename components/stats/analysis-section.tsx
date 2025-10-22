@@ -1,5 +1,6 @@
 import { StatCard } from './stat-card'
 import { StatBox } from './stat-box'
+import { PlayerName, PlayerVs } from './player-name'
 
 interface AnalysisData {
   games: Array<{
@@ -131,9 +132,9 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {summary.accuracyKing && (
           <StatBox
-            title="Accuracy King"
-            emoji="👑"
-            player={summary.accuracyKing.player === 'white' ? summary.accuracyKing.white : summary.accuracyKing.black}
+            title="Grandmaster Vibes"
+            emoji="🎖️"
+            player={<PlayerName name={summary.accuracyKing.player === 'white' ? summary.accuracyKing.white : summary.accuracyKing.black} />}
             details={
               <div className="flex flex-col gap-1">
                 <span>Accuracy: <strong className="text-yellow-900 dark:text-yellow-200">{summary.accuracyKing.accuracy}%</strong></span>
@@ -149,7 +150,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Blunder of the Round"
             emoji="💥"
-            player={summary.biggestBlunder.player === 'white' ? summary.biggestBlunder.white : summary.biggestBlunder.black}
+            player={<PlayerName name={summary.biggestBlunder.player === 'white' ? summary.biggestBlunder.white : summary.biggestBlunder.black} />}
             details={
               <div className="flex flex-col gap-1">
                 <span>Move <strong className="font-mono text-red-900 dark:text-red-200">{summary.biggestBlunder.moveNumber}. {summary.biggestBlunder.move}</strong></span>
@@ -165,7 +166,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Comeback King"
             emoji="🎯"
-            player={summary.comebackKing.player === 'white' ? summary.comebackKing.white : summary.comebackKing.black}
+            player={<PlayerName name={summary.comebackKing.player === 'white' ? summary.comebackKing.white : summary.comebackKing.black} />}
             details={
               <div className="flex flex-col gap-1">
                 <span>Swing: <strong className="text-green-900 dark:text-green-200">{summary.comebackKing.swing} cp</strong></span>
@@ -181,7 +182,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Lucky Escape"
             emoji="😱"
-            player={summary.luckyEscape.player === 'white' ? summary.luckyEscape.white : summary.luckyEscape.black}
+            player={<PlayerName name={summary.luckyEscape.player === 'white' ? summary.luckyEscape.white : summary.luckyEscape.black} />}
             details={
               <div className="flex flex-col gap-1">
                 <span>Escaped: <strong className="text-indigo-900 dark:text-indigo-200">{summary.luckyEscape.escapeAmount} cp</strong></span>
@@ -200,7 +201,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Best Performance"
             emoji="⭐"
-            player={summary.lowestACPL.player === 'white' ? summary.lowestACPL.white : summary.lowestACPL.black}
+            player={<PlayerName name={summary.lowestACPL.player === 'white' ? summary.lowestACPL.white : summary.lowestACPL.black} />}
             details={<>ACPL: <strong>{summary.lowestACPL.acpl}</strong> / Accuracy: <strong>{summary.lowestACPL.accuracy}%</strong></>}
             colorScheme="green"
           />
@@ -210,7 +211,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Roughest Day"
             emoji="😰"
-            player={summary.highestACPL.player === 'white' ? summary.highestACPL.white : summary.highestACPL.black}
+            player={<PlayerName name={summary.highestACPL.player === 'white' ? summary.highestACPL.white : summary.highestACPL.black} />}
             details={<>ACPL: <strong>{summary.highestACPL.acpl}</strong> / Accuracy: <strong>{summary.highestACPL.accuracy}%</strong></>}
             colorScheme="orange"
           />
@@ -220,7 +221,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Cleanest Game"
             emoji="💎"
-            player={`${summary.lowestCombinedACPL.white} vs ${summary.lowestCombinedACPL.black}`}
+            player={<PlayerVs white={summary.lowestCombinedACPL.white} black={summary.lowestCombinedACPL.black} />}
             details={<>Combined ACPL: <strong>{summary.lowestCombinedACPL.combinedACPL.toFixed(1)}</strong></>}
             colorScheme="blue"
           />
@@ -230,7 +231,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
           <StatBox
             title="Wildest Game"
             emoji="🎢"
-            player={`${summary.highestCombinedACPL.white} vs ${summary.highestCombinedACPL.black}`}
+            player={<PlayerVs white={summary.highestCombinedACPL.white} black={summary.highestCombinedACPL.black} />}
             details={<>Combined ACPL: <strong>{summary.highestCombinedACPL.combinedACPL.toFixed(1)}</strong></>}
             colorScheme="purple"
           />
