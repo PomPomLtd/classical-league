@@ -9,6 +9,7 @@ const { getPlayerNames, calculateDistance } = require('../helpers');
 
 /**
  * Calculate sporty queen (queen with most travel distance)
+ * Uses Manhattan distance for squares, but estimates actual physical distance
  * @param {Array} games - Array of parsed game objects
  * @returns {Object} Sporty queen stat
  */

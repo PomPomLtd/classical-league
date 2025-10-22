@@ -300,7 +300,7 @@ export function FunStats({ funStats }: FunStatsProps) {
               <PlayerVs white={funStats.sportyQueen.white} black={funStats.sportyQueen.black} />
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-              {funStats.sportyQueen.color} queen traveled {funStats.sportyQueen.distance} squares ({(funStats.sportyQueen.distance * 5.5).toFixed(0)} cm)
+              {funStats.sportyQueen.color} queen traveled {Math.round(funStats.sportyQueen.distance)} squares (~{(funStats.sportyQueen.distance * 0.82 * 5.5).toFixed(0)} cm, or {(funStats.sportyQueen.distance * 0.82 * 5.5 * 18.54 / 100).toFixed(0)}m at human scale)
             </div>
           </div>
         )}
