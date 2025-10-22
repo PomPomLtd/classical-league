@@ -1,3 +1,5 @@
+import { PlayerVs } from './player-name'
+
 interface AwardsSectionProps {
   awards: {
     bloodbath: {
@@ -38,7 +40,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
         <div>
           <div className="text-lg font-semibold mb-2">🩸 Bloodbath Award</div>
           <div className="text-yellow-100 dark:text-yellow-200">
-            {awards.bloodbath.white} vs {awards.bloodbath.black}
+            <PlayerVs white={awards.bloodbath.white} black={awards.bloodbath.black} />
           </div>
           <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{awards.bloodbath.captures} captures!</div>
         </div>
@@ -46,7 +48,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
         <div>
           <div className="text-lg font-semibold mb-2">🕊️ Pacifist Award</div>
           <div className="text-yellow-100 dark:text-yellow-200">
-            {awards.pacifist.white} vs {awards.pacifist.black}
+            <PlayerVs white={awards.pacifist.white} black={awards.pacifist.black} />
           </div>
           <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{awards.pacifist.captures} captures</div>
         </div>
@@ -55,7 +57,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
           <div>
             <div className="text-lg font-semibold mb-2">⚡ Speed Demon</div>
             <div className="text-yellow-100 dark:text-yellow-200">
-              {awards.speedDemon.white} vs {awards.speedDemon.black}
+              <PlayerVs white={awards.speedDemon.white} black={awards.speedDemon.black} />
             </div>
             <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">Mate in {awards.speedDemon.moves} moves</div>
           </div>
@@ -64,7 +66,7 @@ export function AwardsSection({ awards }: AwardsSectionProps) {
         <div>
           <div className="text-lg font-semibold mb-2">🧙 Endgame Wizard</div>
           <div className="text-yellow-100 dark:text-yellow-200">
-            {awards.endgameWizard.white} vs {awards.endgameWizard.black}
+            <PlayerVs white={awards.endgameWizard.white} black={awards.endgameWizard.black} />
           </div>
           <div className="text-sm text-yellow-200 dark:text-yellow-300 mt-1">{awards.endgameWizard.endgameMoves} endgame moves!</div>
         </div>

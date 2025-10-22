@@ -1,4 +1,5 @@
 import { StatCard } from './stat-card'
+import { PlayerVs } from './player-name'
 
 interface TacticalPatternsSectionProps {
   tacticalPatterns: {
@@ -116,7 +117,7 @@ export function TacticalPatternsSection({ tacticalPatterns }: TacticalPatternsSe
                   <div className="mt-2 text-xs bg-blue-100 dark:bg-blue-900/30 rounded p-2">
                     <div className="font-medium text-blue-900 dark:text-blue-100">Most in one game:</div>
                     <div className="text-blue-800 dark:text-blue-200">
-                      {summary.mostPinsGame.white} vs {summary.mostPinsGame.black}
+                      <PlayerVs white={summary.mostPinsGame.white} black={summary.mostPinsGame.black} />
                     </div>
                     <div className="font-bold text-blue-600 dark:text-blue-400">
                       {summary.mostPinsGame.pins.total} pins!
@@ -169,7 +170,7 @@ export function TacticalPatternsSection({ tacticalPatterns }: TacticalPatternsSe
                   <div className="mt-2 text-xs bg-orange-100 dark:bg-orange-900/30 rounded p-2">
                     <div className="font-medium text-orange-900 dark:text-orange-100">Most in one game:</div>
                     <div className="text-orange-800 dark:text-orange-200">
-                      {summary.mostSkewersGame.white} vs {summary.mostSkewersGame.black}
+                      <PlayerVs white={summary.mostSkewersGame.white} black={summary.mostSkewersGame.black} />
                     </div>
                     <div className="font-bold text-orange-600 dark:text-orange-400">
                       {summary.mostSkewersGame.skewers.total} skewers!

@@ -1,4 +1,5 @@
 import { StatCard } from './stat-card'
+import { PlayerVs } from './player-name'
 
 interface CheckmatesSectionProps {
   checkmates: {
@@ -35,7 +36,7 @@ export function CheckmatesSection({ checkmates }: CheckmatesSectionProps) {
           <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
             <div className="font-semibold text-red-900 dark:text-red-300 mb-1">⚡ Fastest Checkmate</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
-              {checkmates.fastest.white} vs {checkmates.fastest.black}
+              <PlayerVs white={checkmates.fastest.white} black={checkmates.fastest.black} />
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               {checkmates.fastest.moves} moves • Winner: {checkmates.fastest.winner}
