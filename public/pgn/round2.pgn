@@ -132,6 +132,17 @@
 
 [Event "Classical League Season 2"]
 [Site "Schachklub K4"]
+[Date "2025.10.22"]
+[Round "2"]
+[Board "13"]
+[White "Yannik «The Golden Castling Obliterator» T."]
+[Black "Jacopo «Bildothebest» B."]
+[Result "0-1"]
+[WhiteElo "1450"]
+[BlackElo "1800"]1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. e3 c6 5. Nc3 Be7 6. Be2 O-O 7. O-O Nbd7 8. h3 dxc4 9. e4 $2 Nb6 $9 10. Ne5 $6 Bb4 11. f3 Qc7 12. Bg5 $6 Nfd7 $6 13. Nxc4 Nxc4 14. Qb3 $4 Bxc3 $1 15. bxc3 Ncb6 $6 16. a4 a5 17. c4 Qg3 $2 18. h4 $6 h6 19. Be3 Nf6 $2 20. e5 Nh5 $4 21. Qxb6 $9 Qxh4 22. Bf2 Ng3 $6 23. d5 $4 Qh1# 0-1
+
+[Event "Classical League Season 2"]
+[Site "Schachklub K4"]
 [Date "2025.10.08"]
 [Round "2"]
 [Board "14"]
@@ -151,6 +162,17 @@
 [Result "0-1"]
 [WhiteElo "1248"]
 [BlackElo "1732"]1. e4 c5 2. Nc3 d6 3. Bc4 Nf6 4. d3 e6 5. Nf3 Nc6 6. a3 a6 7. Bg5 Be7 8. Bxf6 Bxf6 9. Qd2 b5 10. Bb3 Bb7 11. O-O O-O 12. a4 Na5 13. axb5 Nxb3 14. cxb3 axb5 15. Nxb5 Qb6 16. Nc3 Qxb3 17. Ra3 Rxa3 18. bxa3 Qxc3 19. Qxc3 Bxc3 20. Rb1 Bc8 21. Kf1 Bd7 22. Ke2 h6 23. Ke3 f5 24. Rb3 Bf6 25. h4 fxe4 26. dxe4 Ra8 27. g3 c4 28. Rb7 Rxa3+ 29. Kf4 e5+ 30. Nxe5 dxe5# { 0-1 Black wins. } 0-1
+
+[Event "Classical League Season 2"]
+[Site "Schachklub K4"]
+[Date "2025.10.08"]
+[Round "2"]
+[Board "16"]
+[White "Oliver «Monkey sees Pawn» K."]
+[Black "Nakul «Na cool» P."]
+[Result "0-1"]
+[WhiteElo "1910"]
+[BlackElo "1959"]1. e4 { [%eval 0.18] } 1... e5 { [%eval 0.22] } 2. Nf3 { [%eval 0.13] } 2... Nc6 { [%eval 0.21] } 3. Bc4 { [%eval 0.14] } 3... Bc5 { [%eval 0.2] } 4. c3 { [%eval 0.09] } 4... d6 { [%eval 0.42] } 5. d4 { [%eval 0.42] } 5... exd4 { [%eval 0.44] } 6. cxd4 { [%eval 0.47] } 6... Bb4+?! { [%eval 1.06] } { Inaccuracy. Bb6 was best. } (6... Bb6 7. h3 Nf6 8. O-O O-O 9. Re1 Nxe4 10. Rxe4 d5 11. Bxd5) 7. Nc3 { [%eval 0.96] } 7... Nf6 { [%eval 1.08] } 8. h3? { [%eval -0.25] } { Mistake. O-O was best. } (8. O-O O-O 9. Nd5 h6 (9... Nxe4 10. a3 Ba5 11. b4 Bb6 12. Re1) 10. Qa4 Ba5 11. Bb5 Nd7 12. b4 Bb6) 8... O-O?! { [%eval 0.39] } { Inaccuracy. Nxe4 was best. } (8... Nxe4 9. O-O) 9. O-O?! { [%eval -0.34] } { Inaccuracy. Bg5 was best. } (9. Bg5 Bxc3+ 10. bxc3 Qe8 11. e5 dxe5 12. O-O Qd8 13. Re1 exd4 14. cxd4 Qd6) 9... Bxc3 { [%eval -0.37] } 10. bxc3 { [%eval -0.33] } 10... Nxe4 { [%eval -0.32] } 11. d5 { [%eval -0.52] } 11... Ne5?! { [%eval 0.09] } { Inaccuracy. Ne7 was best. } (11... Ne7) 12. Nxe5 { [%eval 0.12] } 12... dxe5 { [%eval 0.21] } 13. Re1 { [%eval 0.25] } 13... Nd6 { [%eval 0.28] } 14. Bd3 { [%eval 0.0] } 14... Re8 { [%eval -0.09] } 15. Qc2 { [%eval -0.11] } 15... h6 { [%eval 0.07] } 16. c4 { [%eval 0.02] } 16... Qf6?! { [%eval 0.73] } { Inaccuracy. b6 was best. } (16... b6) 17. Bb2?! { [%eval 0.18] } { Inaccuracy. c5 was best. } (17. c5 Nf5) 17... Bf5 { [%eval 0.28] } 18. c5 { [%eval 0.4] } 18... Bxd3 { [%eval 0.26] } 19. Qxd3 { [%eval 0.36] } 19... Nf5 { [%eval 0.26] } 20. Re4 { [%eval 0.3] } 20... b6? { [%eval 1.59] } { Mistake. Qg6 was best. } (20... Qg6) 21. Rae1 { [%eval 1.52] } 21... Qg6 { [%eval 1.41] } 22. Rxe5?! { [%eval 0.66] } { Inaccuracy. Rg4 was best. } (22. Rg4 Qf6 23. Rge4 Qg6 24. Rg4 Qf6 25. c6 Rad8 26. Rge4 Qg6 27. Rxe5) 22... Rxe5 { [%eval 0.38] } 23. Bxe5 { [%eval 0.63] } 23... Re8 { [%eval 0.67] } 24. g4?! { [%eval 0.0] } { Inaccuracy. Qd1 was best. } (24. Qd1 bxc5) 24... Nh4 { [%eval 0.03] } 25. Qg3 { [%eval 0.0] } 25... f6 { [%eval 0.0] } 26. Qxh4 { [%eval 0.0] } 26... fxe5 { [%eval 0.0] } 27. Qg3 { [%eval 0.0] } 27... Qf6 { [%eval 0.06] } 28. cxb6 { [%eval 0.05] } 28... axb6 { [%eval 0.02] } 29. Qc3 { [%eval 0.03] } 29... Qd6 { [%eval 0.12] } 30. f4 { [%eval -0.25] } 30... e4 { [%eval -0.03] } 31. Qd4?? { [%eval -2.98] } { Blunder. Qc6 was best. } (31. Qc6) 31... Qxf4 { [%eval -2.72] } 32. Re3 { [%eval -2.57] } 32... Rf8?! { [%eval -1.66] } { Inaccuracy. b5 was best. } (32... b5 33. Kg2 Kh8 34. a3 Kh7 35. Kg1 Qd6 36. Kg2 c5 37. Qb2 Qd7 38. Qe2) 33. d6?? { [%eval #-7] } { Checkmate is now unavoidable. Qxe4 was best. } (33. Qxe4 Qf2+ 34. Kh1 Qxa2 35. Re2 Qa1+ 36. Kh2 Kh8 37. Qe3 Qf1 38. Rg2 Qf7) 33... Qf1+ { [%eval #-6] } 34. Kh2 { [%eval #-6] } 34... Rf2+ { [%eval #-5] } 35. Kg3 { [%eval #-5] } 35... Qg2+?? { [%eval -3.74] } { Lost forced checkmate sequence. Rg2+ was best. } (35... Rg2+ 36. Kh4 Qf2+ 37. Rg3 (37. Kh5 Qf7+ 38. Kh4 g5#) 37... Qxg3+ 38. Kh5 Qxh3+ 39. Kg6 Qxg4#) 36. Kh4 { [%eval -3.56] } 36... Rf3?? { [%eval 2.52] } { Blunder. Rf4 was best. } (36... Rf4 37. Qd5+ Kh7 38. dxc7 Rxg4+ 39. hxg4 g5+ 40. Qxg5 hxg5+ 41. Kxg5 Qc2 42. Rxe4) 37. Rxf3?? { [%eval -6.0] } { Blunder. Qd5+ was best. } (37. Qd5+) 37... Qxf3 { [%eval -6.15] } 38. d7 { [%eval -7.52] } 38... g5+ { [%eval -6.74] } 39. Kh5 { [%eval -8.01] } 39... Kh7 { [%eval -7.68] } 40. Qh8+ { [%eval -7.73] } 40... Kxh8 { [%eval -7.34] } 41. d8=Q+ { [%eval -7.25] } 41... Kg7 { [%eval -6.82] } 42. Qe7+ { [%eval -8.79] } 42... Qf7+ { [%eval -8.37] } 43. Qxf7+ { [%eval -7.88] } 43... Kxf7 { [%eval -7.24] } *
 
 [Event "Classical League Season 2"]
 [Site "Schachklub K4"]
