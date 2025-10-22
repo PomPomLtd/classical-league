@@ -26,7 +26,7 @@ export function PlayerName({ name, className = '' }: PlayerNameProps) {
         // Check if this part is a nickname (wrapped in « »)
         if (part.startsWith('«') && part.endsWith('»')) {
           return (
-            <span key={index} className="italic">
+            <span key={index} className="font-syne-tactile italic">
               {part}
             </span>
           )
