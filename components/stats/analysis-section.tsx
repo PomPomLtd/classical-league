@@ -132,7 +132,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {summary.accuracyKing && (
           <StatBox
-            title="Grandmaster Vibes"
+            title="GM Energy"
             emoji="🎖️"
             player={<PlayerName name={summary.accuracyKing.player === 'white' ? summary.accuracyKing.white : summary.accuracyKing.black} />}
             details={
