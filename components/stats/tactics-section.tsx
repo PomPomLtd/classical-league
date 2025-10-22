@@ -36,6 +36,9 @@ interface TacticsSectionProps {
 }
 
 export function TacticsSection({ tactics }: TacticsSectionProps) {
+  // Calculate total en passant moves across all games
+  const totalEnPassant = tactics.enPassantGames.reduce((sum, game) => sum + game.count, 0)
+
   return (
     <StatCard title="⚔️ Tactical Stats">
       <div className="space-y-3">
@@ -63,7 +66,7 @@ export function TacticsSection({ tactics }: TacticsSectionProps) {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 dark:text-gray-400">En Passant</span>
-          <span className="font-semibold text-gray-900 dark:text-white">{tactics.enPassantGames.length}</span>
+          <span className="font-semibold text-gray-900 dark:text-white">{totalEnPassant}</span>
         </div>
       </div>
     </StatCard>

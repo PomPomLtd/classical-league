@@ -112,6 +112,13 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
+    chickenAward: {
+      retreats: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     homebody?: {
       white: string
       black: string
@@ -341,6 +348,18 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-300 dark:text-gray-400 mt-1">
               {funStats.darkLord.color} captured {funStats.darkLord.captures} pieces on dark squares
+            </div>
+          </div>
+        )}
+
+        {funStats.chickenAward && (
+          <div className="p-4 bg-lime-50 dark:bg-lime-900/20 rounded-lg">
+            <div className="font-semibold text-lime-900 dark:text-lime-300 mb-1">🐔 Chicken Award</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {funStats.chickenAward.white} vs {funStats.chickenAward.black}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.chickenAward.color} made {funStats.chickenAward.retreats} retreating moves
             </div>
           </div>
         )}

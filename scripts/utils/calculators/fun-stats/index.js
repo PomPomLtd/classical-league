@@ -19,6 +19,7 @@ const { calculateEdgeLord } = require('./edge-lord');
 const { calculateRookLift } = require('./rook-lift');
 const { calculateCenterStage } = require('./center-stage');
 const { calculateDarkLord } = require('./dark-lord');
+const { calculateChickenAward } = require('./chicken-award');
 const { filterGamesWithMoves } = require('../helpers');
 
 /**
@@ -48,7 +49,8 @@ function calculateFunStats(games, tacticalPatterns = null) {
     edgeLord: calculateEdgeLord(gamesWithMoves),
     rookLift: calculateRookLift(gamesWithMoves),
     centerStage: calculateCenterStage(gamesWithMoves),
-    darkLord: calculateDarkLord(gamesWithMoves)
+    darkLord: calculateDarkLord(gamesWithMoves),
+    chickenAward: calculateChickenAward(gamesWithMoves)
   };
 
   // Add chicken awards if available

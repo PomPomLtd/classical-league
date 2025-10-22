@@ -320,6 +320,13 @@ interface StatsData {
       white: string
       black: string
     } | null
+    chickenAward: {
+      retreats: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     homebody?: {
       white: string
       black: string

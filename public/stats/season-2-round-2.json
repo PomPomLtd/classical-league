@@ -1,7 +1,7 @@
 {
   "roundNumber": 2,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-22T07:37:11.940Z",
+  "generatedAt": "2025-10-22T08:36:30.530Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2352,
@@ -513,6 +513,13 @@
       "white": "Islam «xXBlackXx» H.",
       "black": "Mario «ChessDude» M."
     },
+    "chickenAward": {
+      "retreats": 24,
+      "gameIndex": 6,
+      "color": "Black",
+      "white": "Islam «xXBlackXx» H.",
+      "black": "Mario «ChessDude» M."
+    },
     "homebody": {
       "white": "Boris «Out of Nowhere» G.",
       "black": "Christopher «Ong Passong» G.",
@@ -704,7 +711,7 @@
         },
         "longestTension": {
           "moves": 15,
-          "squares": "e5-g6",
+          "squares": "e5-f7",
           "startMove": 22,
           "endMove": 37
         },
@@ -1279,7 +1286,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "b7-d7",
+          "squares": "b6-b7",
           "startMove": 63,
           "endMove": 67
         },
