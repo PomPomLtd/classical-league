@@ -94,7 +94,7 @@ export function PieceCemetery({ aggregates }: PieceCemeteryProps) {
 
         {/* Epitaph */}
         <div className="relative text-center mt-8 text-gray-500 italic text-sm">
-          "Here lie the pieces that fought bravely but fell in battle."
+          &ldquo;Here lie the pieces that fought bravely but fell in battle.&rdquo;
         </div>
       </div>
     </div>

@@ -185,10 +185,12 @@ function trackGamePerformance(playerMap, roundNumber, game) {
 
 /**
  * Track opening usage for a player
+ * NOTE: Currently unused - for future enhancement when we have per-game opening data
  * @param {Map} playerMap - Map of player data
  * @param {string} playerName - Full player name
  * @param {string} eco - ECO code
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function trackOpening(playerMap, playerName, eco) {
   if (!eco) return
 
@@ -357,7 +359,8 @@ function trackPlayers(rounds) {
 
     // Track opening usage
     if (round.openings?.popularSequences) {
-      round.openings.popularSequences.forEach(seq => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      round.openings.popularSequences.forEach(_seq => {
         // We don't have per-player opening data in the current structure
         // This would require parsing the games array which we don't have
         // Skip for now - we can add this later if needed
