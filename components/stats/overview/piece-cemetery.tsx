@@ -72,20 +72,20 @@ export function PieceCemetery({ aggregates }: PieceCemeteryProps) {
 
         {/* Memorial Stats */}
         <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-          <h3 className="text-xl font-semibold text-gray-200 mb-4 text-center">📜 Battle Records</h3>
+          <h3 className="text-xl font-semibold text-gray-200 mb-4 text-center">Battle Records</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <div className="text-blue-400 text-sm mb-1">🎯 En Passant</div>
+              <div className="text-blue-400 text-sm mb-1">En Passant</div>
               <div className="text-2xl font-bold text-white">{aggregates.totalEnPassant}</div>
               <div className="text-xs text-gray-500 mt-1">Rare captures</div>
             </div>
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <div className="text-red-400 text-sm mb-1">💥 Blunders</div>
+              <div className="text-red-400 text-sm mb-1">Blunders</div>
               <div className="text-2xl font-bold text-white">{aggregates.totalBlunders}</div>
               <div className="text-xs text-gray-500 mt-1">Fatal mistakes</div>
             </div>
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <div className="text-orange-400 text-sm mb-1">⚠️ Mistakes</div>
+              <div className="text-orange-400 text-sm mb-1">Mistakes</div>
               <div className="text-2xl font-bold text-white">{aggregates.totalMistakes}</div>
               <div className="text-xs text-gray-500 mt-1">Minor errors</div>
             </div>
@@ -93,8 +93,12 @@ export function PieceCemetery({ aggregates }: PieceCemeteryProps) {
         </div>
 
         {/* Epitaph */}
-        <div className="relative text-center mt-8 text-gray-500 italic text-sm">
-          &ldquo;Here lie the pieces that fought bravely but fell in battle.&rdquo;
+        <div className="relative text-center mt-12 px-4">
+          <div className="font-syne-tactile italic text-xl md:text-2xl text-gray-400 leading-relaxed tracking-wide">
+            &ldquo;Here lie the pieces that fought bravely
+            <br />
+            but fell in battle.&rdquo;
+          </div>
         </div>
       </div>
     </div>
