@@ -39,11 +39,12 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 
 **Statistics Generation:**
 - `node scripts/generate-stats.js --round <number>` - Generate stats JSON for a round
+- `node scripts/generate-overview.js --season <number>` - Generate season overview (aggregates all rounds)
 - Stats piped from API URL or local PGN file
-- Output to `public/stats/season-<N>-round-<N>.json`
+- Output to `public/stats/season-<N>-round-<N>.json` and `public/stats/season-<N>-overview.json`
 - Example workflow:
   ```bash
-  # From API (recommended)
+  # Generate round stats from API (recommended)
   curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
     node scripts/generate-stats.js --round 1
 
@@ -53,9 +54,12 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
   # From local file with Stockfish analysis (recommended)
   cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 
+  # Generate season overview (after 2+ rounds completed)
+  node scripts/generate-overview.js --season 2
+
   # View generated stats
-  # Saved to: public/stats/season-2-round-1.json
-  # View at: http://localhost:3000/stats/round/1
+  # Round stats: public/stats/season-2-round-1.json → http://localhost:3000/stats/round/1
+  # Season overview: public/stats/season-2-overview.json → http://localhost:3000/stats/overview
   ```
 
 **Git:**
@@ -115,10 +119,15 @@ The application uses Prisma with PostgreSQL and follows a multi-season tournamen
 - `lib/validations.ts` - Zod schemas for form validation
 
 **Statistics System:**
+- `/app/stats/` - Stats landing page with season overview
+- `/app/stats/overview/` - Season overview page (Hall of Fame, Leaderboards, Trends, Piece Cemetery)
 - `/app/stats/round/[roundNumber]` - Dynamic round statistics pages
-- `/components/stats/` - 15 modular statistics components
-- `/scripts/generate-stats.js` - Main stats generator script
+- `/components/stats/` - 15 modular round statistics components
+- `/components/stats/overview/` - 5 season overview components
+- `/scripts/generate-stats.js` - Round stats generator script
+- `/scripts/generate-overview.js` - Season overview generator script
 - `/scripts/utils/` - PGN parsing, game analysis, opening database utilities
+- `/scripts/utils/overview/` - Overview aggregation utilities
 - See `STATS.md` and `STATS-PROGRESS.md` for implementation details
 
 ## Database Migration Workflow
@@ -246,7 +255,8 @@ npm run dev
 The application includes a comprehensive statistics system that analyzes chess games from PGN data.
 
 ### Architecture
-- **15 Modular Components** (`/components/stats/`):
+
+**Round Statistics Components** (15 modular components in `/components/stats/`):
   - `round-header.tsx` - Navigation and broadcast link
   - `overview-stats.tsx` - Game overview metrics
   - `results-breakdown.tsx` - Win/loss/draw with pie chart
@@ -263,19 +273,35 @@ The application includes a comprehensive statistics system that analyzes chess g
   - `win-rate-chart.tsx` - Pie chart (recharts)
   - `stat-card.tsx` - Reusable wrapper
 
-- **Utilities** (`/scripts/utils/`):
+**Season Overview Components** (5 components in `/components/stats/overview/`):
+  - `overview-hero.tsx` - Season stats hero section
+  - `piece-cemetery.tsx` - Creative graveyard with captured pieces
+  - `hall-of-fame-section.tsx` - Best awards from all rounds
+  - `leaderboards-section.tsx` - Player performance rankings
+  - `trends-section.tsx` - Statistics trends across rounds
+
+**Round Stats Utilities** (`/scripts/utils/`):
   - `pgn-parser.js` - Parse PGN with chess.js
   - `game-phases.js` - Detect opening/middlegame/endgame (Lichess approach)
   - `stats-calculator.js` - Calculate all statistics
   - `chess-openings.js` - ECO opening database (3,546 openings from Lichess)
   - `build-openings-db.js` - Build opening database from Lichess TSV files
 
-### Features
+**Season Overview Utilities** (`/scripts/utils/overview/`):
+  - `load-round-data.js` - Load and validate round JSON files
+  - `aggregate-totals.js` - Aggregate statistics across rounds
+  - `find-hall-of-fame.js` - Extract best awards from all rounds
+  - `track-players.js` - Track player appearances and performance
+  - `calculate-trends.js` - Calculate round-by-round trends
+  - `generate-leaderboards.js` - Generate player rankings
+
+### Round Statistics Features
 - **Game Analysis**: Overview, phases, results breakdown with visualizations
 - **ECO Opening Classification**: 3,546+ openings from Lichess database (CC0 Public Domain)
 - **Tactical Statistics**: Captures, castling, promotions, en passant
 - **Board Heatmap**: Interactive visualization of square activity
 - **Piece Statistics**: Activity, captures, survival rates
+- **Stockfish Analysis**: Accuracy, blunders, mistakes, comebacks, lucky escapes
 - **Fun Statistics** (11 awards):
   1. ⚡ Fastest Queen Trade
   2. 🐌 Slowest Queen Trade
@@ -289,24 +315,37 @@ The application includes a comprehensive statistics system that analyzes chess g
   10. 👸 Sporty Queen (traveled most distance)
   11. 👑 Dadbod Shuffler (most active king)
 
+### Season Overview Features
+- **Aggregated Statistics**: Total games, moves, averages across all rounds
+- **Piece Cemetery**: Creative graveyard theme with all captured pieces (1,100+ pieces)
+- **Hall of Fame**: Best awards from all rounds (Bloodbath, Speed Demon, etc.)
+- **Player Leaderboards**: Most games, most wins, highest accuracy, etc.
+- **Trends Analysis**: Round-by-round visualization of key metrics
+- **Player Stats Tracking**: Individual player performance across season
+
 ### Performance
-- ✅ 100% PGN parsing success rate (20/20 games)
-- ✅ Generates in <20 seconds
-- ✅ Output file <10KB
+- ✅ 100% PGN parsing success rate (31/31 games Round 1, 33/33 games Round 2)
+- ✅ Round stats: generates in 30-45s (basic), 7-15min (with Stockfish analysis)
+- ✅ Season overview: generates in <5s (aggregates existing round data)
+- ✅ Output files: 35-66KB per round, ~50KB for overview
 - ✅ Static JSON for fast page loads
 - ✅ Dark mode support throughout
 
 ### Generating Statistics
 ```bash
-# From API (recommended)
+# Generate round stats from API (recommended)
 curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
-  node scripts/generate-stats.js --round 1
+  node scripts/generate-stats.js --round 1 --analyze
 
 # From local PGN file
-node scripts/generate-stats.js --round 1 --season 2 < round1.pgn
+cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 
-# Output saved to: public/stats/season-2-round-1.json
-# View at: http://localhost:3000/stats/round/1
+# Generate season overview (after 2+ rounds completed)
+node scripts/generate-overview.js --season 2
+
+# Output files:
+# - Round stats: public/stats/season-2-round-1.json → http://localhost:3000/stats/round/1
+# - Season overview: public/stats/season-2-overview.json → http://localhost:3000/stats/overview
 ```
 
 ## Development Workflow

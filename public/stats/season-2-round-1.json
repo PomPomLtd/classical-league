@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-08T18:54:22.707Z",
+  "generatedAt": "2025-10-23T21:19:27.117Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2455,
@@ -513,6 +513,13 @@
       "white": "bela «bela» O.",
       "black": "Osama «Ruiner of Bird's» A."
     },
+    "chickenAward": {
+      "retreats": 21,
+      "gameIndex": 4,
+      "color": "Black",
+      "white": "Jakob «Jaquemate » .",
+      "black": "Joshua «Pristine Pawn Pusher» G."
+    },
     "homebody": {
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G.",
@@ -729,7 +736,7 @@
         },
         "longestTension": {
           "moves": 3,
-          "squares": "e6-e8",
+          "squares": "d6-e6",
           "startMove": 45,
           "endMove": 48
         },

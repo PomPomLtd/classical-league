@@ -13,6 +13,9 @@ A comprehensive tournament management system for the K4 Chess Club's Classical L
 
 ### 📊 Advanced Statistics System
 - **Comprehensive Game Analysis**: Detailed statistics from PGN data with chess.js
+- **Stockfish Analysis**: Accuracy, blunders, mistakes, comebacks, and lucky escapes
+- **Season Overview**: Aggregated stats, Hall of Fame, Player Leaderboards, Trends
+- **Piece Cemetery**: Creative graveyard visualization with 1,100+ captured pieces
 - **ECO Opening Classification**: 3,546+ openings from Lichess database
 - **Interactive Visualizations**: Charts, graphs, and board heatmaps
 - **Fun Statistics**: 11 creative awards including Opening Hipster, Sporty Queen, Dadbod Shuffler
@@ -206,30 +209,31 @@ The application includes a comprehensive statistics system that analyzes chess g
 ### Generating Statistics
 
 ```bash
-# Generate stats for a round (fetches PGN from API)
+# Generate round stats (fetches PGN from API)
 curl -s "https://classical.schachklub-k4.ch/api/broadcast/round/{roundId}/pgn" | \
-  node scripts/generate-stats.js --round 1
+  node scripts/generate-stats.js --round 1 --analyze
 
-# From local PGN file (basic stats)
-cat round1.pgn | node scripts/generate-stats.js --round 1
-
-# From local PGN file with Stockfish analysis (recommended)
+# From local PGN file with Stockfish analysis
 cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 
+# Generate season overview (after 2+ rounds completed)
+node scripts/generate-overview.js --season 2
+
 # View generated stats
-# JSON saved to: public/stats/season-2-round-1.json
-# View at: http://localhost:3000/stats/round/1
+# Round stats: public/stats/season-2-round-1.json → http://localhost:3000/stats/round/1
+# Season overview: public/stats/season-2-overview.json → http://localhost:3000/stats/overview
 ```
 
 **Performance:**
-- ✅ 100% PGN parsing success rate (20/20 games)
-- ✅ Generates in <20 seconds
-- ✅ Output file <10KB
+- ✅ 100% PGN parsing success rate (31/31 games Round 1, 33/33 games Round 2)
+- ✅ Round stats: 30-45s (basic), 7-15min (with Stockfish)
+- ✅ Season overview: <5s (aggregates existing rounds)
+- ✅ Output files: 35-66KB per round, ~50KB for overview
 - ✅ Static JSON for fast page loads
 
 ### Statistics Architecture
 
-**Components** (15 modular components in `/components/stats/`):
+**Round Statistics Components** (15 modular components in `/components/stats/`):
 - `round-header.tsx` - Navigation and broadcast link
 - `overview-stats.tsx` - Game overview metrics
 - `results-breakdown.tsx` - Win/loss/draw with pie chart
@@ -246,12 +250,27 @@ cat round1.pgn | node scripts/generate-stats.js --round 1 --analyze
 - `win-rate-chart.tsx` - Pie chart
 - `stat-card.tsx` - Reusable wrapper
 
-**Utilities** (`/scripts/utils/`):
+**Season Overview Components** (5 components in `/components/stats/overview/`):
+- `overview-hero.tsx` - Season stats hero section
+- `piece-cemetery.tsx` - Creative graveyard with captured pieces
+- `hall-of-fame-section.tsx` - Best awards from all rounds
+- `leaderboards-section.tsx` - Player performance rankings
+- `trends-section.tsx` - Statistics trends across rounds
+
+**Round Stats Utilities** (`/scripts/utils/`):
 - `pgn-parser.js` - Parse PGN with chess.js
 - `game-phases.js` - Detect opening/middlegame/endgame (Lichess approach)
 - `stats-calculator.js` - Calculate all statistics
 - `chess-openings.js` - ECO opening database (3,546 openings)
 - `build-openings-db.js` - Build opening database from Lichess TSV
+
+**Season Overview Utilities** (`/scripts/utils/overview/`):
+- `load-round-data.js` - Load and validate round JSON files
+- `aggregate-totals.js` - Aggregate statistics across rounds
+- `find-hall-of-fame.js` - Extract best awards from all rounds
+- `track-players.js` - Track player appearances and performance
+- `calculate-trends.js` - Calculate round-by-round trends
+- `generate-leaderboards.js` - Generate player rankings
 
 **Data Source:**
 - Lichess chess-openings database (CC0 Public Domain)

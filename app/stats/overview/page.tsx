@@ -2,6 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { SeasonOverview } from './types'
+import { OverviewHero } from '@/components/stats/overview/overview-hero'
+import { PieceCemetery } from '@/components/stats/overview/piece-cemetery'
+import { HallOfFameSection } from '@/components/stats/overview/hall-of-fame-section'
+import { TrendsSection } from '@/components/stats/overview/trends-section'
+import { LeaderboardsSection } from '@/components/stats/overview/leaderboards-section'
 
 interface RoundStats {
   roundNumber: number
@@ -14,11 +20,14 @@ interface RoundStats {
   generatedAt: string
 }
 
-export default function StatsPage() {
+export default function OverviewPage() {
+  const [overview, setOverview] = useState<SeasonOverview | null>(null)
   const [availableRounds, setAvailableRounds] = useState<RoundStats[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    fetchOverview()
     fetchAvailableRounds()
   }, [])
 
@@ -32,15 +41,30 @@ export default function StatsPage() {
     })
   }
 
+  const fetchOverview = async () => {
+    try {
+      const response = await fetch('/stats/season-2-overview.json', {
+        cache: 'no-store'
+      })
+
+      if (!response.ok) {
+        throw new Error('Overview not found')
+      }
+
+      const data = await response.json()
+      setOverview(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load overview')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const fetchAvailableRounds = async () => {
     try {
-      // For now, we'll check which rounds have stats files
-      // In the future, this could be an API endpoint
       const rounds: RoundStats[] = []
-      const EXPECTED_GAMES_PER_ROUND = 30 // Based on ~50 players in Swiss system
+      const EXPECTED_GAMES_PER_ROUND = 30
 
-      // Try to fetch stats for rounds 1-7 (Season 2 has 7 rounds)
-      // We check sequentially and stop at the first missing round to avoid 404s
       for (let roundNum = 1; roundNum <= 7; roundNum++) {
         try {
           const response = await fetch(`/stats/season-2-round-${roundNum}.json`, {
@@ -48,7 +72,7 @@ export default function StatsPage() {
           })
           if (response.ok) {
             const data = await response.json()
-            const isComplete = data.overview.totalGames >= EXPECTED_GAMES_PER_ROUND * 0.8 // 80% threshold
+            const isComplete = data.overview.totalGames >= EXPECTED_GAMES_PER_ROUND * 0.8
             rounds.push({
               roundNumber: data.roundNumber,
               totalGames: data.overview.totalGames,
@@ -60,11 +84,9 @@ export default function StatsPage() {
               generatedAt: data.generatedAt
             })
           } else {
-            // Stop checking if we hit a missing round
             break
           }
         } catch {
-          // Stop on first error to avoid unnecessary 404s
           break
         }
       }
@@ -72,8 +94,6 @@ export default function StatsPage() {
       setAvailableRounds(rounds)
     } catch (error) {
       console.error('Error fetching rounds:', error)
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -81,7 +101,28 @@ export default function StatsPage() {
     return (
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-center min-h-96">
-          <div className="text-gray-500 dark:text-gray-400">Loading statistics...</div>
+          <div className="text-gray-500 dark:text-gray-400">Loading season overview...</div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !overview) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Overview Not Available
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
+            {error || 'Season overview has not been generated yet'}
+          </p>
+          <Link
+            href="/stats"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            ← Back to Stats
+          </Link>
         </div>
       </div>
     )
@@ -90,67 +131,44 @@ export default function StatsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
       <div className="space-y-8">
+
         {/* Header */}
-        <div className="text-center">
+        <div>
+          <Link
+            href="/stats"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm mb-4 inline-block"
+          >
+            ← Back to Stats
+          </Link>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            📊 Tournament Statistics
+            🏆 Season {overview.seasonNumber} Overview
           </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-            Deep dive into the games, tactics, and patterns from Season 2
+          <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+            Complete tournament statistics across all rounds
           </p>
         </div>
 
-        {/* Season 2 Overview */}
-        {availableRounds.length > 0 && (
-          <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-xl p-8 text-white">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-2">Season 2 Overview</h2>
-                {availableRounds.length >= 2 && (
-                  <p className="text-indigo-100">
-                    Hall of Fame • Player Stats • Trends • Leaderboards
-                  </p>
-                )}
-              </div>
-              {availableRounds.length >= 2 && (
-                <Link href="/stats/overview">
-                  <button className="px-6 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-purple-50 transition-colors flex items-center gap-2 shadow-lg whitespace-nowrap cursor-pointer">
-                    View Full Overview
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </Link>
-              )}
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-4xl font-bold">
-                  {availableRounds.reduce((sum, r) => sum + r.totalGames, 0)}
-                </div>
-                <div className="text-indigo-100 mt-2">Games Played</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">
-                  {availableRounds.reduce((sum, r) => sum + r.totalMoves, 0).toLocaleString()}
-                </div>
-                <div className="text-indigo-100 mt-2">Total Moves</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">
-                  {availableRounds.reduce((sum, r) => sum + r.whiteWins, 0)}
-                </div>
-                <div className="text-indigo-100 mt-2">White Wins</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">
-                  {availableRounds.reduce((sum, r) => sum + r.blackWins, 0)}
-                </div>
-                <div className="text-indigo-100 mt-2">Black Wins</div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Hero Section */}
+        <OverviewHero
+          aggregates={overview.aggregates}
+          roundsIncluded={overview.roundsIncluded}
+          seasonNumber={overview.seasonNumber}
+        />
+
+        {/* Piece Cemetery */}
+        <PieceCemetery aggregates={overview.aggregates} />
+
+        {/* Hall of Fame */}
+        <HallOfFameSection hallOfFame={overview.hallOfFame} />
+
+        {/* Leaderboards */}
+        <LeaderboardsSection leaderboards={overview.leaderboards} />
+
+        {/* Trends */}
+        <TrendsSection
+          trends={overview.trends}
+          roundsIncluded={overview.roundsIncluded}
+        />
 
         {/* Round Cards */}
         <div>
@@ -222,26 +240,21 @@ export default function StatsPage() {
           )}
         </div>
 
-        {/* Info Section */}
-        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mt-12">
-          <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-sm font-medium text-blue-800 dark:text-blue-200">
-                About These Statistics
-              </h3>
-              <div className="mt-2 text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <p>• All statistics are generated from official PGN game records</p>
-                <p>• Click on any round to see detailed statistics including tactics, piece activity, and board heatmaps</p>
-                <p>• New stats are added after each round is completed</p>
-              </div>
-            </div>
+        {/* Footer Info */}
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="font-semibold text-gray-900 dark:text-white mb-2">
+              📊 Overview Statistics
+            </p>
+            <ul className="space-y-1">
+              <li>• Generated: {new Date(overview.generatedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}</li>
+              <li>• Rounds analyzed: {overview.roundsIncluded.join(', ')}</li>
+              <li>• Players tracked: {Object.keys(overview.playerStats).length}</li>
+              <li>• Hall of Fame entries: {Object.values(overview.hallOfFame).filter(v => v !== null).length}</li>
+            </ul>
           </div>
         </div>
+
       </div>
     </div>
   )
