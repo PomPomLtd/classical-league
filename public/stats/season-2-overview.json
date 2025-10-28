@@ -1,23 +1,24 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-10-23T21:27:49.706Z",
+  "generatedAt": "2025-10-28T12:07:05.560Z",
   "roundsIncluded": [
     1,
-    2
+    2,
+    3
   ],
   "aggregates": {
-    "totalGames": 64,
-    "totalMoves": 4939,
-    "averageGameLength": 77.2,
-    "totalBlunders": 166,
-    "totalMistakes": 314,
+    "totalGames": 68,
+    "totalMoves": 5272,
+    "averageGameLength": 77.5,
+    "totalBlunders": 172,
+    "totalMistakes": 326,
     "piecesCaptured": {
-      "pawns": 531,
-      "knights": 203,
-      "bishops": 182,
-      "rooks": 143,
-      "queens": 80,
-      "total": 1139
+      "pawns": 569,
+      "knights": 215,
+      "bishops": 194,
+      "rooks": 151,
+      "queens": 87,
+      "total": 1216
     },
     "totalChecks": 0,
     "totalEnPassant": 3,
@@ -673,9 +674,9 @@
     "Gaston F.": {
       "normalizedName": "Gaston F.",
       "displayName": "Gaston «SleepingDawg» F.",
-      "gamesPlayed": 2,
+      "gamesPlayed": 3,
       "gamesAsWhite": 1,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -690,16 +691,46 @@
           "round": 1,
           "award": "Crosshairs",
           "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Castling Race Winner",
+          "details": "4 moves"
+        },
+        {
+          "round": 3,
+          "award": "Opening Hipster",
+          "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
+        },
+        {
+          "round": 3,
+          "award": "Professional Edger",
+          "details": "11 moves"
+        },
+        {
+          "round": 3,
+          "award": "Rook Lift",
+          "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Crosshairs",
+          "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Hypertension Award",
+          "details": "10 moves"
         }
       ],
-      "awardCount": 2,
-      "averageACPL": 20.9,
+      "awardCount": 8,
+      "averageACPL": 22.9,
       "bestACPL": 14.5,
       "worstACPL": 27.2,
       "acplByRound": [
         14.5,
         27.2,
-        null,
+        27.1,
         null,
         null,
         null,
@@ -708,13 +739,13 @@
       "accuracyByRound": [
         91.5,
         90.5,
-        null,
+        91.5,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 6,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
@@ -1158,9 +1189,9 @@
     "Laurens B.": {
       "normalizedName": "Laurens B.",
       "displayName": "Laurens «Castling Specialist» B.",
-      "gamesPlayed": 2,
+      "gamesPlayed": 3,
       "gamesAsWhite": 1,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1170,16 +1201,26 @@
           "round": 1,
           "award": "Blunder of the Round",
           "details": "633 cp loss"
+        },
+        {
+          "round": 3,
+          "award": "Slowest Queen Trade",
+          "details": "30 moves"
+        },
+        {
+          "round": 3,
+          "award": "Longest King Hunt",
+          "details": "3 in a row"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 38.7,
+      "awardCount": 3,
+      "averageACPL": 38.1,
       "bestACPL": 16.3,
       "worstACPL": 61,
       "acplByRound": [
         61,
         16.3,
-        null,
+        37,
         null,
         null,
         null,
@@ -1188,18 +1229,18 @@
       "accuracyByRound": [
         74.9,
         94.7,
-        null,
+        77.9,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 18.3,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 4,
-      "totalMistakes": 4
+      "totalBlunders": 6,
+      "totalMistakes": 6
     },
     "Adela P.": {
       "normalizedName": "Adela P.",
@@ -1404,9 +1445,9 @@
     "Manuel G.": {
       "normalizedName": "Manuel G.",
       "displayName": "Manuel «Pawn Shredder» G.",
-      "gamesPlayed": 2,
+      "gamesPlayed": 3,
       "gamesAsWhite": 1,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1416,16 +1457,56 @@
           "round": 2,
           "award": "Rook Lift",
           "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Fastest Queen Trade",
+          "details": "13 moves"
+        },
+        {
+          "round": 3,
+          "award": "Longest Capture Spree",
+          "details": "6 in a row"
+        },
+        {
+          "round": 3,
+          "award": "Pawn Storm",
+          "details": "10"
+        },
+        {
+          "round": 3,
+          "award": "Square Tourist",
+          "details": "9 squares"
+        },
+        {
+          "round": 3,
+          "award": "Center Stage",
+          "details": "3 moves"
+        },
+        {
+          "round": 3,
+          "award": "Dark Mode Enthusiast",
+          "details": "8 captures"
+        },
+        {
+          "round": 3,
+          "award": "Chicken Award",
+          "details": "8 retreats"
+        },
+        {
+          "round": 3,
+          "award": "GM Energy",
+          "details": "92.7% accuracy"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 28,
+      "awardCount": 9,
+      "averageACPL": 27.5,
       "bestACPL": 17.7,
       "worstACPL": 38.2,
       "acplByRound": [
         38.2,
         17.7,
-        null,
+        26.7,
         null,
         null,
         null,
@@ -1434,38 +1515,59 @@
       "accuracyByRound": [
         81.6,
         87,
-        null,
+        92.7,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 8.4,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
       "totalBlunders": 3,
-      "totalMistakes": 6
+      "totalMistakes": 7
     },
     "Janosch B.": {
       "normalizedName": "Janosch B.",
       "displayName": "Janosch «Youngbrain 1b4» B.",
-      "gamesPlayed": 2,
-      "gamesAsWhite": 1,
+      "gamesPlayed": 3,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 17.4,
+      "awards": [
+        {
+          "round": 3,
+          "award": "Slowest Queen Trade",
+          "details": "30 moves"
+        },
+        {
+          "round": 3,
+          "award": "Longest King Hunt",
+          "details": "3 in a row"
+        },
+        {
+          "round": 3,
+          "award": "Sporty Queen",
+          "details": "13 squares"
+        },
+        {
+          "round": 3,
+          "award": "Late Bloomer",
+          "details": ""
+        }
+      ],
+      "awardCount": 4,
+      "averageACPL": 23.4,
       "bestACPL": 17.3,
-      "worstACPL": 17.4,
+      "worstACPL": 35.5,
       "acplByRound": [
         17.4,
         17.3,
-        null,
+        35.5,
         null,
         null,
         null,
@@ -1474,18 +1576,18 @@
       "accuracyByRound": [
         93.4,
         92.8,
-        null,
+        73.5,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 8.6,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
       "totalBlunders": 0,
-      "totalMistakes": 1
+      "totalMistakes": 5
     },
     "Michael B.": {
       "normalizedName": "Michael B.",
@@ -1622,8 +1724,8 @@
     "Anton B.": {
       "normalizedName": "Anton B.",
       "displayName": "Anton «TheCatalan» B.",
-      "gamesPlayed": 2,
-      "gamesAsWhite": 1,
+      "gamesPlayed": 3,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
@@ -1634,16 +1736,46 @@
           "round": 2,
           "award": "Hypertension Award",
           "details": "20 moves"
+        },
+        {
+          "round": 3,
+          "award": "Fastest Queen Trade",
+          "details": "13 moves"
+        },
+        {
+          "round": 3,
+          "award": "Longest Capture Spree",
+          "details": "6 in a row"
+        },
+        {
+          "round": 3,
+          "award": "Pawn Storm",
+          "details": "10"
+        },
+        {
+          "round": 3,
+          "award": "Dadbod Shuffler",
+          "details": "11 moves"
+        },
+        {
+          "round": 3,
+          "award": "Fastest Gun",
+          "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Blunder of the Round",
+          "details": "433 cp loss"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 26.2,
+      "awardCount": 7,
+      "averageACPL": 29.7,
       "bestACPL": 24.6,
-      "worstACPL": 27.8,
+      "worstACPL": 36.7,
       "acplByRound": [
         27.8,
         24.6,
-        null,
+        36.7,
         null,
         null,
         null,
@@ -1652,18 +1784,18 @@
       "accuracyByRound": [
         89.2,
         94.7,
-        null,
+        89.5,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 5.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 0,
-      "totalMistakes": 5
+      "totalBlunders": 1,
+      "totalMistakes": 6
     },
     "Oliver K.": {
       "normalizedName": "Oliver K.",
@@ -2046,22 +2178,28 @@
     "Christopher N.": {
       "normalizedName": "Christopher N.",
       "displayName": "Christopher «Hangs Pieces for Fun» N.",
-      "gamesPlayed": 2,
+      "gamesPlayed": 3,
       "gamesAsWhite": 1,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 49.6,
+      "awards": [
+        {
+          "round": 3,
+          "award": "bloodbath",
+          "details": "23 captures"
+        }
+      ],
+      "awardCount": 1,
+      "averageACPL": 47.1,
       "bestACPL": 37.2,
       "worstACPL": 61.9,
       "acplByRound": [
         61.9,
         37.2,
-        null,
+        42.2,
         null,
         null,
         null,
@@ -2070,18 +2208,18 @@
       "accuracyByRound": [
         70.9,
         69.3,
-        null,
+        85.8,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 10.7,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 10,
-      "totalMistakes": 9
+      "totalBlunders": 12,
+      "totalMistakes": 11
     },
     "Jacopo B.": {
       "normalizedName": "Jacopo B.",
@@ -2736,22 +2874,43 @@
     "Christopher H.": {
       "normalizedName": "Christopher H.",
       "displayName": "Christopher «King Decimator» H.",
-      "gamesPlayed": 2,
-      "gamesAsWhite": 1,
+      "gamesPlayed": 3,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 26.9,
-      "bestACPL": 21.4,
+      "awards": [
+        {
+          "round": 3,
+          "award": "Opening Hipster",
+          "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
+        },
+        {
+          "round": 3,
+          "award": "Homeboy",
+          "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Crosshairs",
+          "details": ""
+        },
+        {
+          "round": 3,
+          "award": "Hypertension Award",
+          "details": "10 moves"
+        }
+      ],
+      "awardCount": 4,
+      "averageACPL": 23.1,
+      "bestACPL": 15.7,
       "worstACPL": 32.3,
       "acplByRound": [
         21.4,
         32.3,
-        null,
+        15.7,
         null,
         null,
         null,
@@ -2760,18 +2919,18 @@
       "accuracyByRound": [
         94.6,
         86.7,
-        null,
+        85.1,
         null,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 6.9,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
       "totalBlunders": 4,
-      "totalMistakes": 3
+      "totalMistakes": 4
     },
     "Andrei A.": {
       "normalizedName": "Andrei A.",
@@ -2896,8 +3055,8 @@
     "Nikola N.": {
       "normalizedName": "Nikola N.",
       "displayName": "Nikola «Pawn Carnivore» N.",
-      "gamesPlayed": 1,
-      "gamesAsWhite": 0,
+      "gamesPlayed": 2,
+      "gamesAsWhite": 1,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
@@ -2908,16 +3067,21 @@
           "round": 2,
           "award": "Slowest Queen Trade",
           "details": "48 moves"
+        },
+        {
+          "round": 3,
+          "award": "bloodbath",
+          "details": "23 captures"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 43.1,
-      "bestACPL": 43.1,
+      "awardCount": 2,
+      "averageACPL": 36.8,
+      "bestACPL": 30.5,
       "worstACPL": 43.1,
       "acplByRound": [
         null,
         43.1,
-        null,
+        30.5,
         null,
         null,
         null,
@@ -2926,7 +3090,7 @@
       "accuracyByRound": [
         null,
         86.8,
-        null,
+        89.5,
         null,
         null,
         null,
@@ -2936,8 +3100,8 @@
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 0,
-      "totalMistakes": 4
+      "totalBlunders": 1,
+      "totalMistakes": 5
     },
     "Tobias P.": {
       "normalizedName": "Tobias P.",
@@ -3246,6 +3410,147 @@
   "leaderboards": {
     "mostAwards": [
       {
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "count": 9,
+        "awards": [
+          {
+            "round": 2,
+            "award": "Rook Lift",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Fastest Queen Trade",
+            "details": "13 moves"
+          },
+          {
+            "round": 3,
+            "award": "Longest Capture Spree",
+            "details": "6 in a row"
+          },
+          {
+            "round": 3,
+            "award": "Pawn Storm",
+            "details": "10"
+          },
+          {
+            "round": 3,
+            "award": "Square Tourist",
+            "details": "9 squares"
+          },
+          {
+            "round": 3,
+            "award": "Center Stage",
+            "details": "3 moves"
+          },
+          {
+            "round": 3,
+            "award": "Dark Mode Enthusiast",
+            "details": "8 captures"
+          },
+          {
+            "round": 3,
+            "award": "Chicken Award",
+            "details": "8 retreats"
+          },
+          {
+            "round": 3,
+            "award": "GM Energy",
+            "details": "92.7% accuracy"
+          }
+        ]
+      },
+      {
+        "player": "Gaston F.",
+        "displayName": "Gaston «SleepingDawg» F.",
+        "count": 8,
+        "awards": [
+          {
+            "round": 1,
+            "award": "Castling Race Winner",
+            "details": "4 moves"
+          },
+          {
+            "round": 1,
+            "award": "Crosshairs",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Castling Race Winner",
+            "details": "4 moves"
+          },
+          {
+            "round": 3,
+            "award": "Opening Hipster",
+            "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
+          },
+          {
+            "round": 3,
+            "award": "Professional Edger",
+            "details": "11 moves"
+          },
+          {
+            "round": 3,
+            "award": "Rook Lift",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Crosshairs",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Hypertension Award",
+            "details": "10 moves"
+          }
+        ]
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "count": 7,
+        "awards": [
+          {
+            "round": 2,
+            "award": "Hypertension Award",
+            "details": "20 moves"
+          },
+          {
+            "round": 3,
+            "award": "Fastest Queen Trade",
+            "details": "13 moves"
+          },
+          {
+            "round": 3,
+            "award": "Longest Capture Spree",
+            "details": "6 in a row"
+          },
+          {
+            "round": 3,
+            "award": "Pawn Storm",
+            "details": "10"
+          },
+          {
+            "round": 3,
+            "award": "Dadbod Shuffler",
+            "details": "11 moves"
+          },
+          {
+            "round": 3,
+            "award": "Fastest Gun",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Blunder of the Round",
+            "details": "433 cp loss"
+          }
+        ]
+      },
+      {
         "player": "Joshua G.",
         "displayName": "Joshua «Pristine Pawn Pusher» G.",
         "count": 6,
@@ -3391,6 +3696,33 @@
         ]
       },
       {
+        "player": "Janosch B.",
+        "displayName": "Janosch «Youngbrain 1b4» B.",
+        "count": 4,
+        "awards": [
+          {
+            "round": 3,
+            "award": "Slowest Queen Trade",
+            "details": "30 moves"
+          },
+          {
+            "round": 3,
+            "award": "Longest King Hunt",
+            "details": "3 in a row"
+          },
+          {
+            "round": 3,
+            "award": "Sporty Queen",
+            "details": "13 squares"
+          },
+          {
+            "round": 3,
+            "award": "Late Bloomer",
+            "details": ""
+          }
+        ]
+      },
+      {
         "player": "Islam H.",
         "displayName": "Islam «xXBlackXx» H.",
         "count": 4,
@@ -3416,85 +3748,133 @@
             "details": "29 captures"
           }
         ]
+      }
+    ],
+    "bestAverageACPL": [
+      {
+        "player": "Gaston F.",
+        "displayName": "Gaston «SleepingDawg» F.",
+        "acpl": 22.9,
+        "gamesPlayed": 3
       },
       {
-        "player": "Jakob .",
-        "displayName": "Jakob «Jaquemate » .",
-        "count": 3,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Longest Capture Spree",
-            "details": "8 in a row"
-          },
-          {
-            "round": 1,
-            "award": "Center Stage",
-            "details": "4 moves"
-          },
-          {
-            "round": 1,
-            "award": "bloodbath",
-            "details": "28 captures"
-          }
-        ]
+        "player": "Christopher H.",
+        "displayName": "Christopher «King Decimator» H.",
+        "acpl": 23.1,
+        "gamesPlayed": 3
       },
       {
-        "player": "Janic S.",
-        "displayName": "Janic «Clasher» S.",
-        "count": 2,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Pawn Storm",
-            "details": "13"
-          },
-          {
-            "round": 2,
-            "award": "Pawn Storm",
-            "details": "12"
-          }
-        ]
+        "player": "Janosch B.",
+        "displayName": "Janosch «Youngbrain 1b4» B.",
+        "acpl": 23.4,
+        "gamesPlayed": 3
       },
       {
-        "player": "Boris G.",
-        "displayName": "Boris «Out of Nowhere» G.",
-        "count": 2,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Pawn Storm",
-            "details": "13"
-          },
-          {
-            "round": 2,
-            "award": "Homeboy",
-            "details": ""
-          }
-        ]
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "acpl": 27.5,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "acpl": 29.7,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Laurens B.",
+        "displayName": "Laurens «Castling Specialist» B.",
+        "acpl": 38.1,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Christopher N.",
+        "displayName": "Christopher «Hangs Pieces for Fun» N.",
+        "acpl": 47.1,
+        "gamesPlayed": 3
+      }
+    ],
+    "worstAverageACPL": [
+      {
+        "player": "Christopher N.",
+        "displayName": "Christopher «Hangs Pieces for Fun» N.",
+        "acpl": 47.1,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Laurens B.",
+        "displayName": "Laurens «Castling Specialist» B.",
+        "acpl": 38.1,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "acpl": 29.7,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "acpl": 27.5,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Janosch B.",
+        "displayName": "Janosch «Youngbrain 1b4» B.",
+        "acpl": 23.4,
+        "gamesPlayed": 3
+      },
+      {
+        "player": "Christopher H.",
+        "displayName": "Christopher «King Decimator» H.",
+        "acpl": 23.1,
+        "gamesPlayed": 3
       },
       {
         "player": "Gaston F.",
         "displayName": "Gaston «SleepingDawg» F.",
-        "count": 2,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Castling Race Winner",
-            "details": "4 moves"
-          },
-          {
-            "round": 1,
-            "award": "Crosshairs",
-            "details": ""
-          }
-        ]
+        "acpl": 22.9,
+        "gamesPlayed": 3
       }
     ],
-    "bestAverageACPL": [],
-    "worstAverageACPL": [],
     "mostImproved": [],
     "mostGames": [
+      {
+        "player": "Gaston F.",
+        "displayName": "Gaston «SleepingDawg» F.",
+        "games": 3
+      },
+      {
+        "player": "Laurens B.",
+        "displayName": "Laurens «Castling Specialist» B.",
+        "games": 3
+      },
+      {
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "games": 3
+      },
+      {
+        "player": "Janosch B.",
+        "displayName": "Janosch «Youngbrain 1b4» B.",
+        "games": 3
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "games": 3
+      },
+      {
+        "player": "Christopher N.",
+        "displayName": "Christopher «Hangs Pieces for Fun» N.",
+        "games": 3
+      },
+      {
+        "player": "Christopher H.",
+        "displayName": "Christopher «King Decimator» H.",
+        "games": 3
+      },
       {
         "player": "Daniel T.",
         "displayName": "Daniel «Bishop Mangler Supreme» T.",
@@ -3509,120 +3889,170 @@
         "player": "bela O.",
         "displayName": "bela «bela» O.",
         "games": 2
-      },
-      {
-        "player": "Osama A.",
-        "displayName": "Osama «Ruiner of Bird's» A.",
-        "games": 2
-      },
-      {
-        "player": "Jakob .",
-        "displayName": "Jakob «Jaquemate » .",
-        "games": 2
-      },
-      {
-        "player": "Joshua G.",
-        "displayName": "Joshua «Pristine Pawn Pusher» G.",
-        "games": 2
-      },
-      {
-        "player": "Janic S.",
-        "displayName": "Janic «Clasher» S.",
-        "games": 2
-      },
-      {
-        "player": "Boris G.",
-        "displayName": "Boris «Out of Nowhere» G.",
-        "games": 2
-      },
-      {
-        "player": "Dogan P.",
-        "displayName": "Dogan «Kido» P.",
-        "games": 2
-      },
-      {
-        "player": "Gaston F.",
-        "displayName": "Gaston «SleepingDawg» F.",
-        "games": 2
       }
     ],
     "mostVersatile": [],
     "mostConsistent": [],
     "highestWinRate": [],
-    "mostBlunders": [],
-    "fewestBlunders": []
+    "mostBlunders": [
+      {
+        "player": "Christopher N.",
+        "displayName": "Christopher «Hangs Pieces for Fun» N.",
+        "blunders": 12,
+        "blundersPerGame": 4
+      },
+      {
+        "player": "Laurens B.",
+        "displayName": "Laurens «Castling Specialist» B.",
+        "blunders": 6,
+        "blundersPerGame": 2
+      },
+      {
+        "player": "Christopher H.",
+        "displayName": "Christopher «King Decimator» H.",
+        "blunders": 4,
+        "blundersPerGame": 1.3
+      },
+      {
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "blunders": 3,
+        "blundersPerGame": 1
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "blunders": 1,
+        "blundersPerGame": 0.3
+      }
+    ],
+    "fewestBlunders": [
+      {
+        "player": "Gaston F.",
+        "displayName": "Gaston «SleepingDawg» F.",
+        "blunders": 0,
+        "blundersPerGame": 0
+      },
+      {
+        "player": "Janosch B.",
+        "displayName": "Janosch «Youngbrain 1b4» B.",
+        "blunders": 0,
+        "blundersPerGame": 0
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "blunders": 1,
+        "blundersPerGame": 0.3
+      },
+      {
+        "player": "Manuel G.",
+        "displayName": "Manuel «Pawn Shredder» G.",
+        "blunders": 3,
+        "blundersPerGame": 1
+      },
+      {
+        "player": "Christopher H.",
+        "displayName": "Christopher «King Decimator» H.",
+        "blunders": 4,
+        "blundersPerGame": 1.3
+      },
+      {
+        "player": "Laurens B.",
+        "displayName": "Laurens «Castling Specialist» B.",
+        "blunders": 6,
+        "blundersPerGame": 2
+      },
+      {
+        "player": "Christopher N.",
+        "displayName": "Christopher «Hangs Pieces for Fun» N.",
+        "blunders": 12,
+        "blundersPerGame": 4
+      }
+    ]
   },
   "trends": {
     "averageACPLByRound": [
       43.5,
-      39.4
+      39.4,
+      31.4
     ],
     "averageAccuracyByRound": [
       84,
-      84.2
+      84.2,
+      85.7
     ],
     "averageGameLengthByRound": [
       40.9,
-      37.6
+      37.6,
+      41.6
     ],
     "e4PercentageByRound": [
       50,
-      75.8
+      75.8,
+      25
     ],
     "d4PercentageByRound": [
       40,
-      21.2
+      21.2,
+      75
     ],
     "drawRateByRound": [
       3.2,
-      6.1
+      6.1,
+      0
     ],
     "whiteWinRateByRound": [
       58.1,
-      48.5
+      48.5,
+      50
     ],
     "blackWinRateByRound": [
       38.7,
-      45.5
+      45.5,
+      50
     ],
     "blundersPerGameByRound": [
       2.9,
-      2.3
+      2.3,
+      1.5
     ],
     "mistakesPerGameByRound": [
       5,
-      4.8
+      4.8,
+      3
     ],
     "avgQueenDistanceByRound": [
       42,
-      52
+      52,
+      13
     ]
   },
   "awardFrequency": {
     "frequency": {
       "fastestQueenTrade": {
         "displayName": "Fastest Queen Trade",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "slowestQueenTrade": {
         "displayName": "Slowest Queen Trade",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "longestCaptureSequence": {
         "displayName": "Longest Capture Spree",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "longestCheckSequence": {
         "displayName": "Longest King Hunt",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "pawnStorm": {
         "displayName": "Pawn Storm",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "pieceLoyalty": {
@@ -3632,211 +4062,211 @@
       },
       "squareTourist": {
         "displayName": "Square Tourist",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "castlingRace": {
         "displayName": "Castling Race",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "openingHipster": {
         "displayName": "Opening Hipster",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "dadbodShuffler": {
         "displayName": "Dadbod Shuffler",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "sportyQueen": {
         "displayName": "Sporty Queen",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "edgeLord": {
         "displayName": "Professional Edger",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "rookLift": {
         "displayName": "Rook Lift",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "centerStage": {
         "displayName": "Center Stage",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "darkLord": {
         "displayName": "Dark Mode Enthusiast",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "chickenAward": {
         "displayName": "Chicken Award",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "homebody": {
         "displayName": "Homeboy",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "lateBloomer": {
         "displayName": "Late Bloomer",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "quickDraw": {
         "displayName": "Fastest Gun",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "crosshairs": {
         "displayName": "Crosshairs",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       "longestTension": {
         "displayName": "Hypertension Award",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       }
     },
     "mostCommon": {
       "key": "fastestQueenTrade",
       "displayName": "Fastest Queen Trade",
-      "appearances": 2,
+      "appearances": 3,
       "percentage": 100
     },
     "leastCommon": {
       "key": "fastestQueenTrade",
       "displayName": "Fastest Queen Trade",
-      "appearances": 2,
+      "appearances": 3,
       "percentage": 100
     },
     "sortedByFrequency": [
       {
         "key": "fastestQueenTrade",
         "displayName": "Fastest Queen Trade",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "slowestQueenTrade",
         "displayName": "Slowest Queen Trade",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "longestCaptureSequence",
         "displayName": "Longest Capture Spree",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "longestCheckSequence",
         "displayName": "Longest King Hunt",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "pawnStorm",
         "displayName": "Pawn Storm",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "squareTourist",
         "displayName": "Square Tourist",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "castlingRace",
         "displayName": "Castling Race",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "openingHipster",
         "displayName": "Opening Hipster",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "dadbodShuffler",
         "displayName": "Dadbod Shuffler",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "sportyQueen",
         "displayName": "Sporty Queen",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "edgeLord",
         "displayName": "Professional Edger",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "rookLift",
         "displayName": "Rook Lift",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "centerStage",
         "displayName": "Center Stage",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "darkLord",
         "displayName": "Dark Mode Enthusiast",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "chickenAward",
         "displayName": "Chicken Award",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "homebody",
         "displayName": "Homeboy",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "lateBloomer",
         "displayName": "Late Bloomer",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "quickDraw",
         "displayName": "Fastest Gun",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "crosshairs",
         "displayName": "Crosshairs",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {
         "key": "longestTension",
         "displayName": "Hypertension Award",
-        "appearances": 2,
+        "appearances": 3,
         "percentage": 100
       },
       {

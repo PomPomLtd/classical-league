@@ -1,0 +1,809 @@
+{
+  "roundNumber": 3,
+  "seasonNumber": 2,
+  "generatedAt": "2025-10-28T12:06:12.455Z",
+  "overview": {
+    "totalGames": 4,
+    "totalMoves": 333,
+    "averageGameLength": 41.625,
+    "longestGame": {
+      "moves": 49,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G.",
+      "result": "0-1"
+    },
+    "shortestGame": {
+      "moves": 37,
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B.",
+      "result": "1-0"
+    }
+  },
+  "gamePhases": {
+    "averageOpening": 8.875,
+    "averageMiddlegame": 21.875,
+    "averageEndgame": 10.875,
+    "longestWaitTillCapture": {
+      "moves": 18,
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "game": "Christopher «King Decimator» H. vs Gaston «SleepingDawg» F."
+    },
+    "longestMiddlegame": {
+      "moves": 31,
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "game": "Christopher «King Decimator» H. vs Gaston «SleepingDawg» F."
+    },
+    "longestEndgame": {
+      "moves": 23,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G.",
+      "game": "Anton «TheCatalan» B. vs Manuel «Pawn Shredder» G."
+    }
+  },
+  "results": {
+    "whiteWins": 2,
+    "blackWins": 2,
+    "draws": 0,
+    "whiteWinPercentage": 50,
+    "blackWinPercentage": 50,
+    "drawPercentage": 0
+  },
+  "openings": {
+    "firstMoves": {
+      "d4": {
+        "count": 3,
+        "percentage": 75,
+        "winRate": 66.66666666666666
+      },
+      "e4": {
+        "count": 1,
+        "percentage": 25,
+        "winRate": 0
+      }
+    },
+    "popularSequences": [
+      {
+        "moves": "d4 e6 Bf4 d5 Nf3 Bd6",
+        "count": 1,
+        "eco": "A40",
+        "name": "Horwitz Defense"
+      },
+      {
+        "moves": "d4 Nf6 c4 a6 Nc3 c5",
+        "count": 1,
+        "eco": "A50",
+        "name": "Indian Defense: Normal Variation"
+      },
+      {
+        "moves": "e4 c5 c3 Nf6 e5 Nd5",
+        "count": 1,
+        "eco": "B22",
+        "name": "Sicilian Defense: Alapin Variation"
+      },
+      {
+        "moves": "d4 Nf6 Nf3 g6 c4 Bg7",
+        "count": 1,
+        "eco": "E60",
+        "name": "King's Indian Defense: Normal Variation, King's Knight Variation"
+      }
+    ]
+  },
+  "tactics": {
+    "totalCaptures": 77,
+    "enPassantGames": [],
+    "promotions": 0,
+    "castling": {
+      "kingside": 8,
+      "queenside": 0
+    },
+    "bloodiestGame": {
+      "captures": 23,
+      "gameIndex": 3,
+      "white": "Nikola «Pawn Carnivore» N.",
+      "black": "Christopher «Hangs Pieces for Fun» N."
+    },
+    "quietestGame": {
+      "captures": 16,
+      "gameIndex": 1,
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B."
+    },
+    "longestNonCaptureStreak": {
+      "moves": 36,
+      "gameIndex": 0,
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "totalUnderpromotions": 0,
+    "underpromotions": []
+  },
+  "pieces": {
+    "activity": {
+      "pawns": 95,
+      "knights": 76,
+      "bishops": 51,
+      "rooks": 58,
+      "queens": 20,
+      "kings": 33
+    },
+    "captured": {
+      "pawns": 38,
+      "knights": 12,
+      "bishops": 12,
+      "rooks": 8,
+      "queens": 7
+    },
+    "survivalRate": {
+      "rooks": 0.5,
+      "queens": 0.125,
+      "bishops": 0.25,
+      "knights": 0.25
+    }
+  },
+  "checkmates": {
+    "byPiece": {
+      "queen": 0,
+      "rook": 2,
+      "bishop": 0,
+      "knight": 0,
+      "pawn": 0
+    },
+    "fastest": {
+      "moves": 37,
+      "gameIndex": 0,
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "winner": "Black"
+    }
+  },
+  "boardHeatmap": {
+    "bloodiestSquare": {
+      "square": "e5",
+      "captures": 7,
+      "description": "e5 saw 7 captures"
+    },
+    "mostPopularSquare": {
+      "square": "f3",
+      "visits": 15,
+      "description": "f3 was visited 15 times"
+    },
+    "leastPopularSquare": {
+      "square": "h1",
+      "visits": 1,
+      "description": "h1 was only visited 1 times"
+    },
+    "quietestSquares": [
+      "h8"
+    ],
+    "top5Bloodiest": [
+      {
+        "square": "e5",
+        "captures": 7
+      },
+      {
+        "square": "d5",
+        "captures": 6
+      },
+      {
+        "square": "b4",
+        "captures": 5
+      },
+      {
+        "square": "b5",
+        "captures": 5
+      },
+      {
+        "square": "d4",
+        "captures": 4
+      }
+    ],
+    "top5Popular": [
+      {
+        "square": "f3",
+        "visits": 15
+      },
+      {
+        "square": "f6",
+        "visits": 15
+      },
+      {
+        "square": "e5",
+        "visits": 14
+      },
+      {
+        "square": "c5",
+        "visits": 13
+      },
+      {
+        "square": "d5",
+        "visits": 12
+      }
+    ]
+  },
+  "awards": {
+    "bloodbath": {
+      "white": "Nikola «Pawn Carnivore» N.",
+      "black": "Christopher «Hangs Pieces for Fun» N.",
+      "captures": 23
+    },
+    "pacifist": {
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B.",
+      "captures": 16
+    },
+    "speedDemon": {
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "moves": 37,
+      "winner": "Black"
+    },
+    "endgameWizard": {
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G.",
+      "endgameMoves": 23
+    },
+    "openingSprinter": {
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "openingMoves": 6
+    }
+  },
+  "funStats": {
+    "fastestQueenTrade": {
+      "moves": 13,
+      "gameIndex": 2,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "slowestQueenTrade": {
+      "moves": 30,
+      "gameIndex": 1,
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B."
+    },
+    "longestCaptureSequence": {
+      "length": 6,
+      "gameIndex": 2,
+      "startMove": 11,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "longestCheckSequence": {
+      "length": 3,
+      "gameIndex": 1,
+      "startMove": 34,
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B."
+    },
+    "pawnStorm": {
+      "count": 10,
+      "gameIndex": 2,
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "pieceLoyalty": null,
+    "squareTourist": {
+      "squares": 9,
+      "gameIndex": 2,
+      "piece": "Knight",
+      "color": "Black",
+      "startSquare": "g8",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "castlingRace": {
+      "moves": 4,
+      "gameIndex": 0,
+      "winner": "black",
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "openingHipster": {
+      "gameIndex": 0,
+      "eco": "E60",
+      "name": "King's Indian Defense: Normal Variation, King's Knight Variation",
+      "moves": "d4 Nf6 Nf3 g6 c4 Bg7",
+      "obscurityScore": 84,
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "dadbodShuffler": {
+      "moves": 11,
+      "gameIndex": 2,
+      "color": "White",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "sportyQueen": {
+      "distance": 13,
+      "gameIndex": 1,
+      "color": "White",
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B."
+    },
+    "edgeLord": {
+      "moves": 11,
+      "gameIndex": 0,
+      "color": "Black",
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "rookLift": {
+      "moveNumber": 18,
+      "gameIndex": 0,
+      "color": "Black",
+      "rook": "Black's f8 Rook",
+      "square": "f8",
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F."
+    },
+    "centerStage": {
+      "moves": 3,
+      "gameIndex": 2,
+      "piece": "Black's f6 Knight",
+      "startSquare": "f6",
+      "color": "Black",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "darkLord": {
+      "captures": 8,
+      "gameIndex": 2,
+      "color": "Black",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "chickenAward": {
+      "retreats": 8,
+      "gameIndex": 2,
+      "color": "Black",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G."
+    },
+    "homebody": {
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "player": "white",
+      "playerName": "Christopher «King Decimator» H.",
+      "piecesInEnemy": 3,
+      "description": "Christopher «King Decimator» H. only crossed 3 piece(s) into opponent's half of the board"
+    },
+    "lateBloomer": {
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Laurens «Castling Specialist» B.",
+      "player": "white",
+      "playerName": "Janosch «Youngbrain 1b4» B.",
+      "moveNumber": 25,
+      "description": "Janosch «Youngbrain 1b4» B. waited until move 13 to cross into opponent's half"
+    },
+    "quickDraw": {
+      "white": "Anton «TheCatalan» B.",
+      "black": "Manuel «Pawn Shredder» G.",
+      "player": "white",
+      "playerName": "Anton «TheCatalan» B.",
+      "moveNumber": 5,
+      "description": "Anton «TheCatalan» B. crossed into opponent's half on move 3"
+    },
+    "crosshairs": {
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "square": "g3",
+      "attackers": 7,
+      "whiteAttackers": 3,
+      "blackAttackers": 4,
+      "moveNumber": 70,
+      "move": "Bh4",
+      "description": "g3 under attack by 7 pieces (move 70)"
+    },
+    "longestTension": {
+      "white": "Christopher «King Decimator» H.",
+      "black": "Gaston «SleepingDawg» F.",
+      "moves": 10,
+      "squares": "f3-h2",
+      "startMove": 62,
+      "endMove": 72,
+      "description": "f3-h2 pieces faced off for 10 moves without capturing"
+    }
+  },
+  "tacticalPatterns": {
+    "games": [
+      {
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "g3",
+          "attackers": 7,
+          "whiteAttackers": 3,
+          "blackAttackers": 4,
+          "moveNumber": 70,
+          "move": "Bh4"
+        },
+        "longestTension": {
+          "moves": 10,
+          "squares": "f3-h2",
+          "startMove": 62,
+          "endMove": 72
+        },
+        "gameIndex": 0
+      },
+      {
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Laurens «Castling Specialist» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 25,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d1",
+          "attackers": 6,
+          "whiteAttackers": 5,
+          "blackAttackers": 1,
+          "moveNumber": 26,
+          "move": "dxc5"
+        },
+        "longestTension": {
+          "moves": 7,
+          "squares": "g2-h3",
+          "startMove": 54,
+          "endMove": 61
+        },
+        "gameIndex": 1
+      },
+      {
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 6,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d7",
+          "attackers": 5,
+          "whiteAttackers": 0,
+          "blackAttackers": 5,
+          "moveNumber": 4,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "b4-d3",
+          "startMove": 69,
+          "endMove": 77
+        },
+        "gameIndex": 2
+      },
+      {
+        "white": "Nikola «Pawn Carnivore» N.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 11,
+          "blackFirstInvasion": 22
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 45,
+          "move": "Bxb3"
+        },
+        "longestTension": {
+          "moves": 5,
+          "squares": "e5-f7",
+          "startMove": 11,
+          "endMove": 16
+        },
+        "gameIndex": 3
+      }
+    ],
+    "summary": {
+      "totalGames": 4,
+      "homebody": {
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "player": "white",
+        "piecesInEnemy": 3,
+        "gameIndex": 0
+      },
+      "lateBlocker": null,
+      "mostAttackedSquareGame": {
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "g3",
+          "attackers": 7,
+          "whiteAttackers": 3,
+          "blackAttackers": 4,
+          "moveNumber": 70,
+          "move": "Bh4"
+        },
+        "longestTension": {
+          "moves": 10,
+          "squares": "f3-h2",
+          "startMove": 62,
+          "endMove": 72
+        },
+        "gameIndex": 0
+      },
+      "lateBloomer": {
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Laurens «Castling Specialist» B.",
+        "player": "white",
+        "moveNumber": 25,
+        "gameIndex": 1
+      },
+      "quickDraw": {
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "player": "white",
+        "moveNumber": 5,
+        "gameIndex": 2
+      },
+      "longestTension": {
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "moves": 10,
+        "squares": "f3-h2",
+        "startMove": 62,
+        "endMove": 72,
+        "gameIndex": 0
+      }
+    }
+  },
+  "analysis": {
+    "games": [
+      {
+        "gameIndex": 0,
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "whiteACPL": 15.7,
+        "blackACPL": 27.1,
+        "whiteAccuracy": 85.1,
+        "blackAccuracy": 91.5,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 1,
+          "good": 8,
+          "excellent": 27
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 7,
+          "good": 7,
+          "excellent": 23
+        },
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "480",
+          "evalTo": "M-2",
+          "evalFromCp": 480,
+          "evalToCp": -9980,
+          "moveNumber": 36
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -9500,
+          "evalBefore": 480,
+          "evalAfter": -9980,
+          "moveNumber": 36
+        }
+      },
+      {
+        "gameIndex": 1,
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Laurens «Castling Specialist» B.",
+        "whiteACPL": 35.5,
+        "blackACPL": 37,
+        "whiteAccuracy": 73.5,
+        "blackAccuracy": 77.9,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 4,
+          "inaccuracies": 5,
+          "good": 15,
+          "excellent": 13
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 2,
+          "inaccuracies": 11,
+          "good": 7,
+          "excellent": 14
+        },
+        "biggestBlunder": {
+          "moveNumber": 35,
+          "player": "black",
+          "cpLoss": 153,
+          "winLoss": 44.1268630675239,
+          "move": "Rb8",
+          "evalBefore": 41,
+          "evalAfter": 9980
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 37
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 37
+        }
+      },
+      {
+        "gameIndex": 2,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "whiteACPL": 36.7,
+        "blackACPL": 26.7,
+        "whiteAccuracy": 89.5,
+        "blackAccuracy": 92.7,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 1,
+          "inaccuracies": 4,
+          "good": 7,
+          "excellent": 36
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 2,
+          "good": 7,
+          "excellent": 38
+        },
+        "biggestBlunder": {
+          "moveNumber": 10,
+          "player": "white",
+          "cpLoss": 433,
+          "winLoss": 44.38396749526873,
+          "move": "Ba4+",
+          "evalBefore": 20,
+          "evalAfter": -413
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 3,
+        "white": "Nikola «Pawn Carnivore» N.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "whiteACPL": 30.5,
+        "blackACPL": 42.2,
+        "whiteAccuracy": 89.5,
+        "blackAccuracy": 85.8,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 1,
+          "inaccuracies": 4,
+          "good": 8,
+          "excellent": 31
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 5,
+          "excellent": 33
+        },
+        "biggestBlunder": {
+          "moveNumber": 8,
+          "player": "black",
+          "cpLoss": 406,
+          "winLoss": 40.600692207943,
+          "move": "Nxe5",
+          "evalBefore": 6,
+          "evalAfter": 412
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      }
+    ],
+    "summary": {
+      "accuracyKing": {
+        "player": "black",
+        "accuracy": 92.7,
+        "acpl": 26.7,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "gameIndex": 2
+      },
+      "biggestBlunder": {
+        "moveNumber": 10,
+        "player": "white",
+        "cpLoss": 433,
+        "winLoss": 44.38396749526873,
+        "move": "Ba4+",
+        "evalBefore": 20,
+        "evalAfter": -413,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "gameIndex": 2
+      },
+      "comebackKing": {
+        "player": "black",
+        "swing": 2000,
+        "evalFrom": "480",
+        "evalTo": "M-2",
+        "evalFromCp": 480,
+        "evalToCp": -9980,
+        "moveNumber": 36,
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "gameIndex": 0
+      },
+      "luckyEscape": {
+        "player": "black",
+        "escapeAmount": -10,
+        "evalBefore": 9990,
+        "evalAfter": -10000,
+        "moveNumber": 37,
+        "white": "Janosch «Youngbrain 1b4» B.",
+        "black": "Laurens «Castling Specialist» B.",
+        "gameIndex": 1
+      },
+      "lowestACPL": {
+        "player": "white",
+        "acpl": 15.7,
+        "accuracy": 85.1,
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "gameIndex": 0
+      },
+      "highestACPL": {
+        "player": "black",
+        "acpl": 42.2,
+        "accuracy": 85.8,
+        "white": "Nikola «Pawn Carnivore» N.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "gameIndex": 3
+      },
+      "lowestCombinedACPL": {
+        "combinedACPL": 42.8,
+        "whiteACPL": 15.7,
+        "blackACPL": 27.1,
+        "white": "Christopher «King Decimator» H.",
+        "black": "Gaston «SleepingDawg» F.",
+        "gameIndex": 0
+      },
+      "highestCombinedACPL": {
+        "combinedACPL": 72.7,
+        "whiteACPL": 30.5,
+        "blackACPL": 42.2,
+        "white": "Nikola «Pawn Carnivore» N.",
+        "black": "Christopher «Hangs Pieces for Fun» N.",
+        "gameIndex": 3
+      }
+    }
+  }
+}
