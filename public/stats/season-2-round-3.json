@@ -1,11 +1,11 @@
 {
   "roundNumber": 3,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-29T07:44:14.317Z",
+  "generatedAt": "2025-10-30T21:09:34.191Z",
   "overview": {
-    "totalGames": 11,
-    "totalMoves": 983,
-    "averageGameLength": 44.68181818181818,
+    "totalGames": 14,
+    "totalMoves": 1224,
+    "averageGameLength": 43.714285714285715,
     "longestGame": {
       "moves": 79,
       "white": "Ruslan «Thunder-Blunder» G.",
@@ -13,16 +13,16 @@
       "result": "0-1"
     },
     "shortestGame": {
-      "moves": 25,
-      "white": "Korbinian «King's Gambit is a real opening» A.",
-      "black": "Osama «Ruiner of Bird's» A.",
-      "result": "1-0"
+      "moves": 14,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
+      "result": "0-1"
     }
   },
   "gamePhases": {
-    "averageOpening": 8.045454545454545,
-    "averageMiddlegame": 19.181818181818183,
-    "averageEndgame": 17.454545454545453,
+    "averageOpening": 8.178571428571429,
+    "averageMiddlegame": 18.178571428571427,
+    "averageEndgame": 17.357142857142858,
     "longestWaitTillCapture": {
       "moves": 18,
       "white": "Christopher «King Decimator» H.",
@@ -43,28 +43,28 @@
     }
   },
   "results": {
-    "whiteWins": 5,
-    "blackWins": 5,
-    "draws": 1,
-    "whiteWinPercentage": 45.45454545454545,
-    "blackWinPercentage": 45.45454545454545,
-    "drawPercentage": 9.090909090909092
+    "whiteWins": 6,
+    "blackWins": 6,
+    "draws": 2,
+    "whiteWinPercentage": 42.857142857142854,
+    "blackWinPercentage": 42.857142857142854,
+    "drawPercentage": 14.285714285714285
   },
   "openings": {
     "firstMoves": {
       "e4": {
         "count": 6,
-        "percentage": 54.54545454545454,
+        "percentage": 42.857142857142854,
         "winRate": 33.33333333333333
       },
       "d4": {
-        "count": 4,
-        "percentage": 36.36363636363637,
-        "winRate": 50
+        "count": 7,
+        "percentage": 50,
+        "winRate": 42.857142857142854
       },
       "c4": {
         "count": 1,
-        "percentage": 9.090909090909092,
+        "percentage": 7.142857142857142,
         "winRate": 100
       }
     },
@@ -74,6 +74,12 @@
         "count": 1,
         "eco": "A10",
         "name": "English Opening: Great Snake Variation"
+      },
+      {
+        "moves": "d4 c6 Nf3 d5 g3 Bf5",
+        "count": 1,
+        "eco": "A40",
+        "name": "Queen's Pawn Game"
       },
       {
         "moves": "d4 e6 Bf4 d5 Nf3 Bd6",
@@ -130,6 +136,18 @@
         "name": "Italian Game: Two Knights Defense"
       },
       {
+        "moves": "d4 d5 c4 c6 Nc3 Nf6",
+        "count": 1,
+        "eco": "D10",
+        "name": "Slav Defense"
+      },
+      {
+        "moves": "d4 d5 c4 e6 Nc3 c6",
+        "count": 1,
+        "eco": "D31",
+        "name": "Semi-Slav Defense: Accelerated Move Order"
+      },
+      {
         "moves": "d4 Nf6 Nf3 g6 c4 Bg7",
         "count": 1,
         "eco": "E60",
@@ -138,7 +156,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 196,
+    "totalCaptures": 237,
     "enPassantGames": [
       {
         "white": "Rainer «Quigli» S.",
@@ -146,26 +164,26 @@
         "count": 1
       }
     ],
-    "promotions": 1,
+    "promotions": 3,
     "castling": {
-      "kingside": 21,
+      "kingside": 26,
       "queenside": 1
     },
     "bloodiestGame": {
       "captures": 27,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "white": "Davide «AME» V.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
     "quietestGame": {
-      "captures": 7,
-      "gameIndex": 1,
-      "white": "Korbinian «King's Gambit is a real opening» A.",
-      "black": "Osama «Ruiner of Bird's» A."
+      "captures": 1,
+      "gameIndex": 13,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S."
     },
     "longestNonCaptureStreak": {
       "moves": 36,
-      "gameIndex": 2,
+      "gameIndex": 3,
       "white": "Christopher «King Decimator» H.",
       "black": "Gaston «SleepingDawg» F."
     },
@@ -174,102 +192,102 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 257,
-      "knights": 193,
-      "bishops": 139,
-      "rooks": 143,
-      "queens": 121,
-      "kings": 130
+      "pawns": 331,
+      "knights": 234,
+      "bishops": 175,
+      "rooks": 158,
+      "queens": 162,
+      "kings": 164
     },
     "captured": {
-      "pawns": 92,
-      "knights": 33,
-      "bishops": 32,
-      "rooks": 23,
-      "queens": 16
+      "pawns": 107,
+      "knights": 41,
+      "bishops": 40,
+      "rooks": 29,
+      "queens": 20
     },
     "survivalRate": {
-      "rooks": 0.4772727272727273,
-      "queens": 0.3181818181818182,
-      "bishops": 0.2727272727272727,
-      "knights": 0.25
+      "rooks": 0.48214285714285715,
+      "queens": 0.39285714285714285,
+      "bishops": 0.2857142857142857,
+      "knights": 0.26785714285714285
     }
   },
   "checkmates": {
     "byPiece": {
-      "queen": 0,
+      "queen": 1,
       "rook": 2,
       "bishop": 0,
       "knight": 0,
       "pawn": 0
     },
     "fastest": {
-      "moves": 37,
-      "gameIndex": 2,
-      "white": "Christopher «King Decimator» H.",
-      "black": "Gaston «SleepingDawg» F.",
+      "moves": 14,
+      "gameIndex": 13,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
       "winner": "Black"
     }
   },
   "boardHeatmap": {
     "bloodiestSquare": {
-      "square": "d5",
-      "captures": 13,
-      "description": "d5 saw 13 captures"
+      "square": "e4",
+      "captures": 16,
+      "description": "e4 saw 16 captures"
     },
     "mostPopularSquare": {
       "square": "f6",
-      "visits": 39,
-      "description": "f6 was visited 39 times"
+      "visits": 45,
+      "description": "f6 was visited 45 times"
     },
     "leastPopularSquare": {
       "square": "h8",
-      "visits": 1,
-      "description": "h8 was only visited 1 times"
+      "visits": 2,
+      "description": "h8 was only visited 2 times"
     },
     "quietestSquares": [],
     "top5Bloodiest": [
+      {
+        "square": "e4",
+        "captures": 16
+      },
+      {
+        "square": "d4",
+        "captures": 15
+      },
       {
         "square": "d5",
         "captures": 13
       },
       {
-        "square": "d4",
-        "captures": 11
-      },
-      {
         "square": "b4",
-        "captures": 10
-      },
-      {
-        "square": "e4",
-        "captures": 10
+        "captures": 12
       },
       {
         "square": "e5",
-        "captures": 10
+        "captures": 12
       }
     ],
     "top5Popular": [
       {
         "square": "f6",
-        "visits": 39
+        "visits": 45
       },
       {
         "square": "f3",
-        "visits": 36
+        "visits": 44
       },
       {
         "square": "d4",
-        "visits": 34
+        "visits": 43
       },
       {
-        "square": "d5",
-        "visits": 34
+        "square": "e4",
+        "visits": 40
       },
       {
         "square": "e5",
-        "visits": 34
+        "visits": 40
       }
     ]
   },
@@ -280,14 +298,14 @@
       "captures": 27
     },
     "pacifist": {
-      "white": "Korbinian «King's Gambit is a real opening» A.",
-      "black": "Osama «Ruiner of Bird's» A.",
-      "captures": 7
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
+      "captures": 1
     },
     "speedDemon": {
-      "white": "Christopher «King Decimator» H.",
-      "black": "Gaston «SleepingDawg» F.",
-      "moves": 37,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
+      "moves": 14,
       "winner": "Black"
     },
     "endgameWizard": {
@@ -304,40 +322,40 @@
   "funStats": {
     "fastestQueenTrade": {
       "moves": 13,
-      "gameIndex": 6,
+      "gameIndex": 8,
       "white": "Anton «TheCatalan» B.",
       "black": "Manuel «Pawn Shredder» G."
     },
     "slowestQueenTrade": {
       "moves": 76,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "white": "Davide «AME» V.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
     "longestCaptureSequence": {
       "length": 6,
-      "gameIndex": 6,
+      "gameIndex": 8,
       "startMove": 11,
       "white": "Anton «TheCatalan» B.",
       "black": "Manuel «Pawn Shredder» G."
     },
     "longestCheckSequence": {
       "length": 6,
-      "gameIndex": 10,
-      "startMove": 45,
-      "white": "Ruslan «Thunder-Blunder» G.",
-      "black": "Torsten «torstyehocara» J."
+      "gameIndex": 2,
+      "startMove": 41,
+      "white": "Jacopo «Bildothebest» B.",
+      "black": "Joshua «Pristine Pawn Pusher» G."
     },
     "pawnStorm": {
       "count": 10,
-      "gameIndex": 6,
+      "gameIndex": 8,
       "white": "Anton «TheCatalan» B.",
       "black": "Manuel «Pawn Shredder» G."
     },
     "pieceLoyalty": null,
     "squareTourist": {
       "squares": 24,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "piece": "Queen",
       "color": "White",
       "startSquare": "d1",
@@ -346,13 +364,13 @@
     },
     "castlingRace": {
       "moves": 4,
-      "gameIndex": 2,
+      "gameIndex": 3,
       "winner": "black",
       "white": "Christopher «King Decimator» H.",
       "black": "Gaston «SleepingDawg» F."
     },
     "openingHipster": {
-      "gameIndex": 2,
+      "gameIndex": 3,
       "eco": "E60",
       "name": "King's Indian Defense: Normal Variation, King's Knight Variation",
       "moves": "d4 Nf6 Nf3 g6 c4 Bg7",
@@ -362,28 +380,28 @@
     },
     "dadbodShuffler": {
       "moves": 19,
-      "gameIndex": 10,
+      "gameIndex": 12,
       "color": "Black",
       "white": "Ruslan «Thunder-Blunder» G.",
       "black": "Torsten «torstyehocara» J."
     },
     "sportyQueen": {
       "distance": 101,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "color": "White",
       "white": "Davide «AME» V.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
     "edgeLord": {
       "moves": 33,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "color": "White",
       "white": "Davide «AME» V.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
     "rookLift": {
       "moveNumber": 17,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "color": "Black",
       "rook": "Black's d8 Rook",
       "square": "d8",
@@ -392,7 +410,7 @@
     },
     "centerStage": {
       "moves": 6,
-      "gameIndex": 10,
+      "gameIndex": 12,
       "piece": "White's c3 Knight",
       "startSquare": "c3",
       "color": "White",
@@ -401,14 +419,14 @@
     },
     "darkLord": {
       "captures": 8,
-      "gameIndex": 6,
+      "gameIndex": 8,
       "color": "Black",
       "white": "Anton «TheCatalan» B.",
       "black": "Manuel «Pawn Shredder» G."
     },
     "chickenAward": {
       "retreats": 24,
-      "gameIndex": 10,
+      "gameIndex": 12,
       "color": "White",
       "white": "Ruslan «Thunder-Blunder» G.",
       "black": "Torsten «torstyehocara» J."
@@ -449,13 +467,13 @@
       "description": "g3 under attack by 7 pieces (move 70)"
     },
     "longestTension": {
-      "white": "Korbinian «King's Gambit is a real opening» A.",
-      "black": "Osama «Ruiner of Bird's» A.",
-      "moves": 17,
-      "squares": "c6-d4",
-      "startMove": 7,
-      "endMove": 24,
-      "description": "c6-d4 pieces faced off for 17 moves without capturing"
+      "white": "Jacopo «Bildothebest» B.",
+      "black": "Joshua «Pristine Pawn Pusher» G.",
+      "moves": 29,
+      "squares": "a5-b4",
+      "startMove": 35,
+      "endMove": 64,
+      "description": "a5-b4 pieces faced off for 29 moves without capturing"
     }
   },
   "tacticalPatterns": {
@@ -511,6 +529,31 @@
         "gameIndex": 1
       },
       {
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Joshua «Pristine Pawn Pusher» G.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 27,
+          "blackFirstInvasion": 42
+        },
+        "mostAttackedSquare": {
+          "square": "c4",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 31,
+          "move": "Ne5"
+        },
+        "longestTension": {
+          "moves": 29,
+          "squares": "a5-b4",
+          "startMove": 35,
+          "endMove": 64
+        },
+        "gameIndex": 2
+      },
+      {
         "white": "Christopher «King Decimator» H.",
         "black": "Gaston «SleepingDawg» F.",
         "enemyTerritory": {
@@ -533,7 +576,7 @@
           "startMove": 62,
           "endMove": 72
         },
-        "gameIndex": 2
+        "gameIndex": 3
       },
       {
         "white": "Janosch «Youngbrain 1b4» B.",
@@ -558,7 +601,32 @@
           "startMove": 54,
           "endMove": 61
         },
-        "gameIndex": 3
+        "gameIndex": 4
+      },
+      {
+        "white": "Mario «ChessDude» M.",
+        "black": "Manuel «Grundpatzer» C.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 27,
+          "blackFirstInvasion": 10
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 8,
+          "move": "Nf6"
+        },
+        "longestTension": {
+          "moves": 12,
+          "squares": "d5-e3",
+          "startMove": 33,
+          "endMove": 45
+        },
+        "gameIndex": 5
       },
       {
         "white": "Nakul «Na cool» P.",
@@ -583,7 +651,7 @@
           "startMove": 56,
           "endMove": 61
         },
-        "gameIndex": 4
+        "gameIndex": 6
       },
       {
         "white": "Rainer «Quigli» S.",
@@ -608,7 +676,7 @@
           "startMove": 15,
           "endMove": 24
         },
-        "gameIndex": 5
+        "gameIndex": 7
       },
       {
         "white": "Anton «TheCatalan» B.",
@@ -633,7 +701,7 @@
           "startMove": 69,
           "endMove": 77
         },
-        "gameIndex": 6
+        "gameIndex": 8
       },
       {
         "white": "Michael «Mivobu» B.",
@@ -654,11 +722,11 @@
         },
         "longestTension": {
           "moves": 7,
-          "squares": "c6-e4",
+          "squares": "e4-h7",
           "startMove": 20,
           "endMove": 27
         },
-        "gameIndex": 7
+        "gameIndex": 9
       },
       {
         "white": "Nikola «Pawn Carnivore» N.",
@@ -683,7 +751,7 @@
           "startMove": 11,
           "endMove": 16
         },
-        "gameIndex": 8
+        "gameIndex": 10
       },
       {
         "white": "Davide «AME» V.",
@@ -708,7 +776,7 @@
           "startMove": 7,
           "endMove": 19
         },
-        "gameIndex": 9
+        "gameIndex": 11
       },
       {
         "white": "Ruslan «Thunder-Blunder» G.",
@@ -733,11 +801,36 @@
           "startMove": 40,
           "endMove": 48
         },
-        "gameIndex": 10
+        "gameIndex": 12
+      },
+      {
+        "white": "Ludwig «solucionfisiologica» S.",
+        "black": "Silvan «Fork This Fork That» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 14
+        },
+        "mostAttackedSquare": {
+          "square": "e2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 5,
+          "move": "Nc3"
+        },
+        "longestTension": {
+          "moves": 18,
+          "squares": "c4-d5",
+          "startMove": 3,
+          "endMove": 21
+        },
+        "gameIndex": 13
       }
     ],
     "summary": {
-      "totalGames": 11,
+      "totalGames": 14,
       "homebody": {
         "white": "Korbinian «King's Gambit is a real opening» A.",
         "black": "Osama «Ruiner of Bird's» A.",
@@ -769,30 +862,30 @@
           "startMove": 62,
           "endMove": 72
         },
-        "gameIndex": 2
+        "gameIndex": 3
       },
       "lateBloomer": {
         "white": "Rainer «Quigli» S.",
         "black": "Itamar «Itaberg» B.",
         "player": "black",
         "moveNumber": 58,
-        "gameIndex": 5
+        "gameIndex": 7
       },
       "quickDraw": {
         "white": "Anton «TheCatalan» B.",
         "black": "Manuel «Pawn Shredder» G.",
         "player": "white",
         "moveNumber": 5,
-        "gameIndex": 6
+        "gameIndex": 8
       },
       "longestTension": {
-        "white": "Korbinian «King's Gambit is a real opening» A.",
-        "black": "Osama «Ruiner of Bird's» A.",
-        "moves": 17,
-        "squares": "c6-d4",
-        "startMove": 7,
-        "endMove": 24,
-        "gameIndex": 1
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Joshua «Pristine Pawn Pusher» G.",
+        "moves": 29,
+        "squares": "a5-b4",
+        "startMove": 35,
+        "endMove": 64,
+        "gameIndex": 2
       }
     }
   },
@@ -874,6 +967,54 @@
       },
       {
         "gameIndex": 2,
+        "white": "Jacopo «Bildothebest» B.",
+        "black": "Joshua «Pristine Pawn Pusher» G.",
+        "whiteACPL": 37.9,
+        "blackACPL": 37.5,
+        "whiteAccuracy": 82.5,
+        "blackAccuracy": 82.7,
+        "whiteMoveQuality": {
+          "blunders": 5,
+          "mistakes": 2,
+          "inaccuracies": 5,
+          "good": 13,
+          "excellent": 40
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 5,
+          "inaccuracies": 9,
+          "good": 10,
+          "excellent": 40
+        },
+        "biggestBlunder": {
+          "moveNumber": 52,
+          "player": "black",
+          "cpLoss": 404,
+          "winLoss": 47.18314003450166,
+          "move": "Qc4",
+          "evalBefore": -70,
+          "evalAfter": 334
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 744,
+          "evalFrom": "-410",
+          "evalTo": "334",
+          "evalFromCp": -410,
+          "evalToCp": 334,
+          "moveNumber": 52
+        },
+        "luckyEscape": {
+          "player": "white",
+          "escapeAmount": 378,
+          "evalBefore": -410,
+          "evalAfter": -32,
+          "moveNumber": 46
+        }
+      },
+      {
+        "gameIndex": 3,
         "white": "Christopher «King Decimator» H.",
         "black": "Gaston «SleepingDawg» F.",
         "whiteACPL": 15.7,
@@ -913,7 +1054,7 @@
         }
       },
       {
-        "gameIndex": 3,
+        "gameIndex": 4,
         "white": "Janosch «Youngbrain 1b4» B.",
         "black": "Laurens «Castling Specialist» B.",
         "whiteACPL": 35.5,
@@ -961,7 +1102,41 @@
         }
       },
       {
-        "gameIndex": 4,
+        "gameIndex": 5,
+        "white": "Mario «ChessDude» M.",
+        "black": "Manuel «Grundpatzer» C.",
+        "whiteACPL": 21.5,
+        "blackACPL": 37.7,
+        "whiteAccuracy": 89.3,
+        "blackAccuracy": 85.2,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 4,
+          "good": 5,
+          "excellent": 30
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 4,
+          "good": 9,
+          "excellent": 25
+        },
+        "biggestBlunder": {
+          "moveNumber": 28,
+          "player": "black",
+          "cpLoss": 339,
+          "winLoss": 37.560366864099336,
+          "move": "Qxb7",
+          "evalBefore": 0,
+          "evalAfter": 339
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 6,
         "white": "Nakul «Na cool» P.",
         "black": "Max «Bird is the word» W.",
         "whiteACPL": 34.6,
@@ -995,7 +1170,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 5,
+        "gameIndex": 7,
         "white": "Rainer «Quigli» S.",
         "black": "Itamar «Itaberg» B.",
         "whiteACPL": 19.4,
@@ -1029,7 +1204,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 6,
+        "gameIndex": 8,
         "white": "Anton «TheCatalan» B.",
         "black": "Manuel «Pawn Shredder» G.",
         "whiteACPL": 36.7,
@@ -1063,7 +1238,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 7,
+        "gameIndex": 9,
         "white": "Michael «Mivobu» B.",
         "black": "Viktor «VHH93» H.",
         "whiteACPL": 33.3,
@@ -1097,7 +1272,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 8,
+        "gameIndex": 10,
         "white": "Nikola «Pawn Carnivore» N.",
         "black": "Christopher «Hangs Pieces for Fun» N.",
         "whiteACPL": 30.5,
@@ -1131,7 +1306,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 9,
+        "gameIndex": 11,
         "white": "Davide «AME» V.",
         "black": "Oliver «Monkey sees Pawn» K.",
         "whiteACPL": 41.8,
@@ -1171,7 +1346,7 @@
         }
       },
       {
-        "gameIndex": 10,
+        "gameIndex": 12,
         "white": "Ruslan «Thunder-Blunder» G.",
         "black": "Torsten «torstyehocara» J.",
         "whiteACPL": 72.1,
@@ -1217,6 +1392,40 @@
           "evalAfter": -31,
           "moveNumber": 77
         }
+      },
+      {
+        "gameIndex": 13,
+        "white": "Ludwig «solucionfisiologica» S.",
+        "black": "Silvan «Fork This Fork That» S.",
+        "whiteACPL": 40.1,
+        "blackACPL": 50.5,
+        "whiteAccuracy": 62.5,
+        "blackAccuracy": 74.9,
+        "whiteMoveQuality": {
+          "blunders": 2,
+          "mistakes": 3,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 5
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 2,
+          "inaccuracies": 3,
+          "good": 1,
+          "excellent": 7
+        },
+        "biggestBlunder": {
+          "moveNumber": 14,
+          "player": "white",
+          "cpLoss": 143,
+          "winLoss": 73.13778578393882,
+          "move": "Nd2",
+          "evalBefore": 174,
+          "evalAfter": -9990
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
       }
     ],
     "summary": {
@@ -1226,7 +1435,7 @@
         "acpl": 26.7,
         "white": "Anton «TheCatalan» B.",
         "black": "Manuel «Pawn Shredder» G.",
-        "gameIndex": 6
+        "gameIndex": 8
       },
       "biggestBlunder": {
         "moveNumber": 18,
@@ -1238,7 +1447,7 @@
         "evalAfter": 355,
         "white": "Ruslan «Thunder-Blunder» G.",
         "black": "Torsten «torstyehocara» J.",
-        "gameIndex": 10
+        "gameIndex": 12
       },
       "comebackKing": {
         "player": "black",
@@ -1250,7 +1459,7 @@
         "moveNumber": 36,
         "white": "Christopher «King Decimator» H.",
         "black": "Gaston «SleepingDawg» F.",
-        "gameIndex": 2
+        "gameIndex": 3
       },
       "luckyEscape": {
         "player": "black",
@@ -1268,7 +1477,7 @@
         "accuracy": 85.1,
         "white": "Christopher «King Decimator» H.",
         "black": "Gaston «SleepingDawg» F.",
-        "gameIndex": 2
+        "gameIndex": 3
       },
       "highestACPL": {
         "player": "white",
@@ -1276,7 +1485,7 @@
         "accuracy": 73.8,
         "white": "Ruslan «Thunder-Blunder» G.",
         "black": "Torsten «torstyehocara» J.",
-        "gameIndex": 10
+        "gameIndex": 12
       },
       "lowestCombinedACPL": {
         "combinedACPL": 42.8,
@@ -1284,7 +1493,7 @@
         "blackACPL": 27.1,
         "white": "Christopher «King Decimator» H.",
         "black": "Gaston «SleepingDawg» F.",
-        "gameIndex": 2
+        "gameIndex": 3
       },
       "highestCombinedACPL": {
         "combinedACPL": 142.89999999999998,
@@ -1292,7 +1501,7 @@
         "blackACPL": 70.8,
         "white": "Ruslan «Thunder-Blunder» G.",
         "black": "Torsten «torstyehocara» J.",
-        "gameIndex": 10
+        "gameIndex": 12
       }
     }
   }
