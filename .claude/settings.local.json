@@ -36,7 +36,13 @@
       "Bash(gh pr:*)",
       "Read(//Users/sgis/.claude/**)",
       "WebFetch(domain:python-chess.readthedocs.io)",
-      "WebFetch(domain:authjs.dev)"
+      "WebFetch(domain:authjs.dev)",
+      "Read(//Users/sgis/DEV/pompom/lichess4545-stats/**)",
+      "Read(//Users/sgis/DEV/pompom/**)",
+      "Bash(if [ -f public/stats/season-46-round-1.json ])",
+      "Bash(jq:*)",
+      "Bash(else echo \"Stats file not found\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []

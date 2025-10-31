@@ -99,6 +99,41 @@ def calculate_accuracy_from_win_percentage(win_losses):
 
     return max(0, min(100, accuracy))
 
+def calculate_blunder_severity(eval_before, eval_after, eval_before_type, eval_after_type, win_loss):
+    """
+    Calculate blunder severity considering position context and mate threats.
+
+    A blunder from a winning position to mate is much worse than a small cp loss in a losing position.
+    Returns a severity score for comparison (higher = worse blunder).
+    """
+    import math
+
+    # Base severity from win percentage loss
+    severity = win_loss
+
+    # Check if blunder leads to mate (extremely severe)
+    if eval_after_type == 'mate':
+        mate_in = abs(eval_after)
+        # Mate threats are catastrophic - add huge penalty, scaled by how soon mate arrives
+        # Mate in 1-3 moves is devastating, longer mates less so
+        mate_penalty = 100 / (mate_in + 1)  # M1 = 50, M2 = 33, M3 = 25, etc.
+        severity += mate_penalty
+
+    # Check if position was winning before blunder (amplify severity)
+    if eval_before_type == 'cp':
+        # If player was winning by 200+ cp (or equivalent for black)
+        winning_margin = abs(eval_before)
+        if winning_margin > 200:
+            # Blundering from a winning position is worse - multiply by how much you were winning
+            # Cap the multiplier at 3x for positions > 600 cp advantage
+            position_multiplier = 1 + min(2, (winning_margin - 200) / 400)
+            severity *= position_multiplier
+    elif eval_before_type == 'mate' and eval_before > 0:
+        # Was delivering mate but blundered it away - extremely severe
+        severity *= 3
+
+    return severity
+
 def analyze_game(game, stockfish, depth=15, sample_rate=1):
     """Analyze a single game with Stockfish using Lichess-style win percentage."""
 
@@ -182,17 +217,24 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
             white_quality[quality] += 1
             white_win_losses.append(win_loss)
 
-            # Track biggest blunder
-            if quality == 'blunders' and (biggest_blunder is None or win_loss > biggest_blunder.get('winLoss', 0)):
-                biggest_blunder = {
-                    'moveNumber': move_num // 2 + 1,
-                    'player': 'white',
-                    'cpLoss': int(cp_loss),
-                    'winLoss': win_loss,
-                    'move': move_san,
-                    'evalBefore': cp_before,
-                    'evalAfter': cp_after
-                }
+            # Track biggest blunder using severity calculation
+            if quality == 'blunders':
+                severity = calculate_blunder_severity(
+                    cp_before, cp_after,
+                    eval_before['type'], eval_after['type'],
+                    win_loss
+                )
+                if biggest_blunder is None or severity > biggest_blunder.get('severity', 0):
+                    biggest_blunder = {
+                        'moveNumber': move_num // 2 + 1,
+                        'player': 'white',
+                        'cpLoss': int(cp_loss) if eval_before['type'] == 'cp' and eval_after['type'] == 'cp' else 0,
+                        'winLoss': win_loss,
+                        'severity': severity,
+                        'move': move_san,
+                        'evalBefore': cp_before,
+                        'evalAfter': cp_after
+                    }
         else:
             # Calculate actual centipawn loss (from black's perspective)
             # Skip ACPL calculation when mate scores involved (unreliable centipawn comparison)
@@ -205,17 +247,24 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
             black_quality[quality] += 1
             black_win_losses.append(win_loss)
 
-            # Track biggest blunder
-            if quality == 'blunders' and (biggest_blunder is None or win_loss > biggest_blunder.get('winLoss', 0)):
-                biggest_blunder = {
-                    'moveNumber': move_num // 2 + 1,
-                    'player': 'black',
-                    'cpLoss': int(cp_loss),
-                    'winLoss': win_loss,
-                    'move': move_san,
-                    'evalBefore': cp_before,
-                    'evalAfter': cp_after
-                }
+            # Track biggest blunder using severity calculation (flip evals for black)
+            if quality == 'blunders':
+                severity = calculate_blunder_severity(
+                    -cp_before, -cp_after,  # Flip for black's perspective
+                    eval_before['type'], eval_after['type'],
+                    win_loss
+                )
+                if biggest_blunder is None or severity > biggest_blunder.get('severity', 0):
+                    biggest_blunder = {
+                        'moveNumber': move_num // 2 + 1,
+                        'player': 'black',
+                        'cpLoss': int(cp_loss) if eval_before['type'] == 'cp' and eval_after['type'] == 'cp' else 0,
+                        'winLoss': win_loss,
+                        'severity': severity,
+                        'move': move_san,
+                        'evalBefore': cp_before,
+                        'evalAfter': cp_after
+                    }
 
         # Track lucky escape: opponent didn't punish a position
         # If previous move gave opponent an advantage (> +200cp) but they didn't maintain it
@@ -522,9 +571,9 @@ def main():
                 'gameIndex': game_data['gameIndex']
             }
 
-        # Check biggest blunder
+        # Check biggest blunder (compare by severity, not just cpLoss)
         if game_data['biggestBlunder']:
-            if biggest_blunder is None or game_data['biggestBlunder']['cpLoss'] > biggest_blunder['cpLoss']:
+            if biggest_blunder is None or game_data['biggestBlunder']['severity'] > biggest_blunder.get('severity', 0):
                 biggest_blunder = {
                     **game_data['biggestBlunder'],
                     'white': game_data['white'],
