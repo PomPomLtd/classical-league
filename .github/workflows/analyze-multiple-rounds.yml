@@ -1,0 +1,236 @@
+name: Analyze Multiple Rounds (Batch)
+
+on:
+  workflow_dispatch:
+    inputs:
+      rounds:
+        description: 'Comma-separated round numbers (e.g., "1,2,3")'
+        required: true
+        type: string
+      season:
+        description: 'Season number (default: 2)'
+        required: false
+        default: '2'
+        type: number
+      depth:
+        description: 'Stockfish depth (default: 15)'
+        required: false
+        default: '15'
+        type: number
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 120  # 2 hours for multiple rounds
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Stockfish
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stockfish
+          stockfish --version
+
+      - name: Install Python dependencies
+        run: |
+          pip3 install python-chess stockfish
+
+      - name: Parse rounds input
+        id: parse
+        run: |
+          ROUNDS="${{ github.event.inputs.rounds }}"
+          # Remove spaces and convert to array
+          ROUNDS_CLEAN=$(echo "$ROUNDS" | tr -d ' ')
+          echo "rounds=$ROUNDS_CLEAN" >> $GITHUB_OUTPUT
+          echo "Will analyze rounds: $ROUNDS_CLEAN"
+
+      - name: Analyze all rounds
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          SEASON="${{ github.event.inputs.season }}"
+          DEPTH="${{ github.event.inputs.depth }}"
+          ROUNDS="${{ steps.parse.outputs.rounds }}"
+
+          echo "Starting batch analysis for Season $SEASON"
+          echo "Rounds: $ROUNDS"
+          echo "Depth: $DEPTH"
+          echo "Start time: $(date)"
+          echo ""
+
+          # Convert comma-separated string to array
+          IFS=',' read -ra ROUND_ARRAY <<< "$ROUNDS"
+
+          SUCCESS_COUNT=0
+          FAIL_COUNT=0
+          FAILED_ROUNDS=""
+
+          for ROUND in "${ROUND_ARRAY[@]}"; do
+            echo "========================================="
+            echo "Analyzing Round $ROUND"
+            echo "========================================="
+
+            # Get round ID from database
+            ROUND_ID=$(node -e "
+              const { PrismaClient } = require('@prisma/client');
+              const prisma = new PrismaClient();
+
+              (async () => {
+                try {
+                  const season = await prisma.season.findFirst({
+                    where: { seasonNumber: parseInt(process.argv[1]) }
+                  });
+
+                  if (!season) throw new Error('Season not found');
+
+                  const round = await prisma.round.findFirst({
+                    where: {
+                      seasonId: season.id,
+                      roundNumber: parseInt(process.argv[2])
+                    }
+                  });
+
+                  if (!round) throw new Error('Round not found');
+
+                  console.log(round.id);
+                } finally {
+                  await prisma.\$disconnect();
+                }
+              })();
+            " $SEASON $ROUND 2>/dev/null)
+
+            if [ -z "$ROUND_ID" ]; then
+              echo "❌ Round $ROUND not found in database - skipping"
+              FAIL_COUNT=$((FAIL_COUNT + 1))
+              FAILED_ROUNDS="$FAILED_ROUNDS $ROUND"
+              continue
+            fi
+
+            echo "Round ID: $ROUND_ID"
+
+            # Fetch PGN from API endpoint
+            PGN_URL="https://classical.schachklub-k4.ch/api/broadcast/round/${ROUND_ID}/pgn"
+            echo "Fetching from: $PGN_URL"
+
+            if ! curl -f -s "$PGN_URL" > /tmp/round-${ROUND}.pgn; then
+              echo "❌ Failed to fetch PGN for Round $ROUND - skipping"
+              FAIL_COUNT=$((FAIL_COUNT + 1))
+              FAILED_ROUNDS="$FAILED_ROUNDS $ROUND"
+              continue
+            fi
+
+            if [ ! -s /tmp/round-${ROUND}.pgn ]; then
+              echo "❌ Empty PGN file for Round $ROUND - skipping"
+              FAIL_COUNT=$((FAIL_COUNT + 1))
+              FAILED_ROUNDS="$FAILED_ROUNDS $ROUND"
+              continue
+            fi
+
+            echo "PGN file ready ($(wc -l < /tmp/round-${ROUND}.pgn) lines)"
+
+            # Run analysis
+            echo "Running Stockfish analysis (depth $DEPTH)..."
+            if cat /tmp/round-${ROUND}.pgn | \
+              node scripts/generate-stats.js \
+                --round $ROUND \
+                --season $SEASON \
+                --analyze \
+                --depth $DEPTH; then
+
+              echo "✅ Successfully analyzed Round $ROUND"
+              SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+            else
+              echo "❌ Failed to analyze Round $ROUND"
+              FAIL_COUNT=$((FAIL_COUNT + 1))
+              FAILED_ROUNDS="$FAILED_ROUNDS $ROUND"
+            fi
+
+            echo ""
+          done
+
+          echo "========================================="
+          echo "Batch Analysis Complete"
+          echo "========================================="
+          echo "Success: $SUCCESS_COUNT rounds"
+          echo "Failed: $FAIL_COUNT rounds"
+          if [ -n "$FAILED_ROUNDS" ]; then
+            echo "Failed rounds:$FAILED_ROUNDS"
+          fi
+          echo "End time: $(date)"
+
+          # Save summary for later steps
+          echo "success_count=$SUCCESS_COUNT" >> $GITHUB_OUTPUT
+          echo "fail_count=$FAIL_COUNT" >> $GITHUB_OUTPUT
+          echo "failed_rounds=$FAILED_ROUNDS" >> $GITHUB_OUTPUT
+
+      - name: Verify outputs
+        run: |
+          SEASON="${{ github.event.inputs.season }}"
+          ROUNDS="${{ steps.parse.outputs.rounds }}"
+
+          echo "Verifying generated stats files..."
+          IFS=',' read -ra ROUND_ARRAY <<< "$ROUNDS"
+
+          for ROUND in "${ROUND_ARRAY[@]}"; do
+            OUTPUT_FILE="public/stats/season-${SEASON}-round-${ROUND}.json"
+            if [ -f "$OUTPUT_FILE" ]; then
+              SIZE=$(du -h "$OUTPUT_FILE" | cut -f1)
+              GAMES=$(jq -r '.overview.totalGames' "$OUTPUT_FILE")
+              echo "✅ Round $ROUND: $SIZE ($GAMES games)"
+            else
+              echo "❌ Round $ROUND: File not generated"
+            fi
+          done
+
+      - name: Commit and push results
+        run: |
+          SEASON="${{ github.event.inputs.season }}"
+          DEPTH="${{ github.event.inputs.depth }}"
+          ROUNDS="${{ steps.parse.outputs.rounds }}"
+
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add public/stats/season-${SEASON}-round-*.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            ROUND_LIST=$(echo "$ROUNDS" | tr ',' ', ')
+            COMMIT_MSG="Add Stockfish analysis for Season $SEASON rounds $ROUND_LIST"$'\n\n'"Analyzed with depth $DEPTH"$'\n'"Generated by batch workflow"
+            git commit -m "$COMMIT_MSG"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          SEASON="${{ github.event.inputs.season }}"
+          SUCCESS="${{ env.success_count }}"
+          FAILED="${{ env.fail_count }}"
+
+          echo "========================================="
+          echo "Batch Analysis Summary"
+          echo "========================================="
+          echo "Season: $SEASON"
+          echo "Rounds requested: ${{ github.event.inputs.rounds }}"
+          if [ -n "$SUCCESS" ]; then
+            echo "✅ Success: $SUCCESS rounds"
+          fi
+          if [ -n "$FAILED" ] && [ "$FAILED" != "0" ]; then
+            echo "❌ Failed: $FAILED rounds"
+          fi
+          echo "========================================="

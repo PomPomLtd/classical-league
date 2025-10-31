@@ -1,0 +1,182 @@
+name: Generate Season Overview
+
+on:
+  schedule:
+    # Run every 2 weeks on Wednesday at 14:00 UTC (2pm)
+    # Runs 2 hours after biweekly analysis completes
+    - cron: '0 14 * * 3'
+  workflow_dispatch:
+    inputs:
+      season:
+        description: 'Season number (defaults to active season)'
+        required: false
+        type: number
+
+jobs:
+  generate-overview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history to get latest stats
+
+      - name: Pull latest changes
+        run: |
+          git pull --rebase
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine season
+        id: detect
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -n "${{ github.event.inputs.season }}" ]; then
+            SEASON="${{ github.event.inputs.season }}"
+            echo "season=$SEASON" >> $GITHUB_OUTPUT
+            echo "Manual trigger: Season $SEASON"
+          else
+            # Get active season from database
+            SEASON=$(node -e "
+              const { PrismaClient } = require('@prisma/client');
+              const prisma = new PrismaClient();
+
+              (async () => {
+                try {
+                  const season = await prisma.season.findFirst({
+                    where: { isActive: true },
+                    select: { seasonNumber: true }
+                  });
+
+                  if (!season) throw new Error('No active season found');
+
+                  console.log(season.seasonNumber);
+                } finally {
+                  await prisma.\$disconnect();
+                }
+              })();
+            ")
+
+            echo "season=$SEASON" >> $GITHUB_OUTPUT
+            echo "Auto-detected: Season $SEASON"
+          fi
+
+      - name: Check biweekly schedule
+        id: check_schedule
+        if: github.event_name == 'schedule'
+        run: |
+          # Only run on biweekly schedule (same weeks as analysis)
+          WEEK=$(date +%W)
+          YEAR=$(date +%Y)
+
+          if [ "$YEAR" = "2025" ]; then
+            # Check if week is odd (analysis weeks)
+            if [ $((WEEK % 2)) -eq 1 ] && [ $WEEK -ge 39 ] && [ $WEEK -le 51 ]; then
+              echo "is_analysis_week=true" >> $GITHUB_OUTPUT
+              echo "✓ Analysis week (week $WEEK) - proceeding"
+            else
+              echo "is_analysis_week=false" >> $GITHUB_OUTPUT
+              echo "○ Off week (week $WEEK) - skipping"
+              exit 0
+            fi
+          else
+            echo "is_analysis_week=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check for round stats
+        id: check
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+
+          # Count how many round stats exist
+          ROUND_COUNT=$(ls -1 public/stats/season-${SEASON}-round-*.json 2>/dev/null | wc -l)
+
+          echo "round_count=$ROUND_COUNT" >> $GITHUB_OUTPUT
+          echo "Found $ROUND_COUNT round stats files for Season $SEASON"
+
+          if [ "$ROUND_COUNT" -lt 2 ]; then
+            echo "Not enough rounds to generate overview (need at least 2)"
+            echo "should_generate=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "should_generate=true" >> $GITHUB_OUTPUT
+
+      - name: Generate Season Overview
+        if: steps.check.outputs.should_generate == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+
+          echo "Generating Season $SEASON overview..."
+          echo "Start time: $(date)"
+
+          node scripts/generate-overview.js --season $SEASON
+
+          echo "End time: $(date)"
+
+      - name: Verify output
+        if: steps.check.outputs.should_generate == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          OUTPUT_FILE="public/stats/season-${SEASON}-overview.json"
+
+          if [ ! -f "$OUTPUT_FILE" ]; then
+            echo "Error: Overview file not generated at $OUTPUT_FILE"
+            exit 1
+          fi
+
+          echo "Generated overview file:"
+          ls -lh "$OUTPUT_FILE"
+          echo "File size: $(du -h "$OUTPUT_FILE" | cut -f1)"
+
+          # Display summary
+          echo ""
+          echo "Overview Summary:"
+          jq -r '"Rounds: \(.roundsIncluded | length) | Total Games: \(.aggregates.totalGames) | Players: \(.leaderboards.mostGames | length)"' "$OUTPUT_FILE"
+
+      - name: Commit and push results
+        if: steps.check.outputs.should_generate == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add public/stats/season-${SEASON}-overview.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            COMMIT_MSG="Generate Season $SEASON overview statistics"$'\n\n'"Auto-generated overview with hall of fame and leaderboards"
+            git commit -m "$COMMIT_MSG"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          SHOULD_GENERATE="${{ steps.check.outputs.should_generate }}"
+          ROUND_COUNT="${{ steps.check.outputs.round_count }}"
+
+          if [ "$SHOULD_GENERATE" = "true" ]; then
+            if [ -f "public/stats/season-${SEASON}-overview.json" ]; then
+              echo "✅ Season $SEASON overview generated successfully!"
+            else
+              echo "❌ Failed to generate overview"
+            fi
+          else
+            echo "⏸️  Not enough rounds ($ROUND_COUNT) to generate overview (need at least 2)"
+          fi

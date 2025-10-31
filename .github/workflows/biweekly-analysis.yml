@@ -1,0 +1,264 @@
+name: Biweekly Round Analysis
+
+on:
+  schedule:
+    # Run every 2 weeks on Wednesday at 12:00 UTC (noon)
+    # First run: Wednesday Sep 25, 2025 (after Round 1 start)
+    - cron: '0 12 * * 3'
+  workflow_dispatch:
+    inputs:
+      season:
+        description: 'Season number (defaults to active season)'
+        required: false
+        type: number
+      round:
+        description: 'Round number 1-7 (defaults to auto-detect)'
+        required: false
+        type: number
+      depth:
+        description: 'Stockfish depth (default: 15)'
+        required: false
+        default: '15'
+        type: number
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Detect current round
+        id: detect
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          # Use manual inputs if provided, otherwise auto-detect
+          if [ -n "${{ github.event.inputs.season }}" ] && [ -n "${{ github.event.inputs.round }}" ]; then
+            # Manual trigger with specific round
+            SEASON="${{ github.event.inputs.season }}"
+            ROUND="${{ github.event.inputs.round }}"
+
+            echo "season=$SEASON" >> $GITHUB_OUTPUT
+            echo "round=$ROUND" >> $GITHUB_OUTPUT
+            echo "should_analyze=true" >> $GITHUB_OUTPUT
+
+            echo "Manual trigger: Season $SEASON Round $ROUND"
+          else
+            # Auto-detect current round
+            ROUND_INFO=$(node scripts/detect-current-round.js ${{ github.event.inputs.season && format('--season {0}', github.event.inputs.season) || '' }})
+
+            echo "Round detection result:"
+            echo "$ROUND_INFO"
+
+            # Parse JSON output
+            SEASON=$(echo "$ROUND_INFO" | jq -r '.seasonNumber')
+            ROUND=$(echo "$ROUND_INFO" | jq -r '.roundNumber')
+            SHOULD_ANALYZE=$(echo "$ROUND_INFO" | jq -r '.shouldAnalyze')
+            GAME_COUNT=$(echo "$ROUND_INFO" | jq -r '.gameCount')
+            STATUS=$(echo "$ROUND_INFO" | jq -r '.status')
+
+            echo "season=$SEASON" >> $GITHUB_OUTPUT
+            echo "round=$ROUND" >> $GITHUB_OUTPUT
+            echo "should_analyze=$SHOULD_ANALYZE" >> $GITHUB_OUTPUT
+            echo "game_count=$GAME_COUNT" >> $GITHUB_OUTPUT
+            echo "status=$STATUS" >> $GITHUB_OUTPUT
+
+            if [ "$SHOULD_ANALYZE" = "false" ]; then
+              echo "✓ Round $ROUND already complete - no analysis needed"
+              exit 0
+            fi
+
+            echo "Will analyze Season $SEASON Round $ROUND ($GAME_COUNT games, status: $STATUS)"
+          fi
+
+      - name: Check biweekly schedule
+        id: check_schedule
+        if: github.event_name == 'schedule'
+        run: |
+          # Only run on biweekly schedule (every 2 weeks)
+          # Season 2 starts Sep 23, 2025 (week 39)
+          # Rounds are every 2 weeks on Tuesdays
+          # Analysis runs on Wednesdays (1 day after round start)
+
+          WEEK=$(date +%W)
+          YEAR=$(date +%Y)
+
+          # Calculate if this is an analysis week
+          # Sep 23, 2025 is week 39 of 2025
+          # Analysis weeks: 39, 41, 43, 45, 47, 49, 51 (odd weeks after Sep 23)
+
+          if [ "$YEAR" = "2025" ]; then
+            # Check if week is odd (analysis weeks)
+            if [ $((WEEK % 2)) -eq 1 ] && [ $WEEK -ge 39 ] && [ $WEEK -le 51 ]; then
+              echo "is_analysis_week=true" >> $GITHUB_OUTPUT
+              echo "✓ Analysis week (week $WEEK) - proceeding"
+            else
+              echo "is_analysis_week=false" >> $GITHUB_OUTPUT
+              echo "○ Off week (week $WEEK) - skipping"
+            fi
+          else
+            # For other years, let round detection decide
+            echo "is_analysis_week=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install Stockfish
+        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y stockfish
+          stockfish --version
+
+      - name: Install Python dependencies
+        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        run: |
+          pip3 install python-chess stockfish
+
+      - name: Fetch round PGN
+        id: fetch
+        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          ROUND="${{ steps.detect.outputs.round }}"
+
+          echo "Fetching PGN data for Season $SEASON Round $ROUND..."
+
+          # Get round ID from database
+          ROUND_ID=$(node -e "
+            const { PrismaClient } = require('@prisma/client');
+            const prisma = new PrismaClient();
+
+            (async () => {
+              try {
+                const season = await prisma.season.findFirst({
+                  where: { seasonNumber: parseInt(process.argv[1]) }
+                });
+
+                if (!season) throw new Error('Season not found');
+
+                const round = await prisma.round.findFirst({
+                  where: {
+                    seasonId: season.id,
+                    roundNumber: parseInt(process.argv[2])
+                  }
+                });
+
+                if (!round) throw new Error('Round not found');
+
+                console.log(round.id);
+              } finally {
+                await prisma.\$disconnect();
+              }
+            })();
+          " $SEASON $ROUND)
+
+          echo "Round ID: $ROUND_ID"
+          echo "round_id=$ROUND_ID" >> $GITHUB_OUTPUT
+
+          # Fetch PGN from API endpoint
+          PGN_URL="https://classical.schachklub-k4.ch/api/broadcast/round/${ROUND_ID}/pgn"
+          echo "Fetching from: $PGN_URL"
+
+          curl -f -s "$PGN_URL" > /tmp/round-${ROUND}.pgn
+
+          if [ ! -s /tmp/round-${ROUND}.pgn ]; then
+            echo "Error: Empty PGN file - no games available yet"
+            echo "available=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "PGN file ready:"
+          wc -l "/tmp/round-${ROUND}.pgn"
+          echo "available=true" >> $GITHUB_OUTPUT
+
+      - name: Run Stockfish Analysis
+        if: steps.fetch.outputs.available == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          ROUND="${{ steps.detect.outputs.round }}"
+          DEPTH="${{ github.event.inputs.depth || 15 }}"
+
+          echo "Starting analysis for Season $SEASON Round $ROUND"
+          echo "Depth: $DEPTH"
+          echo "Start time: $(date)"
+
+          cat /tmp/round-${ROUND}.pgn | \
+            node scripts/generate-stats.js \
+              --round $ROUND \
+              --season $SEASON \
+              --analyze \
+              --depth $DEPTH
+
+          echo "End time: $(date)"
+
+      - name: Verify output
+        if: steps.fetch.outputs.available == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          ROUND="${{ steps.detect.outputs.round }}"
+          OUTPUT_FILE="public/stats/season-${SEASON}-round-${ROUND}.json"
+
+          if [ ! -f "$OUTPUT_FILE" ]; then
+            echo "Error: Stats file not generated at $OUTPUT_FILE"
+            exit 1
+          fi
+
+          echo "Generated stats file:"
+          ls -lh "$OUTPUT_FILE"
+          echo "File size: $(du -h "$OUTPUT_FILE" | cut -f1)"
+
+          # Display summary
+          echo ""
+          echo "Stats Summary:"
+          jq -r '"Games: \(.overview.totalGames) | Moves: \(.overview.totalMoves) | Avg: \(.overview.averageMovesPerGame)"' "$OUTPUT_FILE"
+
+      - name: Commit and push results
+        if: steps.fetch.outputs.available == 'true'
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          ROUND="${{ steps.detect.outputs.round }}"
+          DEPTH="${{ github.event.inputs.depth || 15 }}"
+
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add public/stats/season-${SEASON}-round-${ROUND}.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            COMMIT_MSG="Add Stockfish analysis for Season $SEASON Round $ROUND"$'\n\n'"Analyzed with depth $DEPTH"$'\n'"Auto-generated by biweekly schedule"
+            git commit -m "$COMMIT_MSG"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          SEASON="${{ steps.detect.outputs.season }}"
+          ROUND="${{ steps.detect.outputs.round }}"
+          AVAILABLE="${{ steps.fetch.outputs.available }}"
+          SHOULD_ANALYZE="${{ steps.detect.outputs.should_analyze }}"
+
+          if [ "$SHOULD_ANALYZE" = "false" ]; then
+            echo "⏸️  No analysis needed - all rounds complete"
+          elif [ "$AVAILABLE" = "true" ]; then
+            echo "✅ Successfully analyzed Season $SEASON Round $ROUND"
+          else
+            echo "⏸️  Round $ROUND not ready yet - will retry in 2 weeks"
+          fi

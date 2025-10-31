@@ -114,9 +114,13 @@ function analyzeTactics(parsedGames) {
 
     console.log('🎯 Running tactical analysis (pins, forks, skewers)...');
 
+    // Detect environment and use appropriate Python path
+    const isCI = process.env.CI || process.env.GITHUB_ACTIONS;
+    const pythonPath = isCI ? 'python3' : 'venv/bin/python';
+
     // Run Python tactical analyzer
     const tacticsOutput = execSync(
-      'venv/bin/python scripts/analyze-tactics.py',
+      `${pythonPath} scripts/analyze-tactics.py`,
       {
         input: normalizedPgn,
         encoding: 'utf-8',
@@ -152,9 +156,14 @@ function analyzeGames(parsedGames) {
 
     console.log('\n🔬 Running Stockfish analysis (accuracy, blunders)...');
 
+    // Detect environment and use appropriate Python/Stockfish paths
+    const isCI = process.env.CI || process.env.GITHUB_ACTIONS;
+    const pythonPath = isCI ? 'python3' : 'venv/bin/python';
+    const stockfishPath = isCI ? '/usr/bin/stockfish' : '/opt/homebrew/bin/stockfish';
+
     // Run Python analyzer (depth 15, analyze all moves for maximum accuracy)
     const analysisOutput = execSync(
-      'venv/bin/python scripts/analyze-pgn.py --depth 15 --sample 1',
+      `${pythonPath} scripts/analyze-pgn.py --depth 15 --sample 1 --stockfish-path ${stockfishPath}`,
       {
         input: normalizedPgn,
         encoding: 'utf-8',
