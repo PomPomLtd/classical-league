@@ -42,7 +42,14 @@
       "Bash(if [ -f public/stats/season-46-round-1.json ])",
       "Bash(jq:*)",
       "Bash(else echo \"Stats file not found\")",
-      "Bash(fi)"
+      "Bash(fi)",
+      "WebFetch(domain:lichess4545-stats-eq42172d2-sbeattys-projects.vercel.app)",
+      "Bash(gh workflow run:*)",
+      "Bash(gh workflow:*)",
+      "Bash(gh api:*)",
+      "Bash(gh run:*)",
+      "WebFetch(domain:www.lichess4545.com)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
