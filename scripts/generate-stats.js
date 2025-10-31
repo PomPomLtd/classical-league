@@ -159,7 +159,18 @@ function analyzeGames(parsedGames) {
     // Detect environment and use appropriate Python/Stockfish paths
     const isCI = process.env.CI || process.env.GITHUB_ACTIONS;
     const pythonPath = isCI ? 'python3' : 'venv/bin/python';
-    const stockfishPath = isCI ? '/usr/bin/stockfish' : '/opt/homebrew/bin/stockfish';
+
+    // Find Stockfish dynamically in CI, use known path locally
+    let stockfishPath;
+    if (isCI) {
+      try {
+        stockfishPath = execSync('which stockfish', { encoding: 'utf-8' }).trim();
+      } catch {
+        stockfishPath = 'stockfish'; // Fallback to PATH
+      }
+    } else {
+      stockfishPath = '/opt/homebrew/bin/stockfish';
+    }
 
     // Run Python analyzer (depth 15, analyze all moves for maximum accuracy)
     const analysisOutput = execSync(
