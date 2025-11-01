@@ -94,18 +94,17 @@ gh run watch <run-id>
 
 **Workflow Schedule (Weekly):**
 Every Wednesday at 12pm UTC, stats are generated:
-- **Day after round starts** (e.g., Wed Oct 23 after Tue Oct 21 start): Final stats for PREVIOUS round
-- **Mid-round** (e.g., Wed Oct 30): In-progress stats for CURRENT round
+- **Same day as round starts**: Final stats for PREVIOUS round + pairings announced for NEW round
+- **Mid-round (7 days later)**: In-progress stats for CURRENT round
 - **Overview**: Runs 2 hours after analysis (2pm UTC) every Wednesday
 
-Example Timeline:
+Example Timeline (Rounds start biweekly on Wednesday noon):
 ```
-Tue Oct 21: Round 3 starts
-Wed Oct 23 12pm: Final stats for Round 2 + overview
-Wed Oct 30 12pm: In-progress stats for Round 3 (mid-round)
-Tue Nov 4:  Round 4 starts
-Wed Nov 6 12pm:  Final stats for Round 3 + overview
-Wed Nov 13 12pm: In-progress stats for Round 4 (mid-round)
+Wed Oct 21 12pm: Round 3 starts (pairings announced) + Final stats for Round 2
+Wed Oct 28 12pm: In-progress stats for Round 3 (mid-round, 7 days in)
+Wed Nov 4 12pm:  Round 4 starts (pairings announced) + Final stats for Round 3
+Wed Nov 11 12pm: In-progress stats for Round 4 (mid-round, 7 days in)
+Wed Nov 18 12pm: Round 5 starts + Final stats for Round 4
 ```
 
 **Required GitHub Secrets:**

@@ -102,18 +102,18 @@ Similar to Lichess 4545 stats, we implement:
 
 ### Example Schedule (Season 2)
 
+Rounds start biweekly on Wednesday noon. Stats run weekly every Wednesday noon.
+
 ```
-Tue Sep 23:  Round 1 starts
-Wed Sep 25:  No previous round (first round of season)
-Wed Oct 2:   In-progress stats for Round 1 (mid-round)
-Tue Oct 7:   Round 2 starts
-Wed Oct 9:   Final stats for Round 1 + overview
-Wed Oct 16:  In-progress stats for Round 2 (mid-round)
-Tue Oct 21:  Round 3 starts
-Wed Oct 23:  Final stats for Round 2 + overview
-Wed Oct 30:  In-progress stats for Round 3 (mid-round)
-Tue Nov 4:   Round 4 starts
-Wed Nov 6:   Final stats for Round 3 + overview
+Wed Sep 23 12pm:  Round 1 starts (pairings announced) - First round, no previous stats
+Wed Sep 30 12pm:  In-progress stats for Round 1 (mid-round, 7 days in)
+Wed Oct 7 12pm:   Round 2 starts (pairings announced) + Final stats for Round 1
+Wed Oct 14 12pm:  In-progress stats for Round 2 (mid-round, 7 days in)
+Wed Oct 21 12pm:  Round 3 starts (pairings announced) + Final stats for Round 2
+Wed Oct 28 12pm:  In-progress stats for Round 3 (mid-round, 7 days in)
+Wed Nov 4 12pm:   Round 4 starts (pairings announced) + Final stats for Round 3
+Wed Nov 11 12pm:  In-progress stats for Round 4 (mid-round, 7 days in)
+Wed Nov 18 12pm:  Round 5 starts + Final stats for Round 4
 ...continues weekly
 ```
 
