@@ -63,8 +63,8 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
   ```
 
 **GitHub Actions (Automated Stats):**
-- `.github/workflows/biweekly-analysis.yml` - Automated round analysis every 2 weeks (Wednesday 12pm UTC)
-- `.github/workflows/generate-overview.yml` - Season overview generation (Wednesday 2pm UTC)
+- `.github/workflows/weekly-analysis.yml` - Automated round analysis every Wednesday 12pm UTC
+- `.github/workflows/generate-overview.yml` - Season overview generation every Wednesday 2pm UTC
 - `.github/workflows/analyze-round.yml` - Manual single round analysis
 - `.github/workflows/analyze-multiple-rounds.yml` - Batch analysis for multiple rounds
 
@@ -75,8 +75,8 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 
 **Manual Workflow Triggers:**
 ```bash
-# Trigger biweekly analysis manually (GitHub CLI)
-gh workflow run biweekly-analysis.yml
+# Trigger weekly analysis manually (GitHub CLI)
+gh workflow run weekly-analysis.yml
 
 # Analyze specific round
 gh workflow run analyze-round.yml -f round=1 -f season=2 -f depth=15
@@ -88,19 +88,28 @@ gh workflow run analyze-multiple-rounds.yml -f rounds="1,2,3" -f season=2
 gh workflow run generate-overview.yml -f season=2
 
 # View workflow runs
-gh run list --workflow=biweekly-analysis.yml
+gh run list --workflow=weekly-analysis.yml
 gh run watch <run-id>
 ```
 
-**Workflow Schedule:**
-- **Week 1 (Round Start):** Tuesday - Round begins
-- **Week 2 (Analysis):** Wednesday 12pm - Biweekly round analysis runs
-- **Week 2 (Overview):** Wednesday 2pm - Season overview updates
-- **Week 3:** Off week - No automated workflows
-- **Repeat:** Cycle continues every 2 weeks for 7 rounds
+**Workflow Schedule (Weekly):**
+Every Wednesday at 12pm UTC, stats are generated:
+- **Day after round starts** (e.g., Wed Oct 23 after Tue Oct 21 start): Final stats for PREVIOUS round
+- **Mid-round** (e.g., Wed Oct 30): In-progress stats for CURRENT round
+- **Overview**: Runs 2 hours after analysis (2pm UTC) every Wednesday
+
+Example Timeline:
+```
+Tue Oct 21: Round 3 starts
+Wed Oct 23 12pm: Final stats for Round 2 + overview
+Wed Oct 30 12pm: In-progress stats for Round 3 (mid-round)
+Tue Nov 4:  Round 4 starts
+Wed Nov 6 12pm:  Final stats for Round 3 + overview
+Wed Nov 13 12pm: In-progress stats for Round 4 (mid-round)
+```
 
 **Required GitHub Secrets:**
-- `DATABASE_URL` - Neon PostgreSQL connection string for round detection
+- `DATABASE_URL` - Neon PostgreSQL connection string for round detection and PGN fetching
 
 **Git:**
 - Keep commit messages concise and descriptive

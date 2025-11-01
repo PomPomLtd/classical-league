@@ -2,8 +2,9 @@ name: Generate Season Overview
 
 on:
   schedule:
-    # Run every 2 weeks on Wednesday at 14:00 UTC (2pm)
-    # Runs 2 hours after biweekly analysis completes
+    # Run every Wednesday at 14:00 UTC (2pm)
+    # Runs 2 hours after weekly round analysis completes
+    # Only updates when new round stats are available
     - cron: '0 14 * * 3'
   workflow_dispatch:
     inputs:
@@ -71,28 +72,6 @@ jobs:
 
             echo "season=$SEASON" >> $GITHUB_OUTPUT
             echo "Auto-detected: Season $SEASON"
-          fi
-
-      - name: Check biweekly schedule
-        id: check_schedule
-        if: github.event_name == 'schedule'
-        run: |
-          # Only run on biweekly schedule (same weeks as analysis)
-          WEEK=$(date +%W)
-          YEAR=$(date +%Y)
-
-          if [ "$YEAR" = "2025" ]; then
-            # Check if week is odd (analysis weeks)
-            if [ $((WEEK % 2)) -eq 1 ] && [ $WEEK -ge 39 ] && [ $WEEK -le 51 ]; then
-              echo "is_analysis_week=true" >> $GITHUB_OUTPUT
-              echo "✓ Analysis week (week $WEEK) - proceeding"
-            else
-              echo "is_analysis_week=false" >> $GITHUB_OUTPUT
-              echo "○ Off week (week $WEEK) - skipping"
-              exit 0
-            fi
-          else
-            echo "is_analysis_week=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Check for round stats

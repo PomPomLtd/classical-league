@@ -68,25 +68,29 @@ Round 7: Dec 16 → Season ends
 
 ### Timing Considerations
 
-- **Wednesday at noon (12:00 UTC)**: Middle of round, 1 day before next round starts
-- Players have had ~12 days to submit results
-- Most games completed and verified by this time
-- Allows for re-running on following Wednesday if needed
+- **Weekly runs every Wednesday at 12:00 UTC**
+- Two types of analysis per round:
+  1. **Day after round starts**: Final stats for PREVIOUS round + overview
+  2. **Mid-round (7 days later)**: In-progress stats for CURRENT round
+- Players have ongoing opportunities to submit results
+- Stats updated weekly showing current tournament state
 
 ### Progressive Analysis Approach
 
-Similar to Lichess 4545 stats, we'll implement:
+Similar to Lichess 4545 stats, we implement:
 
-1. **Bi-Weekly Round Analysis** (Wednesday noon)
+1. **Weekly Round Analysis** (Wednesday noon)
 
-   - Runs every 2 weeks on Wednesday at 12:00 UTC
-   - Analyzes current/latest round with incomplete results
+   - Runs **every Wednesday** at 12:00 UTC
+   - Auto-detects which round to analyze
+   - Generates either final or in-progress stats
    - Uses Stockfish analysis (depth 15)
-   - Re-runs automatically if more games added
+   - Execution time: ~8-10 minutes for 15 games
 
 2. **Season Overview Generation** (Wednesday 2pm)
 
    - Runs 2 hours after round analysis
+   - Updates every Wednesday when new stats available
    - Aggregates all completed rounds
    - Generates hall of fame and leaderboards
    - Fast execution (~5 seconds)
@@ -95,6 +99,23 @@ Similar to Lichess 4545 stats, we'll implement:
    - Single round analysis (on-demand)
    - Batch analysis for multiple rounds
    - Manual overview generation
+
+### Example Schedule (Season 2)
+
+```
+Tue Sep 23:  Round 1 starts
+Wed Sep 25:  No previous round (first round of season)
+Wed Oct 2:   In-progress stats for Round 1 (mid-round)
+Tue Oct 7:   Round 2 starts
+Wed Oct 9:   Final stats for Round 1 + overview
+Wed Oct 16:  In-progress stats for Round 2 (mid-round)
+Tue Oct 21:  Round 3 starts
+Wed Oct 23:  Final stats for Round 2 + overview
+Wed Oct 30:  In-progress stats for Round 3 (mid-round)
+Tue Nov 4:   Round 4 starts
+Wed Nov 6:   Final stats for Round 3 + overview
+...continues weekly
+```
 
 ---
 
@@ -456,16 +477,16 @@ Update `CLAUDE.md` with:
 
 ## Differences from Lichess 4545 Stats
 
-| Aspect                | Lichess 4545         | Classical League         |
-| --------------------- | -------------------- | ------------------------ |
-| **Round Frequency**   | Weekly (Monday)      | Biweekly (Wednesday)     |
-| **Schedule**          | Monday 12pm          | Wednesday 12pm           |
-| **Rounds per Season** | 8 rounds             | 7 rounds                 |
-| **Expected Games**    | ~160 games/round     | ~25 games/round          |
-| **PGN Source**        | External Lichess API | Internal database + API  |
-| **Round Detection**   | Game count threshold | Round date + game count  |
-| **Mid-week Update**   | Thursday 12pm        | Not needed (slower pace) |
-| **Analysis Time**     | 1-2 hours            | ~10-15 minutes           |
+| Aspect                | Lichess 4545         | Classical League             |
+| --------------------- | -------------------- | ---------------------------- |
+| **Round Frequency**   | Weekly (Monday)      | Biweekly rounds (Tuesday)    |
+| **Analysis Schedule** | Monday 12pm          | **Weekly** Wednesday 12pm    |
+| **Rounds per Season** | 8 rounds             | 7 rounds                     |
+| **Expected Games**    | ~160 games/round     | ~25 games/round              |
+| **PGN Source**        | External Lichess API | Internal database + API      |
+| **Round Detection**   | Game count threshold | Round date + game count      |
+| **Weekly Updates**    | Monday + Thursday    | Every Wednesday (2 per round)|
+| **Analysis Time**     | 1-2 hours            | ~8-10 minutes                |
 
 ---
 

@@ -1,9 +1,10 @@
-name: Biweekly Round Analysis
+name: Weekly Round Analysis
 
 on:
   schedule:
-    # Run every 2 weeks on Wednesday at 12:00 UTC (noon)
-    # First run: Wednesday Sep 25, 2025 (after Round 1 start)
+    # Run every Wednesday at 12:00 UTC (noon)
+    # Week 1 (day after round start): Finalize previous round + overview
+    # Week 2 (mid-round): Generate in-progress stats for current round
     - cron: '0 12 * * 3'
   workflow_dispatch:
     inputs:
@@ -85,51 +86,21 @@ jobs:
             echo "Will analyze Season $SEASON Round $ROUND ($GAME_COUNT games, status: $STATUS)"
           fi
 
-      - name: Check biweekly schedule
-        id: check_schedule
-        if: github.event_name == 'schedule'
-        run: |
-          # Only run on biweekly schedule (every 2 weeks)
-          # Season 2 starts Sep 23, 2025 (week 39)
-          # Rounds are every 2 weeks on Tuesdays
-          # Analysis runs on Wednesdays (1 day after round start)
-
-          WEEK=$(date +%W)
-          YEAR=$(date +%Y)
-
-          # Calculate if this is an analysis week
-          # Sep 23, 2025 is week 39 of 2025
-          # Analysis weeks: 39, 41, 43, 45, 47, 49, 51 (odd weeks after Sep 23)
-
-          if [ "$YEAR" = "2025" ]; then
-            # Check if week is odd (analysis weeks)
-            if [ $((WEEK % 2)) -eq 1 ] && [ $WEEK -ge 39 ] && [ $WEEK -le 51 ]; then
-              echo "is_analysis_week=true" >> $GITHUB_OUTPUT
-              echo "✓ Analysis week (week $WEEK) - proceeding"
-            else
-              echo "is_analysis_week=false" >> $GITHUB_OUTPUT
-              echo "○ Off week (week $WEEK) - skipping"
-            fi
-          else
-            # For other years, let round detection decide
-            echo "is_analysis_week=true" >> $GITHUB_OUTPUT
-          fi
-
       - name: Install Stockfish
-        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        if: steps.detect.outputs.should_analyze == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y stockfish
           stockfish --version
 
       - name: Install Python dependencies
-        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        if: steps.detect.outputs.should_analyze == 'true'
         run: |
           pip3 install python-chess stockfish
 
       - name: Fetch round PGN
         id: fetch
-        if: steps.detect.outputs.should_analyze == 'true' && (github.event_name != 'schedule' || steps.check_schedule.outputs.is_analysis_week == 'true')
+        if: steps.detect.outputs.should_analyze == 'true'
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
