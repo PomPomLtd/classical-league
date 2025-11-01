@@ -1,7 +1,7 @@
 {
   "roundNumber": 3,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-31T22:00:03.742Z",
+  "generatedAt": "2025-11-01T12:55:08.973Z",
   "overview": {
     "totalGames": 15,
     "totalMoves": 1324,
@@ -728,7 +728,7 @@
         },
         "longestTension": {
           "moves": 7,
-          "squares": "c6-e4",
+          "squares": "e4-h7",
           "startMove": 20,
           "endMove": 27
         },
