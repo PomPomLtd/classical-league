@@ -283,13 +283,13 @@ export class PGNFileService {
         }
       })
       
-      const settingsMap = new Map(settings.map(s => [s.key, s.value]))
+      const settingsMap = new Map(settings.map((s: typeof settings[0]) => [s.key, s.value]))
       
       return {
         enabled: settingsMap.get('broadcast_enabled') === 'true',
-        baseUrl: settingsMap.get('broadcast_base_url') || 'https://classical.schachklub-k4.ch',
-        tournamentTemplate: settingsMap.get('broadcast_tournament_template') || 'Classical League Season {season}',
-        roundTemplate: settingsMap.get('broadcast_round_template') || 'Round {round}'
+        baseUrl: (settingsMap.get('broadcast_base_url') as string | undefined) || 'https://classical.schachklub-k4.ch',
+        tournamentTemplate: (settingsMap.get('broadcast_tournament_template') as string | undefined) || 'Classical League Season {season}',
+        roundTemplate: (settingsMap.get('broadcast_round_template') as string | undefined) || 'Round {round}'
       }
     } catch {
       console.error('Failed to get broadcast settings')

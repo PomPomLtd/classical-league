@@ -31,7 +31,7 @@ export async function GET() {
     })
 
     // Format names as "FirstName 'Nickname' LastInitial." with separate parts for styling
-    const players = playersData.map(player => {
+    const players = playersData.map((player: typeof playersData[0]) => {
       const nameParts = player.fullName.trim().split(' ')
       const firstName = nameParts[0]
       const lastInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0).toUpperCase() + '.' : ''

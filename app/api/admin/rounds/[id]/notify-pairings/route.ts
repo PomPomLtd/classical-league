@@ -46,10 +46,10 @@ export async function POST(
     }
 
     // Get approved bye players for this round
-    const byePlayers = new Set(round.byeRequests.map(bye => bye.player.id))
+    const byePlayers = new Set(round.byeRequests.map((bye: typeof round.byeRequests[0]) => bye.player.id))
 
     // Send notifications to all approved players
-    const emailPromises = round.season.players.map(player => {
+    const emailPromises = round.season.players.map((player: typeof round.season.players[0]) => {
       const hasBye = byePlayers.has(player.id)
       
       return sendEmailSafe(

@@ -49,13 +49,13 @@ export async function GET() {
     // Otherwise, return all future rounds
     const rounds = currentRoundIndex >= 0
       ? allRounds.slice(currentRoundIndex) // Current round onwards
-      : allRounds.filter(r => {
+      : allRounds.filter((r: typeof allRounds[0]) => {
           const roundDateOnly = new Date(r.roundDate.toDateString())
           const nowDateOnly = new Date(now.toDateString())
           return roundDateOnly >= nowDateOnly
         })
 
-    const formattedRounds = rounds.map(round => ({
+    const formattedRounds = rounds.map((round: typeof rounds[0]) => ({
       id: round.id,
       roundNumber: round.roundNumber,
       roundDate: round.roundDate.toISOString()

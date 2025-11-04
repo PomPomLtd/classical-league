@@ -140,7 +140,7 @@ export async function PATCH(
     const isDraw = ['DRAW', 'DOUBLE_FF', 'DRAW_FF'].includes(body.result)
 
     // Prepare update data with Prisma type
-    const updateData: Prisma.GameResultUpdateInput = {
+    const updateData = {
       boardNumber: body.boardNumber,
       result: body.result,
       adminNotes: body.adminNotes || null,

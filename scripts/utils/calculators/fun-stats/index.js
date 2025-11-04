@@ -20,6 +20,8 @@ const { calculateRookLift } = require('./rook-lift');
 const { calculateCenterStage } = require('./center-stage');
 const { calculateDarkLord } = require('./dark-lord');
 const { calculateChickenAward } = require('./chicken-award');
+const { calculateSlowestCastling } = require('./slowest-castling');
+const { calculatePawnCaptures } = require('./pawn-captures');
 const { filterGamesWithMoves } = require('../helpers');
 
 /**
@@ -43,6 +45,7 @@ function calculateFunStats(games, tacticalPatterns = null) {
     pieceLoyalty: pieceLoyalty?.moves >= 30 ? pieceLoyalty : null, // Only show if 30+ moves (15 full moves)
     squareTourist: calculateSquareTourist(gamesWithMoves),
     castlingRace: calculateCastlingRace(gamesWithMoves),
+    slowestCastling: calculateSlowestCastling(gamesWithMoves),
     openingHipster: calculateOpeningHipster(gamesWithMoves),
     dadbodShuffler: calculateDadbodShuffler(gamesWithMoves),
     sportyQueen: calculateSportyQueen(gamesWithMoves),
@@ -50,7 +53,8 @@ function calculateFunStats(games, tacticalPatterns = null) {
     rookLift: calculateRookLift(gamesWithMoves),
     centerStage: calculateCenterStage(gamesWithMoves),
     darkLord: calculateDarkLord(gamesWithMoves),
-    chickenAward: calculateChickenAward(gamesWithMoves)
+    chickenAward: calculateChickenAward(gamesWithMoves),
+    pawnCaptures: calculatePawnCaptures(gamesWithMoves)
   };
 
   // Add chicken awards if available

@@ -28,7 +28,7 @@ export async function GET() {
       }
     })
 
-    const broadcastMap = new Map(broadcastSettings.map(s => [s.key, s.value]))
+    const broadcastMap = new Map(broadcastSettings.map((s: typeof broadcastSettings[0]) => [s.key, s.value]))
 
     const settings = {
       tournamentLink: tournamentSettings.tournamentLink,

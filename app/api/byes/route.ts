@@ -47,11 +47,11 @@ export async function POST(request: NextRequest) {
     }
 
     const now = new Date()
-    const expiredRounds = rounds.filter(round => now > round.byeDeadline)
-    
+    const expiredRounds = rounds.filter((round: typeof rounds[0]) => now > round.byeDeadline)
+
     if (expiredRounds.length > 0) {
       return NextResponse.json(
-        { error: `Deadline has passed for round(s): ${expiredRounds.map(r => r.roundNumber).join(', ')}` },
+        { error: `Deadline has passed for round(s): ${expiredRounds.map((r: typeof expiredRounds[0]) => r.roundNumber).join(', ')}` },
         { status: 400 }
       )
     }
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     })
 
     if (existingRequests.length > 0) {
-      const roundIds = existingRequests.map(req => req.roundId).filter((id): id is string => id !== null)
+      const roundIds = existingRequests.map((req: typeof existingRequests[0]) => req.roundId).filter((id: string | null): id is string => id !== null)
       const existingRoundNumbers = await db.round.findMany({
         where: {
           id: { in: roundIds }
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       })
       
       return NextResponse.json(
-        { error: `Bye request already exists for round(s): ${existingRoundNumbers.map(r => r.roundNumber).join(', ')}` },
+        { error: `Bye request already exists for round(s): ${existingRoundNumbers.map((r: typeof existingRoundNumbers[0]) => r.roundNumber).join(', ')}` },
         { status: 400 }
       )
     }
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Send admin notification for bye request (non-blocking)
-    const roundNumbers = rounds.map(r => r.roundNumber)
+    const roundNumbers = rounds.map((r: typeof rounds[0]) => r.roundNumber)
     const reason = roundNumbers.length === 1 
       ? `Round ${roundNumbers[0]}` 
       : `${roundNumbers.length} rounds: ${roundNumbers.join(', ')}`
