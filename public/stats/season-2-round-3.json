@@ -1,11 +1,11 @@
 {
   "roundNumber": 3,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-05T14:28:11.507Z",
+  "generatedAt": "2025-11-05T20:45:35.758Z",
   "overview": {
     "totalGames": 32,
-    "totalMoves": 2535,
-    "averageGameLength": 43.706896551724135,
+    "totalMoves": 2602,
+    "averageGameLength": 44.86206896551724,
     "longestGame": {
       "moves": 80,
       "white": "Loris «LorisNiUr» U.",
@@ -13,16 +13,16 @@
       "result": "0-1"
     },
     "shortestGame": {
-      "moves": 5,
-      "white": "Adela «Adele» P.",
-      "black": "Alexander «Not Grischuk» G.",
+      "moves": 14,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
       "result": "0-1"
     }
   },
   "gamePhases": {
-    "averageOpening": 8.5,
-    "averageMiddlegame": 17.051724137931036,
-    "averageEndgame": 18.155172413793103,
+    "averageOpening": 8.689655172413794,
+    "averageMiddlegame": 17.551724137931036,
+    "averageEndgame": 18.620689655172413,
     "longestWaitTillCapture": {
       "moves": 18,
       "white": "Christopher «King Decimator» H.",
@@ -240,7 +240,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 525,
+    "totalCaptures": 543,
     "enPassantGames": [
       {
         "white": "Rainer «Quigli» S.",
@@ -255,7 +255,7 @@
     ],
     "promotions": 11,
     "castling": {
-      "kingside": 43,
+      "kingside": 45,
       "queenside": 9
     },
     "bloodiestGame": {
@@ -265,10 +265,10 @@
       "black": "Ramura «viennugambu» G."
     },
     "quietestGame": {
-      "captures": 0,
-      "gameIndex": 22,
-      "white": "Adela «Adele» P.",
-      "black": "Alexander «Not Grischuk» G."
+      "captures": 1,
+      "gameIndex": 27,
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S."
     },
     "longestNonCaptureStreak": {
       "moves": 50,
@@ -281,25 +281,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 678,
-      "knights": 405,
-      "bishops": 336,
-      "rooks": 357,
-      "queens": 333,
-      "kings": 426
+      "pawns": 694,
+      "knights": 413,
+      "bishops": 344,
+      "rooks": 370,
+      "queens": 353,
+      "kings": 428
     },
     "captured": {
-      "pawns": 236,
-      "knights": 90,
-      "bishops": 90,
-      "rooks": 65,
-      "queens": 44
+      "pawns": 243,
+      "knights": 94,
+      "bishops": 93,
+      "rooks": 67,
+      "queens": 46
     },
     "survivalRate": {
-      "rooks": 0.4396551724137931,
-      "queens": 0.43103448275862066,
-      "bishops": 0.22413793103448276,
-      "knights": 0.22413793103448276
+      "rooks": 0.4224137931034483,
+      "queens": 0.39655172413793105,
+      "bishops": 0.19827586206896552,
+      "knights": 0.1896551724137931
     }
   },
   "checkmates": {
@@ -326,8 +326,8 @@
     },
     "mostPopularSquare": {
       "square": "f3",
-      "visits": 90,
-      "description": "f3 was visited 90 times"
+      "visits": 92,
+      "description": "f3 was visited 92 times"
     },
     "leastPopularSquare": {
       "square": "h8",
@@ -341,42 +341,42 @@
         "captures": 34
       },
       {
+        "square": "d4",
+        "captures": 31
+      },
+      {
+        "square": "f3",
+        "captures": 29
+      },
+      {
         "square": "d5",
         "captures": 28
       },
       {
-        "square": "d4",
-        "captures": 27
-      },
-      {
         "square": "e5",
-        "captures": 27
-      },
-      {
-        "square": "f3",
-        "captures": 27
+        "captures": 28
       }
     ],
     "top5Popular": [
       {
         "square": "f3",
-        "visits": 90
+        "visits": 92
+      },
+      {
+        "square": "d4",
+        "visits": 88
       },
       {
         "square": "e4",
         "visits": 85
       },
       {
-        "square": "d4",
-        "visits": 83
+        "square": "e5",
+        "visits": 84
       },
       {
         "square": "f6",
         "visits": 83
-      },
-      {
-        "square": "e5",
-        "visits": 82
       }
     ]
   },
@@ -387,9 +387,9 @@
       "captures": 29
     },
     "pacifist": {
-      "white": "Adela «Adele» P.",
-      "black": "Alexander «Not Grischuk» G.",
-      "captures": 0
+      "white": "Ludwig «solucionfisiologica» S.",
+      "black": "Silvan «Fork This Fork That» S.",
+      "captures": 1
     },
     "speedDemon": {
       "white": "Ludwig «solucionfisiologica» S.",
@@ -403,8 +403,8 @@
       "endgameMoves": 58
     },
     "openingSprinter": {
-      "white": "Adela «Adele» P.",
-      "black": "Alexander «Not Grischuk» G.",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Torsten «torstyehocara» J.",
       "openingMoves": 5
     }
   },
@@ -459,11 +459,11 @@
       "black": "Gaston «SleepingDawg» F."
     },
     "slowestCastling": {
-      "moves": 20,
-      "gameIndex": 13,
-      "color": "black",
-      "white": "Simon «The Endgame Alchemist» L.",
-      "black": "Dogan «Kido» P."
+      "moves": 21,
+      "gameIndex": 22,
+      "color": "white",
+      "white": "Adela «Adele» P.",
+      "black": "Alexander «Not Grischuk» G."
     },
     "openingHipster": {
       "gameIndex": 4,
@@ -535,12 +535,12 @@
       "black": "Giacomo «Bishop Airlines » R."
     },
     "homebody": {
-      "white": "Adela «Adele» P.",
-      "black": "Alexander «Not Grischuk» G.",
+      "white": "Korbinian «King's Gambit is a real opening» A.",
+      "black": "Osama «Ruiner of Bird's» A.",
       "player": "black",
-      "playerName": "Alexander «Not Grischuk» G.",
-      "piecesInEnemy": 0,
-      "description": "Alexander «Not Grischuk» G. only crossed 0 piece(s) into opponent's half of the board"
+      "playerName": "Osama «Ruiner of Bird's» A.",
+      "piecesInEnemy": 1,
+      "description": "Osama «Ruiner of Bird's» A. only crossed 1 piece(s) into opponent's half of the board"
     },
     "lateBloomer": {
       "white": "Rainer «Quigli» S.",
@@ -1135,24 +1135,24 @@
         "white": "Adela «Adele» P.",
         "black": "Alexander «Not Grischuk» G.",
         "enemyTerritory": {
-          "whitePiecesInEnemy": 1,
-          "blackPiecesInEnemy": 0,
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
           "whiteFirstInvasion": 5,
-          "blackFirstInvasion": null
+          "blackFirstInvasion": 18
         },
         "mostAttackedSquare": {
-          "square": "d2",
-          "attackers": 4,
+          "square": "d4",
+          "attackers": 6,
           "whiteAttackers": 4,
-          "blackAttackers": 0,
-          "moveNumber": 1,
-          "move": "e4"
+          "blackAttackers": 2,
+          "moveNumber": 15,
+          "move": "Nb3"
         },
         "longestTension": {
-          "moves": 1,
-          "squares": "d5-e4",
-          "startMove": 4,
-          "endMove": 5
+          "moves": 8,
+          "squares": "c5-d4",
+          "startMove": 10,
+          "endMove": 18
         },
         "gameIndex": 22
       },
@@ -1289,7 +1289,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "e5-f4",
+          "squares": "c3-e5",
           "startMove": 32,
           "endMove": 36
         },
@@ -1349,11 +1349,11 @@
     "summary": {
       "totalGames": 32,
       "homebody": {
-        "white": "Adela «Adele» P.",
-        "black": "Alexander «Not Grischuk» G.",
+        "white": "Korbinian «King's Gambit is a real opening» A.",
+        "black": "Osama «Ruiner of Bird's» A.",
         "player": "black",
-        "piecesInEnemy": 0,
-        "gameIndex": 22
+        "piecesInEnemy": 1,
+        "gameIndex": 2
       },
       "lateBlocker": null,
       "mostAttackedSquareGame": {
@@ -2229,27 +2229,50 @@
         "gameIndex": 22,
         "white": "Adela «Adele» P.",
         "black": "Alexander «Not Grischuk» G.",
-        "whiteACPL": 8,
-        "blackACPL": 10.2,
-        "whiteAccuracy": 95,
-        "blackAccuracy": 93.7,
+        "whiteACPL": 47.2,
+        "blackACPL": 35,
+        "whiteAccuracy": 81.5,
+        "blackAccuracy": 85.6,
         "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 1,
-          "excellent": 4
+          "blunders": 2,
+          "mistakes": 4,
+          "inaccuracies": 4,
+          "good": 4,
+          "excellent": 24
         },
         "blackMoveQuality": {
           "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 1,
-          "excellent": 3
+          "mistakes": 4,
+          "inaccuracies": 1,
+          "good": 5,
+          "excellent": 28
         },
-        "biggestBlunder": null,
-        "biggestComeback": null,
-        "luckyEscape": null
+        "biggestBlunder": {
+          "moveNumber": 24,
+          "player": "white",
+          "cpLoss": 339,
+          "winLoss": 45.13845446678831,
+          "severity": 45.13845446678831,
+          "move": "Rfd1",
+          "evalBefore": 189,
+          "evalAfter": -150
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 859,
+          "evalFrom": "-518",
+          "evalTo": "341",
+          "evalFromCp": -518,
+          "evalToCp": 341,
+          "moveNumber": 22
+        },
+        "luckyEscape": {
+          "player": "white",
+          "escapeAmount": 377,
+          "evalBefore": -518,
+          "evalAfter": 141,
+          "moveNumber": 18
+        }
       },
       {
         "gameIndex": 24,
@@ -2513,11 +2536,11 @@
     "summary": {
       "accuracyKing": {
         "player": "white",
-        "accuracy": 95,
-        "acpl": 8,
-        "white": "Adela «Adele» P.",
-        "black": "Alexander «Not Grischuk» G.",
-        "gameIndex": 22
+        "accuracy": 94.3,
+        "acpl": 20.3,
+        "white": "Ved «Underpromotes Everything» B.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 21
       },
       "biggestBlunder": {
         "moveNumber": 18,
@@ -2555,12 +2578,12 @@
         "gameIndex": 1
       },
       "lowestACPL": {
-        "player": "white",
-        "acpl": 8,
-        "accuracy": 95,
-        "white": "Adela «Adele» P.",
-        "black": "Alexander «Not Grischuk» G.",
-        "gameIndex": 22
+        "player": "black",
+        "acpl": 15,
+        "accuracy": 93,
+        "white": "Yannik «The Golden Castling Obliterator» T.",
+        "black": "Matteo «Afraid of Caro-Kann» M.",
+        "gameIndex": 12
       },
       "highestACPL": {
         "player": "black",
@@ -2571,12 +2594,12 @@
         "gameIndex": 24
       },
       "lowestCombinedACPL": {
-        "combinedACPL": 18.2,
-        "whiteACPL": 8,
-        "blackACPL": 10.2,
-        "white": "Adela «Adele» P.",
-        "black": "Alexander «Not Grischuk» G.",
-        "gameIndex": 22
+        "combinedACPL": 45.1,
+        "whiteACPL": 29.5,
+        "blackACPL": 15.6,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Manuel «Pawn Shredder» G.",
+        "gameIndex": 9
       },
       "highestCombinedACPL": {
         "combinedACPL": 270.3,
