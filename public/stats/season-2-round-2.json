@@ -1,7 +1,7 @@
 {
   "roundNumber": 2,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-31T22:29:32.508Z",
+  "generatedAt": "2025-11-05T14:14:10.732Z",
   "overview": {
     "totalGames": 33,
     "totalMoves": 2484,
@@ -470,6 +470,13 @@
       "white": "Islam «xXBlackXx» H.",
       "black": "Mario «ChessDude» M."
     },
+    "slowestCastling": {
+      "moves": 20,
+      "gameIndex": 9,
+      "color": "white",
+      "white": "Peter «Peaky Blunder» N.",
+      "black": "Sam «Active King» B."
+    },
     "openingHipster": {
       "gameIndex": 26,
       "eco": "B12",
@@ -531,6 +538,13 @@
       "color": "Black",
       "white": "Islam «xXBlackXx» H.",
       "black": "Mario «ChessDude» M."
+    },
+    "pawnCaptures": {
+      "captures": 6,
+      "gameIndex": 8,
+      "color": "black",
+      "white": "Stefano «acheron» B.",
+      "black": "Roger «Ruthless En Passant Shredder» H."
     },
     "homebody": {
       "white": "Boris «Out of Nowhere» G.",
@@ -723,7 +737,7 @@
         },
         "longestTension": {
           "moves": 15,
-          "squares": "e5-f7",
+          "squares": "c6-e5",
           "startMove": 22,
           "endMove": 37
         },
@@ -1348,7 +1362,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "b6-b7",
+          "squares": "b7-d7",
           "startMove": 63,
           "endMove": 67
         },

@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-10-31T22:16:15.435Z",
+  "generatedAt": "2025-11-05T14:00:52.825Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2455,
@@ -458,6 +458,13 @@
       "white": "Jonathan «EnCroissant1997» D.",
       "black": "Gaston «SleepingDawg» F."
     },
+    "slowestCastling": {
+      "moves": 23,
+      "gameIndex": 8,
+      "color": "black",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Oliver «Monkey sees Pawn» K."
+    },
     "openingHipster": {
       "gameIndex": 16,
       "eco": "B31",
@@ -519,6 +526,13 @@
       "color": "Black",
       "white": "Jakob «Jaquemate » .",
       "black": "Joshua «Pristine Pawn Pusher» G."
+    },
+    "pawnCaptures": {
+      "captures": 6,
+      "gameIndex": 8,
+      "color": "white",
+      "white": "Anton «TheCatalan» B.",
+      "black": "Oliver «Monkey sees Pawn» K."
     },
     "homebody": {
       "white": "Nikola «Pawn Carnivore»",

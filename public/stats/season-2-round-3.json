@@ -1,7 +1,7 @@
 {
   "roundNumber": 3,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-05T13:32:40.625Z",
+  "generatedAt": "2025-11-05T14:28:11.507Z",
   "overview": {
     "totalGames": 32,
     "totalMoves": 2535,
@@ -458,6 +458,13 @@
       "white": "Christopher «King Decimator» H.",
       "black": "Gaston «SleepingDawg» F."
     },
+    "slowestCastling": {
+      "moves": 20,
+      "gameIndex": 13,
+      "color": "black",
+      "white": "Simon «The Endgame Alchemist» L.",
+      "black": "Dogan «Kido» P."
+    },
     "openingHipster": {
       "gameIndex": 4,
       "eco": "E60",
@@ -519,6 +526,13 @@
       "color": "White",
       "white": "Ruslan «Thunder-Blunder» G.",
       "black": "Torsten «torstyehocara» J."
+    },
+    "pawnCaptures": {
+      "captures": 6,
+      "gameIndex": 23,
+      "color": "white",
+      "white": "Loris «LorisNiUr» U.",
+      "black": "Giacomo «Bishop Airlines » R."
     },
     "homebody": {
       "white": "Adela «Adele» P.",
@@ -861,7 +875,7 @@
         },
         "longestTension": {
           "moves": 7,
-          "squares": "c6-e4",
+          "squares": "e4-h7",
           "startMove": 20,
           "endMove": 27
         },
@@ -1061,7 +1075,7 @@
         },
         "longestTension": {
           "moves": 3,
-          "squares": "f2-f3",
+          "squares": "d3-f3",
           "startMove": 43,
           "endMove": 46
         },
@@ -1086,7 +1100,7 @@
         },
         "longestTension": {
           "moves": 16,
-          "squares": "e6-f5",
+          "squares": "f5-g6",
           "startMove": 75,
           "endMove": 91
         },
@@ -1275,7 +1289,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "c3-e5",
+          "squares": "e5-f4",
           "startMove": 32,
           "endMove": 36
         },
