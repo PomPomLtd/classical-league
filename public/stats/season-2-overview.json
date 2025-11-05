@@ -1,6 +1,6 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-11-05T14:26:15.725Z",
+  "generatedAt": "2025-11-05T17:55:36.146Z",
   "roundsIncluded": [
     1,
     2,
@@ -656,9 +656,14 @@
           "round": 2,
           "award": "Crosshairs",
           "details": ""
+        },
+        {
+          "round": 3,
+          "award": "slowestCastling",
+          "details": "20 moves"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 5,
       "averageACPL": 48.8,
       "bestACPL": 16.2,
       "worstACPL": 86.1,
@@ -752,6 +757,57 @@
       "favoriteOpening": null,
       "totalBlunders": 0,
       "totalMistakes": 1
+    },
+    "Oliver K.": {
+      "normalizedName": "Oliver K.",
+      "displayName": "Oliver «Monkey sees Pawn» K.",
+      "gamesPlayed": 3,
+      "gamesAsWhite": 1,
+      "gamesAsBlack": 2,
+      "wins": 0,
+      "losses": 0,
+      "draws": 0,
+      "winRate": 0,
+      "awards": [
+        {
+          "round": 1,
+          "award": "slowestCastling",
+          "details": "23 moves"
+        },
+        {
+          "round": 3,
+          "award": "Slowest Queen Trade",
+          "details": "76 moves"
+        }
+      ],
+      "awardCount": 2,
+      "averageACPL": 31.3,
+      "bestACPL": 21.6,
+      "worstACPL": 43,
+      "acplByRound": [
+        29.4,
+        43,
+        21.6,
+        null,
+        null,
+        null,
+        null
+      ],
+      "accuracyByRound": [
+        89.1,
+        78.1,
+        93.8,
+        null,
+        null,
+        null,
+        null
+      ],
+      "acplVariance": 8.8,
+      "openingsUsed": [],
+      "openingDiversity": 0,
+      "favoriteOpening": null,
+      "totalBlunders": 5,
+      "totalMistakes": 11
     },
     "Simon L.": {
       "normalizedName": "Simon L.",
@@ -848,6 +904,57 @@
       "openingDiversity": 0,
       "favoriteOpening": null,
       "totalBlunders": 4,
+      "totalMistakes": 7
+    },
+    "Anton B.": {
+      "normalizedName": "Anton B.",
+      "displayName": "Anton «TheCatalan» B.",
+      "gamesPlayed": 3,
+      "gamesAsWhite": 2,
+      "gamesAsBlack": 1,
+      "wins": 0,
+      "losses": 0,
+      "draws": 0,
+      "winRate": 0,
+      "awards": [
+        {
+          "round": 1,
+          "award": "pawnCaptures",
+          "details": "6 captures"
+        },
+        {
+          "round": 2,
+          "award": "Hypertension Award",
+          "details": "20 moves"
+        }
+      ],
+      "awardCount": 2,
+      "averageACPL": 24.9,
+      "bestACPL": 17.4,
+      "worstACPL": 29.5,
+      "acplByRound": [
+        27.9,
+        17.4,
+        29.5,
+        null,
+        null,
+        null,
+        null
+      ],
+      "accuracyByRound": [
+        89.2,
+        96,
+        89.8,
+        null,
+        null,
+        null,
+        null
+      ],
+      "acplVariance": 5.4,
+      "openingsUsed": [],
+      "openingDiversity": 0,
+      "favoriteOpening": null,
+      "totalBlunders": 0,
       "totalMistakes": 7
     },
     "Ruslan G.": {
@@ -1425,8 +1532,14 @@
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
+      "awards": [
+        {
+          "round": 2,
+          "award": "pawnCaptures",
+          "details": "6 captures"
+        }
+      ],
+      "awardCount": 1,
       "averageACPL": 29.4,
       "bestACPL": 28,
       "worstACPL": 30.7,
@@ -1688,98 +1801,6 @@
       "favoriteOpening": null,
       "totalBlunders": 4,
       "totalMistakes": 12
-    },
-    "Anton B.": {
-      "normalizedName": "Anton B.",
-      "displayName": "Anton «TheCatalan» B.",
-      "gamesPlayed": 3,
-      "gamesAsWhite": 2,
-      "gamesAsBlack": 1,
-      "wins": 0,
-      "losses": 0,
-      "draws": 0,
-      "winRate": 0,
-      "awards": [
-        {
-          "round": 2,
-          "award": "Hypertension Award",
-          "details": "20 moves"
-        }
-      ],
-      "awardCount": 1,
-      "averageACPL": 24.9,
-      "bestACPL": 17.4,
-      "worstACPL": 29.5,
-      "acplByRound": [
-        27.9,
-        17.4,
-        29.5,
-        null,
-        null,
-        null,
-        null
-      ],
-      "accuracyByRound": [
-        89.2,
-        96,
-        89.8,
-        null,
-        null,
-        null,
-        null
-      ],
-      "acplVariance": 5.4,
-      "openingsUsed": [],
-      "openingDiversity": 0,
-      "favoriteOpening": null,
-      "totalBlunders": 0,
-      "totalMistakes": 7
-    },
-    "Oliver K.": {
-      "normalizedName": "Oliver K.",
-      "displayName": "Oliver «Monkey sees Pawn» K.",
-      "gamesPlayed": 3,
-      "gamesAsWhite": 1,
-      "gamesAsBlack": 2,
-      "wins": 0,
-      "losses": 0,
-      "draws": 0,
-      "winRate": 0,
-      "awards": [
-        {
-          "round": 3,
-          "award": "Slowest Queen Trade",
-          "details": "76 moves"
-        }
-      ],
-      "awardCount": 1,
-      "averageACPL": 31.3,
-      "bestACPL": 21.6,
-      "worstACPL": 43,
-      "acplByRound": [
-        29.4,
-        43,
-        21.6,
-        null,
-        null,
-        null,
-        null
-      ],
-      "accuracyByRound": [
-        89.1,
-        78.1,
-        93.8,
-        null,
-        null,
-        null,
-        null
-      ],
-      "acplVariance": 8.8,
-      "openingsUsed": [],
-      "openingDiversity": 0,
-      "favoriteOpening": null,
-      "totalBlunders": 5,
-      "totalMistakes": 11
     },
     "Max W.": {
       "normalizedName": "Max W.",
@@ -2798,12 +2819,17 @@
       "winRate": 0,
       "awards": [
         {
+          "round": 2,
+          "award": "slowestCastling",
+          "details": "20 moves"
+        },
+        {
           "round": 3,
           "award": "Pawn Storm",
           "details": "13"
         }
       ],
-      "awardCount": 1,
+      "awardCount": 2,
       "averageACPL": 42.7,
       "bestACPL": 27.5,
       "worstACPL": 55.5,
@@ -2988,9 +3014,14 @@
           "round": 3,
           "award": "Center Stage",
           "details": "6 moves"
+        },
+        {
+          "round": 3,
+          "award": "pawnCaptures",
+          "details": "6 captures"
         }
       ],
-      "awardCount": 3,
+      "awardCount": 4,
       "averageACPL": 70.7,
       "bestACPL": 32.6,
       "worstACPL": 113.8,
@@ -3624,6 +3655,38 @@
         ]
       },
       {
+        "player": "Dogan P.",
+        "displayName": "Dogan «Kido» P.",
+        "count": 5,
+        "awards": [
+          {
+            "round": 1,
+            "award": "Square Tourist",
+            "details": "25 squares"
+          },
+          {
+            "round": 1,
+            "award": "Dadbod Shuffler",
+            "details": "32 moves"
+          },
+          {
+            "round": 2,
+            "award": "Fastest Queen Trade",
+            "details": "5 moves"
+          },
+          {
+            "round": 2,
+            "award": "Crosshairs",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "slowestCastling",
+            "details": "20 moves"
+          }
+        ]
+      },
+      {
         "player": "Gaston F.",
         "displayName": "Gaston «SleepingDawg» F.",
         "count": 5,
@@ -3710,33 +3773,6 @@
         ]
       },
       {
-        "player": "Dogan P.",
-        "displayName": "Dogan «Kido» P.",
-        "count": 4,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Square Tourist",
-            "details": "25 squares"
-          },
-          {
-            "round": 1,
-            "award": "Dadbod Shuffler",
-            "details": "32 moves"
-          },
-          {
-            "round": 2,
-            "award": "Fastest Queen Trade",
-            "details": "5 moves"
-          },
-          {
-            "round": 2,
-            "award": "Crosshairs",
-            "details": ""
-          }
-        ]
-      },
-      {
         "player": "Mario M.",
         "displayName": "Mario «ChessDude» M.",
         "count": 4,
@@ -3791,6 +3827,33 @@
         ]
       },
       {
+        "player": "Loris U.",
+        "displayName": "Loris «LorisNiUr» U.",
+        "count": 4,
+        "awards": [
+          {
+            "round": 3,
+            "award": "Square Tourist",
+            "details": "25 squares"
+          },
+          {
+            "round": 3,
+            "award": "Dadbod Shuffler",
+            "details": "36 moves"
+          },
+          {
+            "round": 3,
+            "award": "Center Stage",
+            "details": "6 moves"
+          },
+          {
+            "round": 3,
+            "award": "pawnCaptures",
+            "details": "6 captures"
+          }
+        ]
+      },
+      {
         "player": "Jakob .",
         "displayName": "Jakob «Jaquemate » .",
         "count": 3,
@@ -3831,28 +3894,6 @@
             "round": 3,
             "award": "Longest Capture Spree",
             "details": "8 in a row"
-          }
-        ]
-      },
-      {
-        "player": "Davide V.",
-        "displayName": "Davide «AME» V.",
-        "count": 3,
-        "awards": [
-          {
-            "round": 3,
-            "award": "Slowest Queen Trade",
-            "details": "76 moves"
-          },
-          {
-            "round": 3,
-            "award": "Sporty Queen",
-            "details": "101 squares"
-          },
-          {
-            "round": 3,
-            "award": "Professional Edger",
-            "details": "33 moves"
           }
         ]
       }
@@ -4029,8 +4070,8 @@
         "games": 3
       },
       {
-        "player": "Simon L.",
-        "displayName": "Simon «The Endgame Alchemist» L.",
+        "player": "Oliver K.",
+        "displayName": "Oliver «Monkey sees Pawn» K.",
         "games": 3
       }
     ],
@@ -4107,14 +4148,14 @@
         "blundersPerGame": 0
       },
       {
-        "player": "Korbinian A.",
-        "displayName": "Korbinian «King's Gambit is a real opening» A.",
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
         "blunders": 0,
         "blundersPerGame": 0
       },
       {
-        "player": "Anton B.",
-        "displayName": "Anton «TheCatalan» B.",
+        "player": "Korbinian A.",
+        "displayName": "Korbinian «King's Gambit is a real opening» A.",
         "blunders": 0,
         "blundersPerGame": 0
       },
