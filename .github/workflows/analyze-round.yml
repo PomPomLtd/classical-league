@@ -53,8 +53,8 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          ROUND="${{ github.event.inputs.round }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          ROUND=$((${{ github.event.inputs.round }}))
 
           echo "Fetching PGN data for Season $SEASON Round $ROUND..."
 
@@ -106,9 +106,9 @@ jobs:
 
       - name: Run Stockfish Analysis
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          ROUND="${{ github.event.inputs.round }}"
-          DEPTH="${{ github.event.inputs.depth }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          ROUND=$((${{ github.event.inputs.round }}))
+          DEPTH=$((${{ github.event.inputs.depth }}))
 
           echo "Starting analysis for Season $SEASON Round $ROUND"
           echo "Depth: $DEPTH"
@@ -125,8 +125,8 @@ jobs:
 
       - name: Verify output
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          ROUND="${{ github.event.inputs.round }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          ROUND=$((${{ github.event.inputs.round }}))
           OUTPUT_FILE="public/stats/season-${SEASON}-round-${ROUND}.json"
 
           if [ ! -f "$OUTPUT_FILE" ]; then
@@ -145,9 +145,9 @@ jobs:
 
       - name: Commit and push results
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          ROUND="${{ github.event.inputs.round }}"
-          DEPTH="${{ github.event.inputs.depth }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          ROUND=$((${{ github.event.inputs.round }}))
+          DEPTH=$((${{ github.event.inputs.depth }}))
 
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
@@ -165,8 +165,8 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          ROUND="${{ github.event.inputs.round }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          ROUND=$((${{ github.event.inputs.round }}))
 
           if [ -f "public/stats/season-${SEASON}-round-${ROUND}.json" ]; then
             echo "✅ Successfully analyzed Season $SEASON Round $ROUND"

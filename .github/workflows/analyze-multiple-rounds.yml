@@ -61,8 +61,8 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          DEPTH="${{ github.event.inputs.depth }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          DEPTH=$((${{ github.event.inputs.depth }}))
           ROUNDS="${{ steps.parse.outputs.rounds }}"
 
           echo "Starting batch analysis for Season $SEASON"
@@ -178,7 +178,7 @@ jobs:
 
       - name: Verify outputs
         run: |
-          SEASON="${{ github.event.inputs.season }}"
+          SEASON=$((${{ github.event.inputs.season }}))
           ROUNDS="${{ steps.parse.outputs.rounds }}"
 
           echo "Verifying generated stats files..."
@@ -197,8 +197,8 @@ jobs:
 
       - name: Commit and push results
         run: |
-          SEASON="${{ github.event.inputs.season }}"
-          DEPTH="${{ github.event.inputs.depth }}"
+          SEASON=$((${{ github.event.inputs.season }}))
+          DEPTH=$((${{ github.event.inputs.depth }}))
           ROUNDS="${{ steps.parse.outputs.rounds }}"
 
           git config user.name "GitHub Actions Bot"
@@ -218,7 +218,7 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          SEASON="${{ github.event.inputs.season }}"
+          SEASON=$((${{ github.event.inputs.season }}))
           SUCCESS="${{ env.success_count }}"
           FAILED="${{ env.fail_count }}"
 
