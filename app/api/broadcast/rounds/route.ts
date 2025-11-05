@@ -41,7 +41,7 @@ export async function GET() {
     }
     
     // Format round information for broadcast
-    const rounds = await Promise.all(currentSeason.rounds.map(async round => ({
+    const rounds = await Promise.all(currentSeason.rounds.map(async (round: typeof currentSeason.rounds[0]) => ({
       id: round.id,
       roundNumber: round.roundNumber,
       roundDate: round.roundDate.toISOString(),

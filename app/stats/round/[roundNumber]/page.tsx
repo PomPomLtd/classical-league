@@ -266,6 +266,13 @@ interface StatsData {
       white: string
       black: string
     } | null
+    slowestCastling: {
+      moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     openingHipster: {
       gameIndex: number
       eco: string
@@ -322,6 +329,13 @@ interface StatsData {
     } | null
     chickenAward: {
       retreats: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    pawnCaptures: {
+      captures: number
       gameIndex: number
       color: string
       white: string

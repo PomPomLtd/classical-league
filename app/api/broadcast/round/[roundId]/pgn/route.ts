@@ -39,7 +39,7 @@ async function getGameHash(roundId: string): Promise<string> {
     })
 
     // Create a hash based on all game data
-    const dataString = results.map(r =>
+    const dataString = results.map((r: typeof results[0]) =>
       `${r.id}-${r.submittedDate?.getTime()}-${r.result}-${r.boardNumber}-${r.isVerified}-${r.pgn?.length || 0}`
     ).join('|')
 

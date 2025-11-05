@@ -59,6 +59,13 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
+    slowestCastling: {
+      moves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     openingHipster: {
       gameIndex: number
       eco: string
@@ -115,6 +122,13 @@ interface FunStatsProps {
     } | null
     chickenAward: {
       retreats: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    pawnCaptures: {
+      captures: number
       gameIndex: number
       color: string
       white: string
@@ -269,6 +283,18 @@ export function FunStats({ funStats }: FunStatsProps) {
           </div>
         )}
 
+        {funStats.slowestCastling && (
+          <div className="p-4 bg-fuchsia-50 dark:bg-fuchsia-900/20 rounded-lg">
+            <div className="font-semibold text-fuchsia-900 dark:text-fuchsia-300 mb-1">🐢 Slowest Castling</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={funStats.slowestCastling.white} black={funStats.slowestCastling.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.slowestCastling.color} castled on move {funStats.slowestCastling.moves}
+            </div>
+          </div>
+        )}
+
         {funStats.openingHipster && (
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <div className="font-semibold text-blue-900 dark:text-blue-300 mb-1">🎩 Opening Hipster</div>
@@ -361,6 +387,18 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               {funStats.chickenAward.color} made {funStats.chickenAward.retreats} retreating moves
+            </div>
+          </div>
+        )}
+
+        {funStats.pawnCaptures && (
+          <div className="p-4 bg-rose-50 dark:bg-rose-900/20 rounded-lg">
+            <div className="font-semibold text-rose-900 dark:text-rose-300 mb-1">⚔️ Pawn Warrior</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={funStats.pawnCaptures.white} black={funStats.pawnCaptures.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.pawnCaptures.color} pawns captured {funStats.pawnCaptures.captures} {funStats.pawnCaptures.captures === 1 ? 'piece' : 'pieces'}
             </div>
           </div>
         )}

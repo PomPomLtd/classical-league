@@ -29,7 +29,7 @@ export async function GET() {
       id: currentSeason.id,
       seasonNumber: currentSeason.seasonNumber,
       name: currentSeason.name,
-      rounds: currentSeason.rounds.map(round => ({
+      rounds: currentSeason.rounds.map((round: typeof currentSeason.rounds[0]) => ({
         id: round.id,
         roundNumber: round.roundNumber,
         roundDate: round.roundDate.toISOString(),

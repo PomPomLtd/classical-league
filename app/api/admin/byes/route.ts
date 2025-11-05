@@ -50,7 +50,7 @@ export async function GET() {
     })
 
     // Format the response with player name parts for display
-    const formattedRequests = byeRequests.map(request => {
+    const formattedRequests = byeRequests.map((request: typeof byeRequests[0]) => {
       const nameParts = request.player.fullName.trim().split(' ')
       const firstName = nameParts[0]
       const lastInitial = nameParts.length > 1 ? nameParts[nameParts.length - 1].charAt(0).toUpperCase() + '.' : ''

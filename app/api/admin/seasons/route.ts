@@ -22,7 +22,7 @@ export async function GET() {
       }
     })
 
-    const formattedSeasons = seasons.map(season => ({
+    const formattedSeasons = seasons.map((season: typeof seasons[0]) => ({
       id: season.id,
       seasonNumber: season.seasonNumber,
       name: season.name,

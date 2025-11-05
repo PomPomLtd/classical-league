@@ -28,7 +28,7 @@ export async function GET() {
     })
 
     // Add deadline status to each round
-    const roundsWithStatus = rounds.map(round => ({
+    const roundsWithStatus = rounds.map((round: typeof rounds[0]) => ({
       id: round.id,
       roundNumber: round.roundNumber,
       roundDate: round.roundDate.toISOString(),

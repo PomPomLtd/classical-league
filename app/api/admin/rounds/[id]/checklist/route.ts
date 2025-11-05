@@ -107,9 +107,9 @@ export async function GET(
     }) : []
 
     // Separate approved and pending bye requests
-    const approvedByes = nextRoundByeRequests.filter(bye => bye.isApproved === true)
-    const pendingByes = nextRoundByeRequests.filter(bye => bye.isApproved === null)
-    const rejectedByes = nextRoundByeRequests.filter(bye => bye.isApproved === false)
+    const approvedByes = nextRoundByeRequests.filter((bye: typeof nextRoundByeRequests[0]) => bye.isApproved === true)
+    const pendingByes = nextRoundByeRequests.filter((bye: typeof nextRoundByeRequests[0]) => bye.isApproved === null)
+    const rejectedByes = nextRoundByeRequests.filter((bye: typeof nextRoundByeRequests[0]) => bye.isApproved === false)
 
     // Calculate expected number of games
     // Formula: (active players - byes) / 2, rounded down
@@ -145,20 +145,20 @@ export async function GET(
         completionPercentage
       },
       byeRequests: {
-        approved: approvedByes.map(bye => ({
+        approved: approvedByes.map((bye: typeof approvedByes[0]) => ({
           id: bye.id,
           playerName: bye.player.nickname,
           fullName: bye.player.fullName,
           requestedDate: bye.requestedDate,
           approvedDate: bye.approvedDate
         })),
-        pending: pendingByes.map(bye => ({
+        pending: pendingByes.map((bye: typeof pendingByes[0]) => ({
           id: bye.id,
           playerName: bye.player.nickname,
           fullName: bye.player.fullName,
           requestedDate: bye.requestedDate
         })),
-        rejected: rejectedByes.map(bye => ({
+        rejected: rejectedByes.map((bye: typeof rejectedByes[0]) => ({
           id: bye.id,
           playerName: bye.player.nickname,
           fullName: bye.player.fullName,

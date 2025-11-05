@@ -47,10 +47,10 @@ async function getAdminStats() {
   ])
 
   const now = new Date()
-  const currentRound = rounds.find(round => 
+  const currentRound = rounds.find((round: typeof rounds[0]) =>
     round.roundDate <= now && round.roundDate >= new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000)
   )
-  const nextRound = rounds.find(round => round.roundDate > now)
+  const nextRound = rounds.find((round: typeof rounds[0]) => round.roundDate > now)
 
   return {
     pendingPlayers,
