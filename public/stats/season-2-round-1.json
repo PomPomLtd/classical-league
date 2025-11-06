@@ -1,7 +1,7 @@
 {
   "roundNumber": 1,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-05T14:00:52.825Z",
+  "generatedAt": "2025-11-06T10:52:38.624Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2455,
@@ -534,6 +534,25 @@
       "white": "Anton «TheCatalan» B.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
+    "antiOrthogonal": {
+      "moves": 22,
+      "gameIndex": 16,
+      "gameId": null,
+      "color": "white",
+      "white": "bela «bela» O.",
+      "black": "Osama «Ruiner of Bird's» A."
+    },
+    "comfortZone": {
+      "percentage": 80,
+      "pieceType": "king",
+      "moves": 4,
+      "totalNonPawnMoves": 5,
+      "gameIndex": 22,
+      "gameId": null,
+      "color": "black",
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G."
+    },
     "homebody": {
       "white": "Nikola «Pawn Carnivore»",
       "black": "Ruslan «Thunder-Blunder» G.",
@@ -750,7 +769,7 @@
         },
         "longestTension": {
           "moves": 3,
-          "squares": "d6-e6",
+          "squares": "e6-e8",
           "startMove": 45,
           "endMove": 48
         },
@@ -1429,6 +1448,8 @@
           "good": 7,
           "excellent": 25
         },
+        "whiteEngineMoves": 23,
+        "blackEngineMoves": 25,
         "biggestBlunder": {
           "moveNumber": 14,
           "player": "white",
@@ -1470,6 +1491,8 @@
           "good": 10,
           "excellent": 22
         },
+        "whiteEngineMoves": 27,
+        "blackEngineMoves": 22,
         "biggestBlunder": {
           "moveNumber": 20,
           "player": "white",
@@ -1505,6 +1528,8 @@
           "good": 6,
           "excellent": 24
         },
+        "whiteEngineMoves": 23,
+        "blackEngineMoves": 24,
         "biggestBlunder": {
           "moveNumber": 43,
           "player": "black",
@@ -1554,6 +1579,8 @@
           "good": 10,
           "excellent": 20
         },
+        "whiteEngineMoves": 25,
+        "blackEngineMoves": 20,
         "biggestBlunder": null,
         "biggestComeback": null,
         "luckyEscape": null
@@ -1580,6 +1607,8 @@
           "good": 6,
           "excellent": 62
         },
+        "whiteEngineMoves": 57,
+        "blackEngineMoves": 62,
         "biggestBlunder": {
           "moveNumber": 25,
           "player": "white",
@@ -1615,6 +1644,8 @@
           "good": 6,
           "excellent": 19
         },
+        "whiteEngineMoves": 22,
+        "blackEngineMoves": 19,
         "biggestBlunder": null,
         "biggestComeback": null,
         "luckyEscape": null
@@ -1641,6 +1672,8 @@
           "good": 5,
           "excellent": 17
         },
+        "whiteEngineMoves": 18,
+        "blackEngineMoves": 17,
         "biggestBlunder": {
           "moveNumber": 29,
           "player": "black",
@@ -1676,6 +1709,8 @@
           "good": 1,
           "excellent": 14
         },
+        "whiteEngineMoves": 10,
+        "blackEngineMoves": 14,
         "biggestBlunder": {
           "moveNumber": 16,
           "player": "white",
@@ -1717,6 +1752,8 @@
           "good": 8,
           "excellent": 48
         },
+        "whiteEngineMoves": 47,
+        "blackEngineMoves": 48,
         "biggestBlunder": {
           "moveNumber": 41,
           "player": "black",
@@ -1752,6 +1789,8 @@
           "good": 12,
           "excellent": 50
         },
+        "whiteEngineMoves": 59,
+        "blackEngineMoves": 50,
         "biggestBlunder": null,
         "biggestComeback": null,
         "luckyEscape": null
@@ -1778,6 +1817,8 @@
           "good": 6,
           "excellent": 36
         },
+        "whiteEngineMoves": 34,
+        "blackEngineMoves": 36,
         "biggestBlunder": {
           "moveNumber": 39,
           "player": "white",
@@ -1819,6 +1860,8 @@
           "good": 4,
           "excellent": 29
         },
+        "whiteEngineMoves": 30,
+        "blackEngineMoves": 29,
         "biggestBlunder": {
           "moveNumber": 42,
           "player": "black",
@@ -1854,6 +1897,8 @@
           "good": 4,
           "excellent": 17
         },
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 17,
         "biggestBlunder": {
           "moveNumber": 10,
           "player": "white",
@@ -1895,6 +1940,8 @@
           "good": 8,
           "excellent": 39
         },
+        "whiteEngineMoves": 42,
+        "blackEngineMoves": 39,
         "biggestBlunder": {
           "moveNumber": 38,
           "player": "black",
@@ -1936,6 +1983,8 @@
           "good": 6,
           "excellent": 16
         },
+        "whiteEngineMoves": 16,
+        "blackEngineMoves": 16,
         "biggestBlunder": {
           "moveNumber": 31,
           "player": "white",
@@ -1985,6 +2034,8 @@
           "good": 6,
           "excellent": 26
         },
+        "whiteEngineMoves": 28,
+        "blackEngineMoves": 26,
         "biggestBlunder": {
           "moveNumber": 30,
           "player": "black",
@@ -2026,6 +2077,8 @@
           "good": 10,
           "excellent": 42
         },
+        "whiteEngineMoves": 36,
+        "blackEngineMoves": 42,
         "biggestBlunder": {
           "moveNumber": 27,
           "player": "black",
@@ -2075,6 +2128,8 @@
           "good": 7,
           "excellent": 29
         },
+        "whiteEngineMoves": 34,
+        "blackEngineMoves": 29,
         "biggestBlunder": {
           "moveNumber": 8,
           "player": "black",
@@ -2124,6 +2179,8 @@
           "good": 6,
           "excellent": 16
         },
+        "whiteEngineMoves": 18,
+        "blackEngineMoves": 16,
         "biggestBlunder": {
           "moveNumber": 24,
           "player": "white",
@@ -2159,6 +2216,8 @@
           "good": 7,
           "excellent": 24
         },
+        "whiteEngineMoves": 28,
+        "blackEngineMoves": 24,
         "biggestBlunder": {
           "moveNumber": 14,
           "player": "white",
@@ -2200,6 +2259,8 @@
           "good": 6,
           "excellent": 35
         },
+        "whiteEngineMoves": 31,
+        "blackEngineMoves": 35,
         "biggestBlunder": null,
         "biggestComeback": null,
         "luckyEscape": null
@@ -2226,6 +2287,8 @@
           "good": 4,
           "excellent": 14
         },
+        "whiteEngineMoves": 10,
+        "blackEngineMoves": 14,
         "biggestBlunder": {
           "moveNumber": 11,
           "player": "white",
@@ -2261,6 +2324,8 @@
           "good": 4,
           "excellent": 5
         },
+        "whiteEngineMoves": 8,
+        "blackEngineMoves": 5,
         "biggestBlunder": {
           "moveNumber": 7,
           "player": "black",
@@ -2296,6 +2361,8 @@
           "good": 4,
           "excellent": 23
         },
+        "whiteEngineMoves": 18,
+        "blackEngineMoves": 23,
         "biggestBlunder": {
           "moveNumber": 3,
           "player": "white",
@@ -2331,6 +2398,8 @@
           "good": 2,
           "excellent": 13
         },
+        "whiteEngineMoves": 17,
+        "blackEngineMoves": 13,
         "biggestBlunder": {
           "moveNumber": 8,
           "player": "black",
@@ -2380,6 +2449,8 @@
           "good": 5,
           "excellent": 19
         },
+        "whiteEngineMoves": 18,
+        "blackEngineMoves": 19,
         "biggestBlunder": {
           "moveNumber": 20,
           "player": "white",
@@ -2415,6 +2486,8 @@
           "good": 6,
           "excellent": 41
         },
+        "whiteEngineMoves": 43,
+        "blackEngineMoves": 41,
         "biggestBlunder": {
           "moveNumber": 54,
           "player": "black",
@@ -2450,6 +2523,8 @@
           "good": 5,
           "excellent": 29
         },
+        "whiteEngineMoves": 23,
+        "blackEngineMoves": 29,
         "biggestBlunder": null,
         "biggestComeback": null,
         "luckyEscape": null
@@ -2476,6 +2551,8 @@
           "good": 2,
           "excellent": 18
         },
+        "whiteEngineMoves": 22,
+        "blackEngineMoves": 18,
         "biggestBlunder": {
           "moveNumber": 14,
           "player": "black",
@@ -2511,6 +2588,8 @@
           "good": 3,
           "excellent": 13
         },
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 13,
         "biggestBlunder": {
           "moveNumber": 13,
           "player": "white",
@@ -2574,6 +2653,23 @@
         "white": "Laurens «Castling Specialist» B.",
         "black": "Alexander «Not Grischuk» .",
         "gameIndex": 19
+      },
+      "stockfishBuddy": {
+        "player": "black",
+        "engineMoves": 62,
+        "totalMoves": 76,
+        "percentage": 81.6,
+        "white": "Jakob «Jaquemate » .",
+        "black": "Joshua «Pristine Pawn Pusher» G.",
+        "gameIndex": 4
+      },
+      "inaccuracyKing": {
+        "player": "black",
+        "inaccuracies": 13,
+        "totalMoves": 66,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Florian «Knightmare» G.",
+        "gameIndex": 27
       },
       "lowestACPL": {
         "player": "black",
