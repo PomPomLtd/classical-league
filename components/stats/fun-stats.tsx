@@ -188,8 +188,8 @@ export function FunStats({ funStats }: FunStatsProps) {
     <StatCard title="🎉 Fun Stats">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {funStats.fastestQueenTrade && (
-          <div className="p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
-            <div className="font-semibold text-pink-900 dark:text-pink-300 mb-1">⚡ Fastest Queen Trade</div>
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">💼 Strategic Downsizing Award</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
               <PlayerVs white={funStats.fastestQueenTrade.white} black={funStats.fastestQueenTrade.black} />
             </div>
@@ -201,7 +201,7 @@ export function FunStats({ funStats }: FunStatsProps) {
 
         {funStats.slowestQueenTrade && (
           <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-            <div className="font-semibold text-amber-900 dark:text-amber-300 mb-1">🐌 Slowest Queen Trade</div>
+            <div className="font-semibold text-amber-900 dark:text-amber-300 mb-1">🕰️ Separation Anxiety Award</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
               <PlayerVs white={funStats.slowestQueenTrade.white} black={funStats.slowestQueenTrade.black} />
             </div>
