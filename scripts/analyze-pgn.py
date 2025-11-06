@@ -148,6 +148,10 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
     white_quality = {'blunders': 0, 'mistakes': 0, 'inaccuracies': 0, 'good': 0, 'excellent': 0}
     black_quality = {'blunders': 0, 'mistakes': 0, 'inaccuracies': 0, 'good': 0, 'excellent': 0}
 
+    # Track engine-level moves (win% loss < 2%)
+    white_engine_moves = 0
+    black_engine_moves = 0
+
     biggest_blunder = None
     biggest_comeback = None  # Track biggest eval swing from losing position
     lucky_escape = None  # Track when opponent didn't punish a blunder
@@ -217,6 +221,10 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
             white_quality[quality] += 1
             white_win_losses.append(win_loss)
 
+            # Track engine-level moves (excellent = win% loss < 2%)
+            if quality == 'excellent':
+                white_engine_moves += 1
+
             # Track biggest blunder using severity calculation
             if quality == 'blunders':
                 severity = calculate_blunder_severity(
@@ -246,6 +254,10 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
             quality, win_loss = classify_move_by_win_percentage(win_before, win_after, False)
             black_quality[quality] += 1
             black_win_losses.append(win_loss)
+
+            # Track engine-level moves (excellent = win% loss < 2%)
+            if quality == 'excellent':
+                black_engine_moves += 1
 
             # Track biggest blunder using severity calculation (flip evals for black)
             if quality == 'blunders':
@@ -373,6 +385,8 @@ def analyze_game(game, stockfish, depth=15, sample_rate=1):
         'blackAccuracy': round(black_accuracy, 1),
         'whiteMoveQuality': white_quality,
         'blackMoveQuality': black_quality,
+        'whiteEngineMoves': white_engine_moves,
+        'blackEngineMoves': black_engine_moves,
         'biggestBlunder': biggest_blunder,
         'biggestComeback': biggest_comeback,
         'luckyEscape': lucky_escape
@@ -471,11 +485,13 @@ def main():
 
     print(f"\n\n✅ Analysis complete! Processed {total_games} games\n", file=sys.stderr)
 
-    # Find accuracy king, biggest blunder, ACPL extremes, comeback king, and lucky escape across all games
+    # Find accuracy king, biggest blunder, ACPL extremes, comeback king, lucky escape, stockfish buddy, and inaccuracy king
     accuracy_king = None
     biggest_blunder = None
     comeback_king = None
     lucky_escape = None
+    stockfish_buddy = None
+    inaccuracy_king = None
     lowest_acpl = None
     highest_acpl = None
     lowest_combined_acpl = None
@@ -601,6 +617,50 @@ def main():
                     'gameIndex': game_data['gameIndex']
                 }
 
+        # Check Stockfish Buddy (most engine-level moves)
+        if stockfish_buddy is None or game_data['whiteEngineMoves'] > stockfish_buddy.get('engineMoves', 0):
+            stockfish_buddy = {
+                'player': 'white',
+                'engineMoves': game_data['whiteEngineMoves'],
+                'totalMoves': sum(game_data['whiteMoveQuality'].values()),
+                'percentage': round(game_data['whiteEngineMoves'] / sum(game_data['whiteMoveQuality'].values()) * 100, 1) if sum(game_data['whiteMoveQuality'].values()) > 0 else 0,
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        if stockfish_buddy is None or game_data['blackEngineMoves'] > stockfish_buddy.get('engineMoves', 0):
+            stockfish_buddy = {
+                'player': 'black',
+                'engineMoves': game_data['blackEngineMoves'],
+                'totalMoves': sum(game_data['blackMoveQuality'].values()),
+                'percentage': round(game_data['blackEngineMoves'] / sum(game_data['blackMoveQuality'].values()) * 100, 1) if sum(game_data['blackMoveQuality'].values()) > 0 else 0,
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        # Check Inaccuracy King (most inaccuracies)
+        if inaccuracy_king is None or game_data['whiteMoveQuality']['inaccuracies'] > inaccuracy_king.get('inaccuracies', 0):
+            inaccuracy_king = {
+                'player': 'white',
+                'inaccuracies': game_data['whiteMoveQuality']['inaccuracies'],
+                'totalMoves': sum(game_data['whiteMoveQuality'].values()),
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
+        if inaccuracy_king is None or game_data['blackMoveQuality']['inaccuracies'] > inaccuracy_king.get('inaccuracies', 0):
+            inaccuracy_king = {
+                'player': 'black',
+                'inaccuracies': game_data['blackMoveQuality']['inaccuracies'],
+                'totalMoves': sum(game_data['blackMoveQuality'].values()),
+                'white': game_data['white'],
+                'black': game_data['black'],
+                'gameIndex': game_data['gameIndex']
+            }
+
     # Output JSON
     output = {
         'games': games_analyzed,
@@ -609,6 +669,8 @@ def main():
             'biggestBlunder': biggest_blunder,
             'comebackKing': comeback_king,
             'luckyEscape': lucky_escape,
+            'stockfishBuddy': stockfish_buddy,
+            'inaccuracyKing': inaccuracy_king,
             'lowestACPL': lowest_acpl,
             'highestACPL': highest_acpl,
             'lowestCombinedACPL': lowest_combined_acpl,

@@ -104,6 +104,23 @@ interface AnalysisData {
       black: string
       gameIndex: number
     } | null
+    stockfishBuddy: {
+      player: string
+      engineMoves: number
+      totalMoves: number
+      percentage: number
+      white: string
+      black: string
+      gameIndex: number
+    } | null
+    inaccuracyKing: {
+      player: string
+      inaccuracies: number
+      totalMoves: number
+      white: string
+      black: string
+      gameIndex: number
+    } | null
   }
 }
 
@@ -190,6 +207,38 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
               </div>
             }
             colorScheme="indigo"
+            featured
+          />
+        )}
+
+        {summary.stockfishBuddy && (
+          <StatBox
+            title="Stockfish Buddy"
+            emoji="🤖"
+            player={<PlayerName name={summary.stockfishBuddy.player === 'white' ? summary.stockfishBuddy.white : summary.stockfishBuddy.black} />}
+            details={
+              <div className="flex flex-col gap-1">
+                <span><strong className="text-blue-900 dark:text-blue-200">{summary.stockfishBuddy.engineMoves}</strong> engine-level moves</span>
+                <span className="text-xs">{summary.stockfishBuddy.percentage}% of all moves</span>
+              </div>
+            }
+            colorScheme="blue"
+            featured
+          />
+        )}
+
+        {summary.inaccuracyKing && (
+          <StatBox
+            title="Inaccuracy King"
+            emoji="🤔"
+            player={<PlayerName name={summary.inaccuracyKing.player === 'white' ? summary.inaccuracyKing.white : summary.inaccuracyKing.black} />}
+            details={
+              <div className="flex flex-col gap-1">
+                <span><strong className="text-orange-900 dark:text-orange-200">{summary.inaccuracyKing.inaccuracies}</strong> inaccuracies</span>
+                <span className="text-xs">Could be improved</span>
+              </div>
+            }
+            colorScheme="orange"
             featured
           />
         )}

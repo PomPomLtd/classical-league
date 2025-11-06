@@ -507,6 +507,23 @@ interface StatsData {
         black: string
         gameIndex: number
       } | null
+      stockfishBuddy: {
+        player: string
+        engineMoves: number
+        totalMoves: number
+        percentage: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
+      inaccuracyKing: {
+        player: string
+        inaccuracies: number
+        totalMoves: number
+        white: string
+        black: string
+        gameIndex: number
+      } | null
     }
   }
 }
