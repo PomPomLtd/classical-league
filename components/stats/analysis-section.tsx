@@ -230,7 +230,7 @@ export function AnalysisSection({ analysis }: AnalysisSectionProps) {
         {summary.inaccuracyKing && (
           <StatBox
             title="Inaccuracy King"
-            emoji="🤔"
+            emoji="👌"
             player={<PlayerName name={summary.inaccuracyKing.player === 'white' ? summary.inaccuracyKing.white : summary.inaccuracyKing.black} />}
             details={
               <div className="flex flex-col gap-1">
