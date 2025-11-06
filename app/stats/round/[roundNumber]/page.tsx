@@ -341,6 +341,25 @@ interface StatsData {
       white: string
       black: string
     } | null
+    antiOrthogonal: {
+      moves: number
+      gameIndex: number
+      gameId: string | null
+      color: string
+      white: string
+      black: string
+    } | null
+    comfortZone: {
+      percentage: number
+      pieceType: string
+      moves: number
+      totalNonPawnMoves: number
+      gameIndex: number
+      gameId: string | null
+      color: string
+      white: string
+      black: string
+    } | null
     homebody?: {
       white: string
       black: string
