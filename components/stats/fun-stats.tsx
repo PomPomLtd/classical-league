@@ -284,8 +284,8 @@ export function FunStats({ funStats }: FunStatsProps) {
         )}
 
         {funStats.slowestCastling && (
-          <div className="p-4 bg-fuchsia-50 dark:bg-fuchsia-900/20 rounded-lg">
-            <div className="font-semibold text-fuchsia-900 dark:text-fuchsia-300 mb-1">🐢 Slowest Castling</div>
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">🏰 Castle Commitment Issues</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
               <PlayerVs white={funStats.slowestCastling.white} black={funStats.slowestCastling.black} />
             </div>
@@ -392,8 +392,8 @@ export function FunStats({ funStats }: FunStatsProps) {
         )}
 
         {funStats.pawnCaptures && (
-          <div className="p-4 bg-rose-50 dark:bg-rose-900/20 rounded-lg">
-            <div className="font-semibold text-rose-900 dark:text-rose-300 mb-1">⚔️ Pawn Warrior</div>
+          <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+            <div className="font-semibold text-red-900 dark:text-red-300 mb-1">🏴 Peasant Uprising Award</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
               <PlayerVs white={funStats.pawnCaptures.white} black={funStats.pawnCaptures.black} />
             </div>
