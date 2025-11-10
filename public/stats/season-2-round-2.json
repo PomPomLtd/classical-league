@@ -1,16 +1,16 @@
 {
   "roundNumber": 2,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-06T10:52:54.424Z",
+  "generatedAt": "2025-11-10T12:27:17.615Z",
   "overview": {
     "totalGames": 33,
-    "totalMoves": 2484,
-    "averageGameLength": 37.63636363636363,
+    "totalMoves": 2322,
+    "averageGameLength": 36.28125,
     "longestGame": {
-      "moves": 81,
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M.",
-      "result": "0-1"
+      "moves": 69,
+      "white": "Joshua «Pristine Pawn Pusher» G.",
+      "black": "Nikola «Pawn Carnivore» N.",
+      "result": "1-0"
     },
     "shortestGame": {
       "moves": 14,
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 8.606060606060606,
-    "averageMiddlegame": 15.954545454545455,
-    "averageEndgame": 13.075757575757576,
+    "averageOpening": 8.703125,
+    "averageMiddlegame": 15.71875,
+    "averageEndgame": 11.859375,
     "longestWaitTillCapture": {
       "moves": 18,
       "white": "Fabienne «Chessy» S.",
@@ -36,10 +36,10 @@
       "game": "Fabienne «Chessy» S. vs Rainer «Quigli» S."
     },
     "longestEndgame": {
-      "moves": 52,
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M.",
-      "game": "Islam «xXBlackXx» H. vs Mario «ChessDude» M."
+      "moves": 42,
+      "white": "Tobias «tiuan» P.",
+      "black": "Arnaud «The French Squid» P.",
+      "game": "Tobias «tiuan» P. vs Arnaud «The French Squid» P."
     }
   },
   "results": {
@@ -54,18 +54,13 @@
     "firstMoves": {
       "e4": {
         "count": 25,
-        "percentage": 75.75757575757575,
+        "percentage": 78.125,
         "winRate": 48
       },
       "d4": {
         "count": 7,
-        "percentage": 21.21212121212121,
+        "percentage": 21.875,
         "winRate": 57.14285714285714
-      },
-      "Nf3": {
-        "count": 1,
-        "percentage": 3.0303030303030303,
-        "winRate": 0
       }
     },
     "popularSequences": [
@@ -86,12 +81,6 @@
         "count": 1,
         "eco": "A06",
         "name": "Zukertort Opening: Tennison Gambit"
-      },
-      {
-        "moves": "Nf3 d5 g3 Nf6 Bg2 Nc6",
-        "count": 1,
-        "eco": "A07",
-        "name": "King's Indian Attack"
       },
       {
         "moves": "d4 d6 e3 Nf6 Bd3 g6",
@@ -252,7 +241,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 572,
+    "totalCaptures": 543,
     "enPassantGames": [
       {
         "white": "Ramura «viennugambu» G.",
@@ -265,16 +254,16 @@
         "count": 2
       }
     ],
-    "promotions": 11,
+    "promotions": 8,
     "castling": {
-      "kingside": 45,
+      "kingside": 43,
       "queenside": 10
     },
     "bloodiestGame": {
-      "captures": 29,
-      "gameIndex": 6,
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "captures": 27,
+      "gameIndex": 4,
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
     },
     "quietestGame": {
       "captures": 6,
@@ -284,7 +273,7 @@
     },
     "longestNonCaptureStreak": {
       "moves": 36,
-      "gameIndex": 32,
+      "gameIndex": 31,
       "white": "Fabienne «Chessy» S.",
       "black": "Rainer «Quigli» S."
     },
@@ -293,30 +282,30 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 726,
-      "knights": 358,
-      "bishops": 375,
-      "rooks": 329,
-      "queens": 347,
-      "kings": 349
+      "pawns": 686,
+      "knights": 345,
+      "bishops": 341,
+      "rooks": 312,
+      "queens": 336,
+      "kings": 302
     },
     "captured": {
-      "pawns": 256,
-      "knights": 110,
-      "bishops": 91,
-      "rooks": 73,
-      "queens": 42
+      "pawns": 243,
+      "knights": 106,
+      "bishops": 87,
+      "rooks": 69,
+      "queens": 38
     },
     "survivalRate": {
-      "rooks": 0.44696969696969696,
-      "queens": 0.5303030303030303,
-      "bishops": 0.3106060606060606,
-      "knights": 0.16666666666666666
+      "rooks": 0.4609375,
+      "queens": 0.53125,
+      "bishops": 0.3203125,
+      "knights": 0.171875
     }
   },
   "checkmates": {
     "byPiece": {
-      "queen": 9,
+      "queen": 8,
       "rook": 1,
       "bishop": 2,
       "knight": 0,
@@ -337,9 +326,9 @@
       "description": "e5 saw 45 captures"
     },
     "mostPopularSquare": {
-      "square": "f6",
-      "visits": 106,
-      "description": "f6 was visited 106 times"
+      "square": "e5",
+      "visits": 102,
+      "description": "e5 was visited 102 times"
     },
     "leastPopularSquare": {
       "square": "a7",
@@ -358,45 +347,45 @@
       },
       {
         "square": "f6",
-        "captures": 39
+        "captures": 37
       },
       {
         "square": "d4",
         "captures": 35
       },
       {
-        "square": "e4",
-        "captures": 26
+        "square": "c3",
+        "captures": 25
       }
     ],
     "top5Popular": [
       {
-        "square": "f6",
-        "visits": 106
+        "square": "e5",
+        "visits": 102
       },
       {
-        "square": "e5",
-        "visits": 103
+        "square": "f6",
+        "visits": 101
       },
       {
         "square": "d5",
-        "visits": 91
+        "visits": 88
       },
       {
         "square": "e4",
-        "visits": 90
+        "visits": 86
       },
       {
         "square": "d4",
-        "visits": 86
+        "visits": 84
       }
     ]
   },
   "awards": {
     "bloodbath": {
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M.",
-      "captures": 29
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H.",
+      "captures": 27
     },
     "pacifist": {
       "white": "Boris «Out of Nowhere» G.",
@@ -410,9 +399,9 @@
       "winner": "Black"
     },
     "endgameWizard": {
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M.",
-      "endgameMoves": 52
+      "white": "Tobias «tiuan» P.",
+      "black": "Arnaud «The French Squid» P.",
+      "endgameMoves": 42
     },
     "openingSprinter": {
       "white": "Viktor «VHH93» H.",
@@ -423,7 +412,7 @@
   "funStats": {
     "fastestQueenTrade": {
       "moves": 5,
-      "gameIndex": 27,
+      "gameIndex": 26,
       "white": "Dogan «Kido» P.",
       "black": "Valentin «valentin_benglen» C."
     },
@@ -435,50 +424,50 @@
     },
     "longestCaptureSequence": {
       "length": 10,
-      "gameIndex": 10,
+      "gameIndex": 9,
       "startMove": 17,
       "white": "Manuel «Grundpatzer» C.",
       "black": "Simon «The Endgame Alchemist» L."
     },
     "longestCheckSequence": {
       "length": 12,
-      "gameIndex": 31,
+      "gameIndex": 30,
       "startMove": 38,
       "white": "Tobias «tiuan» P.",
       "black": "Arnaud «The French Squid» P."
     },
     "pawnStorm": {
       "count": 12,
-      "gameIndex": 21,
+      "gameIndex": 20,
       "white": "Matteo «Afraid of Caro-Kann» M.",
       "black": "Janic «Clasher» S."
     },
     "pieceLoyalty": null,
     "squareTourist": {
-      "squares": 18,
-      "gameIndex": 6,
+      "squares": 17,
+      "gameIndex": 4,
       "piece": "King",
       "color": "White",
       "startSquare": "e1",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
     },
     "castlingRace": {
       "moves": 5,
-      "gameIndex": 6,
-      "winner": "white",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "gameIndex": 9,
+      "winner": "black",
+      "white": "Manuel «Grundpatzer» C.",
+      "black": "Simon «The Endgame Alchemist» L."
     },
     "slowestCastling": {
       "moves": 20,
-      "gameIndex": 9,
+      "gameIndex": 8,
       "color": "white",
       "white": "Peter «Peaky Blunder» N.",
       "black": "Sam «Active King» B."
     },
     "openingHipster": {
-      "gameIndex": 26,
+      "gameIndex": 25,
       "eco": "B12",
       "name": "Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense",
       "moves": "e4 c6 d4 d5 e5 c5",
@@ -495,21 +484,21 @@
     },
     "sportyQueen": {
       "distance": 52,
-      "gameIndex": 31,
+      "gameIndex": 30,
       "color": "White",
       "white": "Tobias «tiuan» P.",
       "black": "Arnaud «The French Squid» P."
     },
     "edgeLord": {
-      "moves": 31,
-      "gameIndex": 6,
-      "color": "White",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "moves": 19,
+      "gameIndex": 30,
+      "color": "Black",
+      "white": "Tobias «tiuan» P.",
+      "black": "Arnaud «The French Squid» P."
     },
     "rookLift": {
       "moveNumber": 9,
-      "gameIndex": 17,
+      "gameIndex": 16,
       "color": "White",
       "rook": "White's e1 Rook",
       "square": "e1",
@@ -527,32 +516,32 @@
     },
     "darkLord": {
       "captures": 8,
-      "gameIndex": 6,
-      "color": "Black",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "gameIndex": 18,
+      "color": "White",
+      "white": "Alexander «Not Grischuk» .",
+      "black": "Davide «AME» V."
     },
     "chickenAward": {
-      "retreats": 24,
-      "gameIndex": 6,
+      "retreats": 16,
+      "gameIndex": 3,
       "color": "Black",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "white": "Joshua «Pristine Pawn Pusher» G.",
+      "black": "Nikola «Pawn Carnivore» N."
     },
     "pawnCaptures": {
       "captures": 6,
-      "gameIndex": 8,
+      "gameIndex": 7,
       "color": "black",
       "white": "Stefano «acheron» B.",
       "black": "Roger «Ruthless En Passant Shredder» H."
     },
     "antiOrthogonal": {
-      "moves": 23,
-      "gameIndex": 6,
+      "moves": 20,
+      "gameIndex": 27,
       "gameId": null,
       "color": "black",
-      "white": "Islam «xXBlackXx» H.",
-      "black": "Mario «ChessDude» M."
+      "white": "Oliver «Mouse Slip Expert» S.",
+      "black": "Florian «Knightmare» G."
     },
     "comfortZone": {
       "percentage": 61,
@@ -756,7 +745,7 @@
         },
         "longestTension": {
           "moves": 15,
-          "squares": "e5-f7",
+          "squares": "c6-e5",
           "startMove": 22,
           "endMove": 37
         },
@@ -766,25 +755,13 @@
         "white": "Islam «xXBlackXx» H.",
         "black": "Mario «ChessDude» M.",
         "enemyTerritory": {
-          "whitePiecesInEnemy": 6,
-          "blackPiecesInEnemy": 5,
-          "whiteFirstInvasion": 15,
-          "blackFirstInvasion": 22
+          "whitePiecesInEnemy": 0,
+          "blackPiecesInEnemy": 0,
+          "whiteFirstInvasion": null,
+          "blackFirstInvasion": null
         },
-        "mostAttackedSquare": {
-          "square": "e4",
-          "attackers": 6,
-          "whiteAttackers": 4,
-          "blackAttackers": 2,
-          "moveNumber": 17,
-          "move": "Nd2"
-        },
-        "longestTension": {
-          "moves": 7,
-          "squares": "f3-g4",
-          "startMove": 83,
-          "endMove": 90
-        },
+        "mostAttackedSquare": null,
+        "longestTension": null,
         "gameIndex": 6
       },
       {
@@ -1381,7 +1358,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "b6-b7",
+          "squares": "b7-d7",
           "startMove": 63,
           "endMove": 67
         },
@@ -1732,49 +1709,6 @@
         },
         "biggestComeback": null,
         "luckyEscape": null
-      },
-      {
-        "gameIndex": 6,
-        "white": "Islam «xXBlackXx» H.",
-        "black": "Mario «ChessDude» M.",
-        "whiteACPL": 130.4,
-        "blackACPL": 84.7,
-        "whiteAccuracy": 83.6,
-        "blackAccuracy": 86.1,
-        "whiteMoveQuality": {
-          "blunders": 3,
-          "mistakes": 5,
-          "inaccuracies": 11,
-          "good": 12,
-          "excellent": 50
-        },
-        "blackMoveQuality": {
-          "blunders": 1,
-          "mistakes": 8,
-          "inaccuracies": 7,
-          "good": 14,
-          "excellent": 51
-        },
-        "whiteEngineMoves": 50,
-        "blackEngineMoves": 51,
-        "biggestBlunder": {
-          "moveNumber": 52,
-          "player": "black",
-          "cpLoss": 359,
-          "winLoss": 38.587644604286744,
-          "severity": 54.11917155751216,
-          "move": "Bg5",
-          "evalBefore": -361,
-          "evalAfter": -2
-        },
-        "biggestComeback": null,
-        "luckyEscape": {
-          "player": "white",
-          "escapeAmount": 359,
-          "evalBefore": -361,
-          "evalAfter": -2,
-          "moveNumber": 52
-        }
       },
       {
         "gameIndex": 7,
@@ -2881,20 +2815,20 @@
       },
       "stockfishBuddy": {
         "player": "black",
-        "engineMoves": 51,
-        "totalMoves": 81,
-        "percentage": 63,
-        "white": "Islam «xXBlackXx» H.",
-        "black": "Mario «ChessDude» M.",
-        "gameIndex": 6
+        "engineMoves": 49,
+        "totalMoves": 68,
+        "percentage": 72.1,
+        "white": "Joshua «Pristine Pawn Pusher» G.",
+        "black": "Nikola «Pawn Carnivore» N.",
+        "gameIndex": 3
       },
       "inaccuracyKing": {
-        "player": "white",
+        "player": "black",
         "inaccuracies": 11,
-        "totalMoves": 81,
-        "white": "Islam «xXBlackXx» H.",
-        "black": "Mario «ChessDude» M.",
-        "gameIndex": 6
+        "totalMoves": 67,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "gameIndex": 7
       },
       "lowestACPL": {
         "player": "black",
@@ -2921,12 +2855,12 @@
         "gameIndex": 2
       },
       "highestCombinedACPL": {
-        "combinedACPL": 215.10000000000002,
-        "whiteACPL": 130.4,
-        "blackACPL": 84.7,
-        "white": "Islam «xXBlackXx» H.",
-        "black": "Mario «ChessDude» M.",
-        "gameIndex": 6
+        "combinedACPL": 207.5,
+        "whiteACPL": 106.5,
+        "blackACPL": 101,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Max «Bird is the word» W.",
+        "gameIndex": 7
       }
     }
   }
