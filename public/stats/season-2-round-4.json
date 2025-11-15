@@ -1,7 +1,7 @@
 {
   "roundNumber": 4,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-15T10:48:29.969Z",
+  "generatedAt": "2025-11-15T11:32:51.417Z",
   "overview": {
     "totalGames": 13,
     "totalMoves": 924,
@@ -407,11 +407,25 @@
       "black": "Jakob «Jaquemate » ."
     },
     "darkLord": {
+      "captures": 11,
+      "gameIndex": 4,
+      "color": "Black",
+      "white": "Oliver «Monkey sees Pawn» K.",
+      "black": "Alejandro «Waffle» E."
+    },
+    "lightLord": {
       "captures": 9,
       "gameIndex": 7,
       "color": "White",
       "white": "Alex «The Benoni Pulverizer» G.",
       "black": "Diego «The Bishop Slayer» R."
+    },
+    "parkourMaster": {
+      "knightMoves": 14,
+      "gameIndex": 4,
+      "color": "Black",
+      "white": "Oliver «Monkey sees Pawn» K.",
+      "black": "Alejandro «Waffle» E."
     },
     "chickenAward": {
       "retreats": 11,

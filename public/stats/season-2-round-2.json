@@ -1,7 +1,7 @@
 {
   "roundNumber": 2,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-10T12:27:17.615Z",
+  "generatedAt": "2025-11-15T11:26:31.080Z",
   "overview": {
     "totalGames": 33,
     "totalMoves": 2322,
@@ -515,11 +515,25 @@
       "black": "Nikola «Pawn Carnivore» N."
     },
     "darkLord": {
+      "captures": 9,
+      "gameIndex": 4,
+      "color": "White",
+      "white": "Ramura «viennugambu» G.",
+      "black": "Christopher «King Decimator» H."
+    },
+    "lightLord": {
       "captures": 8,
       "gameIndex": 18,
       "color": "White",
       "white": "Alexander «Not Grischuk» .",
       "black": "Davide «AME» V."
+    },
+    "parkourMaster": {
+      "knightMoves": 12,
+      "gameIndex": 6,
+      "color": "White",
+      "white": "Itamar «Itaberg» B.",
+      "black": "Max «Bird is the word» W."
     },
     "chickenAward": {
       "retreats": 16,
