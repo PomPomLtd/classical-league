@@ -1,39 +1,39 @@
 {
   "roundNumber": 4,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-12T12:36:38.106Z",
+  "generatedAt": "2025-11-15T10:48:29.969Z",
   "overview": {
-    "totalGames": 10,
-    "totalMoves": 718,
-    "averageGameLength": 35.9,
+    "totalGames": 13,
+    "totalMoves": 924,
+    "averageGameLength": 35.53846153846154,
     "longestGame": {
-      "moves": 49,
-      "white": "Oliver «Monkey sees Pawn» K.",
-      "black": "Alejandro «Waffle» E.",
-      "result": "0-1"
+      "moves": 56,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R.",
+      "result": "1-0"
     },
     "shortestGame": {
-      "moves": 24,
-      "white": "Osama «Ruiner of Bird's» A.",
-      "black": "Manuel «Grundpatzer» C.",
+      "moves": 19,
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B.",
       "result": "0-1"
     }
   },
   "gamePhases": {
-    "averageOpening": 9.55,
-    "averageMiddlegame": 15.8,
-    "averageEndgame": 10.55,
+    "averageOpening": 9.26923076923077,
+    "averageMiddlegame": 16.192307692307693,
+    "averageEndgame": 10.076923076923077,
     "longestWaitTillCapture": {
-      "moves": 8,
-      "white": "Osama «Ruiner of Bird's» A.",
-      "black": "Manuel «Grundpatzer» C.",
-      "game": "Osama «Ruiner of Bird's» A. vs Manuel «Grundpatzer» C."
+      "moves": 9,
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B.",
+      "game": "Jonathan «Panic Gambit» B. vs Itamar «Itaberg» B."
     },
     "longestMiddlegame": {
-      "moves": 22,
-      "white": "Christopher «Hangs Pieces for Fun» N.",
-      "black": "Adam «PawnRuinerAlpha» A.",
-      "game": "Christopher «Hangs Pieces for Fun» N. vs Adam «PawnRuinerAlpha» A."
+      "moves": 24,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R.",
+      "game": "Alex «The Benoni Pulverizer» G. vs Diego «The Bishop Slayer» R."
     },
     "longestEndgame": {
       "moves": 26,
@@ -43,24 +43,29 @@
     }
   },
   "results": {
-    "whiteWins": 5,
-    "blackWins": 4,
+    "whiteWins": 7,
+    "blackWins": 5,
     "draws": 1,
-    "whiteWinPercentage": 50,
-    "blackWinPercentage": 40,
-    "drawPercentage": 10
+    "whiteWinPercentage": 53.84615384615385,
+    "blackWinPercentage": 38.46153846153847,
+    "drawPercentage": 7.6923076923076925
   },
   "openings": {
     "firstMoves": {
       "c4": {
         "count": 2,
-        "percentage": 20,
+        "percentage": 15.384615384615385,
         "winRate": 50
       },
       "e4": {
-        "count": 8,
-        "percentage": 80,
+        "count": 10,
+        "percentage": 76.92307692307693,
         "winRate": 50
+      },
+      "d4": {
+        "count": 1,
+        "percentage": 7.6923076923076925,
+        "winRate": 100
       }
     },
     "popularSequences": [
@@ -117,28 +122,46 @@
         "count": 1,
         "eco": "C46",
         "name": "Three Knights Opening"
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 Nc3 a6",
+        "count": 1,
+        "eco": "C46",
+        "name": "Three Knights Opening"
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 d6",
+        "count": 1,
+        "eco": "C62",
+        "name": "Ruy Lopez: Steinitz Defense"
+      },
+      {
+        "moves": "d4 d5 Nf3 Nc6 e3 Bg4",
+        "count": 1,
+        "eco": "D02",
+        "name": "Queen's Pawn Game: Chigorin Variation"
       }
     ]
   },
   "tactics": {
-    "totalCaptures": 171,
+    "totalCaptures": 223,
     "enPassantGames": [],
     "promotions": 2,
     "castling": {
-      "kingside": 12,
+      "kingside": 18,
       "queenside": 1
     },
     "bloodiestGame": {
-      "captures": 24,
-      "gameIndex": 4,
-      "white": "Oliver «Monkey sees Pawn» K.",
-      "black": "Alejandro «Waffle» E."
+      "captures": 27,
+      "gameIndex": 7,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "quietestGame": {
-      "captures": 13,
-      "gameIndex": 1,
-      "white": "Stefano «acheron» B.",
-      "black": "Jakob «Jaquemate » ."
+      "captures": 7,
+      "gameIndex": 5,
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B."
     },
     "longestNonCaptureStreak": {
       "moves": 29,
@@ -151,41 +174,41 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 201,
-      "knights": 117,
-      "bishops": 125,
-      "rooks": 95,
-      "queens": 104,
-      "kings": 76
+      "pawns": 253,
+      "knights": 152,
+      "bishops": 157,
+      "rooks": 123,
+      "queens": 139,
+      "kings": 100
     },
     "captured": {
-      "pawns": 80,
-      "knights": 34,
-      "bishops": 31,
-      "rooks": 17,
-      "queens": 9
+      "pawns": 105,
+      "knights": 43,
+      "bishops": 39,
+      "rooks": 24,
+      "queens": 12
     },
     "survivalRate": {
-      "rooks": 0.575,
-      "queens": 0.65,
-      "bishops": 0.225,
-      "knights": 0.15
+      "rooks": 0.5384615384615384,
+      "queens": 0.6153846153846154,
+      "bishops": 0.25,
+      "knights": 0.17307692307692307
     }
   },
   "checkmates": {
     "byPiece": {
       "queen": 0,
-      "rook": 2,
+      "rook": 3,
       "bishop": 0,
       "knight": 0,
       "pawn": 0
     },
     "fastest": {
-      "moves": 30,
-      "gameIndex": 9,
-      "white": "Silvan «Fork This Fork That» S.",
-      "black": "Michael «Mivobu» B.",
-      "winner": "Black"
+      "moves": 29,
+      "gameIndex": 12,
+      "white": "Fabienne «Chessy» S.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "winner": "White"
     }
   },
   "boardHeatmap": {
@@ -195,14 +218,14 @@
       "description": "d4 saw 23 captures"
     },
     "mostPopularSquare": {
-      "square": "d4",
-      "visits": 37,
-      "description": "d4 was visited 37 times"
+      "square": "d5",
+      "visits": 42,
+      "description": "d5 was visited 42 times"
     },
     "leastPopularSquare": {
-      "square": "f8",
+      "square": "a7",
       "visits": 1,
-      "description": "f8 was only visited 1 times"
+      "description": "a7 was only visited 1 times"
     },
     "quietestSquares": [],
     "top5Bloodiest": [
@@ -211,61 +234,61 @@
         "captures": 23
       },
       {
-        "square": "d5",
-        "captures": 17
+        "square": "e5",
+        "captures": 21
       },
       {
-        "square": "e5",
-        "captures": 15
+        "square": "d5",
+        "captures": 20
+      },
+      {
+        "square": "f3",
+        "captures": 10
       },
       {
         "square": "f6",
         "captures": 10
-      },
-      {
-        "square": "c5",
-        "captures": 8
       }
     ],
     "top5Popular": [
       {
-        "square": "d4",
-        "visits": 37
-      },
-      {
         "square": "d5",
-        "visits": 36
+        "visits": 42
       },
       {
         "square": "e5",
-        "visits": 31
+        "visits": 41
+      },
+      {
+        "square": "d4",
+        "visits": 40
       },
       {
         "square": "f6",
-        "visits": 30
+        "visits": 38
       },
       {
         "square": "f3",
-        "visits": 26
+        "visits": 36
       }
     ]
   },
   "awards": {
     "bloodbath": {
-      "white": "Oliver «Monkey sees Pawn» K.",
-      "black": "Alejandro «Waffle» E.",
-      "captures": 24
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R.",
+      "captures": 27
     },
     "pacifist": {
-      "white": "Stefano «acheron» B.",
-      "black": "Jakob «Jaquemate » .",
-      "captures": 13
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B.",
+      "captures": 7
     },
     "speedDemon": {
-      "white": "Silvan «Fork This Fork That» S.",
-      "black": "Michael «Mivobu» B.",
-      "moves": 30,
-      "winner": "Black"
+      "white": "Fabienne «Chessy» S.",
+      "black": "Jack «NoBackwardMoves» C.",
+      "moves": 29,
+      "winner": "White"
     },
     "endgameWizard": {
       "white": "Oliver «Monkey sees Pawn» K.",
@@ -287,7 +310,7 @@
     },
     "slowestQueenTrade": {
       "moves": 36,
-      "gameIndex": 7,
+      "gameIndex": 9,
       "white": "Peter «Peaky Blunder» N.",
       "black": "bela «bela» O."
     },
@@ -300,14 +323,14 @@
     },
     "longestCheckSequence": {
       "length": 9,
-      "gameIndex": 5,
+      "gameIndex": 6,
       "startMove": 7,
       "white": "Alexander «London Annihilator» M.",
       "black": "Johannes «Jo» N."
     },
     "pawnStorm": {
       "count": 11,
-      "gameIndex": 6,
+      "gameIndex": 8,
       "white": "Boris «Out of Nowhere» G.",
       "black": "Iannis «Modern Pulverizer» D."
     },
@@ -318,15 +341,15 @@
       "piece": "Queen",
       "color": "White",
       "startSquare": "d1",
-      "white": "Peter «Peaky Blunder» N.",
-      "black": "bela «bela» O."
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "castlingRace": {
-      "moves": 7,
-      "gameIndex": 8,
-      "winner": "black",
-      "white": "Christopher «Hangs Pieces for Fun» N.",
-      "black": "Adam «PawnRuinerAlpha» A."
+      "moves": 4,
+      "gameIndex": 5,
+      "winner": "white",
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B."
     },
     "slowestCastling": {
       "moves": 24,
@@ -353,26 +376,26 @@
     },
     "sportyQueen": {
       "distance": 71,
-      "gameIndex": 7,
+      "gameIndex": 9,
       "color": "White",
       "white": "Peter «Peaky Blunder» N.",
       "black": "bela «bela» O."
     },
     "edgeLord": {
-      "moves": 15,
+      "moves": 20,
       "gameIndex": 7,
       "color": "Black",
-      "white": "Peter «Peaky Blunder» N.",
-      "black": "bela «bela» O."
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "rookLift": {
-      "moveNumber": 15,
-      "gameIndex": 4,
-      "color": "Black",
-      "rook": "Black's f8 Rook",
-      "square": "f8",
-      "white": "Oliver «Monkey sees Pawn» K.",
-      "black": "Alejandro «Waffle» E."
+      "moveNumber": 11,
+      "gameIndex": 5,
+      "color": "White",
+      "rook": "White's e1 Rook",
+      "square": "e1",
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Itamar «Itaberg» B."
     },
     "centerStage": {
       "moves": 4,
@@ -384,18 +407,18 @@
       "black": "Jakob «Jaquemate » ."
     },
     "darkLord": {
-      "captures": 7,
-      "gameIndex": 0,
+      "captures": 9,
+      "gameIndex": 7,
       "color": "White",
-      "white": "Viktor «VHH93» H.",
-      "black": "Jacopo «Bildothebest» B."
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "chickenAward": {
-      "retreats": 9,
-      "gameIndex": 8,
+      "retreats": 11,
+      "gameIndex": 7,
       "color": "Black",
-      "white": "Christopher «Hangs Pieces for Fun» N.",
-      "black": "Adam «PawnRuinerAlpha» A."
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "pawnCaptures": {
       "captures": 7,
@@ -405,19 +428,19 @@
       "black": "Alejandro «Waffle» E."
     },
     "antiOrthogonal": {
-      "moves": 17,
+      "moves": 18,
       "gameIndex": 7,
       "gameId": null,
       "color": "white",
-      "white": "Peter «Peaky Blunder» N.",
-      "black": "bela «bela» O."
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Diego «The Bishop Slayer» R."
     },
     "comfortZone": {
       "percentage": 52,
       "pieceType": "queen",
       "moves": 17,
       "totalNonPawnMoves": 33,
-      "gameIndex": 7,
+      "gameIndex": 9,
       "gameId": null,
       "color": "white",
       "white": "Peter «Peaky Blunder» N.",
@@ -596,6 +619,31 @@
         "gameIndex": 4
       },
       {
+        "white": "Jonathan «Panic Gambit» B.",
+        "black": "Itamar «Itaberg» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 3,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 3,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 6,
+          "squares": "e4-f6",
+          "startMove": 25,
+          "endMove": 31
+        },
+        "gameIndex": 5
+      },
+      {
         "white": "Alexander «London Annihilator» M.",
         "black": "Johannes «Jo» N.",
         "enemyTerritory": {
@@ -618,7 +666,32 @@
           "startMove": 15,
           "endMove": 21
         },
-        "gameIndex": 5
+        "gameIndex": 6
+      },
+      {
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 6
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 7,
+          "whiteAttackers": 3,
+          "blackAttackers": 4,
+          "moveNumber": 56,
+          "move": "Nc6"
+        },
+        "longestTension": {
+          "moves": 32,
+          "squares": "c5-d4",
+          "startMove": 28,
+          "endMove": 60
+        },
+        "gameIndex": 7
       },
       {
         "white": "Boris «Out of Nowhere» G.",
@@ -643,7 +716,7 @@
           "startMove": 23,
           "endMove": 35
         },
-        "gameIndex": 6
+        "gameIndex": 8
       },
       {
         "white": "Peter «Peaky Blunder» N.",
@@ -668,7 +741,7 @@
           "startMove": 15,
           "endMove": 19
         },
-        "gameIndex": 7
+        "gameIndex": 9
       },
       {
         "white": "Christopher «Hangs Pieces for Fun» N.",
@@ -693,7 +766,7 @@
           "startMove": 12,
           "endMove": 50
         },
-        "gameIndex": 8
+        "gameIndex": 10
       },
       {
         "white": "Silvan «Fork This Fork That» S.",
@@ -718,11 +791,36 @@
           "startMove": 27,
           "endMove": 42
         },
-        "gameIndex": 9
+        "gameIndex": 11
+      },
+      {
+        "white": "Fabienne «Chessy» S.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 2,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "e5",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 43,
+          "move": "Bc3"
+        },
+        "longestTension": {
+          "moves": 20,
+          "squares": "c6-d5",
+          "startMove": 24,
+          "endMove": 44
+        },
+        "gameIndex": 12
       }
     ],
     "summary": {
-      "totalGames": 10,
+      "totalGames": 13,
       "homebody": {
         "white": "Stefano «acheron» B.",
         "black": "Jakob «Jaquemate » .",
@@ -761,7 +859,7 @@
         "black": "Michael «Mivobu» B.",
         "player": "black",
         "moveNumber": 28,
-        "gameIndex": 9
+        "gameIndex": 11
       },
       "quickDraw": {
         "white": "Stefano «acheron» B.",
@@ -777,7 +875,7 @@
         "squares": "e5-f3",
         "startMove": 12,
         "endMove": 50,
-        "gameIndex": 8
+        "gameIndex": 10
       }
     }
   },
@@ -995,6 +1093,43 @@
       },
       {
         "gameIndex": 5,
+        "white": "Jonathan «Panic Gambit» B.",
+        "black": "Itamar «Itaberg» B.",
+        "whiteACPL": 39.8,
+        "blackACPL": 20.7,
+        "whiteAccuracy": 80,
+        "blackAccuracy": 88.5,
+        "whiteMoveQuality": {
+          "blunders": 2,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 4,
+          "excellent": 9
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 2,
+          "inaccuracies": 0,
+          "good": 5,
+          "excellent": 12
+        },
+        "whiteEngineMoves": 9,
+        "blackEngineMoves": 12,
+        "biggestBlunder": {
+          "moveNumber": 9,
+          "player": "white",
+          "cpLoss": 157,
+          "winLoss": 21.34574503992671,
+          "severity": 21.34574503992671,
+          "move": "d4",
+          "evalBefore": 7,
+          "evalAfter": -150
+        },
+        "biggestComeback": null,
+        "luckyEscape": null
+      },
+      {
+        "gameIndex": 6,
         "white": "Alexander «London Annihilator» M.",
         "black": "Johannes «Jo» N.",
         "whiteACPL": 44.8,
@@ -1037,7 +1172,50 @@
         }
       },
       {
-        "gameIndex": 6,
+        "gameIndex": 7,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
+        "whiteACPL": 83.6,
+        "blackACPL": 150.7,
+        "whiteAccuracy": 86.9,
+        "blackAccuracy": 83.8,
+        "whiteMoveQuality": {
+          "blunders": 3,
+          "mistakes": 1,
+          "inaccuracies": 3,
+          "good": 7,
+          "excellent": 42
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 3,
+          "inaccuracies": 7,
+          "good": 6,
+          "excellent": 37
+        },
+        "whiteEngineMoves": 42,
+        "blackEngineMoves": 37,
+        "biggestBlunder": {
+          "moveNumber": 21,
+          "player": "black",
+          "cpLoss": 455,
+          "winLoss": 57.08866080283998,
+          "severity": 57.08866080283998,
+          "move": "g5",
+          "evalBefore": -192,
+          "evalAfter": 263
+        },
+        "biggestComeback": null,
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 235,
+          "evalBefore": 254,
+          "evalAfter": 19,
+          "moveNumber": 23
+        }
+      },
+      {
+        "gameIndex": 8,
         "white": "Boris «Out of Nowhere» G.",
         "black": "Iannis «Modern Pulverizer» D.",
         "whiteACPL": 49.5,
@@ -1074,7 +1252,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 7,
+        "gameIndex": 9,
         "white": "Peter «Peaky Blunder» N.",
         "black": "bela «bela» O.",
         "whiteACPL": 76.4,
@@ -1125,7 +1303,7 @@
         }
       },
       {
-        "gameIndex": 8,
+        "gameIndex": 10,
         "white": "Christopher «Hangs Pieces for Fun» N.",
         "black": "Adam «PawnRuinerAlpha» A.",
         "whiteACPL": 37.7,
@@ -1162,7 +1340,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 9,
+        "gameIndex": 11,
         "white": "Silvan «Fork This Fork That» S.",
         "black": "Michael «Mivobu» B.",
         "whiteACPL": 40.1,
@@ -1197,6 +1375,48 @@
         },
         "biggestComeback": null,
         "luckyEscape": null
+      },
+      {
+        "gameIndex": 12,
+        "white": "Fabienne «Chessy» S.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "whiteACPL": 17.9,
+        "blackACPL": 41.2,
+        "whiteAccuracy": 81.1,
+        "blackAccuracy": 88.1,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 3,
+          "good": 2,
+          "excellent": 23
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 6,
+          "good": 5,
+          "excellent": 16
+        },
+        "whiteEngineMoves": 23,
+        "blackEngineMoves": 16,
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M1",
+          "evalTo": "M0",
+          "evalFromCp": 9990,
+          "evalToCp": -10000,
+          "moveNumber": 29
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -10,
+          "evalBefore": 9990,
+          "evalAfter": -10000,
+          "moveNumber": 29
+        }
       }
     ],
     "summary": {
@@ -1206,7 +1426,7 @@
         "acpl": 49.5,
         "white": "Boris «Out of Nowhere» G.",
         "black": "Iannis «Modern Pulverizer» D.",
-        "gameIndex": 6
+        "gameIndex": 8
       },
       "biggestBlunder": {
         "moveNumber": 23,
@@ -1231,7 +1451,7 @@
         "moveNumber": 47,
         "white": "Peter «Peaky Blunder» N.",
         "black": "bela «bela» O.",
-        "gameIndex": 7
+        "gameIndex": 9
       },
       "luckyEscape": {
         "player": "black",
@@ -1245,51 +1465,51 @@
       },
       "stockfishBuddy": {
         "player": "white",
-        "engineMoves": 36,
-        "totalMoves": 49,
-        "percentage": 73.5,
-        "white": "Oliver «Monkey sees Pawn» K.",
-        "black": "Alejandro «Waffle» E.",
-        "gameIndex": 4
+        "engineMoves": 42,
+        "totalMoves": 56,
+        "percentage": 75,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
+        "gameIndex": 7
       },
       "inaccuracyKing": {
-        "player": "white",
-        "inaccuracies": 6,
-        "totalMoves": 45,
-        "white": "Viktor «VHH93» H.",
-        "black": "Jacopo «Bildothebest» B.",
-        "gameIndex": 0
+        "player": "black",
+        "inaccuracies": 7,
+        "totalMoves": 55,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
+        "gameIndex": 7
       },
       "lowestACPL": {
-        "player": "black",
-        "acpl": 25.7,
-        "accuracy": 87.1,
-        "white": "Christopher «Hangs Pieces for Fun» N.",
-        "black": "Adam «PawnRuinerAlpha» A.",
-        "gameIndex": 8
+        "player": "white",
+        "acpl": 17.9,
+        "accuracy": 81.1,
+        "white": "Fabienne «Chessy» S.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "gameIndex": 12
       },
       "highestACPL": {
-        "player": "white",
-        "acpl": 118,
-        "accuracy": 86,
-        "white": "Oliver «Monkey sees Pawn» K.",
-        "black": "Alejandro «Waffle» E.",
-        "gameIndex": 4
+        "player": "black",
+        "acpl": 150.7,
+        "accuracy": 83.8,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
+        "gameIndex": 7
       },
       "lowestCombinedACPL": {
-        "combinedACPL": 63.400000000000006,
-        "whiteACPL": 37.7,
-        "blackACPL": 25.7,
-        "white": "Christopher «Hangs Pieces for Fun» N.",
-        "black": "Adam «PawnRuinerAlpha» A.",
-        "gameIndex": 8
+        "combinedACPL": 59.1,
+        "whiteACPL": 17.9,
+        "blackACPL": 41.2,
+        "white": "Fabienne «Chessy» S.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "gameIndex": 12
       },
       "highestCombinedACPL": {
-        "combinedACPL": 190.10000000000002,
-        "whiteACPL": 76.4,
-        "blackACPL": 113.7,
-        "white": "Peter «Peaky Blunder» N.",
-        "black": "bela «bela» O.",
+        "combinedACPL": 234.29999999999998,
+        "whiteACPL": 83.6,
+        "blackACPL": 150.7,
+        "white": "Alex «The Benoni Pulverizer» G.",
+        "black": "Diego «The Bishop Slayer» R.",
         "gameIndex": 7
       }
     }
