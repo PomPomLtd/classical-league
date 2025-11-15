@@ -327,6 +327,20 @@ interface StatsData {
       white: string
       black: string
     } | null
+    lightLord: {
+      captures: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    parkourMaster: {
+      knightMoves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     chickenAward: {
       retreats: number
       gameIndex: number
