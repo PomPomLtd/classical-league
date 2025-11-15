@@ -26,7 +26,19 @@ function findHallOfFame(rounds) {
     earliestCastling: null,
     mostObscureOpening: null,
     biggestComeback: null,
-    luckyEscape: null
+    luckyEscape: null,
+    parkourMaster: null,
+    pawnCaptures: null,
+    dadbodShuffler: null,
+    darkLord: null,
+    lightLord: null,
+    squareTourist: null,
+    pieceLoyalty: null,
+    slowestCastling: null,
+    fastestQueenTrade: null,
+    slowestQueenTrade: null,
+    edgeLord: null,
+    pawnStorm: null
   }
 
   rounds.forEach(round => {
@@ -158,6 +170,102 @@ function findHallOfFame(rounds) {
       // We can't easily compare obscurity across rounds, so just take first one for now
       if (!hallOfFame.mostObscureOpening) {
         hallOfFame.mostObscureOpening = { round: roundNum, ...opening }
+      }
+    }
+
+    // Parkour master (most knight moves)
+    if (round.funStats?.parkourMaster) {
+      const parkour = round.funStats.parkourMaster
+      if (!hallOfFame.parkourMaster || parkour.knightMoves > hallOfFame.parkourMaster.knightMoves) {
+        hallOfFame.parkourMaster = { round: roundNum, ...parkour }
+      }
+    }
+
+    // Pawn captures (most captures by pawns)
+    if (round.funStats?.pawnCaptures) {
+      const pawnCaptures = round.funStats.pawnCaptures
+      if (!hallOfFame.pawnCaptures || pawnCaptures.captures > hallOfFame.pawnCaptures.captures) {
+        hallOfFame.pawnCaptures = { round: roundNum, ...pawnCaptures }
+      }
+    }
+
+    // Dadbod shuffler (most king moves)
+    if (round.funStats?.dadbodShuffler) {
+      const dadbod = round.funStats.dadbodShuffler
+      if (!hallOfFame.dadbodShuffler || dadbod.moves > hallOfFame.dadbodShuffler.moves) {
+        hallOfFame.dadbodShuffler = { round: roundNum, ...dadbod }
+      }
+    }
+
+    // Dark lord (most dark square captures)
+    if (round.funStats?.darkLord) {
+      const darkLord = round.funStats.darkLord
+      if (!hallOfFame.darkLord || darkLord.captures > hallOfFame.darkLord.captures) {
+        hallOfFame.darkLord = { round: roundNum, ...darkLord }
+      }
+    }
+
+    // Light lord (most light square captures)
+    if (round.funStats?.lightLord) {
+      const lightLord = round.funStats.lightLord
+      if (!hallOfFame.lightLord || lightLord.captures > hallOfFame.lightLord.captures) {
+        hallOfFame.lightLord = { round: roundNum, ...lightLord }
+      }
+    }
+
+    // Square tourist (most squares visited)
+    if (round.funStats?.squareTourist) {
+      const tourist = round.funStats.squareTourist
+      if (!hallOfFame.squareTourist || tourist.squares > hallOfFame.squareTourist.squares) {
+        hallOfFame.squareTourist = { round: roundNum, ...tourist }
+      }
+    }
+
+    // Piece loyalty (longest time on one square)
+    if (round.funStats?.pieceLoyalty) {
+      const loyalty = round.funStats.pieceLoyalty
+      if (!hallOfFame.pieceLoyalty || loyalty.moves > hallOfFame.pieceLoyalty.moves) {
+        hallOfFame.pieceLoyalty = { round: roundNum, ...loyalty }
+      }
+    }
+
+    // Slowest castling
+    if (round.funStats?.slowestCastling) {
+      const slowCastle = round.funStats.slowestCastling
+      if (!hallOfFame.slowestCastling || slowCastle.moves > hallOfFame.slowestCastling.moves) {
+        hallOfFame.slowestCastling = { round: roundNum, ...slowCastle }
+      }
+    }
+
+    // Fastest queen trade
+    if (round.funStats?.fastestQueenTrade) {
+      const fastQueen = round.funStats.fastestQueenTrade
+      if (!hallOfFame.fastestQueenTrade || fastQueen.moves < hallOfFame.fastestQueenTrade.moves) {
+        hallOfFame.fastestQueenTrade = { round: roundNum, ...fastQueen }
+      }
+    }
+
+    // Slowest queen trade
+    if (round.funStats?.slowestQueenTrade) {
+      const slowQueen = round.funStats.slowestQueenTrade
+      if (!hallOfFame.slowestQueenTrade || slowQueen.moves > hallOfFame.slowestQueenTrade.moves) {
+        hallOfFame.slowestQueenTrade = { round: roundNum, ...slowQueen }
+      }
+    }
+
+    // Edge lord (most edge file moves)
+    if (round.funStats?.edgeLord) {
+      const edgeLord = round.funStats.edgeLord
+      if (!hallOfFame.edgeLord || edgeLord.moves > hallOfFame.edgeLord.moves) {
+        hallOfFame.edgeLord = { round: roundNum, ...edgeLord }
+      }
+    }
+
+    // Pawn storm (most pawn moves in opening)
+    if (round.funStats?.pawnStorm) {
+      const pawnStorm = round.funStats.pawnStorm
+      if (!hallOfFame.pawnStorm || pawnStorm.count > hallOfFame.pawnStorm.count) {
+        hallOfFame.pawnStorm = { round: roundNum, ...pawnStorm }
       }
     }
   })
