@@ -50,6 +50,18 @@ export interface HallOfFame {
   mostObscureOpening: OpeningSuperlative | null
   biggestComeback: ComebackSuperlative | null
   luckyEscape: EscapeSuperlative | null
+  parkourMaster: ColorMetricSuperlative | null
+  pawnCaptures: ColorMetricSuperlative | null
+  dadbodShuffler: ColorMetricSuperlative | null
+  darkLord: ColorMetricSuperlative | null
+  lightLord: ColorMetricSuperlative | null
+  squareTourist: TouristSuperlative | null
+  pieceLoyalty: LoyaltySuperlative | null
+  slowestCastling: SimpleCastlingSuperlative | null
+  fastestQueenTrade: QueenTradeSuperlative | null
+  slowestQueenTrade: QueenTradeSuperlative | null
+  edgeLord: ColorMetricSuperlative | null
+  pawnStorm: PawnStormSuperlative | null
 }
 
 export interface GameSuperlative {
@@ -297,4 +309,63 @@ export interface AwardFrequencyEntry {
   displayName: string
   appearances: number
   percentage: number
+}
+
+// Additional Hall of Fame superlative types
+
+export interface ColorMetricSuperlative {
+  round: number
+  knightMoves?: number  // For parkourMaster
+  captures?: number      // For pawnCaptures, darkLord, lightLord
+  moves?: number         // For dadbodShuffler, edgeLord
+  color: string
+  white: string
+  black: string
+  gameIndex: number
+}
+
+export interface TouristSuperlative {
+  round: number
+  squares: number
+  piece: string
+  startSquare: string
+  color: string
+  white: string
+  black: string
+  gameIndex: number
+}
+
+export interface LoyaltySuperlative {
+  round: number
+  moves: number
+  piece: string
+  square: string
+  white: string
+  black: string
+  gameIndex: number
+}
+
+export interface SimpleCastlingSuperlative {
+  round: number
+  moves: number
+  color: string
+  white: string
+  black: string
+  gameIndex: number
+}
+
+export interface QueenTradeSuperlative {
+  round: number
+  moves: number
+  white: string
+  black: string
+  gameIndex: number
+}
+
+export interface PawnStormSuperlative {
+  round: number
+  count: number
+  white: string
+  black: string
+  gameIndex: number
 }

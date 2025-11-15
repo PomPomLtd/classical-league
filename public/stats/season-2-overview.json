@@ -1,6 +1,6 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-11-15T12:09:31.063Z",
+  "generatedAt": "2025-11-15T12:27:41.609Z",
   "roundsIncluded": [
     1,
     2,
@@ -166,6 +166,94 @@
       "white": "Christopher «Ong Passong» G.",
       "black": "Stefano «acheron» B.",
       "gameIndex": 1
+    },
+    "parkourMaster": {
+      "round": 3,
+      "knightMoves": 25,
+      "gameIndex": 7,
+      "color": "Black",
+      "white": "Nakul «Na cool» P.",
+      "black": "Max «Bird is the word» W."
+    },
+    "pawnCaptures": {
+      "round": 4,
+      "captures": 7,
+      "gameIndex": 4,
+      "color": "black",
+      "white": "Oliver «Monkey sees Pawn» K.",
+      "black": "Alejandro «Waffle» E."
+    },
+    "dadbodShuffler": {
+      "round": 3,
+      "moves": 36,
+      "gameIndex": 22,
+      "color": "White",
+      "white": "Loris «LorisNiUr» U.",
+      "black": "Giacomo «Bishop Airlines » R."
+    },
+    "darkLord": {
+      "round": 4,
+      "captures": 11,
+      "gameIndex": 4,
+      "color": "Black",
+      "white": "Oliver «Monkey sees Pawn» K.",
+      "black": "Alejandro «Waffle» E."
+    },
+    "lightLord": {
+      "round": 3,
+      "captures": 10,
+      "gameIndex": 22,
+      "color": "Black",
+      "white": "Loris «LorisNiUr» U.",
+      "black": "Giacomo «Bishop Airlines » R."
+    },
+    "squareTourist": {
+      "round": 1,
+      "squares": 25,
+      "gameIndex": 9,
+      "piece": "King",
+      "color": "Black",
+      "startSquare": "e8",
+      "white": "Mario «ChessDude» M.",
+      "black": "Dogan «Kido» P."
+    },
+    "pieceLoyalty": null,
+    "slowestCastling": {
+      "round": 4,
+      "moves": 24,
+      "gameIndex": 1,
+      "color": "white",
+      "white": "Stefano «acheron» B.",
+      "black": "Jakob «Jaquemate » ."
+    },
+    "fastestQueenTrade": {
+      "round": 2,
+      "moves": 5,
+      "gameIndex": 26,
+      "white": "Dogan «Kido» P.",
+      "black": "Valentin «valentin_benglen» C."
+    },
+    "slowestQueenTrade": {
+      "round": 3,
+      "moves": 76,
+      "gameIndex": 23,
+      "white": "Davide «AME» V.",
+      "black": "Oliver «Monkey sees Pawn» K."
+    },
+    "edgeLord": {
+      "round": 3,
+      "moves": 33,
+      "gameIndex": 23,
+      "color": "White",
+      "white": "Davide «AME» V.",
+      "black": "Oliver «Monkey sees Pawn» K."
+    },
+    "pawnStorm": {
+      "round": 1,
+      "count": 13,
+      "gameIndex": 20,
+      "white": "Janic «Clasher» S.",
+      "black": "Boris «Out of Nowhere» G."
     }
   },
   "playerStats": {
