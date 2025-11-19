@@ -1,11 +1,11 @@
 {
   "roundNumber": 4,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-19T12:32:15.441Z",
+  "generatedAt": "2025-11-19T12:52:28.323Z",
   "overview": {
-    "totalGames": 30,
-    "totalMoves": 2113,
-    "averageGameLength": 37.732142857142854,
+    "totalGames": 31,
+    "totalMoves": 2211,
+    "averageGameLength": 38.12068965517241,
     "longestGame": {
       "moves": 79,
       "white": "Torsten «torstyehocara» J.",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 9.089285714285714,
-    "averageMiddlegame": 16.785714285714285,
-    "averageEndgame": 11.857142857142858,
+    "averageOpening": 9.10344827586207,
+    "averageMiddlegame": 17.310344827586206,
+    "averageEndgame": 11.706896551724139,
     "longestWaitTillCapture": {
       "moves": 11,
       "white": "Andrei «PawnWreckerAlpha» A.",
@@ -30,10 +30,10 @@
       "game": "Andrei «PawnWreckerAlpha» A. vs Jonathan «EnCroissant1997» D."
     },
     "longestMiddlegame": {
-      "moves": 27,
-      "white": "Mario «ChessDude» M.",
-      "black": "Christopher «Ong Passong» G.",
-      "game": "Mario «ChessDude» M. vs Christopher «Ong Passong» G."
+      "moves": 32,
+      "white": "Giacomo «Bishop Airlines » R.",
+      "black": "Adela «Adele» P.",
+      "game": "Giacomo «Bishop Airlines » R. vs Adela «Adele» P."
     },
     "longestEndgame": {
       "moves": 56,
@@ -43,33 +43,33 @@
     }
   },
   "results": {
-    "whiteWins": 15,
+    "whiteWins": 16,
     "blackWins": 11,
     "draws": 4,
-    "whiteWinPercentage": 50,
-    "blackWinPercentage": 36.666666666666664,
-    "drawPercentage": 13.333333333333334
+    "whiteWinPercentage": 51.61290322580645,
+    "blackWinPercentage": 35.483870967741936,
+    "drawPercentage": 12.903225806451612
   },
   "openings": {
     "firstMoves": {
       "e4": {
-        "count": 19,
-        "percentage": 67.85714285714286,
-        "winRate": 47.368421052631575
+        "count": 20,
+        "percentage": 68.96551724137932,
+        "winRate": 50
       },
       "d4": {
         "count": 6,
-        "percentage": 21.428571428571427,
+        "percentage": 20.689655172413794,
         "winRate": 66.66666666666666
       },
       "Nf3": {
         "count": 1,
-        "percentage": 3.571428571428571,
+        "percentage": 3.4482758620689653,
         "winRate": 0
       },
       "c4": {
         "count": 2,
-        "percentage": 7.142857142857142,
+        "percentage": 6.896551724137931,
         "winRate": 50
       }
     },
@@ -151,6 +151,12 @@
         "count": 1,
         "eco": "B13",
         "name": "Caro-Kann Defense: Exchange Variation"
+      },
+      {
+        "moves": "e4 c5 Nf3 Nc6 Bb5 e5",
+        "count": 1,
+        "eco": "B30",
+        "name": "Sicilian Defense: Nyezhmetdinov-Rossolimo Attack"
       },
       {
         "moves": "e4 c5 Nf3 Nc6 c3 e5",
@@ -239,7 +245,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 489,
+    "totalCaptures": 511,
     "enPassantGames": [
       {
         "white": "Eva «Miss of King» S.",
@@ -249,12 +255,12 @@
     ],
     "promotions": 7,
     "castling": {
-      "kingside": 41,
+      "kingside": 43,
       "queenside": 5
     },
     "bloodiestGame": {
       "captures": 29,
-      "gameIndex": 20,
+      "gameIndex": 21,
       "white": "Torsten «torstyehocara» J.",
       "black": "Loris «LorisNiUr» U."
     },
@@ -275,25 +281,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 591,
-      "knights": 342,
-      "bishops": 324,
-      "rooks": 272,
-      "queens": 308,
-      "kings": 276
+      "pawns": 616,
+      "knights": 354,
+      "bishops": 334,
+      "rooks": 297,
+      "queens": 328,
+      "kings": 282
     },
     "captured": {
-      "pawns": 223,
-      "knights": 90,
-      "bishops": 80,
-      "rooks": 62,
-      "queens": 34
+      "pawns": 234,
+      "knights": 94,
+      "bishops": 84,
+      "rooks": 63,
+      "queens": 36
     },
     "survivalRate": {
-      "rooks": 0.44642857142857145,
-      "queens": 0.5178571428571429,
-      "bishops": 0.2857142857142857,
-      "knights": 0.19642857142857142
+      "rooks": 0.45689655172413796,
+      "queens": 0.5,
+      "bishops": 0.27586206896551724,
+      "knights": 0.1896551724137931
     }
   },
   "checkmates": {
@@ -306,7 +312,7 @@
     },
     "fastest": {
       "moves": 29,
-      "gameIndex": 25,
+      "gameIndex": 26,
       "white": "Fabienne «Chessy» S.",
       "black": "Jack «NoBackwardMoves» C.",
       "winner": "White"
@@ -319,9 +325,9 @@
       "description": "d4 saw 43 captures"
     },
     "mostPopularSquare": {
-      "square": "f6",
-      "visits": 85,
-      "description": "f6 was visited 85 times"
+      "square": "e5",
+      "visits": 87,
+      "description": "e5 was visited 87 times"
     },
     "leastPopularSquare": {
       "square": "a8",
@@ -344,7 +350,7 @@
       },
       {
         "square": "c5",
-        "captures": 28
+        "captures": 29
       },
       {
         "square": "f3",
@@ -353,24 +359,24 @@
     ],
     "top5Popular": [
       {
-        "square": "f6",
-        "visits": 85
+        "square": "e5",
+        "visits": 87
       },
       {
-        "square": "e5",
-        "visits": 84
+        "square": "f6",
+        "visits": 87
       },
       {
         "square": "d4",
-        "visits": 83
+        "visits": 84
       },
       {
         "square": "f3",
-        "visits": 81
+        "visits": 83
       },
       {
         "square": "d5",
-        "visits": 77
+        "visits": 78
       }
     ]
   },
@@ -410,10 +416,10 @@
       "black": "Simon «The Endgame Alchemist» L."
     },
     "slowestQueenTrade": {
-      "moves": 36,
-      "gameIndex": 19,
-      "white": "Peter «Peaky Blunder» N.",
-      "black": "bela «bela» O."
+      "moves": 45,
+      "gameIndex": 17,
+      "white": "Giacomo «Bishop Airlines » R.",
+      "black": "Adela «Adele» P."
     },
     "longestCaptureSequence": {
       "length": 7,
@@ -424,21 +430,21 @@
     },
     "longestCheckSequence": {
       "length": 11,
-      "gameIndex": 20,
+      "gameIndex": 21,
       "startMove": 60,
       "white": "Torsten «torstyehocara» J.",
       "black": "Loris «LorisNiUr» U."
     },
     "pawnStorm": {
       "count": 11,
-      "gameIndex": 18,
+      "gameIndex": 19,
       "white": "Boris «Out of Nowhere» G.",
       "black": "Iannis «Modern Pulverizer» D."
     },
     "pieceLoyalty": null,
     "squareTourist": {
       "squares": 21,
-      "gameIndex": 20,
+      "gameIndex": 21,
       "piece": "King",
       "color": "White",
       "startSquare": "e1",
@@ -470,21 +476,21 @@
     },
     "dadbodShuffler": {
       "moves": 24,
-      "gameIndex": 20,
+      "gameIndex": 21,
       "color": "White",
       "white": "Torsten «torstyehocara» J.",
       "black": "Loris «LorisNiUr» U."
     },
     "sportyQueen": {
       "distance": 71,
-      "gameIndex": 19,
+      "gameIndex": 20,
       "color": "White",
       "white": "Peter «Peaky Blunder» N.",
       "black": "bela «bela» O."
     },
     "edgeLord": {
       "moves": 23,
-      "gameIndex": 20,
+      "gameIndex": 21,
       "color": "Black",
       "white": "Torsten «torstyehocara» J.",
       "black": "Loris «LorisNiUr» U."
@@ -516,7 +522,7 @@
     },
     "lightLord": {
       "captures": 9,
-      "gameIndex": 17,
+      "gameIndex": 18,
       "color": "White",
       "white": "Alex «The Benoni Pulverizer» G.",
       "black": "Diego «The Bishop Slayer» R."
@@ -544,7 +550,7 @@
     },
     "antiOrthogonal": {
       "moves": 18,
-      "gameIndex": 17,
+      "gameIndex": 18,
       "gameId": null,
       "color": "white",
       "white": "Alex «The Benoni Pulverizer» G.",
@@ -555,7 +561,7 @@
       "pieceType": "bishops",
       "moves": 4,
       "totalNonPawnMoves": 7,
-      "gameIndex": 24,
+      "gameIndex": 25,
       "gameId": null,
       "color": "black",
       "white": "Tobias «tiuan» P.",
@@ -1047,6 +1053,31 @@
         "gameIndex": 17
       },
       {
+        "white": "Giacomo «Bishop Airlines » R.",
+        "black": "Adela «Adele» P.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 5,
+          "blackFirstInvasion": 24
+        },
+        "mostAttackedSquare": {
+          "square": "g4",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 46,
+          "move": "Rf4"
+        },
+        "longestTension": {
+          "moves": 28,
+          "squares": "b4-c5",
+          "startMove": 9,
+          "endMove": 37
+        },
+        "gameIndex": 18
+      },
+      {
         "white": "Alex «The Benoni Pulverizer» G.",
         "black": "Diego «The Bishop Slayer» R.",
         "enemyTerritory": {
@@ -1069,7 +1100,7 @@
           "startMove": 28,
           "endMove": 60
         },
-        "gameIndex": 18
+        "gameIndex": 19
       },
       {
         "white": "Boris «Out of Nowhere» G.",
@@ -1094,7 +1125,7 @@
           "startMove": 23,
           "endMove": 35
         },
-        "gameIndex": 19
+        "gameIndex": 20
       },
       {
         "white": "Peter «Peaky Blunder» N.",
@@ -1119,7 +1150,7 @@
           "startMove": 15,
           "endMove": 19
         },
-        "gameIndex": 20
+        "gameIndex": 21
       },
       {
         "white": "Torsten «torstyehocara» J.",
@@ -1144,7 +1175,7 @@
           "startMove": 51,
           "endMove": 60
         },
-        "gameIndex": 21
+        "gameIndex": 22
       },
       {
         "white": "Christopher «Hangs Pieces for Fun» N.",
@@ -1169,7 +1200,7 @@
           "startMove": 12,
           "endMove": 50
         },
-        "gameIndex": 22
+        "gameIndex": 23
       },
       {
         "white": "Silvan «Fork This Fork That» S.",
@@ -1194,7 +1225,7 @@
           "startMove": 27,
           "endMove": 42
         },
-        "gameIndex": 23
+        "gameIndex": 24
       },
       {
         "white": "Florian «Knightmare» G.",
@@ -1207,7 +1238,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 24
+        "gameIndex": 25
       },
       {
         "white": "Dogan «Kido» P.",
@@ -1232,7 +1263,7 @@
           "startMove": 20,
           "endMove": 31
         },
-        "gameIndex": 25
+        "gameIndex": 26
       },
       {
         "white": "Tobias «tiuan» P.",
@@ -1253,11 +1284,11 @@
         },
         "longestTension": {
           "moves": 2,
-          "squares": "a6-d6",
+          "squares": "d6-e7",
           "startMove": 31,
           "endMove": 33
         },
-        "gameIndex": 26
+        "gameIndex": 27
       },
       {
         "white": "Fabienne «Chessy» S.",
@@ -1282,7 +1313,7 @@
           "startMove": 24,
           "endMove": 44
         },
-        "gameIndex": 27
+        "gameIndex": 28
       },
       {
         "white": "Eva «Miss of King» S.",
@@ -1307,7 +1338,7 @@
           "startMove": 52,
           "endMove": 57
         },
-        "gameIndex": 28
+        "gameIndex": 29
       },
       {
         "white": "Andrei «PawnWreckerAlpha» A.",
@@ -1332,17 +1363,17 @@
           "startMove": 15,
           "endMove": 18
         },
-        "gameIndex": 29
+        "gameIndex": 30
       }
     ],
     "summary": {
-      "totalGames": 30,
+      "totalGames": 31,
       "homebody": {
         "white": "Tobias «tiuan» P.",
         "black": "Oliver «ScreaminG HI JoK ING» .",
         "player": "black",
         "piecesInEnemy": 1,
-        "gameIndex": 26
+        "gameIndex": 27
       },
       "lateBlocker": null,
       "mostAttackedSquareGame": {
@@ -1391,7 +1422,7 @@
         "squares": "e5-f3",
         "startMove": 12,
         "endMove": 50,
-        "gameIndex": 22
+        "gameIndex": 23
       }
     }
   },
@@ -2059,6 +2090,57 @@
       },
       {
         "gameIndex": 18,
+        "white": "Giacomo «Bishop Airlines » R.",
+        "black": "Adela «Adele» P.",
+        "whiteACPL": 60.3,
+        "blackACPL": 72,
+        "whiteAccuracy": 79.4,
+        "blackAccuracy": 76.6,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 6,
+          "inaccuracies": 5,
+          "good": 2,
+          "excellent": 35
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 7,
+          "inaccuracies": 4,
+          "good": 9,
+          "excellent": 27
+        },
+        "whiteEngineMoves": 35,
+        "blackEngineMoves": 27,
+        "biggestBlunder": {
+          "moveNumber": 41,
+          "player": "black",
+          "cpLoss": 457,
+          "winLoss": 38.40644700974959,
+          "severity": 38.40644700974959,
+          "move": "Rb7",
+          "evalBefore": 44,
+          "evalAfter": 501
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 1031,
+          "evalFrom": "-437",
+          "evalTo": "594",
+          "evalFromCp": -437,
+          "evalToCp": 594,
+          "moveNumber": 44
+        },
+        "luckyEscape": {
+          "player": "white",
+          "escapeAmount": 252,
+          "evalBefore": -437,
+          "evalAfter": 185,
+          "moveNumber": 40
+        }
+      },
+      {
+        "gameIndex": 19,
         "white": "Alex «The Benoni Pulverizer» G.",
         "black": "Diego «The Bishop Slayer» R.",
         "whiteACPL": 83.6,
@@ -2101,7 +2183,7 @@
         }
       },
       {
-        "gameIndex": 19,
+        "gameIndex": 20,
         "white": "Boris «Out of Nowhere» G.",
         "black": "Iannis «Modern Pulverizer» D.",
         "whiteACPL": 49.5,
@@ -2138,7 +2220,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 20,
+        "gameIndex": 21,
         "white": "Peter «Peaky Blunder» N.",
         "black": "bela «bela» O.",
         "whiteACPL": 76.4,
@@ -2189,7 +2271,7 @@
         }
       },
       {
-        "gameIndex": 21,
+        "gameIndex": 22,
         "white": "Torsten «torstyehocara» J.",
         "black": "Loris «LorisNiUr» U.",
         "whiteACPL": 76.5,
@@ -2240,7 +2322,7 @@
         }
       },
       {
-        "gameIndex": 22,
+        "gameIndex": 23,
         "white": "Christopher «Hangs Pieces for Fun» N.",
         "black": "Adam «PawnRuinerAlpha» A.",
         "whiteACPL": 37.7,
@@ -2277,7 +2359,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 23,
+        "gameIndex": 24,
         "white": "Silvan «Fork This Fork That» S.",
         "black": "Michael «Mivobu» B.",
         "whiteACPL": 40.1,
@@ -2314,7 +2396,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 25,
+        "gameIndex": 26,
         "white": "Dogan «Kido» P.",
         "black": "Pieter «snok» S.",
         "whiteACPL": 32.3,
@@ -2351,7 +2433,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 26,
+        "gameIndex": 27,
         "white": "Tobias «tiuan» P.",
         "black": "Oliver «ScreaminG HI JoK ING» .",
         "whiteACPL": 23.8,
@@ -2388,7 +2470,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 27,
+        "gameIndex": 28,
         "white": "Fabienne «Chessy» S.",
         "black": "Jack «NoBackwardMoves» C.",
         "whiteACPL": 17.9,
@@ -2430,7 +2512,7 @@
         }
       },
       {
-        "gameIndex": 28,
+        "gameIndex": 29,
         "white": "Eva «Miss of King» S.",
         "black": "Davide «AME» V.",
         "whiteACPL": 40.5,
@@ -2458,7 +2540,7 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 29,
+        "gameIndex": 30,
         "white": "Andrei «PawnWreckerAlpha» A.",
         "black": "Jonathan «EnCroissant1997» D.",
         "whiteACPL": 36.4,
@@ -2508,7 +2590,7 @@
         "acpl": 32.3,
         "white": "Dogan «Kido» P.",
         "black": "Pieter «snok» S.",
-        "gameIndex": 25
+        "gameIndex": 26
       },
       "biggestBlunder": {
         "moveNumber": 23,
@@ -2533,7 +2615,7 @@
         "moveNumber": 47,
         "white": "Peter «Peaky Blunder» N.",
         "black": "bela «bela» O.",
-        "gameIndex": 20
+        "gameIndex": 21
       },
       "luckyEscape": {
         "player": "black",
@@ -2552,7 +2634,7 @@
         "percentage": 68.4,
         "white": "Torsten «torstyehocara» J.",
         "black": "Loris «LorisNiUr» U.",
-        "gameIndex": 21
+        "gameIndex": 22
       },
       "inaccuracyKing": {
         "player": "white",
@@ -2568,7 +2650,7 @@
         "accuracy": 95.7,
         "white": "Eva «Miss of King» S.",
         "black": "Davide «AME» V.",
-        "gameIndex": 28
+        "gameIndex": 29
       },
       "highestACPL": {
         "player": "black",
@@ -2576,7 +2658,7 @@
         "accuracy": 83.8,
         "white": "Alex «The Benoni Pulverizer» G.",
         "black": "Diego «The Bishop Slayer» R.",
-        "gameIndex": 18
+        "gameIndex": 19
       },
       "lowestCombinedACPL": {
         "combinedACPL": 38.4,
@@ -2592,7 +2674,7 @@
         "blackACPL": 150.7,
         "white": "Alex «The Benoni Pulverizer» G.",
         "black": "Diego «The Bishop Slayer» R.",
-        "gameIndex": 18
+        "gameIndex": 19
       }
     }
   }
