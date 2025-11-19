@@ -1,6 +1,6 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-11-19T12:33:39.242Z",
+  "generatedAt": "2025-11-19T14:26:14.678Z",
   "roundsIncluded": [
     1,
     2,
@@ -8,18 +8,18 @@
     4
   ],
   "aggregates": {
-    "totalGames": 125,
-    "totalMoves": 9330,
-    "averageGameLength": 74.6,
-    "totalBlunders": 299,
-    "totalMistakes": 651,
+    "totalGames": 126,
+    "totalMoves": 9428,
+    "averageGameLength": 74.8,
+    "totalBlunders": 302,
+    "totalMistakes": 664,
     "piecesCaptured": {
-      "pawns": 968,
-      "knights": 377,
-      "bishops": 344,
-      "rooks": 264,
-      "queens": 154,
-      "total": 2107
+      "pawns": 979,
+      "knights": 381,
+      "bishops": 348,
+      "rooks": 265,
+      "queens": 156,
+      "total": 2129
     },
     "totalChecks": 0,
     "totalEnPassant": 6,
@@ -66,7 +66,7 @@
       "acpl": 32.3,
       "white": "Dogan «Kido» P.",
       "black": "Pieter «snok» S.",
-      "gameIndex": 25
+      "gameIndex": 26
     },
     "worstACPL": {
       "round": 1,
@@ -277,9 +277,14 @@
           "round": 3,
           "award": "Longest Capture Spree",
           "details": "8 in a row"
+        },
+        {
+          "round": 3,
+          "award": "Opening Hipster",
+          "details": "d4 f5 c4 Nf6 Nc3 e6 moves"
         }
       ],
-      "awardCount": 2,
+      "awardCount": 3,
       "averageACPL": 61.7,
       "bestACPL": 37.6,
       "worstACPL": 104,
@@ -394,14 +399,9 @@
           "round": 1,
           "award": "antiOrthogonal",
           "details": "22 moves"
-        },
-        {
-          "round": 4,
-          "award": "Slowest Queen Trade",
-          "details": "36 moves"
         }
       ],
-      "awardCount": 6,
+      "awardCount": 5,
       "averageACPL": 72.1,
       "bestACPL": 32,
       "worstACPL": 113.7,
@@ -716,12 +716,17 @@
           "details": "8 in a row"
         },
         {
+          "round": 3,
+          "award": "Opening Hipster",
+          "details": "d4 f5 c4 Nf6 Nc3 e6 moves"
+        },
+        {
           "round": 4,
           "award": "Pawn Storm",
           "details": "11"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 5,
       "averageACPL": 87.4,
       "bestACPL": 45.5,
       "worstACPL": 202.2,
@@ -849,11 +854,6 @@
         },
         {
           "round": 3,
-          "award": "Opening Hipster",
-          "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
-        },
-        {
-          "round": 3,
           "award": "Crosshairs",
           "details": ""
         },
@@ -861,6 +861,11 @@
           "round": 4,
           "award": "Castling Race Winner",
           "details": "4 moves"
+        },
+        {
+          "round": 4,
+          "award": "Opening Hipster",
+          "details": "Nf3 d5 g3 c5 Bg2 g6 moves"
         }
       ],
       "awardCount": 6,
@@ -1381,9 +1386,14 @@
           "round": 2,
           "award": "GM Energy",
           "details": "97.3% accuracy"
+        },
+        {
+          "round": 4,
+          "award": "Opening Hipster",
+          "details": "Nf3 d5 g3 c5 Bg2 g6 moves"
         }
       ],
-      "awardCount": 3,
+      "awardCount": 4,
       "averageACPL": 14,
       "bestACPL": 8.2,
       "worstACPL": 18.7,
@@ -1558,9 +1568,9 @@
     "Adela P.": {
       "normalizedName": "Adela P.",
       "displayName": "Adela «Adele» P.",
-      "gamesPlayed": 3,
+      "gamesPlayed": 4,
       "gamesAsWhite": 2,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1570,17 +1580,22 @@
           "round": 3,
           "award": "slowestCastling",
           "details": "21 moves"
+        },
+        {
+          "round": 4,
+          "award": "Slowest Queen Trade",
+          "details": "45 moves"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 71.7,
+      "awardCount": 2,
+      "averageACPL": 71.8,
       "bestACPL": 47.2,
       "worstACPL": 98.2,
       "acplByRound": [
         69.8,
         98.2,
         47.2,
-        null,
+        72,
         null,
         null,
         null
@@ -1589,17 +1604,17 @@
         81,
         64.3,
         81.5,
-        null,
+        76.6,
         null,
         null,
         null
       ],
-      "acplVariance": 20.9,
+      "acplVariance": 18.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 8,
-      "totalMistakes": 11
+      "totalBlunders": 10,
+      "totalMistakes": 18
     },
     "Igor S.": {
       "normalizedName": "Igor S.",
@@ -1611,14 +1626,8 @@
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [
-        {
-          "round": 4,
-          "award": "Opening Hipster",
-          "details": "e4 c6 d4 d5 e5 c5 moves"
-        }
-      ],
-      "awardCount": 1,
+      "awards": [],
+      "awardCount": 0,
       "averageACPL": 31.4,
       "bestACPL": 17.8,
       "worstACPL": 44.2,
@@ -1858,11 +1867,6 @@
       "awards": [
         {
           "round": 4,
-          "award": "Opening Hipster",
-          "details": "e4 c6 d4 d5 e5 c5 moves"
-        },
-        {
-          "round": 4,
           "award": "parkourMaster",
           "details": ""
         },
@@ -1872,7 +1876,7 @@
           "details": "12 retreats"
         }
       ],
-      "awardCount": 3,
+      "awardCount": 2,
       "averageACPL": 24.9,
       "bestACPL": 14.3,
       "worstACPL": 38.5,
@@ -3004,16 +3008,11 @@
         },
         {
           "round": 4,
-          "award": "Slowest Queen Trade",
-          "details": "36 moves"
-        },
-        {
-          "round": 4,
           "award": "Sporty Queen",
           "details": "71 squares"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 3,
       "averageACPL": 47.9,
       "bestACPL": 27.5,
       "worstACPL": 76.4,
@@ -3060,16 +3059,11 @@
         },
         {
           "round": 3,
-          "award": "Opening Hipster",
-          "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
-        },
-        {
-          "round": 3,
           "award": "Crosshairs",
           "details": ""
         }
       ],
-      "awardCount": 3,
+      "awardCount": 2,
       "averageACPL": 41.2,
       "bestACPL": 22,
       "worstACPL": 75.2,
@@ -3466,8 +3460,8 @@
     "Giacomo R.": {
       "normalizedName": "Giacomo R.",
       "displayName": "Giacomo «Bishop Airlines » R.",
-      "gamesPlayed": 2,
-      "gamesAsWhite": 1,
+      "gamesPlayed": 3,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
@@ -3483,17 +3477,22 @@
           "round": 3,
           "award": "lightLord",
           "details": "10 captures"
+        },
+        {
+          "round": 4,
+          "award": "Slowest Queen Trade",
+          "details": "45 moves"
         }
       ],
-      "awardCount": 2,
-      "averageACPL": 105,
+      "awardCount": 3,
+      "averageACPL": 90.1,
       "bestACPL": 53.4,
       "worstACPL": 156.5,
       "acplByRound": [
         null,
         53.4,
         156.5,
-        null,
+        60.3,
         null,
         null,
         null
@@ -3502,17 +3501,17 @@
         null,
         88.4,
         81.1,
-        null,
+        79.4,
         null,
         null,
         null
       ],
-      "acplVariance": null,
+      "acplVariance": 47.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 7,
-      "totalMistakes": 6
+      "totalBlunders": 8,
+      "totalMistakes": 12
     },
     "Camill T.": {
       "normalizedName": "Camill T.",
@@ -4095,43 +4094,6 @@
         ]
       },
       {
-        "player": "bela O.",
-        "displayName": "bela «bela» O.",
-        "count": 6,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Slowest Queen Trade",
-            "details": "45 moves"
-          },
-          {
-            "round": 1,
-            "award": "Longest King Hunt",
-            "details": "10 in a row"
-          },
-          {
-            "round": 1,
-            "award": "Opening Hipster",
-            "details": "e4 c5 Nf3 Nc6 Bb5 g6 moves"
-          },
-          {
-            "round": 1,
-            "award": "Sporty Queen",
-            "details": "42 squares"
-          },
-          {
-            "round": 1,
-            "award": "antiOrthogonal",
-            "details": "22 moves"
-          },
-          {
-            "round": 4,
-            "award": "Slowest Queen Trade",
-            "details": "36 moves"
-          }
-        ]
-      },
-      {
         "player": "Dogan P.",
         "displayName": "Dogan «Kido» P.",
         "count": 6,
@@ -4190,11 +4152,6 @@
           },
           {
             "round": 3,
-            "award": "Opening Hipster",
-            "details": "d4 Nf6 Nf3 g6 c4 Bg7 moves"
-          },
-          {
-            "round": 3,
             "award": "Crosshairs",
             "details": ""
           },
@@ -4202,6 +4159,11 @@
             "round": 4,
             "award": "Castling Race Winner",
             "details": "4 moves"
+          },
+          {
+            "round": 4,
+            "award": "Opening Hipster",
+            "details": "Nf3 d5 g3 c5 Bg2 g6 moves"
           }
         ]
       },
@@ -4243,6 +4205,38 @@
         ]
       },
       {
+        "player": "bela O.",
+        "displayName": "bela «bela» O.",
+        "count": 5,
+        "awards": [
+          {
+            "round": 1,
+            "award": "Slowest Queen Trade",
+            "details": "45 moves"
+          },
+          {
+            "round": 1,
+            "award": "Longest King Hunt",
+            "details": "10 in a row"
+          },
+          {
+            "round": 1,
+            "award": "Opening Hipster",
+            "details": "e4 c5 Nf3 Nc6 Bb5 g6 moves"
+          },
+          {
+            "round": 1,
+            "award": "Sporty Queen",
+            "details": "42 squares"
+          },
+          {
+            "round": 1,
+            "award": "antiOrthogonal",
+            "details": "22 moves"
+          }
+        ]
+      },
+      {
         "player": "Osama A.",
         "displayName": "Osama «Ruiner of Bird's» A.",
         "count": 5,
@@ -4271,6 +4265,38 @@
             "round": 3,
             "award": "Homeboy",
             "details": ""
+          }
+        ]
+      },
+      {
+        "player": "Boris G.",
+        "displayName": "Boris «Out of Nowhere» G.",
+        "count": 5,
+        "awards": [
+          {
+            "round": 1,
+            "award": "Pawn Storm",
+            "details": "13"
+          },
+          {
+            "round": 2,
+            "award": "Homeboy",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Longest Capture Spree",
+            "details": "8 in a row"
+          },
+          {
+            "round": 3,
+            "award": "Opening Hipster",
+            "details": "d4 f5 c4 Nf6 Nc3 e6 moves"
+          },
+          {
+            "round": 4,
+            "award": "Pawn Storm",
+            "details": "11"
           }
         ]
       },
@@ -4330,33 +4356,6 @@
             "round": 4,
             "award": "Center Stage",
             "details": "4 moves"
-          }
-        ]
-      },
-      {
-        "player": "Boris G.",
-        "displayName": "Boris «Out of Nowhere» G.",
-        "count": 4,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Pawn Storm",
-            "details": "13"
-          },
-          {
-            "round": 2,
-            "award": "Homeboy",
-            "details": ""
-          },
-          {
-            "round": 3,
-            "award": "Longest Capture Spree",
-            "details": "8 in a row"
-          },
-          {
-            "round": 4,
-            "award": "Pawn Storm",
-            "details": "11"
           }
         ]
       }
@@ -4443,6 +4442,12 @@
         "gamesPlayed": 3
       },
       {
+        "player": "Giacomo R.",
+        "displayName": "Giacomo «Bishop Airlines » R.",
+        "acpl": 90.1,
+        "gamesPlayed": 3
+      },
+      {
         "player": "Ramura G.",
         "displayName": "Ramura «viennugambu» G.",
         "acpl": 89,
@@ -4477,12 +4482,6 @@
         "displayName": "Loris «LorisNiUr» U.",
         "acpl": 73.6,
         "gamesPlayed": 4
-      },
-      {
-        "player": "bela O.",
-        "displayName": "bela «bela» O.",
-        "acpl": 72.1,
-        "gamesPlayed": 3
       }
     ],
     "mostImproved": [],
@@ -4567,6 +4566,12 @@
         "blundersPerGame": 3.3
       },
       {
+        "player": "Adela P.",
+        "displayName": "Adela «Adele» P.",
+        "blunders": 10,
+        "blundersPerGame": 2.5
+      },
+      {
         "player": "Alex G.",
         "displayName": "Alex «The Benoni Pulverizer» G.",
         "blunders": 9,
@@ -4595,12 +4600,6 @@
         "displayName": "Joshua «Pristine Pawn Pusher» G.",
         "blunders": 8,
         "blundersPerGame": 2
-      },
-      {
-        "player": "Adela P.",
-        "displayName": "Adela «Adele» P.",
-        "blunders": 8,
-        "blundersPerGame": 2.7
       }
     ],
     "fewestBlunders": [
@@ -4671,61 +4670,61 @@
       57.6,
       47,
       45.2,
-      50.8
+      51.3
     ],
     "averageAccuracyByRound": [
       83.8,
       84,
       83.4,
-      85.8
+      85.5
     ],
     "averageGameLengthByRound": [
       41.3,
       36.3,
       44.7,
-      37.7
+      38.1
     ],
     "e4PercentageByRound": [
       48.3,
       78.1,
       46.4,
-      67.9
+      69
     ],
     "d4PercentageByRound": [
       41.4,
       21.9,
       46.4,
-      21.4
+      20.7
     ],
     "drawRateByRound": [
       3.3,
       6.1,
       12.5,
-      13.3
+      12.9
     ],
     "whiteWinRateByRound": [
       60,
       48.5,
       46.9,
-      50
+      51.6
     ],
     "blackWinRateByRound": [
       36.7,
       45.5,
       40.6,
-      36.7
+      35.5
     ],
     "blundersPerGameByRound": [
       2.8,
       2.1,
       3.1,
-      1.6
+      1.7
     ],
     "mistakesPerGameByRound": [
       5,
       5,
       5.7,
-      5.1
+      5.4
     ],
     "avgQueenDistanceByRound": [
       42,
