@@ -92,14 +92,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (!sessionExpiry || sessionExpiry <= nowInSeconds) {
         return {
           ...session,
-          expires: new Date(nowInSeconds * 1000).toISOString() as any
-        }
+          expires: new Date(nowInSeconds * 1000).toISOString()
+        } as typeof session
       }
 
       session.user.id = token.sub || ''
       session.user.role = token.role as string
       session.user.rememberMe = Boolean(token.rememberMe)
-      session.expires = new Date(sessionExpiry * 1000).toISOString() as any
+      // @ts-expect-error - NextAuth session.expires is typed as string in runtime
+      session.expires = new Date(sessionExpiry * 1000).toISOString()
 
       return session
     }
