@@ -120,6 +120,20 @@ interface FunStatsProps {
       white: string
       black: string
     } | null
+    lightLord: {
+      captures: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
+    parkourMaster: {
+      knightMoves: number
+      gameIndex: number
+      color: string
+      white: string
+      black: string
+    } | null
     chickenAward: {
       retreats: number
       gameIndex: number
@@ -394,6 +408,30 @@ export function FunStats({ funStats }: FunStatsProps) {
             </div>
             <div className="text-xs text-gray-300 dark:text-gray-400 mt-1">
               {funStats.darkLord.color} captured {funStats.darkLord.captures} pieces on dark squares
+            </div>
+          </div>
+        )}
+
+        {funStats.lightLord && (
+          <div className="p-4 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg border border-yellow-300 dark:border-yellow-700">
+            <div className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1">☀️ Light Brigade</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={funStats.lightLord.white} black={funStats.lightLord.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.lightLord.color} captured {funStats.lightLord.captures} pieces on light squares
+            </div>
+          </div>
+        )}
+
+        {funStats.parkourMaster && (
+          <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+            <div className="font-semibold text-green-900 dark:text-green-300 mb-1">🤸 Parkour Master</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={funStats.parkourMaster.white} black={funStats.parkourMaster.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              {funStats.parkourMaster.color} made {funStats.parkourMaster.knightMoves} knight {funStats.parkourMaster.knightMoves === 1 ? 'move' : 'moves'}
             </div>
           </div>
         )}

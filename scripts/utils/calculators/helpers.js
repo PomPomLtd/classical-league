@@ -38,7 +38,18 @@ function calculateDistance(from, to) {
 function isDarkSquare(square) {
   const file = square.charCodeAt(0) - 'a'.charCodeAt(0); // 0-7
   const rank = parseInt(square[1]) - 1; // 0-7
-  return (file + rank) % 2 === 1; // Dark squares have odd sum
+  return (file + rank) % 2 === 0; // Dark squares have even sum (a1, d4, e5, etc.)
+}
+
+/**
+ * Check if a square is a light square
+ * @param {string} square - Square notation (e.g., 'e4')
+ * @returns {boolean} True if light square
+ */
+function isLightSquare(square) {
+  const file = square.charCodeAt(0) - 'a'.charCodeAt(0); // 0-7
+  const rank = parseInt(square[1]) - 1; // 0-7
+  return (file + rank) % 2 === 1; // Light squares have odd sum
 }
 
 /**
@@ -107,6 +118,7 @@ module.exports = {
   filterGamesWithMoves,
   calculateDistance,
   isDarkSquare,
+  isLightSquare,
   getPlayerName,
   getPlayerNames,
   toFullMoves,

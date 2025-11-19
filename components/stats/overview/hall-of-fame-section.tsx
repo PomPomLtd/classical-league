@@ -180,6 +180,162 @@ export function HallOfFameSection({ hallOfFame }: HallOfFameSectionProps) {
           </div>
         )}
 
+        {/* Parkour Master */}
+        {hallOfFame.parkourMaster && (
+          <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-700">
+            <div className="font-semibold text-green-900 dark:text-green-300 mb-1">🤸 Ultimate Parkour Master</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.parkourMaster.color === 'White' ? hallOfFame.parkourMaster.white : hallOfFame.parkourMaster.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.parkourMaster.round} • {hallOfFame.parkourMaster.knightMoves} knight {hallOfFame.parkourMaster.knightMoves === 1 ? 'move' : 'moves'}
+            </div>
+          </div>
+        )}
+
+        {/* Pawn Captures */}
+        {hallOfFame.pawnCaptures && (
+          <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-700">
+            <div className="font-semibold text-red-900 dark:text-red-300 mb-1">🏴 Ultimate Peasant Uprising</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.pawnCaptures.color === 'White' ? hallOfFame.pawnCaptures.white : hallOfFame.pawnCaptures.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.pawnCaptures.round} • Pawns captured {hallOfFame.pawnCaptures.captures} {hallOfFame.pawnCaptures.captures === 1 ? 'piece' : 'pieces'}
+            </div>
+          </div>
+        )}
+
+        {/* Dadbod Shuffler */}
+        {hallOfFame.dadbodShuffler && (
+          <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700">
+            <div className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1">👑 Ultimate Dadbod Shuffler</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.dadbodShuffler.color === 'White' ? hallOfFame.dadbodShuffler.white : hallOfFame.dadbodShuffler.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.dadbodShuffler.round} • King moved {hallOfFame.dadbodShuffler.moves} times
+            </div>
+          </div>
+        )}
+
+        {/* Dark Lord */}
+        {hallOfFame.darkLord && (
+          <div className="p-4 bg-gray-800 dark:bg-gray-950 rounded-lg border border-gray-700 dark:border-gray-800">
+            <div className="font-semibold text-gray-100 dark:text-gray-200 mb-1">🌑 Ultimate Dark Mode Enthusiast</div>
+            <div className="text-sm text-gray-200 dark:text-gray-300">
+              <PlayerName name={hallOfFame.darkLord.color === 'White' ? hallOfFame.darkLord.white : hallOfFame.darkLord.black} />
+            </div>
+            <div className="text-xs text-gray-300 dark:text-gray-400 mt-1">
+              Round {hallOfFame.darkLord.round} • Captured {hallOfFame.darkLord.captures} pieces on dark squares
+            </div>
+          </div>
+        )}
+
+        {/* Light Lord */}
+        {hallOfFame.lightLord && (
+          <div className="p-4 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg border border-yellow-300 dark:border-yellow-700">
+            <div className="font-semibold text-yellow-900 dark:text-yellow-300 mb-1">☀️ Ultimate Light Brigade</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.lightLord.color === 'White' ? hallOfFame.lightLord.white : hallOfFame.lightLord.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.lightLord.round} • Captured {hallOfFame.lightLord.captures} pieces on light squares
+            </div>
+          </div>
+        )}
+
+        {/* Square Tourist */}
+        {hallOfFame.squareTourist && (
+          <div className="p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-700">
+            <div className="font-semibold text-teal-900 dark:text-teal-300 mb-1">✈️ Ultimate Square Tourist</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.squareTourist.color === 'White' ? hallOfFame.squareTourist.white : hallOfFame.squareTourist.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.squareTourist.round} • {hallOfFame.squareTourist.startSquare} {hallOfFame.squareTourist.piece} visited {hallOfFame.squareTourist.squares} different squares
+            </div>
+          </div>
+        )}
+
+        {/* Piece Loyalty */}
+        {hallOfFame.pieceLoyalty && (
+          <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-700">
+            <div className="font-semibold text-indigo-900 dark:text-indigo-300 mb-1">🏠 Ultimate Piece Loyalty</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={hallOfFame.pieceLoyalty.white} black={hallOfFame.pieceLoyalty.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.pieceLoyalty.round} • {hallOfFame.pieceLoyalty.piece} stayed on {hallOfFame.pieceLoyalty.square} for {hallOfFame.pieceLoyalty.moves} moves
+            </div>
+          </div>
+        )}
+
+        {/* Slowest Castling */}
+        {hallOfFame.slowestCastling && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg border border-slate-200 dark:border-slate-700">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">🏰 Ultimate Castle Commitment Issues</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.slowestCastling.color === 'White' ? hallOfFame.slowestCastling.white : hallOfFame.slowestCastling.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.slowestCastling.round} • Castled on move {hallOfFame.slowestCastling.moves}
+            </div>
+          </div>
+        )}
+
+        {/* Fastest Queen Trade */}
+        {hallOfFame.fastestQueenTrade && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg border border-slate-200 dark:border-slate-700">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">💼 Ultimate Strategic Downsizing</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={hallOfFame.fastestQueenTrade.white} black={hallOfFame.fastestQueenTrade.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.fastestQueenTrade.round} • Queens traded by move {hallOfFame.fastestQueenTrade.moves}
+            </div>
+          </div>
+        )}
+
+        {/* Slowest Queen Trade */}
+        {hallOfFame.slowestQueenTrade && (
+          <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-700">
+            <div className="font-semibold text-amber-900 dark:text-amber-300 mb-1">🕰️ Ultimate Separation Anxiety</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={hallOfFame.slowestQueenTrade.white} black={hallOfFame.slowestQueenTrade.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.slowestQueenTrade.round} • Queens kept until move {hallOfFame.slowestQueenTrade.moves}
+            </div>
+          </div>
+        )}
+
+        {/* Edge Lord */}
+        {hallOfFame.edgeLord && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/20 rounded-lg border border-slate-200 dark:border-slate-700">
+            <div className="font-semibold text-slate-900 dark:text-slate-300 mb-1">📐 Ultimate Professional Edger</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerName name={hallOfFame.edgeLord.color === 'White' ? hallOfFame.edgeLord.white : hallOfFame.edgeLord.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.edgeLord.round} • Made {hallOfFame.edgeLord.moves} moves on edge files (a/h)
+            </div>
+          </div>
+        )}
+
+        {/* Pawn Storm */}
+        {hallOfFame.pawnStorm && (
+          <div className="p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg border border-cyan-200 dark:border-cyan-700">
+            <div className="font-semibold text-cyan-900 dark:text-cyan-300 mb-1">🌪️ Ultimate Pawn Storm</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              <PlayerVs white={hallOfFame.pawnStorm.white} black={hallOfFame.pawnStorm.black} />
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              Round {hallOfFame.pawnStorm.round} • {hallOfFame.pawnStorm.count} pawn moves in the opening phase
+            </div>
+          </div>
+        )}
+
       </div>
     </StatCard>
   )
