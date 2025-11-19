@@ -1,7 +1,7 @@
 {
   "roundNumber": 3,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-15T11:27:38.555Z",
+  "generatedAt": "2025-11-19T13:28:53.485Z",
   "overview": {
     "totalGames": 32,
     "totalMoves": 2502,
@@ -460,13 +460,13 @@
       "black": "Alexander «Not Grischuk» G."
     },
     "openingHipster": {
-      "gameIndex": 4,
-      "eco": "E60",
-      "name": "King's Indian Defense: Normal Variation, King's Knight Variation",
-      "moves": "d4 Nf6 Nf3 g6 c4 Bg7",
-      "obscurityScore": 84,
-      "white": "Christopher «King Decimator» H.",
-      "black": "Gaston «SleepingDawg» F."
+      "gameIndex": 14,
+      "eco": "A85",
+      "name": "Dutch Defense: Queen's Knight Variation",
+      "moves": "d4 f5 c4 Nf6 Nc3 e6",
+      "obscurityScore": 179,
+      "white": "Daniel «Bishop Mangler Supreme» T.",
+      "black": "Boris «Out of Nowhere» G."
     },
     "dadbodShuffler": {
       "moves": 36,
@@ -902,7 +902,7 @@
         },
         "longestTension": {
           "moves": 7,
-          "squares": "e4-h7",
+          "squares": "c6-e4",
           "startMove": 20,
           "endMove": 27
         },
@@ -1102,7 +1102,7 @@
         },
         "longestTension": {
           "moves": 3,
-          "squares": "f2-f3",
+          "squares": "d3-f3",
           "startMove": 43,
           "endMove": 46
         },
@@ -1304,7 +1304,7 @@
         },
         "longestTension": {
           "moves": 4,
-          "squares": "e5-f4",
+          "squares": "c3-e5",
           "startMove": 32,
           "endMove": 36
         },

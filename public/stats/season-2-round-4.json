@@ -1,7 +1,7 @@
 {
   "roundNumber": 4,
   "seasonNumber": 2,
-  "generatedAt": "2025-11-19T12:52:28.323Z",
+  "generatedAt": "2025-11-19T13:26:54.201Z",
   "overview": {
     "totalGames": 31,
     "totalMoves": 2211,
@@ -466,13 +466,13 @@
       "black": "Jakob «Jaquemate » ."
     },
     "openingHipster": {
-      "gameIndex": 0,
-      "eco": "B12",
-      "name": "Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense",
-      "moves": "e4 c6 d4 d5 e5 c5",
-      "obscurityScore": 81,
-      "white": "Igor «Premove Blunder» S.",
-      "black": "Janosch «Youngbrain 1b4» B."
+      "gameIndex": 2,
+      "eco": "A08",
+      "name": "King's Indian Attack: Sicilian Variation",
+      "moves": "Nf3 d5 g3 c5 Bg2 g6",
+      "obscurityScore": 200,
+      "white": "Gaston «SleepingDawg» F.",
+      "black": "Korbinian «King's Gambit is a real opening» A."
     },
     "dadbodShuffler": {
       "moves": 24,
@@ -771,7 +771,7 @@
         },
         "longestTension": {
           "moves": 16,
-          "squares": "d6-d7",
+          "squares": "c6-d6",
           "startMove": 53,
           "endMove": 69
         },
@@ -1284,7 +1284,7 @@
         },
         "longestTension": {
           "moves": 2,
-          "squares": "d6-e7",
+          "squares": "d6-e5",
           "startMove": 31,
           "endMove": 33
         },
