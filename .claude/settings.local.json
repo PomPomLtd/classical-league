@@ -50,7 +50,8 @@
       "Bash(gh run:*)",
       "WebFetch(domain:www.lichess4545.com)",
       "Bash(ls:*)",
-      "Bash(gh secret:*)"
+      "Bash(gh secret:*)",
+      "WebFetch(domain:classical.schachklub-k4.ch)"
     ],
     "deny": [],
     "ask": []
