@@ -1,11 +1,11 @@
 {
   "roundNumber": 5,
   "seasonNumber": 2,
-  "generatedAt": "2025-12-03T11:23:11.029Z",
+  "generatedAt": "2025-12-03T12:20:23.699Z",
   "overview": {
     "totalGames": 31,
-    "totalMoves": 2309,
-    "averageGameLength": 38.483333333333334,
+    "totalMoves": 2382,
+    "averageGameLength": 39.7,
     "longestGame": {
       "moves": 77,
       "white": "Janosch «Youngbrain 1b4» B.",
@@ -13,16 +13,16 @@
       "result": "1/2-1/2"
     },
     "shortestGame": {
-      "moves": 3,
-      "white": "Johannes «Jo» N.",
-      "black": "Fabienne «Chessy» S.",
+      "moves": 14,
+      "white": "Adela «Adele» P.",
+      "black": "Pieter «snok» S.",
       "result": "0-1"
     }
   },
   "gamePhases": {
-    "averageOpening": 8.766666666666667,
-    "averageMiddlegame": 16.783333333333335,
-    "averageEndgame": 12.933333333333334,
+    "averageOpening": 9.016666666666667,
+    "averageMiddlegame": 17.483333333333334,
+    "averageEndgame": 13.2,
     "longestWaitTillCapture": {
       "moves": 14,
       "white": "Adam «PawnRuinerAlpha» A.",
@@ -230,6 +230,12 @@
         "name": "Italian Game"
       },
       {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6",
+        "count": 1,
+        "eco": "C55",
+        "name": "Italian Game: Two Knights Defense"
+      },
+      {
         "moves": "d4 d5 Bf4 Nc6 e3 a6",
         "count": 1,
         "eco": "D00",
@@ -250,7 +256,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 527,
+    "totalCaptures": 549,
     "enPassantGames": [
       {
         "white": "Nikola «Pawn Carnivore» N.",
@@ -260,7 +266,7 @@
     ],
     "promotions": 7,
     "castling": {
-      "kingside": 41,
+      "kingside": 43,
       "queenside": 11
     },
     "bloodiestGame": {
@@ -270,10 +276,10 @@
       "black": "Dogan «Kido» P."
     },
     "quietestGame": {
-      "captures": 0,
-      "gameIndex": 23,
-      "white": "Johannes «Jo» N.",
-      "black": "Fabienne «Chessy» S."
+      "captures": 7,
+      "gameIndex": 29,
+      "white": "Jack «NoBackwardMoves» C.",
+      "black": "Eva «Miss of King» S."
     },
     "longestNonCaptureStreak": {
       "moves": 40,
@@ -286,25 +292,25 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 591,
-      "knights": 375,
-      "bishops": 386,
-      "rooks": 372,
-      "queens": 284,
-      "kings": 301
+      "pawns": 606,
+      "knights": 388,
+      "bishops": 405,
+      "rooks": 388,
+      "queens": 290,
+      "kings": 305
     },
     "captured": {
-      "pawns": 249,
-      "knights": 95,
-      "bishops": 85,
-      "rooks": 59,
-      "queens": 39
+      "pawns": 259,
+      "knights": 100,
+      "bishops": 88,
+      "rooks": 61,
+      "queens": 41
     },
     "survivalRate": {
-      "rooks": 0.5083333333333333,
-      "queens": 0.4666666666666667,
-      "bishops": 0.2916666666666667,
-      "knights": 0.20833333333333334
+      "rooks": 0.49166666666666664,
+      "queens": 0.43333333333333335,
+      "bishops": 0.26666666666666666,
+      "knights": 0.16666666666666666
     }
   },
   "checkmates": {
@@ -326,13 +332,13 @@
   "boardHeatmap": {
     "bloodiestSquare": {
       "square": "e5",
-      "captures": 38,
-      "description": "e5 saw 38 captures"
+      "captures": 40,
+      "description": "e5 saw 40 captures"
     },
     "mostPopularSquare": {
       "square": "e5",
-      "visits": 92,
-      "description": "e5 was visited 92 times"
+      "visits": 95,
+      "description": "e5 was visited 95 times"
     },
     "leastPopularSquare": {
       "square": "h7",
@@ -343,7 +349,7 @@
     "top5Bloodiest": [
       {
         "square": "e5",
-        "captures": 38
+        "captures": 40
       },
       {
         "square": "d4",
@@ -351,37 +357,37 @@
       },
       {
         "square": "e4",
-        "captures": 31
+        "captures": 33
+      },
+      {
+        "square": "d5",
+        "captures": 26
       },
       {
         "square": "f6",
         "captures": 26
-      },
-      {
-        "square": "d5",
-        "captures": 25
       }
     ],
     "top5Popular": [
       {
         "square": "e5",
-        "visits": 92
+        "visits": 95
       },
       {
         "square": "e4",
-        "visits": 91
+        "visits": 93
       },
       {
         "square": "d4",
-        "visits": 85
+        "visits": 87
       },
       {
         "square": "f6",
-        "visits": 83
+        "visits": 87
       },
       {
         "square": "f3",
-        "visits": 77
+        "visits": 81
       }
     ]
   },
@@ -392,9 +398,9 @@
       "captures": 29
     },
     "pacifist": {
-      "white": "Johannes «Jo» N.",
-      "black": "Fabienne «Chessy» S.",
-      "captures": 0
+      "white": "Jack «NoBackwardMoves» C.",
+      "black": "Eva «Miss of King» S.",
+      "captures": 7
     },
     "speedDemon": {
       "white": "Adela «Adele» P.",
@@ -408,9 +414,9 @@
       "endgameMoves": 51
     },
     "openingSprinter": {
-      "white": "Johannes «Jo» N.",
-      "black": "Fabienne «Chessy» S.",
-      "openingMoves": 3
+      "white": "Janosch «Youngbrain 1b4» B.",
+      "black": "Christopher «King Decimator» H.",
+      "openingMoves": 5
     }
   },
   "funStats": {
@@ -562,15 +568,15 @@
       "black": "Stefano «acheron» B."
     },
     "comfortZone": {
-      "percentage": 100,
+      "percentage": 58,
       "pieceType": "knights",
-      "moves": 1,
-      "totalNonPawnMoves": 1,
-      "gameIndex": 23,
+      "moves": 7,
+      "totalNonPawnMoves": 12,
+      "gameIndex": 29,
       "gameId": null,
-      "color": "white",
-      "white": "Johannes «Jo» N.",
-      "black": "Fabienne «Chessy» S."
+      "color": "black",
+      "white": "Jack «NoBackwardMoves» C.",
+      "black": "Eva «Miss of King» S."
     },
     "homebody": {
       "white": "Adela «Adele» P.",
@@ -623,7 +629,7 @@
         "white": "Christopher «Ong Passong» G.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
         "enemyTerritory": {
-          "whitePiecesInEnemy": 3,
+          "whitePiecesInEnemy": 4,
           "blackPiecesInEnemy": 2,
           "whiteFirstInvasion": 35,
           "blackFirstInvasion": 16
@@ -637,10 +643,10 @@
           "move": "e5"
         },
         "longestTension": {
-          "moves": 5,
-          "squares": "e4-f6",
-          "startMove": 35,
-          "endMove": 40
+          "moves": 7,
+          "squares": "d3-f2",
+          "startMove": 48,
+          "endMove": 55
         },
         "gameIndex": 0
       },
@@ -1038,7 +1044,7 @@
         },
         "longestTension": {
           "moves": 5,
-          "squares": "e5-g6",
+          "squares": "c6-e5",
           "startMove": 22,
           "endMove": 27
         },
@@ -1198,20 +1204,25 @@
         "white": "Johannes «Jo» N.",
         "black": "Fabienne «Chessy» S.",
         "enemyTerritory": {
-          "whitePiecesInEnemy": 0,
-          "blackPiecesInEnemy": 0,
-          "whiteFirstInvasion": null,
-          "blackFirstInvasion": null
+          "whitePiecesInEnemy": 3,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 19,
+          "blackFirstInvasion": 8
         },
         "mostAttackedSquare": {
           "square": "d2",
-          "attackers": 5,
+          "attackers": 6,
           "whiteAttackers": 5,
-          "blackAttackers": 0,
-          "moveNumber": 3,
-          "move": "Nf3"
+          "blackAttackers": 1,
+          "moveNumber": 8,
+          "move": "Nxe4"
         },
-        "longestTension": null,
+        "longestTension": {
+          "moves": 5,
+          "squares": "e5-f3",
+          "startMove": 12,
+          "endMove": 17
+        },
         "gameIndex": 23
       },
       {
@@ -1233,7 +1244,7 @@
         },
         "longestTension": {
           "moves": 10,
-          "squares": "c3-c4",
+          "squares": "c4-d4",
           "startMove": 42,
           "endMove": 52
         },
@@ -1444,27 +1455,36 @@
         "gameIndex": 0,
         "white": "Christopher «Ong Passong» G.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
-        "whiteACPL": 12.1,
-        "blackACPL": 12.8,
-        "whiteAccuracy": 92.6,
-        "blackAccuracy": 92.2,
+        "whiteACPL": 35.2,
+        "blackACPL": 24.4,
+        "whiteAccuracy": 83.6,
+        "blackAccuracy": 88,
         "whiteMoveQuality": {
-          "blunders": 0,
+          "blunders": 2,
           "mistakes": 0,
-          "inaccuracies": 4,
-          "good": 4,
-          "excellent": 17
+          "inaccuracies": 6,
+          "good": 5,
+          "excellent": 20
         },
         "blackMoveQuality": {
-          "blunders": 0,
+          "blunders": 1,
           "mistakes": 0,
-          "inaccuracies": 3,
-          "good": 6,
-          "excellent": 15
+          "inaccuracies": 6,
+          "good": 7,
+          "excellent": 18
         },
-        "whiteEngineMoves": 17,
-        "blackEngineMoves": 15,
-        "biggestBlunder": null,
+        "whiteEngineMoves": 20,
+        "blackEngineMoves": 18,
+        "biggestBlunder": {
+          "moveNumber": 29,
+          "player": "white",
+          "cpLoss": 360,
+          "winLoss": 38.818423022188306,
+          "severity": 38.818423022188306,
+          "move": "Qf6",
+          "evalBefore": 0,
+          "evalAfter": -360
+        },
         "biggestComeback": null,
         "luckyEscape": null
       },
@@ -2340,29 +2360,52 @@
         "gameIndex": 23,
         "white": "Johannes «Jo» N.",
         "black": "Fabienne «Chessy» S.",
-        "whiteACPL": 21,
-        "blackACPL": 9.5,
-        "whiteAccuracy": 87.3,
-        "blackAccuracy": 94.1,
+        "whiteACPL": 48.5,
+        "blackACPL": 61.2,
+        "whiteAccuracy": 70.2,
+        "blackAccuracy": 76.2,
         "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
+          "blunders": 1,
+          "mistakes": 7,
           "inaccuracies": 1,
-          "good": 0,
-          "excellent": 2
+          "good": 9,
+          "excellent": 13
         },
         "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 1,
-          "excellent": 1
+          "blunders": 2,
+          "mistakes": 3,
+          "inaccuracies": 4,
+          "good": 11,
+          "excellent": 11
         },
-        "whiteEngineMoves": 2,
-        "blackEngineMoves": 1,
-        "biggestBlunder": null,
-        "biggestComeback": null,
-        "luckyEscape": null
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 11,
+        "biggestBlunder": {
+          "moveNumber": 28,
+          "player": "black",
+          "cpLoss": 815,
+          "winLoss": 47.28606738932064,
+          "severity": 47.28606738932064,
+          "move": "Bxc3",
+          "evalBefore": 13,
+          "evalAfter": 828
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "M4",
+          "evalTo": "M-2",
+          "evalFromCp": 9960,
+          "evalToCp": -9980,
+          "moveNumber": 31
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": -20,
+          "evalBefore": 9960,
+          "evalAfter": -9980,
+          "moveNumber": 31
+        }
       },
       {
         "gameIndex": 24,
@@ -2675,11 +2718,11 @@
       },
       "lowestACPL": {
         "player": "black",
-        "acpl": 9.5,
-        "accuracy": 94.1,
-        "white": "Johannes «Jo» N.",
-        "black": "Fabienne «Chessy» S.",
-        "gameIndex": 23
+        "acpl": 14.1,
+        "accuracy": 98,
+        "white": "Oliver «Mouse Slip Expert» S.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 20
       },
       "highestACPL": {
         "player": "white",
@@ -2690,12 +2733,12 @@
         "gameIndex": 14
       },
       "lowestCombinedACPL": {
-        "combinedACPL": 24.9,
-        "whiteACPL": 12.1,
-        "blackACPL": 12.8,
-        "white": "Christopher «Ong Passong» G.",
-        "black": "Korbinian «King's Gambit is a real opening» A.",
-        "gameIndex": 0
+        "combinedACPL": 52.199999999999996,
+        "whiteACPL": 37.3,
+        "blackACPL": 14.9,
+        "white": "Florian «Knightmare» G.",
+        "black": "Torsten «torstyehocara» J.",
+        "gameIndex": 21
       },
       "highestCombinedACPL": {
         "combinedACPL": 295.2,
