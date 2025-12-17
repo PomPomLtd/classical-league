@@ -1,6 +1,6 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-12-17T12:08:27.299Z",
+  "generatedAt": "2025-12-17T13:17:37.357Z",
   "roundsIncluded": [
     1,
     2,
@@ -10,18 +10,18 @@
     6
   ],
   "aggregates": {
-    "totalGames": 185,
-    "totalMoves": 13830,
-    "averageGameLength": 74.8,
-    "totalBlunders": 451,
-    "totalMistakes": 996,
+    "totalGames": 186,
+    "totalMoves": 13944,
+    "averageGameLength": 75,
+    "totalBlunders": 456,
+    "totalMistakes": 1004,
     "piecesCaptured": {
-      "pawns": 1449,
-      "knights": 559,
-      "bishops": 515,
-      "rooks": 376,
-      "queens": 232,
-      "total": 3131
+      "pawns": 1463,
+      "knights": 563,
+      "bishops": 519,
+      "rooks": 380,
+      "queens": 236,
+      "total": 3161
     },
     "totalChecks": 0,
     "totalEnPassant": 7,
@@ -30,13 +30,13 @@
   },
   "hallOfFame": {
     "cleanestGame": {
-      "round": 6,
-      "combinedACPL": 0,
-      "whiteACPL": 0,
-      "blackACPL": 0,
+      "round": 2,
+      "combinedACPL": 29,
+      "whiteACPL": 20.8,
+      "blackACPL": 8.2,
       "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "gameIndex": 16
+      "black": "Korbinian «King's Gambit is a real opening» A.",
+      "gameIndex": 2
     },
     "wildestGame": {
       "round": 1,
@@ -62,13 +62,13 @@
       "gameIndex": 19
     },
     "mostAccurate": {
-      "round": 6,
-      "player": "white",
-      "accuracy": 100,
-      "acpl": 0,
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "gameIndex": 16
+      "round": 5,
+      "player": "black",
+      "accuracy": 98,
+      "acpl": 14.1,
+      "white": "Oliver «Mouse Slip Expert» S.",
+      "black": "Peter «Peaky Blunder» N.",
+      "gameIndex": 20
     },
     "worstACPL": {
       "round": 1,
@@ -87,11 +87,11 @@
       "result": "1/2-1/2"
     },
     "shortestGame": {
-      "round": 6,
-      "moves": 1,
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "result": "1/2-1/2"
+      "round": 1,
+      "moves": 13,
+      "white": "Nikola «Pawn Carnivore»",
+      "black": "Ruslan «Thunder-Blunder» G.",
+      "result": "1-0"
     },
     "sportiestQueen": {
       "round": 3,
@@ -253,7 +253,7 @@
     "pawnStorm": {
       "round": 6,
       "count": 14,
-      "gameIndex": 17,
+      "gameIndex": 16,
       "white": "Fabienne «Chessy» S.",
       "black": "Vjeko «Blunderful» B."
     }
@@ -780,8 +780,8 @@
     "Dogan P.": {
       "normalizedName": "Dogan P.",
       "displayName": "Dogan «Kido» P.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -827,10 +827,15 @@
           "round": 5,
           "award": "bloodbath",
           "details": "29 captures"
+        },
+        {
+          "round": 6,
+          "award": "bloodbath",
+          "details": "30 captures"
         }
       ],
-      "awardCount": 8,
-      "averageACPL": 48.9,
+      "awardCount": 9,
+      "averageACPL": 47.8,
       "bestACPL": 16.2,
       "worstACPL": 86.1,
       "acplByRound": [
@@ -839,7 +844,7 @@
         44,
         32.3,
         65.8,
-        null,
+        42.3,
         null
       ],
       "accuracyByRound": [
@@ -848,15 +853,15 @@
         89.6,
         97.5,
         90.2,
-        null,
+        85.4,
         null
       ],
-      "acplVariance": 24.7,
+      "acplVariance": 22.6,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 3,
-      "totalMistakes": 9
+      "totalBlunders": 6,
+      "totalMistakes": 13
     },
     "Gaston F.": {
       "normalizedName": "Gaston F.",
@@ -2044,14 +2049,9 @@
           "round": 6,
           "award": "Dark Mode Enthusiast",
           "details": "9 captures"
-        },
-        {
-          "round": 6,
-          "award": "bloodbath",
-          "details": "28 captures"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 3,
       "averageACPL": 33.3,
       "bestACPL": 26.3,
       "worstACPL": 49.3,
@@ -2120,9 +2120,14 @@
           "round": 6,
           "award": "Fastest Queen Trade",
           "details": "12 moves"
+        },
+        {
+          "round": 6,
+          "award": "GM Energy",
+          "details": "95.3% accuracy"
         }
       ],
-      "awardCount": 6,
+      "awardCount": 7,
       "averageACPL": 31.2,
       "bestACPL": 12.5,
       "worstACPL": 52.2,
@@ -2154,9 +2159,9 @@
     "Davide V.": {
       "normalizedName": "Davide V.",
       "displayName": "Davide «AME» V.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -2181,10 +2186,15 @@
           "round": 5,
           "award": "Longest King Hunt",
           "details": "11 in a row"
+        },
+        {
+          "round": 6,
+          "award": "bloodbath",
+          "details": "30 captures"
         }
       ],
-      "awardCount": 4,
-      "averageACPL": 44.6,
+      "awardCount": 5,
+      "averageACPL": 44.2,
       "bestACPL": 12.4,
       "worstACPL": 80.5,
       "acplByRound": [
@@ -2193,7 +2203,7 @@
         32.4,
         12.4,
         35.7,
-        null,
+        42.1,
         null
       ],
       "accuracyByRound": [
@@ -2202,15 +2212,15 @@
         91,
         95.7,
         77.8,
-        null,
+        85.8,
         null
       ],
-      "acplVariance": 23.9,
+      "acplVariance": 21.9,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 4,
-      "totalMistakes": 14
+      "totalBlunders": 6,
+      "totalMistakes": 18
     },
     "Max W.": {
       "normalizedName": "Max W.",
@@ -2603,14 +2613,9 @@
           "round": 5,
           "award": "Castling Race Winner",
           "details": "4 moves"
-        },
-        {
-          "round": 6,
-          "award": "bloodbath",
-          "details": "28 captures"
         }
       ],
-      "awardCount": 3,
+      "awardCount": 2,
       "averageACPL": 29,
       "bestACPL": 15,
       "worstACPL": 42.9,
@@ -2836,23 +2841,17 @@
     "Linus K.": {
       "normalizedName": "Linus K.",
       "displayName": "Linus «The Middlegame Mixer» K.",
-      "gamesPlayed": 6,
-      "gamesAsWhite": 3,
+      "gamesPlayed": 5,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [
-        {
-          "round": 6,
-          "award": "GM Energy",
-          "details": "100% accuracy"
-        }
-      ],
-      "awardCount": 1,
-      "averageACPL": 36.5,
-      "bestACPL": 0,
+      "awards": [],
+      "awardCount": 0,
+      "averageACPL": 43.8,
+      "bestACPL": 20.8,
       "worstACPL": 90.5,
       "acplByRound": [
         37.8,
@@ -2860,7 +2859,7 @@
         90.5,
         25.4,
         44.5,
-        0,
+        null,
         null
       ],
       "accuracyByRound": [
@@ -2869,10 +2868,10 @@
         82.6,
         91,
         78.3,
-        100,
+        null,
         null
       ],
-      "acplVariance": 27.9,
+      "acplVariance": 24.8,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
@@ -4059,9 +4058,9 @@
     "Alejandro E.": {
       "normalizedName": "Alejandro E.",
       "displayName": "Alejandro «Waffle» E.",
-      "gamesPlayed": 4,
+      "gamesPlayed": 3,
       "gamesAsWhite": 2,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -4089,8 +4088,8 @@
         }
       ],
       "awardCount": 4,
-      "averageACPL": 37,
-      "bestACPL": 0,
+      "averageACPL": 49.3,
+      "bestACPL": 30.4,
       "worstACPL": 78.8,
       "acplByRound": [
         null,
@@ -4098,7 +4097,7 @@
         30.4,
         38.8,
         78.8,
-        0,
+        null,
         null
       ],
       "accuracyByRound": [
@@ -4107,10 +4106,10 @@
         83.3,
         90.4,
         76.5,
-        100,
+        null,
         null
       ],
-      "acplVariance": 28.1,
+      "acplVariance": 21.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
@@ -4553,6 +4552,58 @@
         ]
       },
       {
+        "player": "Dogan P.",
+        "displayName": "Dogan «Kido» P.",
+        "count": 9,
+        "awards": [
+          {
+            "round": 1,
+            "award": "Square Tourist",
+            "details": "25 squares"
+          },
+          {
+            "round": 1,
+            "award": "Dadbod Shuffler",
+            "details": "32 moves"
+          },
+          {
+            "round": 1,
+            "award": "parkourMaster",
+            "details": ""
+          },
+          {
+            "round": 2,
+            "award": "Fastest Queen Trade",
+            "details": "5 moves"
+          },
+          {
+            "round": 2,
+            "award": "Crosshairs",
+            "details": ""
+          },
+          {
+            "round": 4,
+            "award": "GM Energy",
+            "details": "97.5% accuracy"
+          },
+          {
+            "round": 5,
+            "award": "Dadbod Shuffler",
+            "details": "25 moves"
+          },
+          {
+            "round": 5,
+            "award": "bloodbath",
+            "details": "29 captures"
+          },
+          {
+            "round": 6,
+            "award": "bloodbath",
+            "details": "30 captures"
+          }
+        ]
+      },
+      {
         "player": "Joshua G.",
         "displayName": "Joshua «Pristine Pawn Pusher» G.",
         "count": 8,
@@ -4596,53 +4647,6 @@
             "round": 4,
             "award": "Crosshairs",
             "details": ""
-          }
-        ]
-      },
-      {
-        "player": "Dogan P.",
-        "displayName": "Dogan «Kido» P.",
-        "count": 8,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Square Tourist",
-            "details": "25 squares"
-          },
-          {
-            "round": 1,
-            "award": "Dadbod Shuffler",
-            "details": "32 moves"
-          },
-          {
-            "round": 1,
-            "award": "parkourMaster",
-            "details": ""
-          },
-          {
-            "round": 2,
-            "award": "Fastest Queen Trade",
-            "details": "5 moves"
-          },
-          {
-            "round": 2,
-            "award": "Crosshairs",
-            "details": ""
-          },
-          {
-            "round": 4,
-            "award": "GM Energy",
-            "details": "97.5% accuracy"
-          },
-          {
-            "round": 5,
-            "award": "Dadbod Shuffler",
-            "details": "25 moves"
-          },
-          {
-            "round": 5,
-            "award": "bloodbath",
-            "details": "29 captures"
           }
         ]
       },
@@ -4732,6 +4736,48 @@
             "round": 6,
             "award": "Crosshairs",
             "details": ""
+          }
+        ]
+      },
+      {
+        "player": "Manuel C.",
+        "displayName": "Manuel «Grundpatzer» C.",
+        "count": 7,
+        "awards": [
+          {
+            "round": 2,
+            "award": "Longest Capture Spree",
+            "details": "10 in a row"
+          },
+          {
+            "round": 5,
+            "award": "Fastest Queen Trade",
+            "details": "8 moves"
+          },
+          {
+            "round": 5,
+            "award": "Square Tourist",
+            "details": "21 squares"
+          },
+          {
+            "round": 5,
+            "award": "Professional Edger",
+            "details": "23 moves"
+          },
+          {
+            "round": 5,
+            "award": "Dark Mode Enthusiast",
+            "details": "9 captures"
+          },
+          {
+            "round": 6,
+            "award": "Fastest Queen Trade",
+            "details": "12 moves"
+          },
+          {
+            "round": 6,
+            "award": "GM Energy",
+            "details": "95.3% accuracy"
           }
         ]
       },
@@ -4880,43 +4926,6 @@
             "round": 6,
             "award": "Longest Capture Spree",
             "details": "10 in a row"
-          }
-        ]
-      },
-      {
-        "player": "Manuel C.",
-        "displayName": "Manuel «Grundpatzer» C.",
-        "count": 6,
-        "awards": [
-          {
-            "round": 2,
-            "award": "Longest Capture Spree",
-            "details": "10 in a row"
-          },
-          {
-            "round": 5,
-            "award": "Fastest Queen Trade",
-            "details": "8 moves"
-          },
-          {
-            "round": 5,
-            "award": "Square Tourist",
-            "details": "21 squares"
-          },
-          {
-            "round": 5,
-            "award": "Professional Edger",
-            "details": "23 moves"
-          },
-          {
-            "round": 5,
-            "award": "Dark Mode Enthusiast",
-            "details": "9 captures"
-          },
-          {
-            "round": 6,
-            "award": "Fastest Queen Trade",
-            "details": "12 moves"
           }
         ]
       }
@@ -5096,25 +5105,25 @@
         "improvement": 29.4
       },
       {
-        "player": "Linus K.",
-        "displayName": "Linus «The Middlegame Mixer» K.",
-        "earlyACPL": 49.7,
-        "lateACPL": 22.3,
-        "improvement": 27.4
-      },
-      {
-        "player": "Davide V.",
-        "displayName": "Davide «AME» V.",
-        "earlyACPL": 58.4,
-        "lateACPL": 35.7,
-        "improvement": 22.7
-      },
-      {
         "player": "Max W.",
         "displayName": "Max «Bird is the word» W.",
         "earlyACPL": 55.8,
         "lateACPL": 33.6,
         "improvement": 22.2
+      },
+      {
+        "player": "Eva S.",
+        "displayName": "Eva «Miss of King» S.",
+        "earlyACPL": 115.4,
+        "lateACPL": 94.2,
+        "improvement": 21.1
+      },
+      {
+        "player": "Alex G.",
+        "displayName": "Alex «The Benoni Pulverizer» G.",
+        "earlyACPL": 43.9,
+        "lateACPL": 24.2,
+        "improvement": 19.7
       }
     ],
     "mostGames": [
@@ -5144,6 +5153,11 @@
         "games": 6
       },
       {
+        "player": "Dogan P.",
+        "displayName": "Dogan «Kido» P.",
+        "games": 6
+      },
+      {
         "player": "Gaston F.",
         "displayName": "Gaston «SleepingDawg» F.",
         "games": 6
@@ -5161,11 +5175,6 @@
       {
         "player": "Korbinian A.",
         "displayName": "Korbinian «King's Gambit is a real opening» A.",
-        "games": 6
-      },
-      {
-        "player": "Laurens B.",
-        "displayName": "Laurens «Castling Specialist» B.",
         "games": 6
       }
     ],
@@ -5290,7 +5299,7 @@
         "displayName": "Dogan «Kido» P.",
         "winRate": 0,
         "wins": 0,
-        "gamesPlayed": 5
+        "gamesPlayed": 6
       },
       {
         "player": "Gaston F.",
@@ -5426,14 +5435,14 @@
         "blundersPerGame": 0.5
       },
       {
-        "player": "Dogan P.",
-        "displayName": "Dogan «Kido» P.",
+        "player": "Sam B.",
+        "displayName": "Sam «Active King» B.",
         "blunders": 3,
         "blundersPerGame": 0.6
       },
       {
-        "player": "Sam B.",
-        "displayName": "Sam «Active King» B.",
+        "player": "Roger H.",
+        "displayName": "Roger «Ruthless En Passant Shredder» H.",
         "blunders": 3,
         "blundersPerGame": 0.6
       }
@@ -5446,7 +5455,7 @@
       45.2,
       51.3,
       49.6,
-      41.9
+      43.5
     ],
     "averageAccuracyByRound": [
       83.8,
@@ -5454,7 +5463,7 @@
       83.4,
       85.5,
       83.8,
-      85.3
+      84.7
     ],
     "averageGameLengthByRound": [
       41.3,
@@ -5462,7 +5471,7 @@
       44.7,
       38.1,
       39.7,
-      38.8
+      41
     ],
     "e4PercentageByRound": [
       48.3,
@@ -5470,7 +5479,7 @@
       46.4,
       69,
       66.7,
-      65.4
+      61.5
     ],
     "d4PercentageByRound": [
       41.4,
@@ -5478,7 +5487,7 @@
       46.4,
       20.7,
       23.3,
-      23.1
+      26.9
     ],
     "drawRateByRound": [
       3.3,
@@ -5486,7 +5495,7 @@
       12.5,
       12.9,
       6.5,
-      21.4
+      24.1
     ],
     "whiteWinRateByRound": [
       60,
@@ -5494,7 +5503,7 @@
       46.9,
       51.6,
       48.4,
-      25
+      24.1
     ],
     "blackWinRateByRound": [
       36.7,
@@ -5502,7 +5511,7 @@
       40.6,
       35.5,
       45.2,
-      53.6
+      51.7
     ],
     "blundersPerGameByRound": [
       2.8,
@@ -5510,7 +5519,7 @@
       3.1,
       1.7,
       2.4,
-      2.7
+      2.8
     ],
     "mistakesPerGameByRound": [
       5,
@@ -5518,7 +5527,7 @@
       5.7,
       5.4,
       5.7,
-      5.5
+      5.6
     ],
     "avgQueenDistanceByRound": [
       42,
