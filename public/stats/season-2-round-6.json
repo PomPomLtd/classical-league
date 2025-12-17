@@ -1,11 +1,11 @@
 {
   "roundNumber": 6,
   "seasonNumber": 2,
-  "generatedAt": "2025-12-17T09:36:22.790Z",
+  "generatedAt": "2025-12-17T12:22:33.113Z",
   "overview": {
     "totalGames": 28,
-    "totalMoves": 2020,
-    "averageGameLength": 38.84615384615385,
+    "totalMoves": 2019,
+    "averageGameLength": 40.38,
     "longestGame": {
       "moves": 95,
       "white": "Stefano «acheron» B.",
@@ -13,16 +13,16 @@
       "result": "1/2-1/2"
     },
     "shortestGame": {
-      "moves": 1,
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "result": "1/2-1/2"
+      "moves": 14,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Camill «Camillionaire» T.",
+      "result": "1-0"
     }
   },
   "gamePhases": {
-    "averageOpening": 8.673076923076923,
-    "averageMiddlegame": 15.634615384615385,
-    "averageEndgame": 14.538461538461538,
+    "averageOpening": 9,
+    "averageMiddlegame": 16.26,
+    "averageEndgame": 15.12,
     "longestWaitTillCapture": {
       "moves": 15,
       "white": "Ramura «viennugambu» G.",
@@ -53,23 +53,23 @@
   "openings": {
     "firstMoves": {
       "e4": {
-        "count": 17,
-        "percentage": 65.38461538461539,
-        "winRate": 17.647058823529413
+        "count": 16,
+        "percentage": 64,
+        "winRate": 18.75
       },
       "f4": {
         "count": 1,
-        "percentage": 3.8461538461538463,
+        "percentage": 4,
         "winRate": 0
       },
       "d4": {
         "count": 6,
-        "percentage": 23.076923076923077,
+        "percentage": 24,
         "winRate": 50
       },
       "c4": {
         "count": 2,
-        "percentage": 7.6923076923076925,
+        "percentage": 8,
         "winRate": 50
       }
     },
@@ -235,10 +235,10 @@
       "black": "Michael «Mivobu» B."
     },
     "quietestGame": {
-      "captures": 0,
-      "gameIndex": 15,
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E."
+      "captures": 7,
+      "gameIndex": 7,
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Camill «Camillionaire» T."
     },
     "longestNonCaptureStreak": {
       "moves": 29,
@@ -251,7 +251,7 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 542,
+      "pawns": 541,
       "knights": 369,
       "bishops": 280,
       "rooks": 306,
@@ -266,10 +266,10 @@
       "queens": 35
     },
     "survivalRate": {
-      "rooks": 0.5192307692307693,
-      "queens": 0.36538461538461536,
-      "bishops": 0.2403846153846154,
-      "knights": 0.25
+      "rooks": 0.5,
+      "queens": 0.34,
+      "bishops": 0.21,
+      "knights": 0.22
     }
   },
   "checkmates": {
@@ -282,7 +282,7 @@
     },
     "fastest": {
       "moves": 32,
-      "gameIndex": 17,
+      "gameIndex": 16,
       "white": "Fabienne «Chessy» S.",
       "black": "Vjeko «Blunderful» B.",
       "winner": "Black"
@@ -334,7 +334,7 @@
       },
       {
         "square": "e4",
-        "visits": 83
+        "visits": 82
       },
       {
         "square": "d4",
@@ -357,9 +357,9 @@
       "captures": 28
     },
     "pacifist": {
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "captures": 0
+      "white": "Alex «The Benoni Pulverizer» G.",
+      "black": "Camill «Camillionaire» T.",
+      "captures": 7
     },
     "speedDemon": {
       "white": "Fabienne «Chessy» S.",
@@ -373,9 +373,9 @@
       "endgameMoves": 66
     },
     "openingSprinter": {
-      "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Alejandro «Waffle» E.",
-      "openingMoves": 1
+      "white": "Jonathan «Panic Gambit» B.",
+      "black": "Iannis «Modern Pulverizer» D.",
+      "openingMoves": 6
     }
   },
   "funStats": {
@@ -407,7 +407,7 @@
     },
     "pawnStorm": {
       "count": 14,
-      "gameIndex": 17,
+      "gameIndex": 16,
       "white": "Fabienne «Chessy» S.",
       "black": "Vjeko «Blunderful» B."
     },
@@ -423,7 +423,7 @@
     },
     "castlingRace": {
       "moves": 4,
-      "gameIndex": 22,
+      "gameIndex": 21,
       "winner": "white",
       "white": "Jonathan «Panic Gambit» B.",
       "black": "Iannis «Modern Pulverizer» D."
@@ -492,7 +492,7 @@
     },
     "lightLord": {
       "captures": 9,
-      "gameIndex": 20,
+      "gameIndex": 19,
       "color": "White",
       "white": "Adam «PawnRuinerAlpha» A.",
       "black": "Florian «Knightmare» G."
@@ -981,14 +981,7 @@
           "whiteFirstInvasion": null,
           "blackFirstInvasion": null
         },
-        "mostAttackedSquare": {
-          "square": "d2",
-          "attackers": 4,
-          "whiteAttackers": 4,
-          "blackAttackers": 0,
-          "moveNumber": 1,
-          "move": "e4"
-        },
+        "mostAttackedSquare": null,
         "longestTension": null,
         "gameIndex": 16
       },
@@ -1111,7 +1104,7 @@
         },
         "longestTension": {
           "moves": 21,
-          "squares": "f3-g3",
+          "squares": "g3-g4",
           "startMove": 76,
           "endMove": 97
         },
@@ -1868,34 +1861,6 @@
         "luckyEscape": null
       },
       {
-        "gameIndex": 16,
-        "white": "Linus «The Middlegame Mixer» K.",
-        "black": "Alejandro «Waffle» E.",
-        "whiteACPL": 0,
-        "blackACPL": 0,
-        "whiteAccuracy": 100,
-        "blackAccuracy": 100,
-        "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 0,
-          "excellent": 1
-        },
-        "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 0,
-          "good": 0,
-          "excellent": 0
-        },
-        "whiteEngineMoves": 1,
-        "blackEngineMoves": 0,
-        "biggestBlunder": null,
-        "biggestComeback": null,
-        "luckyEscape": null
-      },
-      {
         "gameIndex": 17,
         "white": "Santiago «One-eyed Bishop» B.",
         "black": "Daniel «Bishop Mangler Supreme» T.",
@@ -2330,12 +2295,12 @@
     ],
     "summary": {
       "accuracyKing": {
-        "player": "white",
-        "accuracy": 100,
-        "acpl": 0,
-        "white": "Linus «The Middlegame Mixer» K.",
-        "black": "Alejandro «Waffle» E.",
-        "gameIndex": 16
+        "player": "black",
+        "accuracy": 95.3,
+        "acpl": 26.5,
+        "white": "Sam «Active King» B.",
+        "black": "Manuel «Grundpatzer» C.",
+        "gameIndex": 4
       },
       "biggestBlunder": {
         "moveNumber": 16,
@@ -2390,12 +2355,12 @@
         "gameIndex": 10
       },
       "lowestACPL": {
-        "player": "white",
-        "acpl": 0,
-        "accuracy": 100,
-        "white": "Linus «The Middlegame Mixer» K.",
-        "black": "Alejandro «Waffle» E.",
-        "gameIndex": 16
+        "player": "black",
+        "acpl": 14.9,
+        "accuracy": 92.7,
+        "white": "Torsten «torstyehocara» J.",
+        "black": "Itamar «Itaberg» B.",
+        "gameIndex": 14
       },
       "highestACPL": {
         "player": "white",
@@ -2406,12 +2371,12 @@
         "gameIndex": 14
       },
       "lowestCombinedACPL": {
-        "combinedACPL": 0,
-        "whiteACPL": 0,
-        "blackACPL": 0,
-        "white": "Linus «The Middlegame Mixer» K.",
-        "black": "Alejandro «Waffle» E.",
-        "gameIndex": 16
+        "combinedACPL": 46.7,
+        "whiteACPL": 23.3,
+        "blackACPL": 23.4,
+        "white": "Christopher «King Decimator» H.",
+        "black": "Anton «TheCatalan» B.",
+        "gameIndex": 6
       },
       "highestCombinedACPL": {
         "combinedACPL": 160.3,
