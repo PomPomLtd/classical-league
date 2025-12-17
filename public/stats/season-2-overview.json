@@ -1,6 +1,6 @@
 {
   "seasonNumber": 2,
-  "generatedAt": "2025-12-15T14:28:54.337Z",
+  "generatedAt": "2025-12-17T12:08:27.299Z",
   "roundsIncluded": [
     1,
     2,
@@ -10,18 +10,18 @@
     6
   ],
   "aggregates": {
-    "totalGames": 176,
-    "totalMoves": 13065,
-    "averageGameLength": 74.2,
-    "totalBlunders": 421,
-    "totalMistakes": 935,
+    "totalGames": 185,
+    "totalMoves": 13830,
+    "averageGameLength": 74.8,
+    "totalBlunders": 451,
+    "totalMistakes": 996,
     "piecesCaptured": {
-      "pawns": 1371,
-      "knights": 530,
-      "bishops": 487,
-      "rooks": 354,
-      "queens": 221,
-      "total": 2963
+      "pawns": 1449,
+      "knights": 559,
+      "bishops": 515,
+      "rooks": 376,
+      "queens": 232,
+      "total": 3131
     },
     "totalChecks": 0,
     "totalEnPassant": 7,
@@ -30,13 +30,13 @@
   },
   "hallOfFame": {
     "cleanestGame": {
-      "round": 2,
-      "combinedACPL": 29,
-      "whiteACPL": 20.8,
-      "blackACPL": 8.2,
+      "round": 6,
+      "combinedACPL": 0,
+      "whiteACPL": 0,
+      "blackACPL": 0,
       "white": "Linus «The Middlegame Mixer» K.",
-      "black": "Korbinian «King's Gambit is a real opening» A.",
-      "gameIndex": 2
+      "black": "Alejandro «Waffle» E.",
+      "gameIndex": 16
     },
     "wildestGame": {
       "round": 1,
@@ -62,13 +62,13 @@
       "gameIndex": 19
     },
     "mostAccurate": {
-      "round": 5,
-      "player": "black",
-      "accuracy": 98,
-      "acpl": 14.1,
-      "white": "Oliver «Mouse Slip Expert» S.",
-      "black": "Peter «Peaky Blunder» N.",
-      "gameIndex": 20
+      "round": 6,
+      "player": "white",
+      "accuracy": 100,
+      "acpl": 0,
+      "white": "Linus «The Middlegame Mixer» K.",
+      "black": "Alejandro «Waffle» E.",
+      "gameIndex": 16
     },
     "worstACPL": {
       "round": 1,
@@ -87,11 +87,11 @@
       "result": "1/2-1/2"
     },
     "shortestGame": {
-      "round": 1,
-      "moves": 13,
-      "white": "Nikola «Pawn Carnivore»",
-      "black": "Ruslan «Thunder-Blunder» G.",
-      "result": "1-0"
+      "round": 6,
+      "moves": 1,
+      "white": "Linus «The Middlegame Mixer» K.",
+      "black": "Alejandro «Waffle» E.",
+      "result": "1/2-1/2"
     },
     "sportiestQueen": {
       "round": 3,
@@ -106,18 +106,18 @@
     "mostRetreats": {
       "round": 6,
       "retreats": 26,
-      "gameIndex": 6,
+      "gameIndex": 9,
       "color": "White",
       "white": "Stefano «acheron» B.",
       "black": "Nikola «Pawn Carnivore» N."
     },
     "longestCheckSequence": {
-      "round": 2,
-      "length": 12,
-      "gameIndex": 30,
-      "startMove": 38,
-      "white": "Tobias «tiuan» P.",
-      "black": "Arnaud «The French Squid» P."
+      "round": 6,
+      "length": 15,
+      "gameIndex": 0,
+      "startMove": 46,
+      "white": "Igor «Premove Blunder» S.",
+      "black": "Christopher «Ong Passong» G."
     },
     "longestCaptureSpree": {
       "round": 2,
@@ -253,7 +253,7 @@
     "pawnStorm": {
       "round": 6,
       "count": 14,
-      "gameIndex": 11,
+      "gameIndex": 17,
       "white": "Fabienne «Chessy» S.",
       "black": "Vjeko «Blunderful» B."
     }
@@ -262,9 +262,9 @@
     "Daniel T.": {
       "normalizedName": "Daniel T.",
       "displayName": "Daniel «Bishop Mangler Supreme» T.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -287,7 +287,7 @@
         }
       ],
       "awardCount": 3,
-      "averageACPL": 57.1,
+      "averageACPL": 54.9,
       "bestACPL": 37.6,
       "worstACPL": 104,
       "acplByRound": [
@@ -296,7 +296,7 @@
         40.6,
         104,
         39.1,
-        null,
+        43.9,
         null
       ],
       "accuracyByRound": [
@@ -305,15 +305,15 @@
         80.8,
         78.1,
         80.1,
-        null,
+        82.9,
         null
       ],
-      "acplVariance": 25.4,
+      "acplVariance": 23.7,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 7,
-      "totalMistakes": 19
+      "totalBlunders": 8,
+      "totalMistakes": 21
     },
     "Viktor H.": {
       "normalizedName": "Viktor H.",
@@ -704,8 +704,8 @@
     "Boris G.": {
       "normalizedName": "Boris G.",
       "displayName": "Boris «Out of Nowhere» G.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -741,11 +741,16 @@
           "round": 5,
           "award": "Blunder of the Round",
           "details": "558 cp loss"
+        },
+        {
+          "round": 6,
+          "award": "Crosshairs",
+          "details": ""
         }
       ],
-      "awardCount": 6,
-      "averageACPL": 82.7,
-      "bestACPL": 45.5,
+      "awardCount": 7,
+      "averageACPL": 76.5,
+      "bestACPL": 45.1,
       "worstACPL": 202.2,
       "acplByRound": [
         202.2,
@@ -753,7 +758,7 @@
         52.2,
         49.5,
         64.2,
-        null,
+        45.1,
         null
       ],
       "accuracyByRound": [
@@ -762,15 +767,15 @@
         77.1,
         95.5,
         74.6,
-        null,
+        82.1,
         null
       ],
-      "acplVariance": 60.1,
+      "acplVariance": 56.6,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 7,
-      "totalMistakes": 11
+      "totalBlunders": 9,
+      "totalMistakes": 15
     },
     "Dogan P.": {
       "normalizedName": "Dogan P.",
@@ -983,9 +988,9 @@
     "Simon L.": {
       "normalizedName": "Simon L.",
       "displayName": "Simon «The Endgame Alchemist» L.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1023,7 +1028,7 @@
         }
       ],
       "awardCount": 6,
-      "averageACPL": 31.4,
+      "averageACPL": 32,
       "bestACPL": 18.7,
       "worstACPL": 53,
       "acplByRound": [
@@ -1032,7 +1037,7 @@
         18.7,
         27.7,
         32.9,
-        null,
+        34.8,
         null
       ],
       "accuracyByRound": [
@@ -1041,15 +1046,15 @@
         86,
         89.5,
         90.6,
-        null,
+        84.6,
         null
       ],
-      "acplVariance": 11.7,
+      "acplVariance": 10.8,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 7,
-      "totalMistakes": 14
+      "totalBlunders": 8,
+      "totalMistakes": 18
     },
     "Yannik T.": {
       "normalizedName": "Yannik T.",
@@ -1151,9 +1156,9 @@
     "Anton B.": {
       "normalizedName": "Anton B.",
       "displayName": "Anton «TheCatalan» B.",
-      "gamesPlayed": 4,
+      "gamesPlayed": 5,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1171,7 +1176,7 @@
         }
       ],
       "awardCount": 2,
-      "averageACPL": 25.9,
+      "averageACPL": 25.4,
       "bestACPL": 17.4,
       "worstACPL": 29.5,
       "acplByRound": [
@@ -1180,7 +1185,7 @@
         29.5,
         null,
         28.9,
-        null,
+        23.4,
         null
       ],
       "accuracyByRound": [
@@ -1189,22 +1194,22 @@
         89.8,
         null,
         85.8,
-        null,
+        86.3,
         null
       ],
-      "acplVariance": 5,
+      "acplVariance": 4.5,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 1,
-      "totalMistakes": 9
+      "totalBlunders": 2,
+      "totalMistakes": 12
     },
     "Ruslan G.": {
       "normalizedName": "Ruslan G.",
       "displayName": "Ruslan «Thunder-Blunder» G.",
-      "gamesPlayed": 3,
+      "gamesPlayed": 4,
       "gamesAsWhite": 1,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -1227,7 +1232,7 @@
         }
       ],
       "awardCount": 3,
-      "averageACPL": 82.1,
+      "averageACPL": 79.5,
       "bestACPL": 66.6,
       "worstACPL": 101.2,
       "acplByRound": [
@@ -1236,7 +1241,7 @@
         78.6,
         null,
         null,
-        null,
+        71.4,
         null
       ],
       "accuracyByRound": [
@@ -1245,21 +1250,21 @@
         71.9,
         null,
         null,
-        null,
+        73,
         null
       ],
-      "acplVariance": 14.3,
+      "acplVariance": 13.3,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 10,
-      "totalMistakes": 12
+      "totalBlunders": 15,
+      "totalMistakes": 18
     },
     "Jack C.": {
       "normalizedName": "Jack C.",
       "displayName": "Jack «NoBackwardMoves» C.",
-      "gamesPlayed": 4,
-      "gamesAsWhite": 1,
+      "gamesPlayed": 5,
+      "gamesAsWhite": 2,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -1270,10 +1275,15 @@
           "round": 1,
           "award": "Late Bloomer",
           "details": ""
+        },
+        {
+          "round": 6,
+          "award": "Blunder of the Round",
+          "details": "509 cp loss"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 55.3,
+      "awardCount": 2,
+      "averageACPL": 54,
       "bestACPL": 41.1,
       "worstACPL": 69.9,
       "acplByRound": [
@@ -1282,7 +1292,7 @@
         null,
         41.2,
         69.9,
-        null,
+        48.9,
         null
       ],
       "accuracyByRound": [
@@ -1291,15 +1301,15 @@
         null,
         88.1,
         66.5,
-        null,
+        84.2,
         null
       ],
-      "acplVariance": 14.2,
+      "acplVariance": 12.9,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 3,
-      "totalMistakes": 9
+      "totalBlunders": 4,
+      "totalMistakes": 11
     },
     "Alex G.": {
       "normalizedName": "Alex G.",
@@ -1411,8 +1421,8 @@
     "Korbinian A.": {
       "normalizedName": "Korbinian A.",
       "displayName": "Korbinian «King's Gambit is a real opening» A.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -1441,16 +1451,16 @@
         }
       ],
       "awardCount": 4,
-      "averageACPL": 16.1,
+      "averageACPL": 17.7,
       "bestACPL": 8.2,
-      "worstACPL": 24.4,
+      "worstACPL": 25.9,
       "acplByRound": [
         16.2,
         8.2,
         18.7,
         12.8,
         24.4,
-        null,
+        25.9,
         null
       ],
       "accuracyByRound": [
@@ -1459,15 +1469,15 @@
         91.3,
         95,
         88,
-        null,
+        87.7,
         null
       ],
-      "acplVariance": 5.5,
+      "acplVariance": 6.2,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 1,
-      "totalMistakes": 2
+      "totalBlunders": 3,
+      "totalMistakes": 4
     },
     "Adam A.": {
       "normalizedName": "Adam A.",
@@ -1494,14 +1504,9 @@
           "round": 6,
           "award": "lightLord",
           "details": "9 captures"
-        },
-        {
-          "round": 6,
-          "award": "Blunder of the Round",
-          "details": "568 cp loss"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 3,
       "averageACPL": 38.4,
       "bestACPL": 25.7,
       "worstACPL": 65.2,
@@ -1601,19 +1606,9 @@
           "round": 5,
           "award": "Longest Capture Spree",
           "details": "7 in a row"
-        },
-        {
-          "round": 6,
-          "award": "pawnCaptures",
-          "details": "4 captures"
-        },
-        {
-          "round": 6,
-          "award": "Hypertension Award",
-          "details": "29 moves"
         }
       ],
-      "awardCount": 4,
+      "awardCount": 2,
       "averageACPL": 54.2,
       "bestACPL": 12.7,
       "worstACPL": 102.2,
@@ -1696,8 +1691,8 @@
     "Igor S.": {
       "normalizedName": "Igor S.",
       "displayName": "Igor «Premove Blunder» S.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -1708,10 +1703,20 @@
           "round": 5,
           "award": "Opening Hipster",
           "details": "Nf3 c5 g3 Nc6 d3 g6 moves"
+        },
+        {
+          "round": 6,
+          "award": "Longest King Hunt",
+          "details": "15 in a row"
+        },
+        {
+          "round": 6,
+          "award": "Hypertension Award",
+          "details": "29 moves"
         }
       ],
-      "awardCount": 1,
-      "averageACPL": 30.5,
+      "awardCount": 3,
+      "averageACPL": 29.6,
       "bestACPL": 17.8,
       "worstACPL": 44.2,
       "acplByRound": [
@@ -1720,7 +1725,7 @@
         37.8,
         25.9,
         26.7,
-        null,
+        25.2,
         null
       ],
       "accuracyByRound": [
@@ -1729,29 +1734,40 @@
         86.3,
         86.4,
         86.8,
-        null,
+        85.8,
         null
       ],
-      "acplVariance": 9.4,
+      "acplVariance": 8.8,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 4,
-      "totalMistakes": 21
+      "totalBlunders": 5,
+      "totalMistakes": 29
     },
     "Christopher G.": {
       "normalizedName": "Christopher G.",
       "displayName": "Christopher «Ong Passong» G.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 31.3,
+      "awards": [
+        {
+          "round": 6,
+          "award": "Longest King Hunt",
+          "details": "15 in a row"
+        },
+        {
+          "round": 6,
+          "award": "Hypertension Award",
+          "details": "29 moves"
+        }
+      ],
+      "awardCount": 2,
+      "averageACPL": 29.7,
       "bestACPL": 19.4,
       "worstACPL": 35.3,
       "acplByRound": [
@@ -1760,7 +1776,7 @@
         35.3,
         34.9,
         35.2,
-        null,
+        21.6,
         null
       ],
       "accuracyByRound": [
@@ -1769,15 +1785,15 @@
         75.2,
         83.1,
         83.6,
-        null,
+        87.7,
         null
       ],
-      "acplVariance": 6.1,
+      "acplVariance": 6.6,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 5,
-      "totalMistakes": 11
+      "totalBlunders": 6,
+      "totalMistakes": 16
     },
     "Torsten J.": {
       "normalizedName": "Torsten J.",
@@ -2104,14 +2120,9 @@
           "round": 6,
           "award": "Fastest Queen Trade",
           "details": "12 moves"
-        },
-        {
-          "round": 6,
-          "award": "GM Energy",
-          "details": "95.3% accuracy"
         }
       ],
-      "awardCount": 7,
+      "awardCount": 6,
       "averageACPL": 31.2,
       "bestACPL": 12.5,
       "worstACPL": 52.2,
@@ -2221,14 +2232,9 @@
           "round": 5,
           "award": "Fastest Gun",
           "details": ""
-        },
-        {
-          "round": 6,
-          "award": "Hypertension Award",
-          "details": "29 moves"
         }
       ],
-      "awardCount": 3,
+      "awardCount": 2,
       "averageACPL": 45.5,
       "bestACPL": 29,
       "worstACPL": 101,
@@ -2260,17 +2266,28 @@
     "Oliver S.": {
       "normalizedName": "Oliver S.",
       "displayName": "Oliver «Mouse Slip Expert» S.",
-      "gamesPlayed": 4,
+      "gamesPlayed": 5,
       "gamesAsWhite": 2,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 53.5,
-      "bestACPL": 43.6,
+      "awards": [
+        {
+          "round": 6,
+          "award": "Late Bloomer",
+          "details": ""
+        },
+        {
+          "round": 6,
+          "award": "Crosshairs",
+          "details": ""
+        }
+      ],
+      "awardCount": 2,
+      "averageACPL": 49.2,
+      "bestACPL": 32.2,
       "worstACPL": 79.2,
       "acplByRound": [
         43.6,
@@ -2278,7 +2295,7 @@
         43.8,
         null,
         79.2,
-        null,
+        32.2,
         null
       ],
       "accuracyByRound": [
@@ -2287,22 +2304,22 @@
         81.9,
         null,
         94,
-        null,
+        86.7,
         null
       ],
-      "acplVariance": 14.9,
+      "acplVariance": 15.8,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 10,
-      "totalMistakes": 19
+      "totalBlunders": 12,
+      "totalMistakes": 21
     },
     "Diego R.": {
       "normalizedName": "Diego R.",
       "displayName": "Diego «The Bishop Slayer» R.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -2315,8 +2332,8 @@
         }
       ],
       "awardCount": 1,
-      "averageACPL": 95.8,
-      "bestACPL": 40.3,
+      "averageACPL": 86.3,
+      "bestACPL": 38.7,
       "worstACPL": 150.7,
       "acplByRound": [
         92.3,
@@ -2324,7 +2341,7 @@
         139.9,
         150.7,
         55.6,
-        null,
+        38.7,
         null
       ],
       "accuracyByRound": [
@@ -2333,15 +2350,15 @@
         80,
         83.8,
         78.5,
-        null,
+        88.1,
         null
       ],
-      "acplVariance": 44,
+      "acplVariance": 45.4,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 13,
-      "totalMistakes": 22
+      "totalBlunders": 14,
+      "totalMistakes": 24
     },
     "Stefano B.": {
       "normalizedName": "Stefano B.",
@@ -2391,11 +2408,6 @@
         },
         {
           "round": 6,
-          "award": "Longest King Hunt",
-          "details": "10 in a row"
-        },
-        {
-          "round": 6,
           "award": "Square Tourist",
           "details": "18 squares"
         },
@@ -2435,7 +2447,7 @@
           "details": ""
         }
       ],
-      "awardCount": 16,
+      "awardCount": 15,
       "averageACPL": 49.5,
       "bestACPL": 21.4,
       "worstACPL": 73.4,
@@ -2540,14 +2552,9 @@
           "round": 5,
           "award": "Hypertension Award",
           "details": "20 moves"
-        },
-        {
-          "round": 6,
-          "award": "Crosshairs",
-          "details": ""
         }
       ],
-      "awardCount": 5,
+      "awardCount": 4,
       "averageACPL": 65,
       "bestACPL": 35.7,
       "worstACPL": 113.3,
@@ -2681,9 +2688,9 @@
     "Jacopo B.": {
       "normalizedName": "Jacopo B.",
       "displayName": "Jacopo «Bildothebest» B.",
-      "gamesPlayed": 5,
+      "gamesPlayed": 6,
       "gamesAsWhite": 3,
-      "gamesAsBlack": 2,
+      "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -2701,7 +2708,7 @@
         }
       ],
       "awardCount": 2,
-      "averageACPL": 34.7,
+      "averageACPL": 35.4,
       "bestACPL": 26.5,
       "worstACPL": 41,
       "acplByRound": [
@@ -2710,7 +2717,7 @@
         34.6,
         32.5,
         38.7,
-        null,
+        38.8,
         null
       ],
       "accuracyByRound": [
@@ -2719,15 +2726,15 @@
         82.7,
         86.6,
         84.1,
-        null,
+        83.9,
         null
       ],
-      "acplVariance": 5.1,
+      "acplVariance": 4.9,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 7,
-      "totalMistakes": 14
+      "totalBlunders": 9,
+      "totalMistakes": 19
     },
     "Alexander .": {
       "normalizedName": "Alexander .",
@@ -2829,17 +2836,23 @@
     "Linus K.": {
       "normalizedName": "Linus K.",
       "displayName": "Linus «The Middlegame Mixer» K.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
       "draws": 0,
       "winRate": 0,
-      "awards": [],
-      "awardCount": 0,
-      "averageACPL": 43.8,
-      "bestACPL": 20.8,
+      "awards": [
+        {
+          "round": 6,
+          "award": "GM Energy",
+          "details": "100% accuracy"
+        }
+      ],
+      "awardCount": 1,
+      "averageACPL": 36.5,
+      "bestACPL": 0,
       "worstACPL": 90.5,
       "acplByRound": [
         37.8,
@@ -2847,7 +2860,7 @@
         90.5,
         25.4,
         44.5,
-        null,
+        0,
         null
       ],
       "accuracyByRound": [
@@ -2856,10 +2869,10 @@
         82.6,
         91,
         78.3,
-        null,
+        100,
         null
       ],
-      "acplVariance": 24.8,
+      "acplVariance": 27.9,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
@@ -3264,8 +3277,8 @@
     "Peter N.": {
       "normalizedName": "Peter N.",
       "displayName": "Peter «Peaky Blunder» N.",
-      "gamesPlayed": 5,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 6,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 3,
       "wins": 0,
       "losses": 0,
@@ -3291,19 +3304,24 @@
           "round": 5,
           "award": "GM Energy",
           "details": "98% accuracy"
+        },
+        {
+          "round": 6,
+          "award": "pawnCaptures",
+          "details": "7 captures"
         }
       ],
-      "awardCount": 4,
-      "averageACPL": 41.1,
+      "awardCount": 5,
+      "averageACPL": 51.9,
       "bestACPL": 14.1,
-      "worstACPL": 76.4,
+      "worstACPL": 105.9,
       "acplByRound": [
         27.5,
         54.6,
         33,
         76.4,
         14.1,
-        null,
+        105.9,
         null
       ],
       "accuracyByRound": [
@@ -3312,21 +3330,21 @@
         90,
         82.8,
         98,
-        null,
+        80.1,
         null
       ],
-      "acplVariance": 21.9,
+      "acplVariance": 31.4,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 2,
-      "totalMistakes": 6
+      "totalBlunders": 6,
+      "totalMistakes": 11
     },
     "Christopher H.": {
       "normalizedName": "Christopher H.",
       "displayName": "Christopher «King Decimator» H.",
-      "gamesPlayed": 4,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 5,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
@@ -3355,7 +3373,7 @@
         }
       ],
       "awardCount": 4,
-      "averageACPL": 38.6,
+      "averageACPL": 35.5,
       "bestACPL": 22,
       "worstACPL": 75.2,
       "acplByRound": [
@@ -3364,7 +3382,7 @@
         26.4,
         null,
         30.7,
-        null,
+        23.3,
         null
       ],
       "accuracyByRound": [
@@ -3373,15 +3391,15 @@
         83.5,
         null,
         85.8,
-        null,
+        86.3,
         null
       ],
-      "acplVariance": 21.4,
+      "acplVariance": 20.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 4,
-      "totalMistakes": 11
+      "totalBlunders": 5,
+      "totalMistakes": 13
     },
     "Andrei A.": {
       "normalizedName": "Andrei A.",
@@ -3628,11 +3646,6 @@
         },
         {
           "round": 6,
-          "award": "Longest King Hunt",
-          "details": "10 in a row"
-        },
-        {
-          "round": 6,
           "award": "Dadbod Shuffler",
           "details": "26 moves"
         },
@@ -3642,7 +3655,7 @@
           "details": "6 moves"
         }
       ],
-      "awardCount": 7,
+      "awardCount": 6,
       "averageACPL": 35.8,
       "bestACPL": 26.2,
       "worstACPL": 42.8,
@@ -3944,8 +3957,8 @@
     "Silvan S.": {
       "normalizedName": "Silvan S.",
       "displayName": "Silvan «Fork This Fork That» S.",
-      "gamesPlayed": 4,
-      "gamesAsWhite": 2,
+      "gamesPlayed": 5,
+      "gamesAsWhite": 3,
       "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
@@ -3959,7 +3972,7 @@
         }
       ],
       "awardCount": 1,
-      "averageACPL": 58.1,
+      "averageACPL": 60.9,
       "bestACPL": 40.1,
       "worstACPL": 92.6,
       "acplByRound": [
@@ -3968,7 +3981,7 @@
         43.9,
         40.1,
         55.7,
-        null,
+        72.1,
         null
       ],
       "accuracyByRound": [
@@ -3977,15 +3990,15 @@
         77.5,
         85.4,
         81.1,
-        null,
+        69.4,
         null
       ],
-      "acplVariance": 20.7,
+      "acplVariance": 19.4,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 6,
-      "totalMistakes": 11
+      "totalBlunders": 10,
+      "totalMistakes": 20
     },
     "Rainer S.": {
       "normalizedName": "Rainer S.",
@@ -4046,9 +4059,9 @@
     "Alejandro E.": {
       "normalizedName": "Alejandro E.",
       "displayName": "Alejandro «Waffle» E.",
-      "gamesPlayed": 3,
+      "gamesPlayed": 4,
       "gamesAsWhite": 2,
-      "gamesAsBlack": 1,
+      "gamesAsBlack": 2,
       "wins": 0,
       "losses": 0,
       "draws": 0,
@@ -4076,8 +4089,8 @@
         }
       ],
       "awardCount": 4,
-      "averageACPL": 49.3,
-      "bestACPL": 30.4,
+      "averageACPL": 37,
+      "bestACPL": 0,
       "worstACPL": 78.8,
       "acplByRound": [
         null,
@@ -4085,7 +4098,7 @@
         30.4,
         38.8,
         78.8,
-        null,
+        0,
         null
       ],
       "accuracyByRound": [
@@ -4094,10 +4107,10 @@
         83.3,
         90.4,
         76.5,
-        null,
+        100,
         null
       ],
-      "acplVariance": 21.1,
+      "acplVariance": 28.1,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
@@ -4195,14 +4208,9 @@
           "round": 6,
           "award": "Opening Hipster",
           "details": "f4 d5 Nf3 Nf6 e3 e6 moves"
-        },
-        {
-          "round": 6,
-          "award": "Late Bloomer",
-          "details": ""
         }
       ],
-      "awardCount": 6,
+      "awardCount": 5,
       "averageACPL": 25.7,
       "bestACPL": 13,
       "worstACPL": 41,
@@ -4302,14 +4310,9 @@
           "round": 6,
           "award": "Castling Race Winner",
           "details": "4 moves"
-        },
-        {
-          "round": 6,
-          "award": "Crosshairs",
-          "details": ""
         }
       ],
-      "awardCount": 3,
+      "awardCount": 2,
       "averageACPL": 61.7,
       "bestACPL": 39.8,
       "worstACPL": 74.9,
@@ -4381,8 +4384,8 @@
     "Santiago B.": {
       "normalizedName": "Santiago B.",
       "displayName": "Santiago «One-eyed Bishop» B.",
-      "gamesPlayed": 1,
-      "gamesAsWhite": 0,
+      "gamesPlayed": 2,
+      "gamesAsWhite": 1,
       "gamesAsBlack": 1,
       "wins": 0,
       "losses": 0,
@@ -4390,8 +4393,8 @@
       "winRate": 0,
       "awards": [],
       "awardCount": 0,
-      "averageACPL": 30.5,
-      "bestACPL": 30.5,
+      "averageACPL": 29.7,
+      "bestACPL": 28.8,
       "worstACPL": 30.5,
       "acplByRound": [
         null,
@@ -4399,7 +4402,7 @@
         null,
         null,
         30.5,
-        null,
+        28.8,
         null
       ],
       "accuracyByRound": [
@@ -4408,14 +4411,14 @@
         null,
         null,
         85.5,
-        null,
+        87.5,
         null
       ],
       "acplVariance": null,
       "openingsUsed": [],
       "openingDiversity": 0,
       "favoriteOpening": null,
-      "totalBlunders": 1,
+      "totalBlunders": 2,
       "totalMistakes": 2
     },
     "Vjeko B.": {
@@ -4470,7 +4473,7 @@
       {
         "player": "Stefano B.",
         "displayName": "Stefano «acheron» B.",
-        "count": 16,
+        "count": 15,
         "awards": [
           {
             "round": 4,
@@ -4506,11 +4509,6 @@
             "round": 6,
             "award": "Slowest Queen Trade",
             "details": "45 moves"
-          },
-          {
-            "round": 6,
-            "award": "Longest King Hunt",
-            "details": "10 in a row"
           },
           {
             "round": 6,
@@ -4696,86 +4694,44 @@
         ]
       },
       {
-        "player": "Manuel C.",
-        "displayName": "Manuel «Grundpatzer» C.",
+        "player": "Boris G.",
+        "displayName": "Boris «Out of Nowhere» G.",
         "count": 7,
         "awards": [
           {
-            "round": 2,
-            "award": "Longest Capture Spree",
-            "details": "10 in a row"
-          },
-          {
-            "round": 5,
-            "award": "Fastest Queen Trade",
-            "details": "8 moves"
-          },
-          {
-            "round": 5,
-            "award": "Square Tourist",
-            "details": "21 squares"
-          },
-          {
-            "round": 5,
-            "award": "Professional Edger",
-            "details": "23 moves"
-          },
-          {
-            "round": 5,
-            "award": "Dark Mode Enthusiast",
-            "details": "9 captures"
-          },
-          {
-            "round": 6,
-            "award": "Fastest Queen Trade",
-            "details": "12 moves"
-          },
-          {
-            "round": 6,
-            "award": "GM Energy",
-            "details": "95.3% accuracy"
-          }
-        ]
-      },
-      {
-        "player": "Nikola N.",
-        "displayName": "Nikola «Pawn Carnivore» N.",
-        "count": 7,
-        "awards": [
-          {
-            "round": 2,
-            "award": "Slowest Queen Trade",
-            "details": "48 moves"
-          },
-          {
-            "round": 2,
-            "award": "Chicken Award",
-            "details": "16 retreats"
-          },
-          {
-            "round": 5,
+            "round": 1,
             "award": "Pawn Storm",
-            "details": "12"
+            "details": "13"
+          },
+          {
+            "round": 2,
+            "award": "Homeboy",
+            "details": ""
+          },
+          {
+            "round": 3,
+            "award": "Longest Capture Spree",
+            "details": "8 in a row"
+          },
+          {
+            "round": 3,
+            "award": "Opening Hipster",
+            "details": "d4 f5 c4 Nf6 Nc3 e6 moves"
+          },
+          {
+            "round": 4,
+            "award": "Pawn Storm",
+            "details": "11"
+          },
+          {
+            "round": 5,
+            "award": "Blunder of the Round",
+            "details": "558 cp loss"
           },
           {
             "round": 6,
-            "award": "Slowest Queen Trade",
-            "details": "45 moves"
-          },
-          {
-            "round": 6,
-            "award": "Longest King Hunt",
-            "details": "10 in a row"
-          },
-          {
-            "round": 6,
-            "award": "Dadbod Shuffler",
-            "details": "26 moves"
-          },
-          {
-            "round": 6,
-            "award": "Center Stage",
-            "details": "6 moves"
+            "award": "Crosshairs",
+            "details": ""
           }
         ]
       },
@@ -4813,43 +4769,6 @@
             "round": 5,
             "award": "Longest King Hunt",
             "details": "11 in a row"
-          }
-        ]
-      },
-      {
-        "player": "Boris G.",
-        "displayName": "Boris «Out of Nowhere» G.",
-        "count": 6,
-        "awards": [
-          {
-            "round": 1,
-            "award": "Pawn Storm",
-            "details": "13"
-          },
-          {
-            "round": 2,
-            "award": "Homeboy",
-            "details": ""
-          },
-          {
-            "round": 3,
-            "award": "Longest Capture Spree",
-            "details": "8 in a row"
-          },
-          {
-            "round": 3,
-            "award": "Opening Hipster",
-            "details": "d4 f5 c4 Nf6 Nc3 e6 moves"
-          },
-          {
-            "round": 4,
-            "award": "Pawn Storm",
-            "details": "11"
-          },
-          {
-            "round": 5,
-            "award": "Blunder of the Round",
-            "details": "558 cp loss"
           }
         ]
       },
@@ -4926,20 +4845,100 @@
             "details": ""
           }
         ]
+      },
+      {
+        "player": "Torsten J.",
+        "displayName": "Torsten «torstyehocara» J.",
+        "count": 6,
+        "awards": [
+          {
+            "round": 3,
+            "award": "Blunder of the Round",
+            "details": "600 cp loss"
+          },
+          {
+            "round": 4,
+            "award": "Longest King Hunt",
+            "details": "11 in a row"
+          },
+          {
+            "round": 4,
+            "award": "Square Tourist",
+            "details": "21 squares"
+          },
+          {
+            "round": 4,
+            "award": "Dadbod Shuffler",
+            "details": "24 moves"
+          },
+          {
+            "round": 4,
+            "award": "bloodbath",
+            "details": "29 captures"
+          },
+          {
+            "round": 6,
+            "award": "Longest Capture Spree",
+            "details": "10 in a row"
+          }
+        ]
+      },
+      {
+        "player": "Manuel C.",
+        "displayName": "Manuel «Grundpatzer» C.",
+        "count": 6,
+        "awards": [
+          {
+            "round": 2,
+            "award": "Longest Capture Spree",
+            "details": "10 in a row"
+          },
+          {
+            "round": 5,
+            "award": "Fastest Queen Trade",
+            "details": "8 moves"
+          },
+          {
+            "round": 5,
+            "award": "Square Tourist",
+            "details": "21 squares"
+          },
+          {
+            "round": 5,
+            "award": "Professional Edger",
+            "details": "23 moves"
+          },
+          {
+            "round": 5,
+            "award": "Dark Mode Enthusiast",
+            "details": "9 captures"
+          },
+          {
+            "round": 6,
+            "award": "Fastest Queen Trade",
+            "details": "12 moves"
+          }
+        ]
       }
     ],
     "bestAverageACPL": [
       {
         "player": "Korbinian A.",
         "displayName": "Korbinian «King's Gambit is a real opening» A.",
-        "acpl": 16.1,
-        "gamesPlayed": 5
+        "acpl": 17.7,
+        "gamesPlayed": 6
       },
       {
         "player": "Manuel G.",
         "displayName": "Manuel «Pawn Shredder» G.",
         "acpl": 23.8,
         "gamesPlayed": 4
+      },
+      {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "acpl": 25.4,
+        "gamesPlayed": 5
       },
       {
         "player": "Mario M.",
@@ -4951,12 +4950,6 @@
         "player": "Ved B.",
         "displayName": "Ved «Underpromotes Everything» B.",
         "acpl": 25.7,
-        "gamesPlayed": 4
-      },
-      {
-        "player": "Anton B.",
-        "displayName": "Anton «TheCatalan» B.",
-        "acpl": 25.9,
         "gamesPlayed": 4
       },
       {
@@ -4972,31 +4965,25 @@
         "gamesPlayed": 6
       },
       {
+        "player": "Igor S.",
+        "displayName": "Igor «Premove Blunder» S.",
+        "acpl": 29.6,
+        "gamesPlayed": 6
+      },
+      {
+        "player": "Christopher G.",
+        "displayName": "Christopher «Ong Passong» G.",
+        "acpl": 29.7,
+        "gamesPlayed": 6
+      },
+      {
         "player": "Gaston F.",
         "displayName": "Gaston «SleepingDawg» F.",
         "acpl": 30.5,
         "gamesPlayed": 6
-      },
-      {
-        "player": "Igor S.",
-        "displayName": "Igor «Premove Blunder» S.",
-        "acpl": 30.5,
-        "gamesPlayed": 5
-      },
-      {
-        "player": "Manuel C.",
-        "displayName": "Manuel «Grundpatzer» C.",
-        "acpl": 31.2,
-        "gamesPlayed": 6
       }
     ],
     "worstAverageACPL": [
-      {
-        "player": "Diego R.",
-        "displayName": "Diego «The Bishop Slayer» R.",
-        "acpl": 95.8,
-        "gamesPlayed": 5
-      },
       {
         "player": "Oliver .",
         "displayName": "Oliver «ScreaminG HI JoK ING» .",
@@ -5010,16 +4997,16 @@
         "gamesPlayed": 4
       },
       {
-        "player": "Boris G.",
-        "displayName": "Boris «Out of Nowhere» G.",
-        "acpl": 82.7,
-        "gamesPlayed": 5
+        "player": "Diego R.",
+        "displayName": "Diego «The Bishop Slayer» R.",
+        "acpl": 86.3,
+        "gamesPlayed": 6
       },
       {
         "player": "Ruslan G.",
         "displayName": "Ruslan «Thunder-Blunder» G.",
-        "acpl": 82.1,
-        "gamesPlayed": 3
+        "acpl": 79.5,
+        "gamesPlayed": 4
       },
       {
         "player": "Adela P.",
@@ -5032,6 +5019,12 @@
         "displayName": "Giacomo «Bishop Airlines » R.",
         "acpl": 77.3,
         "gamesPlayed": 4
+      },
+      {
+        "player": "Boris G.",
+        "displayName": "Boris «Out of Nowhere» G.",
+        "acpl": 76.5,
+        "gamesPlayed": 6
       },
       {
         "player": "Ramura G.",
@@ -5075,25 +5068,25 @@
         "improvement": 55.5
       },
       {
-        "player": "Itamar B.",
-        "displayName": "Itamar «Itaberg» B.",
-        "earlyACPL": 66.9,
-        "lateACPL": 30.6,
-        "improvement": 36.3
-      },
-      {
         "player": "Boris G.",
         "displayName": "Boris «Out of Nowhere» G.",
         "earlyACPL": 100,
-        "lateACPL": 64.2,
-        "improvement": 35.8
+        "lateACPL": 54.7,
+        "improvement": 45.3
       },
       {
         "player": "Diego R.",
         "displayName": "Diego «The Bishop Slayer» R.",
         "earlyACPL": 90.8,
-        "lateACPL": 55.6,
-        "improvement": 35.2
+        "lateACPL": 47.2,
+        "improvement": 43.7
+      },
+      {
+        "player": "Itamar B.",
+        "displayName": "Itamar «Itaberg» B.",
+        "earlyACPL": 66.9,
+        "lateACPL": 30.6,
+        "improvement": 36.3
       },
       {
         "player": "Florian G.",
@@ -5103,11 +5096,11 @@
         "improvement": 29.4
       },
       {
-        "player": "Peter N.",
-        "displayName": "Peter «Peaky Blunder» N.",
-        "earlyACPL": 38.4,
-        "lateACPL": 14.1,
-        "improvement": 24.3
+        "player": "Linus K.",
+        "displayName": "Linus «The Middlegame Mixer» K.",
+        "earlyACPL": 49.7,
+        "lateACPL": 22.3,
+        "improvement": 27.4
       },
       {
         "player": "Davide V.",
@@ -5126,6 +5119,11 @@
     ],
     "mostGames": [
       {
+        "player": "Daniel T.",
+        "displayName": "Daniel «Bishop Mangler Supreme» T.",
+        "games": 6
+      },
+      {
         "player": "Viktor H.",
         "displayName": "Viktor «VHH93» H.",
         "games": 6
@@ -5141,8 +5139,18 @@
         "games": 6
       },
       {
+        "player": "Boris G.",
+        "displayName": "Boris «Out of Nowhere» G.",
+        "games": 6
+      },
+      {
         "player": "Gaston F.",
         "displayName": "Gaston «SleepingDawg» F.",
+        "games": 6
+      },
+      {
+        "player": "Simon L.",
+        "displayName": "Simon «The Endgame Alchemist» L.",
         "games": 6
       },
       {
@@ -5151,46 +5159,31 @@
         "games": 6
       },
       {
+        "player": "Korbinian A.",
+        "displayName": "Korbinian «King's Gambit is a real opening» A.",
+        "games": 6
+      },
+      {
         "player": "Laurens B.",
         "displayName": "Laurens «Castling Specialist» B.",
-        "games": 6
-      },
-      {
-        "player": "Adela P.",
-        "displayName": "Adela «Adele» P.",
-        "games": 6
-      },
-      {
-        "player": "Torsten J.",
-        "displayName": "Torsten «torstyehocara» J.",
-        "games": 6
-      },
-      {
-        "player": "Janosch B.",
-        "displayName": "Janosch «Youngbrain 1b4» B.",
-        "games": 6
-      },
-      {
-        "player": "Michael B.",
-        "displayName": "Michael «Mivobu» B.",
         "games": 6
       }
     ],
     "mostVersatile": [],
     "mostConsistent": [
       {
-        "player": "Jacopo B.",
-        "displayName": "Jacopo «Bildothebest» B.",
-        "averageACPL": 34.7,
-        "variance": 5.1,
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "averageACPL": 25.4,
+        "variance": 4.5,
         "gamesPlayed": 5
       },
       {
-        "player": "Korbinian A.",
-        "displayName": "Korbinian «King's Gambit is a real opening» A.",
-        "averageACPL": 16.1,
-        "variance": 5.5,
-        "gamesPlayed": 5
+        "player": "Jacopo B.",
+        "displayName": "Jacopo «Bildothebest» B.",
+        "averageACPL": 35.4,
+        "variance": 4.9,
+        "gamesPlayed": 6
       },
       {
         "player": "Roger H.",
@@ -5200,11 +5193,18 @@
         "gamesPlayed": 5
       },
       {
+        "player": "Korbinian A.",
+        "displayName": "Korbinian «King's Gambit is a real opening» A.",
+        "averageACPL": 17.7,
+        "variance": 6.2,
+        "gamesPlayed": 6
+      },
+      {
         "player": "Christopher G.",
         "displayName": "Christopher «Ong Passong» G.",
-        "averageACPL": 31.3,
-        "variance": 6.1,
-        "gamesPlayed": 5
+        "averageACPL": 29.7,
+        "variance": 6.6,
+        "gamesPlayed": 6
       },
       {
         "player": "Janosch B.",
@@ -5221,6 +5221,13 @@
         "gamesPlayed": 6
       },
       {
+        "player": "Igor S.",
+        "displayName": "Igor «Premove Blunder» S.",
+        "averageACPL": 29.6,
+        "variance": 8.8,
+        "gamesPlayed": 6
+      },
+      {
         "player": "Viktor H.",
         "displayName": "Viktor «VHH93» H.",
         "averageACPL": 34.2,
@@ -5233,20 +5240,6 @@
         "averageACPL": 29,
         "variance": 9,
         "gamesPlayed": 6
-      },
-      {
-        "player": "Christopher N.",
-        "displayName": "Christopher «Hangs Pieces for Fun» N.",
-        "averageACPL": 45.1,
-        "variance": 9.3,
-        "gamesPlayed": 5
-      },
-      {
-        "player": "Igor S.",
-        "displayName": "Igor «Premove Blunder» S.",
-        "averageACPL": 30.5,
-        "variance": 9.4,
-        "gamesPlayed": 5
       }
     ],
     "highestWinRate": [
@@ -5255,7 +5248,7 @@
         "displayName": "Daniel «Bishop Mangler Supreme» T.",
         "winRate": 0,
         "wins": 0,
-        "gamesPlayed": 5
+        "gamesPlayed": 6
       },
       {
         "player": "Viktor H.",
@@ -5290,7 +5283,7 @@
         "displayName": "Boris «Out of Nowhere» G.",
         "winRate": 0,
         "wins": 0,
-        "gamesPlayed": 5
+        "gamesPlayed": 6
       },
       {
         "player": "Dogan P.",
@@ -5318,10 +5311,22 @@
         "displayName": "Simon «The Endgame Alchemist» L.",
         "winRate": 0,
         "wins": 0,
-        "gamesPlayed": 5
+        "gamesPlayed": 6
       }
     ],
     "mostBlunders": [
+      {
+        "player": "Ruslan G.",
+        "displayName": "Ruslan «Thunder-Blunder» G.",
+        "blunders": 15,
+        "blundersPerGame": 3.8
+      },
+      {
+        "player": "Diego R.",
+        "displayName": "Diego «The Bishop Slayer» R.",
+        "blunders": 14,
+        "blundersPerGame": 2.3
+      },
       {
         "player": "Adela P.",
         "displayName": "Adela «Adele» P.",
@@ -5329,16 +5334,16 @@
         "blundersPerGame": 2.2
       },
       {
-        "player": "Diego R.",
-        "displayName": "Diego «The Bishop Slayer» R.",
-        "blunders": 13,
-        "blundersPerGame": 2.6
-      },
-      {
         "player": "Laurens B.",
         "displayName": "Laurens «Castling Specialist» B.",
         "blunders": 12,
         "blundersPerGame": 2
+      },
+      {
+        "player": "Oliver S.",
+        "displayName": "Oliver «Mouse Slip Expert» S.",
+        "blunders": 12,
+        "blundersPerGame": 2.4
       },
       {
         "player": "Stefano B.",
@@ -5359,22 +5364,10 @@
         "blundersPerGame": 3
       },
       {
-        "player": "Ruslan G.",
-        "displayName": "Ruslan «Thunder-Blunder» G.",
-        "blunders": 10,
-        "blundersPerGame": 3.3
-      },
-      {
         "player": "Alex G.",
         "displayName": "Alex «The Benoni Pulverizer» G.",
         "blunders": 10,
         "blundersPerGame": 1.7
-      },
-      {
-        "player": "Oliver S.",
-        "displayName": "Oliver «Mouse Slip Expert» S.",
-        "blunders": 10,
-        "blundersPerGame": 2.5
       },
       {
         "player": "Fabienne S.",
@@ -5391,21 +5384,9 @@
         "blundersPerGame": 0.2
       },
       {
-        "player": "Korbinian A.",
-        "displayName": "Korbinian «King's Gambit is a real opening» A.",
-        "blunders": 1,
-        "blundersPerGame": 0.2
-      },
-      {
         "player": "Viktor H.",
         "displayName": "Viktor «VHH93» H.",
         "blunders": 2,
-        "blundersPerGame": 0.3
-      },
-      {
-        "player": "Anton B.",
-        "displayName": "Anton «TheCatalan» B.",
-        "blunders": 1,
         "blundersPerGame": 0.3
       },
       {
@@ -5415,16 +5396,22 @@
         "blundersPerGame": 0.3
       },
       {
+        "player": "Anton B.",
+        "displayName": "Anton «TheCatalan» B.",
+        "blunders": 2,
+        "blundersPerGame": 0.4
+      },
+      {
         "player": "Mario M.",
         "displayName": "Mario «ChessDude» M.",
         "blunders": 2,
         "blundersPerGame": 0.4
       },
       {
-        "player": "Peter N.",
-        "displayName": "Peter «Peaky Blunder» N.",
-        "blunders": 2,
-        "blundersPerGame": 0.4
+        "player": "Korbinian A.",
+        "displayName": "Korbinian «King's Gambit is a real opening» A.",
+        "blunders": 3,
+        "blundersPerGame": 0.5
       },
       {
         "player": "Manuel G.",
@@ -5443,6 +5430,12 @@
         "displayName": "Dogan «Kido» P.",
         "blunders": 3,
         "blundersPerGame": 0.6
+      },
+      {
+        "player": "Sam B.",
+        "displayName": "Sam «Active King» B.",
+        "blunders": 3,
+        "blundersPerGame": 0.6
       }
     ]
   },
@@ -5453,7 +5446,7 @@
       45.2,
       51.3,
       49.6,
-      44.1
+      41.9
     ],
     "averageAccuracyByRound": [
       83.8,
@@ -5461,7 +5454,7 @@
       83.4,
       85.5,
       83.8,
-      85.2
+      85.3
     ],
     "averageGameLengthByRound": [
       41.3,
@@ -5469,7 +5462,7 @@
       44.7,
       38.1,
       39.7,
-      36.9
+      38.8
     ],
     "e4PercentageByRound": [
       48.3,
@@ -5477,7 +5470,7 @@
       46.4,
       69,
       66.7,
-      64.7
+      65.4
     ],
     "d4PercentageByRound": [
       41.4,
@@ -5485,7 +5478,7 @@
       46.4,
       20.7,
       23.3,
-      23.5
+      23.1
     ],
     "drawRateByRound": [
       3.3,
@@ -5493,7 +5486,7 @@
       12.5,
       12.9,
       6.5,
-      15.8
+      21.4
     ],
     "whiteWinRateByRound": [
       60,
@@ -5501,7 +5494,7 @@
       46.9,
       51.6,
       48.4,
-      26.3
+      25
     ],
     "blackWinRateByRound": [
       36.7,
@@ -5509,7 +5502,7 @@
       40.6,
       35.5,
       45.2,
-      57.9
+      53.6
     ],
     "blundersPerGameByRound": [
       2.8,
@@ -5517,7 +5510,7 @@
       3.1,
       1.7,
       2.4,
-      2.4
+      2.7
     ],
     "mistakesPerGameByRound": [
       5,
@@ -5525,7 +5518,7 @@
       5.7,
       5.4,
       5.7,
-      4.9
+      5.5
     ],
     "avgQueenDistanceByRound": [
       42,
