@@ -1,0 +1,793 @@
+{
+  "roundNumber": 7,
+  "seasonNumber": 2,
+  "generatedAt": "2026-01-03T14:00:22.118Z",
+  "overview": {
+    "totalGames": 4,
+    "totalMoves": 108,
+    "averageGameLength": 27,
+    "longestGame": {
+      "moves": 29,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N.",
+      "result": "0-1"
+    },
+    "shortestGame": {
+      "moves": 25,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "result": "0-1"
+    }
+  },
+  "gamePhases": {
+    "averageOpening": 10,
+    "averageMiddlegame": 15,
+    "averageEndgame": 2,
+    "longestWaitTillCapture": {
+      "moves": 11,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "game": "Florian «Knightmare» G. vs Peter «Peaky Blunder» N."
+    },
+    "longestMiddlegame": {
+      "moves": 15,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "game": "Florian «Knightmare» G. vs Peter «Peaky Blunder» N."
+    },
+    "longestEndgame": {
+      "moves": 4,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N.",
+      "game": "Ruslan «Thunder-Blunder» G. vs Johannes «Jo» N."
+    }
+  },
+  "results": {
+    "whiteWins": 2,
+    "blackWins": 2,
+    "draws": 0,
+    "whiteWinPercentage": 50,
+    "blackWinPercentage": 50,
+    "drawPercentage": 0
+  },
+  "openings": {
+    "firstMoves": {
+      "d4": {
+        "count": 1,
+        "percentage": 50,
+        "winRate": 0
+      },
+      "e4": {
+        "count": 1,
+        "percentage": 50,
+        "winRate": 0
+      }
+    },
+    "popularSequences": [
+      {
+        "moves": "e4 c5 Nf3 Nc6 Bc4 d6",
+        "count": 1,
+        "eco": "B30",
+        "name": "Sicilian Defense: Old Sicilian"
+      },
+      {
+        "moves": "d4 d5 c3 Nc6 Bf4 f6",
+        "count": 1,
+        "eco": "D00",
+        "name": "Queen's Pawn Game"
+      }
+    ]
+  },
+  "tactics": {
+    "totalCaptures": 27,
+    "enPassantGames": [],
+    "promotions": 0,
+    "castling": {
+      "kingside": 2,
+      "queenside": 1
+    },
+    "bloodiestGame": {
+      "captures": 15,
+      "gameIndex": 1,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "quietestGame": {
+      "captures": 12,
+      "gameIndex": 0,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "longestNonCaptureStreak": {
+      "moves": 21,
+      "gameIndex": 0,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "totalUnderpromotions": 0,
+    "underpromotions": []
+  },
+  "pieces": {
+    "activity": {
+      "pawns": 32,
+      "knights": 14,
+      "bishops": 20,
+      "rooks": 12,
+      "queens": 19,
+      "kings": 11
+    },
+    "captured": {
+      "pawns": 12,
+      "knights": 7,
+      "bishops": 5,
+      "rooks": 1,
+      "queens": 2
+    },
+    "survivalRate": {
+      "rooks": 0.875,
+      "queens": 0.5,
+      "bishops": 0.375,
+      "knights": 0.125
+    }
+  },
+  "checkmates": {
+    "byPiece": {
+      "queen": 1,
+      "rook": 1,
+      "bishop": 0,
+      "knight": 0,
+      "pawn": 0
+    },
+    "fastest": {
+      "moves": 25,
+      "gameIndex": 0,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "winner": "Black"
+    }
+  },
+  "boardHeatmap": {
+    "bloodiestSquare": {
+      "square": "d4",
+      "captures": 6,
+      "description": "d4 saw 6 captures"
+    },
+    "mostPopularSquare": {
+      "square": "d4",
+      "visits": 9,
+      "description": "d4 was visited 9 times"
+    },
+    "leastPopularSquare": {
+      "square": "h8",
+      "visits": 1,
+      "description": "h8 was only visited 1 times"
+    },
+    "quietestSquares": [
+      "a1",
+      "a2",
+      "a5",
+      "a6",
+      "a7",
+      "a8",
+      "b1",
+      "b4",
+      "c1",
+      "c2",
+      "c7",
+      "d3",
+      "d8",
+      "f2",
+      "f8",
+      "g2",
+      "g7",
+      "h6",
+      "h7"
+    ],
+    "top5Bloodiest": [
+      {
+        "square": "d4",
+        "captures": 6
+      },
+      {
+        "square": "d5",
+        "captures": 4
+      },
+      {
+        "square": "b7",
+        "captures": 2
+      },
+      {
+        "square": "c3",
+        "captures": 2
+      },
+      {
+        "square": "c4",
+        "captures": 2
+      }
+    ],
+    "top5Popular": [
+      {
+        "square": "d4",
+        "visits": 9
+      },
+      {
+        "square": "d5",
+        "visits": 9
+      },
+      {
+        "square": "c3",
+        "visits": 5
+      },
+      {
+        "square": "d6",
+        "visits": 5
+      },
+      {
+        "square": "c4",
+        "visits": 4
+      }
+    ]
+  },
+  "awards": {
+    "bloodbath": {
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N.",
+      "captures": 15
+    },
+    "pacifist": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "captures": 12
+    },
+    "speedDemon": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "moves": 25,
+      "winner": "Black"
+    },
+    "endgameWizard": {
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N.",
+      "endgameMoves": 4
+    },
+    "openingSprinter": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "openingMoves": 10
+    }
+  },
+  "funStats": {
+    "fastestQueenTrade": {
+      "moves": 21,
+      "gameIndex": 0,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "slowestQueenTrade": {
+      "moves": 21,
+      "gameIndex": 0,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "longestCaptureSequence": {
+      "length": 6,
+      "gameIndex": 0,
+      "startMove": 19,
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "longestCheckSequence": {
+      "length": 4,
+      "gameIndex": 1,
+      "startMove": 26,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "pawnStorm": {
+      "count": 11,
+      "gameIndex": 1,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "pieceLoyalty": null,
+    "squareTourist": {
+      "squares": 7,
+      "gameIndex": 1,
+      "piece": "Queen",
+      "color": "Black",
+      "startSquare": "d8",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "castlingRace": {
+      "moves": 4,
+      "gameIndex": 1,
+      "winner": "white",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "slowestCastling": {
+      "moves": 15,
+      "gameIndex": 0,
+      "color": "black",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "openingHipster": {
+      "gameIndex": 1,
+      "eco": "B30",
+      "name": "Sicilian Defense: Old Sicilian",
+      "moves": "e4 c5 Nf3 Nc6 Bc4 d6",
+      "obscurityScore": 50,
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "dadbodShuffler": {
+      "moves": 4,
+      "gameIndex": 0,
+      "color": "White",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "sportyQueen": {
+      "distance": 23,
+      "gameIndex": 1,
+      "color": "Black",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "edgeLord": {
+      "moves": 6,
+      "gameIndex": 1,
+      "color": "Black",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "rookLift": {
+      "moveNumber": 13,
+      "gameIndex": 0,
+      "color": "White",
+      "rook": "White's h1 Rook",
+      "square": "h1",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "centerStage": {
+      "moves": 2,
+      "gameIndex": 0,
+      "piece": "Black's e7 Pawn",
+      "startSquare": "e7",
+      "color": "Black",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "darkLord": {
+      "captures": 5,
+      "gameIndex": 0,
+      "color": "Black",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "lightLord": {
+      "captures": 5,
+      "gameIndex": 1,
+      "color": "White",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "parkourMaster": {
+      "knightMoves": 4,
+      "gameIndex": 0,
+      "color": "White",
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N."
+    },
+    "chickenAward": {
+      "retreats": 5,
+      "gameIndex": 1,
+      "color": "Black",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "pawnCaptures": {
+      "captures": 3,
+      "gameIndex": 1,
+      "color": "white",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "antiOrthogonal": {
+      "moves": 11,
+      "gameIndex": 1,
+      "gameId": null,
+      "color": "black",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "comfortZone": {
+      "percentage": 33,
+      "pieceType": "bishops",
+      "moves": 6,
+      "totalNonPawnMoves": 18,
+      "gameIndex": 1,
+      "gameId": null,
+      "color": "white",
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N."
+    },
+    "homebody": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "player": "white",
+      "playerName": "Florian «Knightmare» G.",
+      "piecesInEnemy": 2,
+      "description": "Florian «Knightmare» G. only crossed 2 piece(s) into opponent's half of the board"
+    },
+    "lateBloomer": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "player": "white",
+      "playerName": "Florian «Knightmare» G.",
+      "moveNumber": 37,
+      "description": "Florian «Knightmare» G. waited until move 19 to cross into opponent's half"
+    },
+    "quickDraw": {
+      "white": "Ruslan «Thunder-Blunder» G.",
+      "black": "Johannes «Jo» N.",
+      "player": "black",
+      "playerName": "Johannes «Jo» N.",
+      "moveNumber": 8,
+      "description": "Johannes «Jo» N. crossed into opponent's half on move 4"
+    },
+    "crosshairs": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "square": "d4",
+      "attackers": 6,
+      "whiteAttackers": 4,
+      "blackAttackers": 2,
+      "moveNumber": 11,
+      "move": "Ne2",
+      "description": "d4 under attack by 6 pieces (move 11)"
+    },
+    "longestTension": {
+      "white": "Florian «Knightmare» G.",
+      "black": "Peter «Peaky Blunder» N.",
+      "moves": 14,
+      "squares": "d4-e5",
+      "startMove": 8,
+      "endMove": 22,
+      "description": "d4-e5 pieces faced off for 14 moves without capturing"
+    }
+  },
+  "tacticalPatterns": {
+    "games": [
+      {
+        "white": "Michael «Mivobu» B.",
+        "black": "Ved «Underpromotes Everything» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 0,
+          "blackPiecesInEnemy": 0,
+          "whiteFirstInvasion": null,
+          "blackFirstInvasion": null
+        },
+        "mostAttackedSquare": null,
+        "longestTension": null,
+        "gameIndex": 0
+      },
+      {
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 37,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 11,
+          "move": "Ne2"
+        },
+        "longestTension": {
+          "moves": 14,
+          "squares": "d4-e5",
+          "startMove": 8,
+          "endMove": 22
+        },
+        "gameIndex": 1
+      },
+      {
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 17,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "d2",
+          "attackers": 5,
+          "whiteAttackers": 5,
+          "blackAttackers": 0,
+          "moveNumber": 3,
+          "move": "Nf3"
+        },
+        "longestTension": {
+          "moves": 3,
+          "squares": "e4-f6",
+          "startMove": 23,
+          "endMove": 26
+        },
+        "gameIndex": 2
+      },
+      {
+        "white": "Ludwig «solucionfisiologica» S.",
+        "black": "Eva «Miss of King» S.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 0,
+          "blackPiecesInEnemy": 0,
+          "whiteFirstInvasion": null,
+          "blackFirstInvasion": null
+        },
+        "mostAttackedSquare": null,
+        "longestTension": null,
+        "gameIndex": 3
+      }
+    ],
+    "summary": {
+      "totalGames": 4,
+      "homebody": {
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "player": "white",
+        "piecesInEnemy": 2,
+        "gameIndex": 1
+      },
+      "lateBlocker": null,
+      "mostAttackedSquareGame": {
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 2,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 37,
+          "blackFirstInvasion": 18
+        },
+        "mostAttackedSquare": {
+          "square": "d4",
+          "attackers": 6,
+          "whiteAttackers": 4,
+          "blackAttackers": 2,
+          "moveNumber": 11,
+          "move": "Ne2"
+        },
+        "longestTension": {
+          "moves": 14,
+          "squares": "d4-e5",
+          "startMove": 8,
+          "endMove": 22
+        },
+        "gameIndex": 1
+      },
+      "lateBloomer": {
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "player": "white",
+        "moveNumber": 37,
+        "gameIndex": 1
+      },
+      "quickDraw": {
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "player": "black",
+        "moveNumber": 8,
+        "gameIndex": 2
+      },
+      "longestTension": {
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "moves": 14,
+        "squares": "d4-e5",
+        "startMove": 8,
+        "endMove": 22,
+        "gameIndex": 1
+      }
+    }
+  },
+  "analysis": {
+    "games": [
+      {
+        "gameIndex": 1,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "whiteACPL": 7.1,
+        "blackACPL": 8.2,
+        "whiteAccuracy": 96.1,
+        "blackAccuracy": 95.5,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 3,
+          "good": 1,
+          "excellent": 21
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 3,
+          "good": 1,
+          "excellent": 21
+        },
+        "whiteEngineMoves": 21,
+        "blackEngineMoves": 21,
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-670",
+          "evalTo": "M3",
+          "evalFromCp": -670,
+          "evalToCp": 9970,
+          "moveNumber": 23
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 9184,
+          "evalBefore": 9970,
+          "evalAfter": -786,
+          "moveNumber": 23
+        }
+      },
+      {
+        "gameIndex": 2,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "whiteACPL": 84.1,
+        "blackACPL": 78.4,
+        "whiteAccuracy": 64.5,
+        "blackAccuracy": 66.2,
+        "whiteMoveQuality": {
+          "blunders": 4,
+          "mistakes": 3,
+          "inaccuracies": 7,
+          "good": 2,
+          "excellent": 13
+        },
+        "blackMoveQuality": {
+          "blunders": 5,
+          "mistakes": 3,
+          "inaccuracies": 4,
+          "good": 3,
+          "excellent": 14
+        },
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 14,
+        "biggestBlunder": {
+          "moveNumber": 15,
+          "player": "white",
+          "cpLoss": 499,
+          "winLoss": 61.55645273336579,
+          "severity": 70.32824724787042,
+          "move": "dxc6",
+          "evalBefore": 257,
+          "evalAfter": -242
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-821",
+          "evalTo": "M6",
+          "evalFromCp": -821,
+          "evalToCp": 9940,
+          "moveNumber": 26
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 76,
+          "evalBefore": 240,
+          "evalAfter": -164,
+          "moveNumber": 16
+        }
+      }
+    ],
+    "summary": {
+      "accuracyKing": {
+        "player": "white",
+        "accuracy": 96.1,
+        "acpl": 7.1,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "biggestBlunder": {
+        "moveNumber": 15,
+        "player": "white",
+        "cpLoss": 499,
+        "winLoss": 61.55645273336579,
+        "severity": 70.32824724787042,
+        "move": "dxc6",
+        "evalBefore": 257,
+        "evalAfter": -242,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "gameIndex": 2
+      },
+      "comebackKing": {
+        "player": "white",
+        "swing": 2000,
+        "evalFrom": "-670",
+        "evalTo": "M3",
+        "evalFromCp": -670,
+        "evalToCp": 9970,
+        "moveNumber": 23,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "luckyEscape": {
+        "player": "black",
+        "escapeAmount": 9184,
+        "evalBefore": 9970,
+        "evalAfter": -786,
+        "moveNumber": 23,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "stockfishBuddy": {
+        "player": "white",
+        "engineMoves": 21,
+        "totalMoves": 25,
+        "percentage": 84,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "inaccuracyKing": {
+        "player": "white",
+        "inaccuracies": 7,
+        "totalMoves": 29,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "gameIndex": 2
+      },
+      "lowestACPL": {
+        "player": "white",
+        "acpl": 7.1,
+        "accuracy": 96.1,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "highestACPL": {
+        "player": "white",
+        "acpl": 84.1,
+        "accuracy": 64.5,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "gameIndex": 2
+      },
+      "lowestCombinedACPL": {
+        "combinedACPL": 15.299999999999999,
+        "whiteACPL": 7.1,
+        "blackACPL": 8.2,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "gameIndex": 1
+      },
+      "highestCombinedACPL": {
+        "combinedACPL": 162.5,
+        "whiteACPL": 84.1,
+        "blackACPL": 78.4,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "gameIndex": 2
+      }
+    }
+  }
+}
