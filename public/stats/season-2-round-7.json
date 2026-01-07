@@ -1,7 +1,7 @@
 {
   "roundNumber": 7,
   "seasonNumber": 2,
-  "generatedAt": "2026-01-06T23:09:32.042Z",
+  "generatedAt": "2026-01-07T12:39:53.586Z",
   "overview": {
     "totalGames": 19,
     "totalMoves": 1133,
@@ -544,10 +544,10 @@
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P.",
       "moves": 24,
-      "squares": "c6-d4",
+      "squares": "c6-e5",
       "startMove": 35,
       "endMove": 59,
-      "description": "c6-d4 pieces faced off for 24 moves without capturing"
+      "description": "c6-e5 pieces faced off for 24 moves without capturing"
     }
   },
   "tacticalPatterns": {
@@ -784,7 +784,7 @@
         },
         "longestTension": {
           "moves": 1,
-          "squares": "a6-b5",
+          "squares": "b5-c6",
           "startMove": 6,
           "endMove": 7
         },
@@ -884,7 +884,7 @@
         },
         "longestTension": {
           "moves": 24,
-          "squares": "c6-d4",
+          "squares": "c6-e5",
           "startMove": 35,
           "endMove": 59
         },
@@ -972,7 +972,7 @@
         },
         "longestTension": {
           "moves": 6,
-          "squares": "a3-c5",
+          "squares": "c5-d4",
           "startMove": 47,
           "endMove": 53
         },
@@ -1021,7 +1021,7 @@
         },
         "longestTension": {
           "moves": 6,
-          "squares": "a3-c5",
+          "squares": "c5-d4",
           "startMove": 47,
           "endMove": 53
         },
@@ -1045,7 +1045,7 @@
         "white": "Alejandro «Waffle» E.",
         "black": "Dogan «Kido» P.",
         "moves": 24,
-        "squares": "c6-d4",
+        "squares": "c6-e5",
         "startMove": 35,
         "endMove": 59,
         "gameIndex": 13
