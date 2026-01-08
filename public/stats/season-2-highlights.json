@@ -1,34 +1,76 @@
 {
-  "generated": null,
+  "generated": "2026-01-08T14:39:13.136370",
   "season": 2,
-  "status": "phase1_complete",
-  "playerCount": 5,
+  "status": "phase2_complete",
+  "playerCount": 1,
   "totalGames": 213,
   "totalMoves": 15690,
+  "analysisStats": {
+    "gamesAnalyzed": 4,
+    "movesAnalyzed": 518,
+    "excellentMoves": 282,
+    "mistakes": 34,
+    "blunders": 24,
+    "depth": 10
+  },
   "players": [
     {
-      "name": "Adela \u00abAdele\u00bb P.",
-      "gamesPlayed": 5,
-      "highlights": []
-    },
-    {
-      "name": "Igor \u00abPremove Blunder\u00bb S.",
-      "gamesPlayed": 6,
-      "highlights": []
-    },
-    {
-      "name": "Christopher \u00abOng Passong\u00bb G.",
-      "gamesPlayed": 7,
-      "highlights": []
-    },
-    {
-      "name": "Torsten \u00abtorstyehocara\u00bb J.",
-      "gamesPlayed": 7,
-      "highlights": []
-    },
-    {
-      "name": "Roger \u00abRuthless En Passant Shredder\u00bb H.",
-      "gamesPlayed": 7,
+      "name": "Nikola \u00abPawn Carnivore\u00bb N.",
+      "card": {
+        "gamesPlayed": 5,
+        "gamesAsWhite": 2,
+        "gamesAsBlack": 3,
+        "wins": 2,
+        "losses": 1,
+        "draws": 2,
+        "winRate": 40.0,
+        "totalMoves": 259,
+        "avgGameLength": 51.8,
+        "longestGame": {
+          "moves": 94,
+          "opponent": "Stefano \u00abacheron\u00bb B.",
+          "round": "6",
+          "result": "1/2-1/2"
+        },
+        "shortestGame": {
+          "moves": 45,
+          "opponent": "Christopher \u00abHangs Pieces for Fun\u00bb N.",
+          "round": "3",
+          "result": "1-0"
+        },
+        "accuracy": {
+          "overall": 82.1,
+          "asWhite": 82.4,
+          "asBlack": 81.8
+        },
+        "moveQuality": {
+          "excellent": 141,
+          "good": 50,
+          "inaccuracies": 40,
+          "mistakes": 16,
+          "blunders": 12
+        },
+        "avgCentipawnLoss": 43.3,
+        "favoriteOpening": {
+          "white": {
+            "name": "Queen's Pawn Game: London System, with e6",
+            "eco": "D02",
+            "count": 1
+          },
+          "black": {
+            "name": "Scandinavian Defense: Main Line",
+            "eco": "B01",
+            "count": 2
+          }
+        },
+        "tactics": {
+          "totalCaptures": 49,
+          "checksGiven": 15,
+          "checkmates": 1,
+          "castledKingside": 0,
+          "castledQueenside": 0
+        }
+      },
       "highlights": []
     }
   ]

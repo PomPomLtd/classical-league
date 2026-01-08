@@ -334,7 +334,43 @@ score -= already_selected    # Avoid duplicates for same player
   "players": [
     {
       "name": "Manuel «Grundpatzer» C.",
-      "gamesPlayed": 5,
+      "card": {
+        "gamesPlayed": 5,
+        "gamesAsWhite": 3,
+        "gamesAsBlack": 2,
+        "wins": 3,
+        "losses": 1,
+        "draws": 1,
+        "winRate": 60.0,
+        "totalMoves": 245,
+        "avgGameLength": 49,
+        "longestGame": { "moves": 67, "opponent": "Player X", "round": 3 },
+        "shortestGame": { "moves": 28, "opponent": "Player Y", "round": 1 },
+        "accuracy": {
+          "overall": 78.5,
+          "asWhite": 82.3,
+          "asBlack": 74.7
+        },
+        "moveQuality": {
+          "excellent": 120,
+          "good": 85,
+          "inaccuracies": 25,
+          "mistakes": 12,
+          "blunders": 3
+        },
+        "avgCentipawnLoss": 35.2,
+        "favoriteOpening": {
+          "white": { "name": "Italian Game", "eco": "C54", "count": 2 },
+          "black": { "name": "Sicilian Defense", "eco": "B90", "count": 2 }
+        },
+        "tactics": {
+          "totalCaptures": 42,
+          "checksGiven": 15,
+          "checkmates": 2,
+          "castledKingside": 4,
+          "castledQueenside": 0
+        }
+      },
       "highlights": [
         {
           "type": "brilliant_move",
@@ -356,6 +392,31 @@ score -= already_selected    # Avoid duplicates for same player
   ]
 }
 ```
+
+### Player Card Stats
+
+Each player card includes:
+
+**Game Stats:**
+- Games played (total, as white, as black)
+- Win/Loss/Draw record and win rate
+- Longest and shortest games
+
+**Move Quality (from Stockfish analysis):**
+- Overall accuracy percentage
+- Accuracy as white vs black
+- Move classification counts (excellent/good/inaccuracy/mistake/blunder)
+- Average centipawn loss (ACPL)
+
+**Opening Preferences:**
+- Most played opening as white
+- Most played opening as black
+
+**Tactical Stats:**
+- Total captures made
+- Checks given
+- Checkmates delivered
+- Castling preferences
 
 ---
 
