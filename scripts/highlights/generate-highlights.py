@@ -631,8 +631,9 @@ def detect_highlights_in_game(
         # =================================================================
         # Tier 1: Checkmates
         # =================================================================
-        if move.mate_in_after is not None and move.mate_in_after == 1:
-            # This move delivers checkmate or sets up mate in 1
+        # Detect checkmate: move ends with # OR mate_in_after is 0 (checkmate delivered)
+        is_checkmate_move = move.move_san.endswith('#') or (move.mate_in_after is not None and move.mate_in_after == 0)
+        if is_checkmate_move:
             highlights.append(HighlightCandidate(
                 type='checkmate',
                 priority=1,
@@ -648,6 +649,8 @@ def detect_highlights_in_game(
                 game_index=game_data.game_index,
                 color=move.color
             ))
+            # Skip other pattern detection for checkmate moves
+            continue
 
         # =================================================================
         # Tier 1: Brilliant Moves (sacrifices that work)
