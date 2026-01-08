@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-08T16:09:46.952581",
+  "generated": "2026-01-08T20:57:34.081098",
   "season": 2,
   "status": "complete",
   "playerCount": 69,
@@ -79,8 +79,8 @@
           "totalCaptures": 31,
           "checksGiven": 6,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -193,7 +193,7 @@
           "totalCaptures": 52,
           "checksGiven": 34,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -307,7 +307,7 @@
           "totalCaptures": 57,
           "checksGiven": 18,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -421,7 +421,7 @@
           "totalCaptures": 57,
           "checksGiven": 16,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -535,8 +535,8 @@
           "totalCaptures": 59,
           "checksGiven": 12,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -649,7 +649,7 @@
           "totalCaptures": 39,
           "checksGiven": 12,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -763,8 +763,8 @@
           "totalCaptures": 55,
           "checksGiven": 16,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -859,7 +859,7 @@
           "totalCaptures": 51,
           "checksGiven": 19,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -973,7 +973,7 @@
           "totalCaptures": 55,
           "checksGiven": 14,
           "checkmates": 2,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -1087,7 +1087,7 @@
           "totalCaptures": 65,
           "checksGiven": 19,
           "checkmates": 2,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -1201,7 +1201,7 @@
           "totalCaptures": 63,
           "checksGiven": 16,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 7,
           "castledQueenside": 0
         }
       },
@@ -1315,7 +1315,7 @@
           "totalCaptures": 55,
           "checksGiven": 26,
           "checkmates": 2,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -1429,7 +1429,7 @@
           "totalCaptures": 70,
           "checksGiven": 15,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 7,
           "castledQueenside": 0
         }
       },
@@ -1543,8 +1543,8 @@
           "totalCaptures": 57,
           "checksGiven": 26,
           "checkmates": 2,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -1657,7 +1657,7 @@
           "totalCaptures": 57,
           "checksGiven": 48,
           "checkmates": 2,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -1771,7 +1771,7 @@
           "totalCaptures": 14,
           "checksGiven": 1,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 1,
           "castledQueenside": 0
         }
       },
@@ -1885,7 +1885,7 @@
           "totalCaptures": 54,
           "checksGiven": 18,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -1999,7 +1999,7 @@
           "totalCaptures": 60,
           "checksGiven": 32,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -2113,7 +2113,7 @@
           "totalCaptures": 65,
           "checksGiven": 14,
           "checkmates": 2,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -2227,8 +2227,8 @@
           "totalCaptures": 86,
           "checksGiven": 30,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 4,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -2341,7 +2341,7 @@
           "totalCaptures": 68,
           "checksGiven": 14,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -2455,8 +2455,8 @@
           "totalCaptures": 63,
           "checksGiven": 9,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 6,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -2569,7 +2569,7 @@
           "totalCaptures": 75,
           "checksGiven": 27,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -2683,8 +2683,8 @@
           "totalCaptures": 61,
           "checksGiven": 28,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -2797,8 +2797,8 @@
           "totalCaptures": 59,
           "checksGiven": 25,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 4,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -2911,8 +2911,8 @@
           "totalCaptures": 65,
           "checksGiven": 20,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 4,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -3025,8 +3025,8 @@
           "totalCaptures": 61,
           "checksGiven": 27,
           "checkmates": 2,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -3139,7 +3139,7 @@
           "totalCaptures": 43,
           "checksGiven": 18,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -3253,8 +3253,8 @@
           "totalCaptures": 63,
           "checksGiven": 16,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -3367,7 +3367,7 @@
           "totalCaptures": 69,
           "checksGiven": 10,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -3481,8 +3481,8 @@
           "totalCaptures": 70,
           "checksGiven": 21,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -3595,7 +3595,7 @@
           "totalCaptures": 47,
           "checksGiven": 8,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -3709,7 +3709,7 @@
           "totalCaptures": 34,
           "checksGiven": 18,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 2,
           "castledQueenside": 0
         }
       },
@@ -3823,8 +3823,8 @@
           "totalCaptures": 66,
           "checksGiven": 19,
           "checkmates": 3,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -3937,7 +3937,7 @@
           "totalCaptures": 56,
           "checksGiven": 23,
           "checkmates": 3,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -4051,8 +4051,8 @@
           "totalCaptures": 48,
           "checksGiven": 2,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -4165,7 +4165,7 @@
           "totalCaptures": 32,
           "checksGiven": 3,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -4279,7 +4279,7 @@
           "totalCaptures": 52,
           "checksGiven": 9,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 7,
           "castledQueenside": 0
         }
       },
@@ -4375,8 +4375,8 @@
           "totalCaptures": 60,
           "checksGiven": 25,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -4489,7 +4489,7 @@
           "totalCaptures": 56,
           "checksGiven": 33,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -4603,8 +4603,8 @@
           "totalCaptures": 68,
           "checksGiven": 22,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -4717,8 +4717,8 @@
           "totalCaptures": 55,
           "checksGiven": 15,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -4831,8 +4831,8 @@
           "totalCaptures": 37,
           "checksGiven": 7,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -4945,7 +4945,7 @@
           "totalCaptures": 48,
           "checksGiven": 6,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -5059,7 +5059,7 @@
           "totalCaptures": 37,
           "checksGiven": 15,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -5173,7 +5173,7 @@
           "totalCaptures": 21,
           "checksGiven": 0,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 2,
           "castledQueenside": 0
         }
       },
@@ -5269,8 +5269,8 @@
           "totalCaptures": 73,
           "checksGiven": 25,
           "checkmates": 2,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -5383,8 +5383,8 @@
           "totalCaptures": 52,
           "checksGiven": 25,
           "checkmates": 2,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -5497,8 +5497,8 @@
           "totalCaptures": 17,
           "checksGiven": 4,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 3,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -5611,7 +5611,7 @@
           "totalCaptures": 34,
           "checksGiven": 13,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 3,
           "castledQueenside": 0
         }
       },
@@ -5725,8 +5725,8 @@
           "totalCaptures": 63,
           "checksGiven": 27,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 5,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -5839,8 +5839,8 @@
           "totalCaptures": 50,
           "checksGiven": 12,
           "checkmates": 2,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 1,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -5953,8 +5953,8 @@
           "totalCaptures": 75,
           "checksGiven": 21,
           "checkmates": 3,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 4,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -6067,7 +6067,7 @@
           "totalCaptures": 53,
           "checksGiven": 14,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -6181,7 +6181,7 @@
           "totalCaptures": 31,
           "checksGiven": 3,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -6295,8 +6295,8 @@
           "totalCaptures": 17,
           "checksGiven": 4,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 1,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -6409,7 +6409,7 @@
           "totalCaptures": 46,
           "checksGiven": 25,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 3,
           "castledQueenside": 0
         }
       },
@@ -6523,8 +6523,8 @@
           "totalCaptures": 49,
           "checksGiven": 15,
           "checkmates": 1,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 2,
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -6637,7 +6637,7 @@
           "totalCaptures": 48,
           "checksGiven": 15,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 5,
           "castledQueenside": 0
         }
       },
@@ -6752,7 +6752,7 @@
           "checksGiven": 13,
           "checkmates": 1,
           "castledKingside": 0,
-          "castledQueenside": 0
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -6865,8 +6865,8 @@
           "totalCaptures": 41,
           "checksGiven": 17,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 2,
+          "castledQueenside": 3
         }
       },
       "highlights": [
@@ -6979,7 +6979,7 @@
           "totalCaptures": 50,
           "checksGiven": 10,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 6,
           "castledQueenside": 0
         }
       },
@@ -7093,7 +7093,7 @@
           "totalCaptures": 40,
           "checksGiven": 7,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 4,
           "castledQueenside": 0
         }
       },
@@ -7207,8 +7207,8 @@
           "totalCaptures": 31,
           "checksGiven": 11,
           "checkmates": 0,
-          "castledKingside": 0,
-          "castledQueenside": 0
+          "castledKingside": 2,
+          "castledQueenside": 1
         }
       },
       "highlights": [
@@ -7321,7 +7321,7 @@
           "totalCaptures": 47,
           "checksGiven": 39,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 3,
           "castledQueenside": 0
         }
       },
@@ -7436,7 +7436,7 @@
           "checksGiven": 19,
           "checkmates": 0,
           "castledKingside": 0,
-          "castledQueenside": 0
+          "castledQueenside": 2
         }
       },
       "highlights": [
@@ -7549,7 +7549,7 @@
           "totalCaptures": 22,
           "checksGiven": 2,
           "checkmates": 0,
-          "castledKingside": 0,
+          "castledKingside": 3,
           "castledQueenside": 0
         }
       },
@@ -7663,7 +7663,7 @@
           "totalCaptures": 26,
           "checksGiven": 1,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 3,
           "castledQueenside": 0
         }
       },
@@ -7759,7 +7759,7 @@
           "totalCaptures": 25,
           "checksGiven": 5,
           "checkmates": 1,
-          "castledKingside": 0,
+          "castledKingside": 2,
           "castledQueenside": 0
         }
       },

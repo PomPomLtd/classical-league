@@ -152,7 +152,7 @@ export default function StatsPage() {
           </div>
         )}
 
-        {/* Player Highlights */}
+        {/* Player Highlights - hidden for now, accessible via /stats/highlights
         <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg shadow-xl p-8 text-white">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
@@ -171,6 +171,7 @@ export default function StatsPage() {
             </Link>
           </div>
         </div>
+        */}
 
         {/* Round Cards */}
         <div>
