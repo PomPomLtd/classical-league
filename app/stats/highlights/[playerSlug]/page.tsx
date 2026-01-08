@@ -131,11 +131,7 @@ export default function PlayerHighlightsPage() {
   useEffect(() => {
     const fetchHighlights = async () => {
       try {
-        // Try production file first, fall back to dummy
-        let response = await fetch('/stats/season-2-highlights.json', { cache: 'no-store' })
-        if (!response.ok) {
-          response = await fetch('/stats/season-2-highlights-dummy.json', { cache: 'no-store' })
-        }
+        const response = await fetch('/stats/season-2-highlights.json', { cache: 'no-store' })
         if (!response.ok) {
           throw new Error('Failed to load highlights data')
         }

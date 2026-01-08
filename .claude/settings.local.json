@@ -51,7 +51,11 @@
       "WebFetch(domain:www.lichess4545.com)",
       "Bash(ls:*)",
       "Bash(gh secret:*)",
-      "WebFetch(domain:classical.schachklub-k4.ch)"
+      "WebFetch(domain:classical.schachklub-k4.ch)",
+      "Bash(npm audit:*)",
+      "Bash(mkdir:*)",
+      "WebFetch(domain:deepwiki.com)",
+      "WebFetch(domain:official-stockfish.github.io)"
     ],
     "deny": [],
     "ask": []
