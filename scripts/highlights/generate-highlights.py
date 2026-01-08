@@ -60,6 +60,8 @@ class MoveAnalysis:
     classification: str = 'good'  # excellent, good, inaccuracy, mistake, blunder
     is_capture: bool = False
     is_check: bool = False
+    is_castling_kingside: bool = False
+    is_castling_queenside: bool = False
     captured_piece: Optional[str] = None
 
 
@@ -332,6 +334,8 @@ def analyze_game_with_stockfish(
 
         # Make the move
         is_capture = board.is_capture(move)
+        is_castling_kingside = board.is_kingside_castling(move)
+        is_castling_queenside = board.is_queenside_castling(move)
         captured = None
         if is_capture:
             captured_piece = board.piece_at(move.to_square)
@@ -413,6 +417,8 @@ def analyze_game_with_stockfish(
             classification=classification,
             is_capture=is_capture,
             is_check=is_check,
+            is_castling_kingside=is_castling_kingside,
+            is_castling_queenside=is_castling_queenside,
             captured_piece=captured
         )
 
@@ -540,18 +546,16 @@ def calculate_player_card(
                         card.total_captures += 1
                     if move.is_check:
                         card.checks_given += 1
+                    if move.is_castling_kingside:
+                        card.castled_kingside += 1
+                    if move.is_castling_queenside:
+                        card.castled_queenside += 1
 
             # Check for checkmate (player delivered)
             if game.is_checkmate:
                 winner_color = 'white' if result == '1-0' else 'black'
                 if winner_color == color:
                     card.checkmates += 1
-
-        # Castling from game data
-        for castle in game.fens:
-            # Simple castling detection from FEN changes would be complex
-            # We'll track it from the special moves in GameData instead
-            pass
 
     # Calculate averages
     if card.games_played > 0:
