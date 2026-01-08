@@ -654,44 +654,64 @@ def detect_highlights_in_game(
 
         # =================================================================
         # Tier 1: Brilliant Moves (sacrifices that work)
-        # Based on Lichess puzzler: sacrifice = material balance decreases by 2+
+        # A sacrifice is when you capture with a high-value piece on a defended square
+        # where the opponent can recapture with a lower-value piece
         # =================================================================
-        if move.classification == 'excellent':
-            # Calculate material balance before and after move
-            # A true sacrifice means YOUR material balance decreased
+        if move.classification in ['excellent', 'good']:
             board_before = chess.Board(move.fen_before)
             board_after = chess.Board(move.fen_after)
-
             player_color = chess.WHITE if move.color == 'white' else chess.BLACK
 
-            def material_count(board, color):
-                values = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3,
-                          chess.ROOK: 5, chess.QUEEN: 9}
-                return sum(len(board.pieces(pt, color)) * v for pt, v in values.items())
+            piece_values = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3,
+                           chess.ROOK: 5, chess.QUEEN: 9, chess.KING: 0}
 
-            def material_diff(board, color):
-                return material_count(board, color) - material_count(board, not color)
+            # Parse the move to get from/to squares
+            move_obj = chess.Move.from_uci(move.move_uci)
 
-            diff_before = material_diff(board_before, player_color)
-            diff_after = material_diff(board_after, player_color)
-            material_loss = diff_before - diff_after
+            # Check if this is a capture
+            captured_piece = board_before.piece_at(move_obj.to_square)
+            moving_piece = board_before.piece_at(move_obj.from_square)
 
-            # Sacrifice: material balance decreased by 2+ points (exchange sac or bigger)
-            # AND the move is still excellent (evaluation maintained/improved)
-            if material_loss >= 2:
+            is_sacrifice = False
+            potential_loss = 0
+
+            if captured_piece and moving_piece:
+                moving_value = piece_values.get(moving_piece.piece_type, 0)
+                captured_value = piece_values.get(captured_piece.piece_type, 0)
+
+                # Did we capture with a higher-value piece?
+                if moving_value > captured_value:
+                    # After our capture, can opponent recapture our piece?
+                    # Check if opponent attacks the square we just moved to
+                    opponent_color = not player_color
+                    if board_after.is_attacked_by(opponent_color, move_obj.to_square):
+                        # Our capturing piece can be taken back
+                        # Net loss if recaptured = our piece value - captured piece value
+                        potential_loss = moving_value - captured_value
+                        if potential_loss >= 2:
+                            # This is a sacrifice! High-value piece takes low-value piece
+                            # on defended square, but the move is still excellent
+                            is_sacrifice = True
+
+            if is_sacrifice and potential_loss >= 2:
                 # Check it's not a promotion (promotions aren't sacrifices)
                 is_promotion = '=' in move.move_san
-                if not is_promotion:
-                    piece_names = {2: 'exchange', 3: 'minor piece', 5: 'rook', 9: 'queen'}
-                    sac_type = 'piece'
-                    for threshold, name in sorted(piece_names.items()):
-                        if material_loss >= threshold:
-                            sac_type = name
+                # Skip if this is a forcing mate sequence (not really a sacrifice)
+                is_mate_sequence = move.mate_in_before is not None or move.mate_in_after is not None
+                if not is_promotion and not is_mate_sequence:
+                    # Name the sacrifice by the PIECE being sacrificed (not net loss)
+                    piece_type_names = {
+                        chess.QUEEN: 'queen',
+                        chess.ROOK: 'rook',
+                        chess.BISHOP: 'bishop',
+                        chess.KNIGHT: 'knight'
+                    }
+                    sac_type = piece_type_names.get(moving_piece.piece_type, 'piece')
 
                     highlights.append(HighlightCandidate(
                         type='brilliant_sacrifice',
                         priority=1,
-                        score=90.0 + material_loss * 5,
+                        score=90.0 + potential_loss * 5,
                         fen=move.fen_before,
                         move=move.move_san,
                         move_uci=move.move_uci,
@@ -706,7 +726,7 @@ def detect_highlights_in_game(
                     ))
 
             # Also check for non-sacrifice excellent moves with big eval swing
-            elif material_loss < 2:
+            elif move.classification == 'excellent':
                 # Check for big eval swing in player's favor
                 if move.color == 'white':
                     swing = move.eval_after - move.eval_before
