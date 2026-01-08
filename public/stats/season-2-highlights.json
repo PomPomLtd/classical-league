@@ -1,0 +1,35 @@
+{
+  "generated": null,
+  "season": 2,
+  "status": "phase1_complete",
+  "playerCount": 5,
+  "totalGames": 213,
+  "totalMoves": 15690,
+  "players": [
+    {
+      "name": "Adela \u00abAdele\u00bb P.",
+      "gamesPlayed": 5,
+      "highlights": []
+    },
+    {
+      "name": "Igor \u00abPremove Blunder\u00bb S.",
+      "gamesPlayed": 6,
+      "highlights": []
+    },
+    {
+      "name": "Christopher \u00abOng Passong\u00bb G.",
+      "gamesPlayed": 7,
+      "highlights": []
+    },
+    {
+      "name": "Torsten \u00abtorstyehocara\u00bb J.",
+      "gamesPlayed": 7,
+      "highlights": []
+    },
+    {
+      "name": "Roger \u00abRuthless En Passant Shredder\u00bb H.",
+      "gamesPlayed": 7,
+      "highlights": []
+    }
+  ]
+}
