@@ -152,6 +152,26 @@ export default function StatsPage() {
           </div>
         )}
 
+        {/* Player Highlights */}
+        <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg shadow-xl p-8 text-white">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">Player Highlights</h2>
+              <p className="text-emerald-100">
+                Player cards, stats, checkmates, blunders & brilliant moves
+              </p>
+            </div>
+            <Link href="/stats/highlights">
+              <button className="px-6 py-3 bg-white text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors flex items-center gap-2 shadow-lg whitespace-nowrap cursor-pointer">
+                View All Players
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </Link>
+          </div>
+        </div>
+
         {/* Round Cards */}
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">

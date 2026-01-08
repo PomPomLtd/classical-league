@@ -315,6 +315,93 @@ accuracy = 103.1668 * e^(-0.04354 * avg_loss) - 3.1669
 
 ---
 
+## Frontend Implementation
+
+### Page Structure
+
+```
+/app/stats/highlights/
+├── page.tsx                    # Player list with search
+└── [playerSlug]/
+    └── page.tsx                # Individual player page
+```
+
+### Routes
+
+| Route | Description |
+|-------|-------------|
+| `/stats/highlights` | All players grid with search |
+| `/stats/highlights/[playerSlug]` | Player detail with card + highlights |
+
+### Components
+
+```
+/components/stats/highlights/
+├── player-grid.tsx             # Grid of player cards
+├── player-search.tsx           # Search input with filtering
+├── player-card-preview.tsx     # Preview card for grid
+├── player-stats-card.tsx       # Full stats card
+├── highlight-position.tsx      # Single highlight with board
+└── highlight-list.tsx          # List of highlights
+```
+
+### Player Slug Format
+
+URL-safe player identifier:
+```typescript
+// "Manuel «Grundpatzer» C." → "manuel-grundpatzer-c"
+function slugifyPlayer(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[«»]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+```
+
+### Page: `/stats/highlights`
+
+**Features:**
+- Search field (filter by name/nickname)
+- Grid of player cards (3 columns on desktop)
+- Each card shows: name, accuracy, games, win rate
+- Click → navigate to player detail
+
+**Data Loading:**
+```typescript
+const response = await fetch('/stats/season-2-highlights.json')
+const data = await response.json()
+// data.players contains all player cards and highlights
+```
+
+### Page: `/stats/highlights/[playerSlug]`
+
+**Features:**
+- Back button to player list
+- Player stats card (full version)
+- Highlight positions with:
+  - Chess board visualization (using FEN)
+  - Move played + best move
+  - Evaluation before/after
+  - Description
+  - Link to Lichess game
+
+**Board Visualization Options:**
+1. Simple: Link to Lichess analysis board
+2. Embedded: Use `react-chessboard` or similar
+3. Static: Generate board image from FEN
+
+### Navigation Integration
+
+Add to `components/navigation.tsx`:
+```typescript
+{ name: 'Player Highlights', href: '/stats/highlights' }
+```
+
+Or add link from `/stats/page.tsx` alongside Season Overview.
+
+---
+
 ## Files
 
 ```
@@ -325,4 +412,17 @@ scripts/highlights/
 
 public/stats/
 └── season-2-highlights.json    # Output file
+
+app/stats/highlights/
+├── page.tsx                    # Player list page
+└── [playerSlug]/
+    └── page.tsx                # Player detail page
+
+components/stats/highlights/
+├── player-grid.tsx
+├── player-search.tsx
+├── player-card-preview.tsx
+├── player-stats-card.tsx
+├── highlight-position.tsx
+└── highlight-list.tsx
 ```
