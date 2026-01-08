@@ -1,7 +1,7 @@
 {
-  "generated": "2026-01-08T14:39:13.136370",
+  "generated": "2026-01-08T14:45:54.284281",
   "season": 2,
-  "status": "phase2_complete",
+  "status": "complete",
   "playerCount": 1,
   "totalGames": 213,
   "totalMoves": 15690,
@@ -12,6 +12,18 @@
     "mistakes": 34,
     "blunders": 24,
     "depth": 10
+  },
+  "highlightStats": {
+    "totalCandidates": 26,
+    "totalSelected": 3,
+    "byType": {
+      "checkmate": 4,
+      "brilliant_move": 1,
+      "blunder": 18,
+      "comeback": 1,
+      "tactical_check": 1,
+      "en_passant": 1
+    }
   },
   "players": [
     {
@@ -71,7 +83,62 @@
           "castledQueenside": 0
         }
       },
-      "highlights": []
+      "highlights": [
+        {
+          "type": "checkmate",
+          "priority": 1,
+          "score": 100.0,
+          "fen": "8/k1Q1K3/1p6/pB6/P1P5/8/8/8 b - - 2 68",
+          "move": "Ka8",
+          "moveUci": "a7a8",
+          "bestMove": "Ka8",
+          "evalBefore": "M1",
+          "evalAfter": "M1",
+          "description": "Checkmate! Ka8 ends the game.",
+          "moveNumber": 68,
+          "color": "black",
+          "opponent": "Joshua \u00abPristine Pawn Pusher\u00bb G.",
+          "round": "2",
+          "result": "1-0",
+          "gameUrl": "https://lichess.org/broadcast/k4-classical-league-season-2/round-2/JJb15Cj6/nZFJ7FZW"
+        },
+        {
+          "type": "checkmate",
+          "priority": 1,
+          "score": 100.0,
+          "fen": "8/2p5/p7/1k6/4R3/P1R1K3/7r/8 w - - 1 51",
+          "move": "Rb4+",
+          "moveUci": "e4b4",
+          "bestMove": "Rb4+",
+          "evalBefore": "M2",
+          "evalAfter": "M1",
+          "description": "Checkmate! Rb4+ ends the game.",
+          "moveNumber": 51,
+          "color": "white",
+          "opponent": "Alexander \u00abNot Grischuk\u00bb G.",
+          "round": "5",
+          "result": "1-0",
+          "gameUrl": "https://lichess.org/broadcast/k4-classical-league-season-2/round-5/hRIvBTCZ/QMfmvjz0"
+        },
+        {
+          "type": "blunder",
+          "priority": 2,
+          "score": 100.0,
+          "fen": "8/5pk1/1p3rp1/p1pPQ1P1/P6q/1B5P/1P4K1/8 b - - 0 46",
+          "move": "Qf4",
+          "moveUci": "h4f4",
+          "bestMove": "Qf2+",
+          "evalBefore": "-4.6",
+          "evalAfter": "+5.3",
+          "description": "Huge blunder! Qf4 drops significant material.",
+          "moveNumber": 46,
+          "color": "black",
+          "opponent": "Joshua \u00abPristine Pawn Pusher\u00bb G.",
+          "round": "2",
+          "result": "1-0",
+          "gameUrl": "https://lichess.org/broadcast/k4-classical-league-season-2/round-2/JJb15Cj6/nZFJ7FZW"
+        }
+      ]
     }
   ]
 }

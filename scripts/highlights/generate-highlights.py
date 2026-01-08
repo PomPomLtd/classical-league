@@ -79,11 +79,37 @@ class HighlightCandidate:
     move_number: int
     game_index: int
     color: str                # 'white' or 'black'
+    # Game context (filled in later)
+    opponent: str = ''
+    round_num: str = ''
+    result: str = ''
+    game_url: str = ''
     # Additional context
     cp_loss: int = 0
     win_pct_loss: float = 0.0
     is_sacrifice: bool = False
     pattern_details: Optional[dict] = None
+
+    def to_dict(self) -> dict:
+        """Convert to JSON-serializable dict."""
+        return {
+            'type': self.type,
+            'priority': self.priority,
+            'score': round(self.score, 1),
+            'fen': self.fen,
+            'move': self.move,
+            'moveUci': self.move_uci,
+            'bestMove': self.best_move,
+            'evalBefore': self.eval_before,
+            'evalAfter': self.eval_after,
+            'description': self.description,
+            'moveNumber': self.move_number,
+            'color': self.color,
+            'opponent': self.opponent,
+            'round': self.round_num,
+            'result': self.result,
+            'gameUrl': self.game_url
+        }
 
 
 @dataclass
@@ -562,6 +588,344 @@ def calculate_player_card(
 
 
 # =============================================================================
+# Phase 3: Pattern Detection - Highlight Candidates
+# =============================================================================
+
+def detect_highlights_in_game(
+    game_data: 'GameData',
+    analysis: GameAnalysis
+) -> List[HighlightCandidate]:
+    """
+    Detect highlight candidates in a game based on move analysis.
+
+    Args:
+        game_data: Original game data
+        analysis: Stockfish analysis of the game
+
+    Returns:
+        List of highlight candidates
+    """
+    highlights = []
+
+    # Track eval history for comeback detection
+    eval_history = []
+    min_eval_seen = {'white': 0, 'black': 0}
+    max_eval_seen = {'white': 0, 'black': 0}
+
+    for i, move in enumerate(analysis.moves):
+        # Update eval tracking
+        eval_history.append(move.eval_after)
+
+        # Track min/max evals for each side
+        if move.color == 'white':
+            min_eval_seen['white'] = min(min_eval_seen['white'], move.eval_after)
+            max_eval_seen['white'] = max(max_eval_seen['white'], move.eval_after)
+        else:
+            min_eval_seen['black'] = min(min_eval_seen['black'], move.eval_after)
+            max_eval_seen['black'] = max(max_eval_seen['black'], move.eval_after)
+
+        # =================================================================
+        # Tier 1: Checkmates
+        # =================================================================
+        if move.mate_in_after is not None and move.mate_in_after == 1:
+            # This move delivers checkmate or sets up mate in 1
+            highlights.append(HighlightCandidate(
+                type='checkmate',
+                priority=1,
+                score=100.0,
+                fen=move.fen_before,
+                move=move.move_san,
+                move_uci=move.move_uci,
+                best_move=move.best_move_san,
+                eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                description=f"Checkmate! {move.move_san} ends the game.",
+                move_number=move.move_number,
+                game_index=game_data.game_index,
+                color=move.color
+            ))
+
+        # =================================================================
+        # Tier 1: Brilliant Moves (sacrifices that work)
+        # Based on Lichess puzzler: sacrifice = material balance decreases by 2+
+        # =================================================================
+        if move.classification == 'excellent':
+            # Calculate material balance before and after move
+            # A true sacrifice means YOUR material balance decreased
+            board_before = chess.Board(move.fen_before)
+            board_after = chess.Board(move.fen_after)
+
+            player_color = chess.WHITE if move.color == 'white' else chess.BLACK
+
+            def material_count(board, color):
+                values = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3,
+                          chess.ROOK: 5, chess.QUEEN: 9}
+                return sum(len(board.pieces(pt, color)) * v for pt, v in values.items())
+
+            def material_diff(board, color):
+                return material_count(board, color) - material_count(board, not color)
+
+            diff_before = material_diff(board_before, player_color)
+            diff_after = material_diff(board_after, player_color)
+            material_loss = diff_before - diff_after
+
+            # Sacrifice: material balance decreased by 2+ points (exchange sac or bigger)
+            # AND the move is still excellent (evaluation maintained/improved)
+            if material_loss >= 2:
+                # Check it's not a promotion (promotions aren't sacrifices)
+                is_promotion = '=' in move.move_san
+                if not is_promotion:
+                    piece_names = {2: 'exchange', 3: 'minor piece', 5: 'rook', 9: 'queen'}
+                    sac_type = 'piece'
+                    for threshold, name in sorted(piece_names.items()):
+                        if material_loss >= threshold:
+                            sac_type = name
+
+                    highlights.append(HighlightCandidate(
+                        type='brilliant_sacrifice',
+                        priority=1,
+                        score=90.0 + material_loss * 5,
+                        fen=move.fen_before,
+                        move=move.move_san,
+                        move_uci=move.move_uci,
+                        best_move=move.best_move_san,
+                        eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                        eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                        description=f"Brilliant {sac_type} sacrifice! {move.move_san} gives up material but maintains the advantage.",
+                        move_number=move.move_number,
+                        game_index=game_data.game_index,
+                        color=move.color,
+                        is_sacrifice=True
+                    ))
+
+            # Also check for non-sacrifice excellent moves with big eval swing
+            elif material_loss < 2:
+                # Check for big eval swing in player's favor
+                if move.color == 'white':
+                    swing = move.eval_after - move.eval_before
+                else:
+                    swing = move.eval_before - move.eval_after
+
+                if swing > 150:  # Significant improvement
+                    highlights.append(HighlightCandidate(
+                        type='brilliant_move',
+                        priority=2,
+                        score=70.0 + min(swing / 10, 30),
+                        fen=move.fen_before,
+                        move=move.move_san,
+                        move_uci=move.move_uci,
+                        best_move=move.best_move_san,
+                        eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                        eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                        description=f"Excellent move! {move.move_san} significantly improves the position.",
+                        move_number=move.move_number,
+                        game_index=game_data.game_index,
+                        color=move.color,
+                        cp_loss=0
+                    ))
+
+        # =================================================================
+        # Tier 2: Blunders (dramatic mistakes)
+        # =================================================================
+        if move.classification == 'blunder' and move.cp_loss > 200:
+            severity = move.win_pct_loss + (move.cp_loss / 20)
+
+            # Extra points for hanging queen or missing mate
+            if move.mate_in_before and move.mate_in_before > 0 and move.mate_in_after is None:
+                severity += 50  # Missed mate
+                desc = f"Missed mate! {move.move_san} throws away a winning position."
+            elif move.cp_loss > 800:
+                desc = f"Huge blunder! {move.move_san} drops significant material."
+            else:
+                desc = f"Blunder! {move.move_san} loses the advantage."
+
+            highlights.append(HighlightCandidate(
+                type='blunder',
+                priority=2,
+                score=60.0 + min(severity, 40),
+                fen=move.fen_before,
+                move=move.move_san,
+                move_uci=move.move_uci,
+                best_move=move.best_move_san,
+                eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                description=desc,
+                move_number=move.move_number,
+                game_index=game_data.game_index,
+                color=move.color,
+                cp_loss=move.cp_loss,
+                win_pct_loss=move.win_pct_loss
+            ))
+
+        # =================================================================
+        # Tier 2: Comebacks (big eval swing recovery)
+        # =================================================================
+        if len(eval_history) >= 5:
+            # Check for white comeback
+            if move.color == 'white' and min_eval_seen['white'] < -300 and move.eval_after > 100:
+                swing = move.eval_after - min_eval_seen['white']
+                if swing > 500:
+                    highlights.append(HighlightCandidate(
+                        type='comeback',
+                        priority=2,
+                        score=65.0 + min(swing / 20, 35),
+                        fen=move.fen_before,
+                        move=move.move_san,
+                        move_uci=move.move_uci,
+                        best_move=move.best_move_san,
+                        eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                        eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                        description=f"Comeback! White was losing but {move.move_san} turns the tables.",
+                        move_number=move.move_number,
+                        game_index=game_data.game_index,
+                        color=move.color,
+                        cp_loss=0
+                    ))
+                    min_eval_seen['white'] = 0  # Reset to avoid duplicate
+
+            # Check for black comeback
+            if move.color == 'black' and max_eval_seen['black'] > 300 and move.eval_after < -100:
+                swing = max_eval_seen['black'] - move.eval_after
+                if swing > 500:
+                    highlights.append(HighlightCandidate(
+                        type='comeback',
+                        priority=2,
+                        score=65.0 + min(swing / 20, 35),
+                        fen=move.fen_before,
+                        move=move.move_san,
+                        move_uci=move.move_uci,
+                        best_move=move.best_move_san,
+                        eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                        eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                        description=f"Comeback! Black was losing but {move.move_san} turns the tables.",
+                        move_number=move.move_number,
+                        game_index=game_data.game_index,
+                        color=move.color,
+                        cp_loss=0
+                    ))
+                    max_eval_seen['black'] = 0  # Reset to avoid duplicate
+
+        # =================================================================
+        # Tier 3: Tactical shots (checks with big eval swing)
+        # =================================================================
+        if move.is_check and move.classification in ('excellent', 'good'):
+            if move.color == 'white':
+                swing = move.eval_after - move.eval_before
+            else:
+                swing = move.eval_before - move.eval_after
+
+            if swing > 100:
+                highlights.append(HighlightCandidate(
+                    type='tactical_check',
+                    priority=3,
+                    score=50.0 + min(swing / 10, 30),
+                    fen=move.fen_before,
+                    move=move.move_san,
+                    move_uci=move.move_uci,
+                    best_move=move.best_move_san,
+                    eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                    eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                    description=f"Tactical shot! {move.move_san} wins material with check.",
+                    move_number=move.move_number,
+                    game_index=game_data.game_index,
+                    color=move.color
+                ))
+
+        # =================================================================
+        # Tier 4: Special moves
+        # =================================================================
+        # Detect en passant from move notation
+        if 'x' in move.move_san and move.move_san[0].islower():
+            # Pawn capture - check if en passant by looking at captured piece
+            # En passant captures to an empty square
+            board = chess.Board(move.fen_before)
+            move_obj = chess.Move.from_uci(move.move_uci)
+            if board.is_en_passant(move_obj):
+                highlights.append(HighlightCandidate(
+                    type='en_passant',
+                    priority=4,
+                    score=40.0,
+                    fen=move.fen_before,
+                    move=move.move_san,
+                    move_uci=move.move_uci,
+                    best_move=move.best_move_san,
+                    eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                    eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                    description=f"En passant! {move.move_san} - the special pawn capture.",
+                    move_number=move.move_number,
+                    game_index=game_data.game_index,
+                    color=move.color
+                ))
+
+        # Detect underpromotion
+        if '=' in move.move_san and '=Q' not in move.move_san:
+            promo_piece = move.move_san.split('=')[1][0]
+            piece_names = {'R': 'rook', 'B': 'bishop', 'N': 'knight'}
+            highlights.append(HighlightCandidate(
+                type='underpromotion',
+                priority=1,
+                score=95.0,
+                fen=move.fen_before,
+                move=move.move_san,
+                move_uci=move.move_uci,
+                best_move=move.best_move_san,
+                eval_before=format_eval(move.eval_before, move.eval_type_before == 'mate', move.mate_in_before),
+                eval_after=format_eval(move.eval_after, move.eval_type_after == 'mate', move.mate_in_after),
+                description=f"Underpromotion! {move.move_san} - promoting to {piece_names.get(promo_piece, promo_piece)} instead of queen!",
+                move_number=move.move_number,
+                game_index=game_data.game_index,
+                color=move.color
+            ))
+
+    return highlights
+
+
+def detect_fork(board: chess.Board, move: chess.Move) -> Optional[dict]:
+    """
+    Detect if a move creates a fork (piece attacks 2+ valuable pieces).
+
+    Returns dict with fork details if found, None otherwise.
+    """
+    board_after = board.copy()
+    board_after.push(move)
+
+    piece = board_after.piece_at(move.to_square)
+    if piece is None:
+        return None
+
+    # Get squares attacked by the piece
+    attacks = board_after.attacks(move.to_square)
+
+    # Count valuable pieces attacked
+    piece_values = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3,
+                    chess.ROOK: 5, chess.QUEEN: 9, chess.KING: 100}
+
+    attacked_pieces = []
+    for sq in attacks:
+        target = board_after.piece_at(sq)
+        if target and target.color != piece.color:
+            value = piece_values.get(target.piece_type, 0)
+            if value >= 3:  # Knight or better
+                attacked_pieces.append({
+                    'square': chess.square_name(sq),
+                    'piece': target.symbol(),
+                    'value': value
+                })
+
+    # Fork requires attacking 2+ valuable pieces
+    if len(attacked_pieces) >= 2:
+        # Royal fork (King + Queen) is extra special
+        is_royal = any(p['piece'].upper() == 'K' for p in attacked_pieces) and \
+                   any(p['piece'].upper() == 'Q' for p in attacked_pieces)
+        return {
+            'attacked': attacked_pieces,
+            'is_royal_fork': is_royal
+        }
+
+    return None
+
+
+# =============================================================================
 # Phase 1: Data Extraction
 # =============================================================================
 
@@ -910,22 +1274,94 @@ def main():
         print(f"   - {card.name}: {card.accuracy_overall:.1f}%", file=sys.stderr)
 
     # ==========================================================================
-    # Phase 3-5: TODO - Will be implemented next
+    # Phase 3: Pattern Detection
     # ==========================================================================
     print(f"\n🎯 Phase 3: Pattern detection...", file=sys.stderr)
-    print(f"   [TODO] Not yet implemented", file=sys.stderr)
 
+    # Detect highlights in each analyzed game
+    all_highlights: dict[int, List[HighlightCandidate]] = {}
+    highlight_counts = {'checkmate': 0, 'brilliant_sacrifice': 0, 'brilliant_move': 0,
+                        'blunder': 0, 'comeback': 0, 'tactical_check': 0,
+                        'en_passant': 0, 'underpromotion': 0}
+
+    for game_index, analysis in game_analyses.items():
+        game = games_to_analyze[game_index]
+        highlights = detect_highlights_in_game(game, analysis)
+
+        # Add game context to each highlight
+        for h in highlights:
+            h.round_num = game.round_num
+            h.result = game.result
+            h.game_url = game.game_url
+            # Set opponent based on highlight color
+            h.opponent = game.black if h.color == 'white' else game.white
+
+            # Count by type
+            if h.type in highlight_counts:
+                highlight_counts[h.type] += 1
+
+        all_highlights[game_index] = highlights
+
+    total_highlights = sum(len(h) for h in all_highlights.values())
+    print(f"✅ Detected {total_highlights} highlight candidates", file=sys.stderr)
+    print(f"   Breakdown:", file=sys.stderr)
+    for htype, count in sorted(highlight_counts.items(), key=lambda x: -x[1]):
+        if count > 0:
+            print(f"   - {htype}: {count}", file=sys.stderr)
+
+    # ==========================================================================
+    # Phase 4: Highlight Selection (per player)
+    # ==========================================================================
     print(f"\n⭐ Phase 4: Highlight selection...", file=sys.stderr)
-    print(f"   [TODO] Not yet implemented", file=sys.stderr)
+
+    # Group highlights by player
+    player_highlights: dict[str, List[HighlightCandidate]] = defaultdict(list)
+
+    for game_index, highlights in all_highlights.items():
+        game = games_to_analyze[game_index]
+        for h in highlights:
+            # Add to the player who made the move
+            player_name = game.white if h.color == 'white' else game.black
+            player_highlights[player_name].append(h)
+
+    # Select top 1-3 highlights per player
+    selected_highlights: dict[str, List[HighlightCandidate]] = {}
+
+    for player_name, highlights in player_highlights.items():
+        if player_name not in players:
+            continue  # Skip players not in our filtered list
+
+        # Sort by score (descending) and priority (ascending)
+        sorted_highlights = sorted(highlights, key=lambda h: (-h.score, h.priority))
+
+        # Select top 1-3, preferring variety in types
+        selected = []
+        used_types = set()
+
+        for h in sorted_highlights:
+            if len(selected) >= 3:
+                break
+            # Prefer variety - don't take same type twice unless it's really good
+            if h.type in used_types and len(selected) >= 1:
+                if h.score < sorted_highlights[0].score * 0.8:
+                    continue
+            selected.append(h)
+            used_types.add(h.type)
+
+        selected_highlights[player_name] = selected
+
+    players_with_highlights = sum(1 for h in selected_highlights.values() if h)
+    total_selected = sum(len(h) for h in selected_highlights.values())
+    print(f"✅ Selected {total_selected} highlights for {players_with_highlights} players", file=sys.stderr)
 
     print(f"\n💾 Phase 5: Output generation...", file=sys.stderr)
 
-    # Build output with player cards
+    # Build output with player cards and highlights
     from datetime import datetime
     output = {
         'generated': datetime.now().isoformat(),
         'season': 2,
-        'status': 'phase2_complete',
+        'status': 'complete',
         'playerCount': len(players),
         'totalGames': len(games),
         'totalMoves': total_moves,
@@ -937,11 +1373,18 @@ def main():
             'blunders': total_blunders,
             'depth': args.depth
         },
+        'highlightStats': {
+            'totalCandidates': total_highlights,
+            'totalSelected': total_selected,
+            'byType': {k: v for k, v in highlight_counts.items() if v > 0}
+        },
         'players': [
             {
                 'name': player.name,
                 'card': player_cards[player.name].to_dict(),
-                'highlights': []  # To be filled in Phase 4-5
+                'highlights': [
+                    h.to_dict() for h in selected_highlights.get(player.name, [])
+                ]
             }
             for player in players.values()
         ]
@@ -954,9 +1397,10 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(output, f, indent=2)
 
-    print(f"\n✅ Phase 2 complete!", file=sys.stderr)
+    print(f"\n✅ All phases complete!", file=sys.stderr)
     print(f"   Output saved to: {output_path}", file=sys.stderr)
-    print(f"   Ready for Phase 3 implementation", file=sys.stderr)
+    print(f"   Players: {len(players)}", file=sys.stderr)
+    print(f"   Highlights: {total_selected}", file=sys.stderr)
 
 
 if __name__ == '__main__':
