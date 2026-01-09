@@ -682,15 +682,21 @@ def detect_highlights_in_game(
                 # Did we capture with a higher-value piece?
                 if moving_value > captured_value:
                     # After our capture, can opponent recapture our piece?
-                    # Check if opponent attacks the square we just moved to
                     opponent_color = not player_color
-                    if board_after.is_attacked_by(opponent_color, move_obj.to_square):
-                        # Our capturing piece can be taken back
+                    square_attacked_by_opponent = board_after.is_attacked_by(opponent_color, move_obj.to_square)
+
+                    # Is our capturing piece protected by our own pieces?
+                    our_piece_protected = board_after.is_attacked_by(player_color, move_obj.to_square)
+
+                    # It's only a sacrifice if:
+                    # 1. Opponent can recapture AND
+                    # 2. Our piece is NOT protected (so we actually lose material)
+                    if square_attacked_by_opponent and not our_piece_protected:
                         # Net loss if recaptured = our piece value - captured piece value
                         potential_loss = moving_value - captured_value
                         if potential_loss >= 2:
                             # This is a sacrifice! High-value piece takes low-value piece
-                            # on defended square, but the move is still excellent
+                            # on defended square, and our piece is unprotected
                             is_sacrifice = True
 
             if is_sacrifice and potential_loss >= 2:
