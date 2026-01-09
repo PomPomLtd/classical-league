@@ -1,11 +1,11 @@
 {
   "roundNumber": 7,
   "seasonNumber": 2,
-  "generatedAt": "2026-01-07T21:04:44.913Z",
+  "generatedAt": "2026-01-09T16:24:38.047Z",
   "overview": {
-    "totalGames": 24,
-    "totalMoves": 1310,
-    "averageGameLength": 36.388888888888886,
+    "totalGames": 27,
+    "totalMoves": 1519,
+    "averageGameLength": 36.166666666666664,
     "longestGame": {
       "moves": 81,
       "white": "Alejandro «Waffle» E.",
@@ -20,9 +20,9 @@
     }
   },
   "gamePhases": {
-    "averageOpening": 9.222222222222221,
-    "averageMiddlegame": 16.555555555555557,
-    "averageEndgame": 10.61111111111111,
+    "averageOpening": 9.333333333333334,
+    "averageMiddlegame": 16.547619047619047,
+    "averageEndgame": 10.285714285714286,
     "longestWaitTillCapture": {
       "moves": 12,
       "white": "Nakul «Na cool» P.",
@@ -43,38 +43,38 @@
     }
   },
   "results": {
-    "whiteWins": 11,
-    "blackWins": 11,
+    "whiteWins": 12,
+    "blackWins": 13,
     "draws": 2,
-    "whiteWinPercentage": 45.83333333333333,
-    "blackWinPercentage": 45.83333333333333,
-    "drawPercentage": 8.333333333333332
+    "whiteWinPercentage": 44.44444444444444,
+    "blackWinPercentage": 48.148148148148145,
+    "drawPercentage": 7.4074074074074066
   },
   "openings": {
     "firstMoves": {
       "e4": {
-        "count": 12,
-        "percentage": 66.66666666666666,
-        "winRate": 50
+        "count": 15,
+        "percentage": 71.42857142857143,
+        "winRate": 46.666666666666664
       },
       "Nf3": {
         "count": 1,
-        "percentage": 5.555555555555555,
+        "percentage": 4.761904761904762,
         "winRate": 0
       },
       "f4": {
         "count": 1,
-        "percentage": 5.555555555555555,
+        "percentage": 4.761904761904762,
         "winRate": 0
       },
       "d4": {
         "count": 3,
-        "percentage": 16.666666666666664,
+        "percentage": 14.285714285714285,
         "winRate": 33.33333333333333
       },
       "e3": {
         "count": 1,
-        "percentage": 5.555555555555555,
+        "percentage": 4.761904761904762,
         "winRate": 0
       }
     },
@@ -116,6 +116,12 @@
         "name": "Alekhine Defense: Two Pawns Attack"
       },
       {
+        "moves": "e4 c6 Nc3 d5 d4 e6",
+        "count": 1,
+        "eco": "B10",
+        "name": "Caro-Kann Defense"
+      },
+      {
         "moves": "e4 c6 Nc3 d5 Nf3 Bg4",
         "count": 1,
         "eco": "B11",
@@ -126,6 +132,12 @@
         "count": 1,
         "eco": "B12",
         "name": "Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense"
+      },
+      {
+        "moves": "e4 c5 b3 d6 Bb2 e5",
+        "count": 1,
+        "eco": "B20",
+        "name": "Sicilian Defense: Snyder Variation"
       },
       {
         "moves": "e4 c5 f4 d6 Nf3 g6",
@@ -144,6 +156,12 @@
         "count": 1,
         "eco": "B32",
         "name": "Sicilian Defense: Open"
+      },
+      {
+        "moves": "e4 c5 Nf3 e6 c4 Nc6",
+        "count": 1,
+        "eco": "B40",
+        "name": "Sicilian Defense: Kramnik Variation"
       },
       {
         "moves": "e4 e6 Nc3 d5 exd5 exd5",
@@ -190,7 +208,7 @@
     ]
   },
   "tactics": {
-    "totalCaptures": 309,
+    "totalCaptures": 358,
     "enPassantGames": [
       {
         "white": "Victor «Loves Threefold Repetition» P.",
@@ -205,24 +223,24 @@
     ],
     "promotions": 4,
     "castling": {
-      "kingside": 22,
-      "queenside": 5
+      "kingside": 26,
+      "queenside": 6
     },
     "bloodiestGame": {
       "captures": 27,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "white": "Camill «Camillionaire» T.",
       "black": "Matteo «Afraid of Caro-Kann» M."
     },
     "quietestGame": {
       "captures": 1,
-      "gameIndex": 10,
+      "gameIndex": 12,
       "white": "Roger «Ruthless En Passant Shredder» H.",
       "black": "Oliver «Monkey sees Pawn» K."
     },
     "longestNonCaptureStreak": {
       "moves": 24,
-      "gameIndex": 6,
+      "gameIndex": 7,
       "white": "Nakul «Na cool» P.",
       "black": "Viktor «VHH93» H."
     },
@@ -231,30 +249,30 @@
   },
   "pieces": {
     "activity": {
-      "pawns": 357,
-      "knights": 259,
-      "bishops": 188,
-      "rooks": 153,
-      "queens": 167,
-      "kings": 186
+      "pawns": 415,
+      "knights": 301,
+      "bishops": 219,
+      "rooks": 193,
+      "queens": 187,
+      "kings": 204
     },
     "captured": {
-      "pawns": 138,
-      "knights": 54,
-      "bishops": 55,
-      "rooks": 38,
-      "queens": 24
+      "pawns": 159,
+      "knights": 65,
+      "bishops": 62,
+      "rooks": 44,
+      "queens": 28
     },
     "survivalRate": {
-      "rooks": 0.4722222222222222,
-      "queens": 0.4444444444444444,
-      "bishops": 0.2361111111111111,
-      "knights": 0.25
+      "rooks": 0.47619047619047616,
+      "queens": 0.42857142857142855,
+      "bishops": 0.2619047619047619,
+      "knights": 0.2261904761904762
     }
   },
   "checkmates": {
     "byPiece": {
-      "queen": 3,
+      "queen": 4,
       "rook": 1,
       "bishop": 0,
       "knight": 0,
@@ -262,7 +280,7 @@
     },
     "fastest": {
       "moves": 25,
-      "gameIndex": 13,
+      "gameIndex": 15,
       "white": "Florian «Knightmare» G.",
       "black": "Peter «Peaky Blunder» N.",
       "winner": "Black"
@@ -271,13 +289,13 @@
   "boardHeatmap": {
     "bloodiestSquare": {
       "square": "d5",
-      "captures": 22,
-      "description": "d5 saw 22 captures"
+      "captures": 28,
+      "description": "d5 saw 28 captures"
     },
     "mostPopularSquare": {
       "square": "c6",
-      "visits": 53,
-      "description": "c6 was visited 53 times"
+      "visits": 59,
+      "description": "c6 was visited 59 times"
     },
     "leastPopularSquare": {
       "square": "a7",
@@ -288,45 +306,45 @@
     "top5Bloodiest": [
       {
         "square": "d5",
+        "captures": 28
+      },
+      {
+        "square": "d4",
         "captures": 22
       },
       {
         "square": "c6",
-        "captures": 19
-      },
-      {
-        "square": "d4",
-        "captures": 19
+        "captures": 21
       },
       {
         "square": "f3",
-        "captures": 14
+        "captures": 17
       },
       {
-        "square": "e5",
+        "square": "c3",
         "captures": 13
       }
     ],
     "top5Popular": [
       {
         "square": "c6",
-        "visits": 53
+        "visits": 59
       },
       {
         "square": "d5",
-        "visits": 50
+        "visits": 58
       },
       {
         "square": "f3",
-        "visits": 46
-      },
-      {
-        "square": "c3",
-        "visits": 45
+        "visits": 54
       },
       {
         "square": "d4",
-        "visits": 45
+        "visits": 53
+      },
+      {
+        "square": "c3",
+        "visits": 50
       }
     ]
   },
@@ -361,40 +379,40 @@
   "funStats": {
     "fastestQueenTrade": {
       "moves": 9,
-      "gameIndex": 17,
+      "gameIndex": 20,
       "white": "Silvan «Fork This Fork That» S.",
       "black": "Jack «NoBackwardMoves» C."
     },
     "slowestQueenTrade": {
       "moves": 63,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "longestCaptureSequence": {
       "length": 6,
-      "gameIndex": 13,
+      "gameIndex": 15,
       "startMove": 19,
       "white": "Florian «Knightmare» G.",
       "black": "Peter «Peaky Blunder» N."
     },
     "longestCheckSequence": {
       "length": 15,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "startMove": 30,
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "pawnStorm": {
       "count": 11,
-      "gameIndex": 16,
+      "gameIndex": 18,
       "white": "Ruslan «Thunder-Blunder» G.",
       "black": "Johannes «Jo» N."
     },
     "pieceLoyalty": null,
     "squareTourist": {
       "squares": 27,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "piece": "King",
       "color": "Black",
       "startSquare": "e8",
@@ -403,20 +421,20 @@
     },
     "castlingRace": {
       "moves": 4,
-      "gameIndex": 1,
+      "gameIndex": 2,
       "winner": "white",
       "white": "Manuel «Grundpatzer» C.",
       "black": "Korbinian «King's Gambit is a real opening» A."
     },
     "slowestCastling": {
       "moves": 16,
-      "gameIndex": 2,
+      "gameIndex": 3,
       "color": "black",
       "white": "Ramura «viennugambu» G.",
       "black": "Joshua «Pristine Pawn Pusher» G."
     },
     "openingHipster": {
-      "gameIndex": 7,
+      "gameIndex": 8,
       "eco": "A00",
       "name": "Van't Kruijs Opening",
       "moves": "e3 e5 Ne2 d5 d3 Nf6",
@@ -426,28 +444,28 @@
     },
     "dadbodShuffler": {
       "moves": 37,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "Black",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "sportyQueen": {
       "distance": 64,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "White",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "edgeLord": {
       "moves": 28,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "Black",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "rookLift": {
       "moveNumber": 6,
-      "gameIndex": 17,
+      "gameIndex": 20,
       "color": "White",
       "rook": "White's b1 Rook",
       "square": "b1",
@@ -465,42 +483,42 @@
     },
     "darkLord": {
       "captures": 8,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "White",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "lightLord": {
       "captures": 10,
-      "gameIndex": 9,
+      "gameIndex": 11,
       "color": "White",
       "white": "Camill «Camillionaire» T.",
       "black": "Matteo «Afraid of Caro-Kann» M."
     },
     "parkourMaster": {
       "knightMoves": 22,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "White",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "chickenAward": {
       "retreats": 20,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "color": "White",
       "white": "Alejandro «Waffle» E.",
       "black": "Dogan «Kido» P."
     },
     "pawnCaptures": {
       "captures": 6,
-      "gameIndex": 15,
+      "gameIndex": 17,
       "color": "black",
       "white": "Daniel «Bishop Mangler Supreme» T.",
       "black": "Adam «PawnRuinerAlpha» A."
     },
     "antiOrthogonal": {
       "moves": 18,
-      "gameIndex": 14,
+      "gameIndex": 16,
       "gameId": null,
       "color": "white",
       "white": "Alejandro «Waffle» E.",
@@ -511,7 +529,7 @@
       "pieceType": "bishops",
       "moves": 4,
       "totalNonPawnMoves": 7,
-      "gameIndex": 10,
+      "gameIndex": 12,
       "gameId": null,
       "color": "white",
       "white": "Roger «Ruthless En Passant Shredder» H.",
@@ -590,6 +608,31 @@
         "gameIndex": 0
       },
       {
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Mario «ChessDude» M.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 15,
+          "blackFirstInvasion": 20
+        },
+        "mostAttackedSquare": {
+          "square": "d5",
+          "attackers": 6,
+          "whiteAttackers": 3,
+          "blackAttackers": 3,
+          "moveNumber": 14,
+          "move": "d5"
+        },
+        "longestTension": {
+          "moves": 9,
+          "squares": "c4-d5",
+          "startMove": 16,
+          "endMove": 25
+        },
+        "gameIndex": 1
+      },
+      {
         "white": "Manuel «Grundpatzer» C.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
         "enemyTerritory": {
@@ -612,7 +655,7 @@
           "startMove": 76,
           "endMove": 87
         },
-        "gameIndex": 1
+        "gameIndex": 2
       },
       {
         "white": "Ramura «viennugambu» G.",
@@ -637,7 +680,7 @@
           "startMove": 4,
           "endMove": 13
         },
-        "gameIndex": 2
+        "gameIndex": 3
       },
       {
         "white": "Anton «TheCatalan» B.",
@@ -662,7 +705,7 @@
           "startMove": 7,
           "endMove": 19
         },
-        "gameIndex": 3
+        "gameIndex": 4
       },
       {
         "white": "Max «Bird is the word» W.",
@@ -687,7 +730,7 @@
           "startMove": 35,
           "endMove": 48
         },
-        "gameIndex": 4
+        "gameIndex": 5
       },
       {
         "white": "Simon «The Endgame Alchemist» L.",
@@ -712,7 +755,7 @@
           "startMove": 8,
           "endMove": 10
         },
-        "gameIndex": 5
+        "gameIndex": 6
       },
       {
         "white": "Michael «Mivobu» B.",
@@ -725,7 +768,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 6
+        "gameIndex": 7
       },
       {
         "white": "Nakul «Na cool» P.",
@@ -750,7 +793,7 @@
           "startMove": 39,
           "endMove": 46
         },
-        "gameIndex": 7
+        "gameIndex": 8
       },
       {
         "white": "Rainer «Quigli» S.",
@@ -775,7 +818,7 @@
           "startMove": 33,
           "endMove": 40
         },
-        "gameIndex": 8
+        "gameIndex": 9
       },
       {
         "white": "Vjeko «Blunderful» B.",
@@ -800,7 +843,32 @@
           "startMove": 10,
           "endMove": 18
         },
-        "gameIndex": 9
+        "gameIndex": 10
+      },
+      {
+        "white": "Itamar «Itaberg» B.",
+        "black": "Santiago «One-eyed Bishop» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 4,
+          "blackPiecesInEnemy": 5,
+          "whiteFirstInvasion": 9,
+          "blackFirstInvasion": 26
+        },
+        "mostAttackedSquare": {
+          "square": "f6",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 55,
+          "move": "e5"
+        },
+        "longestTension": {
+          "moves": 8,
+          "squares": "e3-g5",
+          "startMove": 24,
+          "endMove": 32
+        },
+        "gameIndex": 11
       },
       {
         "white": "Camill «Camillionaire» T.",
@@ -825,7 +893,7 @@
           "startMove": 74,
           "endMove": 83
         },
-        "gameIndex": 10
+        "gameIndex": 12
       },
       {
         "white": "Roger «Ruthless En Passant Shredder» H.",
@@ -846,11 +914,11 @@
         },
         "longestTension": {
           "moves": 1,
-          "squares": "a6-b5",
+          "squares": "b5-c6",
           "startMove": 6,
           "endMove": 7
         },
-        "gameIndex": 11
+        "gameIndex": 13
       },
       {
         "white": "Jakob «Jaquemate » .",
@@ -875,7 +943,7 @@
           "startMove": 28,
           "endMove": 33
         },
-        "gameIndex": 12
+        "gameIndex": 14
       },
       {
         "white": "Oliver «Mouse Slip Expert» S.",
@@ -888,7 +956,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 13
+        "gameIndex": 15
       },
       {
         "white": "Victor «Loves Threefold Repetition» P.",
@@ -913,7 +981,7 @@
           "startMove": 32,
           "endMove": 44
         },
-        "gameIndex": 14
+        "gameIndex": 16
       },
       {
         "white": "Florian «Knightmare» G.",
@@ -938,7 +1006,7 @@
           "startMove": 8,
           "endMove": 22
         },
-        "gameIndex": 15
+        "gameIndex": 17
       },
       {
         "white": "Tobias «tiuan» P.",
@@ -951,7 +1019,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 16
+        "gameIndex": 18
       },
       {
         "white": "Alejandro «Waffle» E.",
@@ -976,7 +1044,7 @@
           "startMove": 35,
           "endMove": 59
         },
-        "gameIndex": 17
+        "gameIndex": 19
       },
       {
         "white": "Davide «AME» V.",
@@ -989,7 +1057,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 18
+        "gameIndex": 20
       },
       {
         "white": "Daniel «Bishop Mangler Supreme» T.",
@@ -1014,7 +1082,7 @@
           "startMove": 3,
           "endMove": 18
         },
-        "gameIndex": 19
+        "gameIndex": 21
       },
       {
         "white": "Oliver «ScreaminG HI JoK ING» .",
@@ -1027,7 +1095,7 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 20
+        "gameIndex": 22
       },
       {
         "white": "Ruslan «Thunder-Blunder» G.",
@@ -1048,11 +1116,36 @@
         },
         "longestTension": {
           "moves": 3,
-          "squares": "e4-f6",
+          "squares": "f6-g4",
           "startMove": 23,
           "endMove": 26
         },
-        "gameIndex": 21
+        "gameIndex": 23
+      },
+      {
+        "white": "Adela «Adele» P.",
+        "black": "Jonathan «Panic Gambit» B.",
+        "enemyTerritory": {
+          "whitePiecesInEnemy": 5,
+          "blackPiecesInEnemy": 4,
+          "whiteFirstInvasion": 7,
+          "blackFirstInvasion": 8
+        },
+        "mostAttackedSquare": {
+          "square": "f5",
+          "attackers": 6,
+          "whiteAttackers": 2,
+          "blackAttackers": 4,
+          "moveNumber": 40,
+          "move": "f5"
+        },
+        "longestTension": {
+          "moves": 9,
+          "squares": "c2-d3",
+          "startMove": 50,
+          "endMove": 59
+        },
+        "gameIndex": 24
       },
       {
         "white": "Silvan «Fork This Fork That» S.",
@@ -1077,7 +1170,7 @@
           "startMove": 47,
           "endMove": 53
         },
-        "gameIndex": 22
+        "gameIndex": 25
       },
       {
         "white": "Ludwig «solucionfisiologica» S.",
@@ -1090,17 +1183,17 @@
         },
         "mostAttackedSquare": null,
         "longestTension": null,
-        "gameIndex": 23
+        "gameIndex": 26
       }
     ],
     "summary": {
-      "totalGames": 24,
+      "totalGames": 27,
       "homebody": {
         "white": "Roger «Ruthless En Passant Shredder» H.",
         "black": "Oliver «Monkey sees Pawn» K.",
         "player": "black",
         "piecesInEnemy": 0,
-        "gameIndex": 11
+        "gameIndex": 13
       },
       "lateBlocker": null,
       "mostAttackedSquareGame": {
@@ -1126,21 +1219,21 @@
           "startMove": 47,
           "endMove": 53
         },
-        "gameIndex": 22
+        "gameIndex": 25
       },
       "lateBloomer": {
         "white": "Manuel «Grundpatzer» C.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
         "player": "black",
         "moveNumber": 42,
-        "gameIndex": 1
+        "gameIndex": 2
       },
       "quickDraw": {
         "white": "Simon «The Endgame Alchemist» L.",
         "black": "Gaston «SleepingDawg» F.",
         "player": "white",
         "moveNumber": 3,
-        "gameIndex": 5
+        "gameIndex": 6
       },
       "longestTension": {
         "white": "Alejandro «Waffle» E.",
@@ -1149,7 +1242,7 @@
         "squares": "c6-d4",
         "startMove": 35,
         "endMove": 59,
-        "gameIndex": 17
+        "gameIndex": 19
       }
     }
   },
@@ -1199,54 +1292,105 @@
       },
       {
         "gameIndex": 1,
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Mario «ChessDude» M.",
+        "whiteACPL": 251.9,
+        "blackACPL": 229.4,
+        "whiteAccuracy": 19.4,
+        "blackAccuracy": 21,
+        "whiteMoveQuality": {
+          "blunders": 11,
+          "mistakes": 5,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 4
+        },
+        "blackMoveQuality": {
+          "blunders": 10,
+          "mistakes": 6,
+          "inaccuracies": 2,
+          "good": 1,
+          "excellent": 4
+        },
+        "whiteEngineMoves": 4,
+        "blackEngineMoves": 4,
+        "biggestBlunder": {
+          "moveNumber": 20,
+          "player": "black",
+          "cpLoss": 803,
+          "winLoss": 79.33701057113166,
+          "severity": 97.78286552891976,
+          "move": "Bxb2+",
+          "evalBefore": -293,
+          "evalAfter": 510
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-528",
+          "evalTo": "M3",
+          "evalFromCp": -528,
+          "evalToCp": 9970,
+          "moveNumber": 22
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 168,
+          "evalBefore": 213,
+          "evalAfter": -45,
+          "moveNumber": 10
+        }
+      },
+      {
+        "gameIndex": 2,
         "white": "Manuel «Grundpatzer» C.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
-        "whiteACPL": 7.7,
-        "blackACPL": 6.7,
-        "whiteAccuracy": 95.6,
-        "blackAccuracy": 96.2,
+        "whiteACPL": 5.4,
+        "blackACPL": 4.6,
+        "whiteAccuracy": 96.9,
+        "blackAccuracy": 97.3,
         "whiteMoveQuality": {
           "blunders": 0,
-          "mistakes": 2,
-          "inaccuracies": 3,
-          "good": 1,
-          "excellent": 40
+          "mistakes": 1,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 41
         },
         "blackMoveQuality": {
           "blunders": 0,
           "mistakes": 0,
-          "inaccuracies": 5,
-          "good": 0,
+          "inaccuracies": 2,
+          "good": 3,
           "excellent": 41
         },
-        "whiteEngineMoves": 40,
+        "whiteEngineMoves": 41,
         "blackEngineMoves": 41,
         "biggestBlunder": null,
         "biggestComeback": {
           "player": "white",
           "swing": 2000,
-          "evalFrom": "-1021",
-          "evalTo": "1112",
-          "evalFromCp": -1021,
-          "evalToCp": 1112,
+          "evalFrom": "-821",
+          "evalTo": "3522",
+          "evalFromCp": -821,
+          "evalToCp": 3522,
           "moveNumber": 42
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 6367,
+          "escapeAmount": 6394,
           "evalBefore": 9950,
-          "evalAfter": -3583,
+          "evalAfter": -3556,
           "moveNumber": 43
         }
       },
       {
-        "gameIndex": 2,
+        "gameIndex": 3,
         "white": "Ramura «viennugambu» G.",
         "black": "Joshua «Pristine Pawn Pusher» G.",
-        "whiteACPL": 22.5,
-        "blackACPL": 24,
-        "whiteAccuracy": 86.5,
-        "blackAccuracy": 85.7,
+        "whiteACPL": 21.8,
+        "blackACPL": 23.5,
+        "whiteAccuracy": 86.9,
+        "blackAccuracy": 86,
         "whiteMoveQuality": {
           "blunders": 0,
           "mistakes": 5,
@@ -1255,152 +1399,161 @@
           "excellent": 23
         },
         "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 7,
-          "inaccuracies": 1,
+          "blunders": 1,
+          "mistakes": 5,
+          "inaccuracies": 2,
           "good": 0,
           "excellent": 23
         },
         "whiteEngineMoves": 23,
         "blackEngineMoves": 23,
-        "biggestBlunder": null,
+        "biggestBlunder": {
+          "moveNumber": 8,
+          "player": "black",
+          "cpLoss": 147,
+          "winLoss": 20.833033483808784,
+          "severity": 20.833033483808784,
+          "move": "c5",
+          "evalBefore": -65,
+          "evalAfter": 82
+        },
         "biggestComeback": {
           "player": "black",
-          "swing": 1822,
+          "swing": 1835,
           "evalFrom": "897",
-          "evalTo": "-925",
+          "evalTo": "-938",
           "evalFromCp": 897,
-          "evalToCp": -925,
+          "evalToCp": -938,
           "moveNumber": 31
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 100,
-          "evalBefore": 435,
-          "evalAfter": -335,
-          "moveNumber": 12
-        }
-      },
-      {
-        "gameIndex": 3,
-        "white": "Anton «TheCatalan» B.",
-        "black": "Alex «The Benoni Pulverizer» G.",
-        "whiteACPL": 70.1,
-        "blackACPL": 77.8,
-        "whiteAccuracy": 64.9,
-        "blackAccuracy": 62,
-        "whiteMoveQuality": {
-          "blunders": 6,
-          "mistakes": 5,
-          "inaccuracies": 4,
-          "good": 0,
-          "excellent": 13
-        },
-        "blackMoveQuality": {
-          "blunders": 6,
-          "mistakes": 7,
-          "inaccuracies": 2,
-          "good": 1,
-          "excellent": 12
-        },
-        "whiteEngineMoves": 13,
-        "blackEngineMoves": 12,
-        "biggestBlunder": {
-          "moveNumber": 17,
-          "player": "black",
-          "cpLoss": 257,
-          "winLoss": 35.38468636255436,
-          "severity": 35.38468636255436,
-          "move": "Ng4",
-          "evalBefore": -131,
-          "evalAfter": 126
-        },
-        "biggestComeback": {
-          "player": "white",
-          "swing": 2000,
-          "evalFrom": "-720",
-          "evalTo": "M1",
-          "evalFromCp": -720,
-          "evalToCp": 9990,
-          "moveNumber": 28
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 92,
-          "evalBefore": 707,
-          "evalAfter": -615,
+          "escapeAmount": 129,
+          "evalBefore": 761,
+          "evalAfter": -632,
           "moveNumber": 26
         }
       },
       {
         "gameIndex": 4,
+        "white": "Anton «TheCatalan» B.",
+        "black": "Alex «The Benoni Pulverizer» G.",
+        "whiteACPL": 74.7,
+        "blackACPL": 78.2,
+        "whiteAccuracy": 63.2,
+        "blackAccuracy": 61.9,
+        "whiteMoveQuality": {
+          "blunders": 9,
+          "mistakes": 3,
+          "inaccuracies": 1,
+          "good": 2,
+          "excellent": 13
+        },
+        "blackMoveQuality": {
+          "blunders": 9,
+          "mistakes": 3,
+          "inaccuracies": 2,
+          "good": 1,
+          "excellent": 13
+        },
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 13,
+        "biggestBlunder": {
+          "moveNumber": 17,
+          "player": "white",
+          "cpLoss": 264,
+          "winLoss": 36.26436703327874,
+          "severity": 36.26436703327874,
+          "move": "Qxa5",
+          "evalBefore": 132,
+          "evalAfter": -132
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-778",
+          "evalTo": "M1",
+          "evalFromCp": -778,
+          "evalToCp": 9990,
+          "moveNumber": 28
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 150,
+          "evalBefore": 807,
+          "evalAfter": -657,
+          "moveNumber": 24
+        }
+      },
+      {
+        "gameIndex": 5,
         "white": "Max «Bird is the word» W.",
         "black": "Osama «Ruiner of Bird's» A.",
-        "whiteACPL": 33.3,
+        "whiteACPL": 32.2,
         "blackACPL": 31.9,
-        "whiteAccuracy": 81.5,
+        "whiteAccuracy": 82.1,
         "blackAccuracy": 82.3,
         "whiteMoveQuality": {
           "blunders": 5,
-          "mistakes": 4,
+          "mistakes": 3,
           "inaccuracies": 1,
-          "good": 1,
+          "good": 2,
           "excellent": 36
         },
         "blackMoveQuality": {
           "blunders": 4,
-          "mistakes": 5,
-          "inaccuracies": 0,
+          "mistakes": 4,
+          "inaccuracies": 1,
           "good": 0,
           "excellent": 38
         },
         "whiteEngineMoves": 36,
         "blackEngineMoves": 38,
         "biggestBlunder": {
-          "moveNumber": 11,
+          "moveNumber": 12,
           "player": "black",
-          "cpLoss": 306,
-          "winLoss": 41.39477479932032,
-          "severity": 41.39477479932032,
-          "move": "gxh6",
-          "evalBefore": -152,
-          "evalAfter": 154
+          "cpLoss": 318,
+          "winLoss": 42.81578051707007,
+          "severity": 42.81578051707007,
+          "move": "Kd8",
+          "evalBefore": -159,
+          "evalAfter": 159
         },
         "biggestComeback": {
-          "player": "black",
+          "player": "white",
           "swing": 2000,
-          "evalFrom": "660",
-          "evalTo": "-3705",
-          "evalFromCp": 660,
-          "evalToCp": -3705,
-          "moveNumber": 46
+          "evalFrom": "-687",
+          "evalTo": "M4",
+          "evalFromCp": -687,
+          "evalToCp": 9960,
+          "moveNumber": 47
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 6255,
+          "escapeAmount": 6263,
           "evalBefore": 9960,
-          "evalAfter": -3705,
+          "evalAfter": -3697,
           "moveNumber": 47
         }
       },
       {
-        "gameIndex": 5,
+        "gameIndex": 6,
         "white": "Simon «The Endgame Alchemist» L.",
         "black": "Gaston «SleepingDawg» F.",
-        "whiteACPL": 361.3,
-        "blackACPL": 355.6,
-        "whiteAccuracy": 11.3,
-        "blackAccuracy": 11.4,
+        "whiteACPL": 373,
+        "blackACPL": 373,
+        "whiteAccuracy": 10.5,
+        "blackAccuracy": 10.4,
         "whiteMoveQuality": {
-          "blunders": 13,
-          "mistakes": 9,
+          "blunders": 16,
+          "mistakes": 6,
           "inaccuracies": 2,
           "good": 0,
           "excellent": 0
         },
         "blackMoveQuality": {
-          "blunders": 15,
-          "mistakes": 8,
+          "blunders": 18,
+          "mistakes": 5,
           "inaccuracies": 0,
           "good": 0,
           "excellent": 0
@@ -1408,91 +1561,91 @@
         "whiteEngineMoves": 0,
         "blackEngineMoves": 0,
         "biggestBlunder": {
-          "moveNumber": 20,
-          "player": "white",
-          "cpLoss": 772,
-          "winLoss": 80.3060121080113,
-          "severity": 112.82994701175588,
-          "move": "Bg5",
-          "evalBefore": 362,
-          "evalAfter": -410
+          "moveNumber": 21,
+          "player": "black",
+          "cpLoss": 773,
+          "winLoss": 79.35909066604673,
+          "severity": 102.57162468586539,
+          "move": "Bh6",
+          "evalBefore": -317,
+          "evalAfter": 456
         },
         "biggestComeback": {
           "player": "white",
           "swing": 2000,
-          "evalFrom": "-484",
+          "evalFrom": "-460",
           "evalTo": "M4",
-          "evalFromCp": -484,
+          "evalFromCp": -460,
           "evalToCp": 9960,
           "moveNumber": 23
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 136,
-          "evalBefore": 454,
-          "evalAfter": -318,
+          "escapeAmount": 151,
+          "evalBefore": 446,
+          "evalAfter": -295,
           "moveNumber": 21
         }
       },
       {
-        "gameIndex": 7,
+        "gameIndex": 8,
         "white": "Nakul «Na cool» P.",
         "black": "Viktor «VHH93» H.",
-        "whiteACPL": 440.5,
-        "blackACPL": 437.6,
-        "whiteAccuracy": 10.7,
-        "blackAccuracy": 10.6,
+        "whiteACPL": 446.9,
+        "blackACPL": 435.7,
+        "whiteAccuracy": 10.3,
+        "blackAccuracy": 10.8,
         "whiteMoveQuality": {
           "blunders": 17,
-          "mistakes": 18,
-          "inaccuracies": 3,
-          "good": 2,
+          "mistakes": 17,
+          "inaccuracies": 5,
+          "good": 1,
           "excellent": 2
         },
         "blackMoveQuality": {
-          "blunders": 19,
-          "mistakes": 16,
-          "inaccuracies": 5,
-          "good": 1,
+          "blunders": 18,
+          "mistakes": 17,
+          "inaccuracies": 2,
+          "good": 4,
           "excellent": 0
         },
         "whiteEngineMoves": 2,
         "blackEngineMoves": 0,
         "biggestBlunder": {
-          "moveNumber": 24,
-          "player": "white",
-          "cpLoss": 663,
-          "winLoss": 73.75569281024389,
-          "severity": 105.10186225459753,
-          "move": "Ne7+",
-          "evalBefore": 370,
-          "evalAfter": -293
+          "moveNumber": 35,
+          "player": "black",
+          "cpLoss": 806,
+          "winLoss": 81.91517311446219,
+          "severity": 117.54827341925325,
+          "move": "Rxh1",
+          "evalBefore": -374,
+          "evalAfter": 432
         },
         "biggestComeback": {
           "player": "black",
-          "swing": 1225,
-          "evalFrom": "602",
-          "evalTo": "-623",
-          "evalFromCp": 602,
-          "evalToCp": -623,
+          "swing": 1229,
+          "evalFrom": "615",
+          "evalTo": "-614",
+          "evalFromCp": 615,
+          "evalToCp": -614,
           "moveNumber": 42
         },
         "luckyEscape": {
           "player": "black",
           "escapeAmount": 294,
-          "evalBefore": 348,
-          "evalAfter": -54,
+          "evalBefore": 349,
+          "evalAfter": -55,
           "moveNumber": 25
         }
       },
       {
-        "gameIndex": 8,
+        "gameIndex": 9,
         "white": "Rainer «Quigli» S.",
         "black": "Stefano «acheron» B.",
-        "whiteACPL": 1.9,
-        "blackACPL": 0.7,
+        "whiteACPL": 2,
+        "blackACPL": 1.2,
         "whiteAccuracy": 98.8,
-        "blackAccuracy": 99.6,
+        "blackAccuracy": 99.2,
         "whiteMoveQuality": {
           "blunders": 0,
           "mistakes": 0,
@@ -1513,141 +1666,183 @@
         "biggestComeback": {
           "player": "white",
           "swing": 2000,
-          "evalFrom": "-843",
+          "evalFrom": "-913",
           "evalTo": "M4",
-          "evalFromCp": -843,
+          "evalFromCp": -913,
           "evalToCp": 9960,
           "moveNumber": 24
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 148,
-          "evalBefore": 321,
-          "evalAfter": -173,
+          "escapeAmount": 125,
+          "evalBefore": 308,
+          "evalAfter": -183,
           "moveNumber": 17
         }
       },
       {
-        "gameIndex": 9,
+        "gameIndex": 10,
         "white": "Vjeko «Blunderful» B.",
         "black": "Sam «Active King» B.",
-        "whiteACPL": 24.4,
-        "blackACPL": 29.4,
-        "whiteAccuracy": 86.6,
-        "blackAccuracy": 84.2,
+        "whiteACPL": 23.3,
+        "blackACPL": 26.9,
+        "whiteAccuracy": 87.3,
+        "blackAccuracy": 85.4,
         "whiteMoveQuality": {
           "blunders": 1,
-          "mistakes": 1,
-          "inaccuracies": 5,
-          "good": 1,
+          "mistakes": 2,
+          "inaccuracies": 2,
+          "good": 3,
           "excellent": 19
         },
         "blackMoveQuality": {
           "blunders": 2,
-          "mistakes": 3,
+          "mistakes": 2,
           "inaccuracies": 1,
-          "good": 1,
-          "excellent": 20
+          "good": 3,
+          "excellent": 19
         },
         "whiteEngineMoves": 19,
-        "blackEngineMoves": 20,
+        "blackEngineMoves": 19,
         "biggestBlunder": {
           "moveNumber": 8,
           "player": "white",
-          "cpLoss": 239,
-          "winLoss": 28.281640059798647,
-          "severity": 33.018814769814924,
+          "cpLoss": 215,
+          "winLoss": 24.760283762083944,
+          "severity": 29.031432711043422,
           "move": "Qe2+",
-          "evalBefore": 267,
-          "evalAfter": 28
+          "evalBefore": 269,
+          "evalAfter": 54
         },
         "biggestComeback": {
           "player": "black",
-          "swing": 1272,
-          "evalFrom": "644",
-          "evalTo": "-628",
-          "evalFromCp": 644,
-          "evalToCp": -628,
+          "swing": 1284,
+          "evalFrom": "651",
+          "evalTo": "-633",
+          "evalFromCp": 651,
+          "evalToCp": -633,
           "moveNumber": 27
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 228,
-          "evalBefore": 256,
-          "evalAfter": 28,
-          "moveNumber": 8
-        }
-      },
-      {
-        "gameIndex": 10,
-        "white": "Camill «Camillionaire» T.",
-        "black": "Matteo «Afraid of Caro-Kann» M.",
-        "whiteACPL": 1456,
-        "blackACPL": 1322.9,
-        "whiteAccuracy": 3.4,
-        "blackAccuracy": 3.5,
-        "whiteMoveQuality": {
-          "blunders": 16,
-          "mistakes": 38,
-          "inaccuracies": 0,
-          "good": 2,
-          "excellent": 5
-        },
-        "blackMoveQuality": {
-          "blunders": 25,
-          "mistakes": 29,
-          "inaccuracies": 0,
-          "good": 2,
-          "excellent": 4
-        },
-        "whiteEngineMoves": 5,
-        "blackEngineMoves": 4,
-        "biggestBlunder": {
-          "moveNumber": 49,
-          "player": "black",
-          "cpLoss": 804,
-          "winLoss": 81.20657544666335,
-          "severity": 110.03490973022883,
-          "move": "Kd7",
-          "evalBefore": -342,
-          "evalAfter": 462
-        },
-        "biggestComeback": {
-          "player": "black",
-          "swing": 2000,
-          "evalFrom": "698",
-          "evalTo": "-3571",
-          "evalFromCp": 698,
-          "evalToCp": -3571,
-          "moveNumber": 55
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 761,
-          "evalBefore": 4299,
-          "evalAfter": -3538,
-          "moveNumber": 58
+          "escapeAmount": 107,
+          "evalBefore": 483,
+          "evalAfter": -376,
+          "moveNumber": 19
         }
       },
       {
         "gameIndex": 11,
+        "white": "Itamar «Itaberg» B.",
+        "black": "Santiago «One-eyed Bishop» B.",
+        "whiteACPL": 3.8,
+        "blackACPL": 3.2,
+        "whiteAccuracy": 97.7,
+        "blackAccuracy": 98.1,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 1,
+          "good": 1,
+          "excellent": 31
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 1,
+          "inaccuracies": 0,
+          "good": 1,
+          "excellent": 32
+        },
+        "whiteEngineMoves": 31,
+        "blackEngineMoves": 32,
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-929",
+          "evalTo": "1360",
+          "evalFromCp": -929,
+          "evalToCp": 1360,
+          "moveNumber": 28
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 696,
+          "evalBefore": 1360,
+          "evalAfter": -664,
+          "moveNumber": 28
+        }
+      },
+      {
+        "gameIndex": 12,
+        "white": "Camill «Camillionaire» T.",
+        "black": "Matteo «Afraid of Caro-Kann» M.",
+        "whiteACPL": 1214.8,
+        "blackACPL": 1284.4,
+        "whiteAccuracy": 3.5,
+        "blackAccuracy": 3.5,
+        "whiteMoveQuality": {
+          "blunders": 16,
+          "mistakes": 37,
+          "inaccuracies": 1,
+          "good": 1,
+          "excellent": 6
+        },
+        "blackMoveQuality": {
+          "blunders": 24,
+          "mistakes": 29,
+          "inaccuracies": 1,
+          "good": 1,
+          "excellent": 5
+        },
+        "whiteEngineMoves": 6,
+        "blackEngineMoves": 5,
+        "biggestBlunder": {
+          "moveNumber": 24,
+          "player": "black",
+          "cpLoss": 767,
+          "winLoss": 80.17887173630061,
+          "severity": 115.85846965895438,
+          "move": "Bxd1",
+          "evalBefore": -378,
+          "evalAfter": 389
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-706",
+          "evalTo": "3583",
+          "evalFromCp": -706,
+          "evalToCp": 3583,
+          "moveNumber": 55
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 767,
+          "evalBefore": 4328,
+          "evalAfter": -3561,
+          "moveNumber": 61
+        }
+      },
+      {
+        "gameIndex": 13,
         "white": "Roger «Ruthless En Passant Shredder» H.",
         "black": "Oliver «Monkey sees Pawn» K.",
-        "whiteACPL": 96.9,
-        "blackACPL": 81,
-        "whiteAccuracy": 54.5,
-        "blackAccuracy": 60.5,
+        "whiteACPL": 85.9,
+        "blackACPL": 71,
+        "whiteAccuracy": 58.6,
+        "blackAccuracy": 64.9,
         "whiteMoveQuality": {
           "blunders": 1,
-          "mistakes": 4,
-          "inaccuracies": 3,
-          "good": 0,
+          "mistakes": 2,
+          "inaccuracies": 4,
+          "good": 1,
           "excellent": 1
         },
         "blackMoveQuality": {
           "blunders": 1,
-          "mistakes": 4,
-          "inaccuracies": 1,
+          "mistakes": 1,
+          "inaccuracies": 4,
           "good": 1,
           "excellent": 1
         },
@@ -1656,358 +1851,418 @@
         "biggestBlunder": {
           "moveNumber": 9,
           "player": "white",
-          "cpLoss": 370,
-          "winLoss": 48.307541474142674,
-          "severity": 50.96445625522052,
+          "cpLoss": 360,
+          "winLoss": 46.981291647581614,
+          "severity": 50.03507560467442,
           "move": "Bxf7+",
-          "evalBefore": 222,
-          "evalAfter": -148
+          "evalBefore": 226,
+          "evalAfter": -134
         },
         "biggestComeback": null,
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 87,
-          "evalBefore": 235,
-          "evalAfter": -148,
+          "escapeAmount": 114,
+          "evalBefore": 248,
+          "evalAfter": -134,
           "moveNumber": 9
         }
       },
       {
-        "gameIndex": 12,
+        "gameIndex": 14,
         "white": "Jakob «Jaquemate » .",
         "black": "Laurens «Castling Specialist» B.",
-        "whiteACPL": 447.6,
-        "blackACPL": 478.2,
-        "whiteAccuracy": 12.6,
-        "blackAccuracy": 12.7,
+        "whiteACPL": 541.6,
+        "blackACPL": 500.2,
+        "whiteAccuracy": 11.9,
+        "blackAccuracy": 12.6,
         "whiteMoveQuality": {
           "blunders": 3,
           "mistakes": 12,
-          "inaccuracies": 1,
-          "good": 2,
-          "excellent": 8
-        },
-        "blackMoveQuality": {
-          "blunders": 3,
-          "mistakes": 12,
-          "inaccuracies": 1,
-          "good": 1,
-          "excellent": 8
-        },
-        "whiteEngineMoves": 8,
-        "blackEngineMoves": 8,
-        "biggestBlunder": {
-          "moveNumber": 16,
-          "player": "black",
-          "cpLoss": 800,
-          "winLoss": 80.98441420554553,
-          "severity": 109.1264981419726,
-          "move": "Rf8",
-          "evalBefore": -339,
-          "evalAfter": 461
-        },
-        "biggestComeback": {
-          "player": "black",
-          "swing": 2000,
-          "evalFrom": "777",
-          "evalTo": "M-9",
-          "evalFromCp": 777,
-          "evalToCp": -9910,
-          "moveNumber": 25
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 130,
-          "evalBefore": 633,
-          "evalAfter": -503,
-          "moveNumber": 22
-        }
-      },
-      {
-        "gameIndex": 14,
-        "white": "Victor «Loves Threefold Repetition» P.",
-        "black": "Iannis «Modern Pulverizer» D.",
-        "whiteACPL": 409.4,
-        "blackACPL": 402.9,
-        "whiteAccuracy": 10.7,
-        "blackAccuracy": 10.9,
-        "whiteMoveQuality": {
-          "blunders": 4,
-          "mistakes": 19,
-          "inaccuracies": 1,
-          "good": 2,
-          "excellent": 13
-        },
-        "blackMoveQuality": {
-          "blunders": 4,
-          "mistakes": 18,
-          "inaccuracies": 1,
-          "good": 2,
-          "excellent": 13
-        },
-        "whiteEngineMoves": 13,
-        "blackEngineMoves": 13,
-        "biggestBlunder": {
-          "moveNumber": 23,
-          "player": "black",
-          "cpLoss": 888,
-          "winLoss": 81.16769049625324,
-          "severity": 99.83625931039148,
-          "move": "f5",
-          "evalBefore": -292,
-          "evalAfter": 596
-        },
-        "biggestComeback": {
-          "player": "white",
-          "swing": 2000,
-          "evalFrom": "-628",
-          "evalTo": "M5",
-          "evalFromCp": -628,
-          "evalToCp": 9950,
-          "moveNumber": 33
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 227,
-          "evalBefore": 596,
-          "evalAfter": -369,
-          "moveNumber": 24
-        }
-      },
-      {
-        "gameIndex": 15,
-        "white": "Florian «Knightmare» G.",
-        "black": "Peter «Peaky Blunder» N.",
-        "whiteACPL": 7,
-        "blackACPL": 6.4,
-        "whiteAccuracy": 96.1,
-        "blackAccuracy": 96.4,
-        "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 2,
-          "good": 2,
-          "excellent": 21
-        },
-        "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 0,
-          "inaccuracies": 2,
-          "good": 2,
-          "excellent": 21
-        },
-        "whiteEngineMoves": 21,
-        "blackEngineMoves": 21,
-        "biggestBlunder": null,
-        "biggestComeback": {
-          "player": "white",
-          "swing": 2000,
-          "evalFrom": "-673",
-          "evalTo": "M3",
-          "evalFromCp": -673,
-          "evalToCp": 9970,
-          "moveNumber": 23
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 9164,
-          "evalBefore": 9970,
-          "evalAfter": -806,
-          "moveNumber": 23
-        }
-      },
-      {
-        "gameIndex": 17,
-        "white": "Alejandro «Waffle» E.",
-        "black": "Dogan «Kido» P.",
-        "whiteACPL": 2501.7,
-        "blackACPL": 2701,
-        "whiteAccuracy": 1.8,
-        "blackAccuracy": 1.6,
-        "whiteMoveQuality": {
-          "blunders": 18,
-          "mistakes": 52,
           "inaccuracies": 3,
           "good": 1,
           "excellent": 7
         },
         "blackMoveQuality": {
-          "blunders": 22,
-          "mistakes": 48,
-          "inaccuracies": 5,
-          "good": 1,
-          "excellent": 4
+          "blunders": 3,
+          "mistakes": 10,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 8
         },
         "whiteEngineMoves": 7,
-        "blackEngineMoves": 4,
+        "blackEngineMoves": 8,
         "biggestBlunder": {
-          "moveNumber": 45,
+          "moveNumber": 16,
           "player": "black",
-          "cpLoss": 0,
-          "winLoss": 88.64576236639505,
-          "severity": 123.4532741406092,
-          "move": "Kg7",
-          "evalBefore": -357,
-          "evalAfter": 9910
+          "cpLoss": 791,
+          "winLoss": 80.46774268799972,
+          "severity": 107.02209777503963,
+          "move": "Rf8",
+          "evalBefore": -332,
+          "evalAfter": 459
         },
-        "biggestComeback": {
-          "player": "black",
-          "swing": 2000,
-          "evalFrom": "1251",
-          "evalTo": "M-18",
-          "evalFromCp": 1251,
-          "evalToCp": -9820,
-          "moveNumber": 39
-        },
-        "luckyEscape": {
-          "player": "black",
-          "escapeAmount": 9641,
-          "evalBefore": 9920,
-          "evalAfter": -279,
-          "moveNumber": 45
-        }
-      },
-      {
-        "gameIndex": 19,
-        "white": "Daniel «Bishop Mangler Supreme» T.",
-        "black": "Adam «PawnRuinerAlpha» A.",
-        "whiteACPL": 20.7,
-        "blackACPL": 21.2,
-        "whiteAccuracy": 87.5,
-        "blackAccuracy": 87.2,
-        "whiteMoveQuality": {
-          "blunders": 0,
-          "mistakes": 7,
-          "inaccuracies": 2,
-          "good": 0,
-          "excellent": 27
-        },
-        "blackMoveQuality": {
-          "blunders": 0,
-          "mistakes": 5,
-          "inaccuracies": 4,
-          "good": 0,
-          "excellent": 27
-        },
-        "whiteEngineMoves": 27,
-        "blackEngineMoves": 27,
-        "biggestBlunder": null,
         "biggestComeback": {
           "player": "white",
           "swing": 2000,
-          "evalFrom": "-979",
-          "evalTo": "1115",
-          "evalFromCp": -979,
-          "evalToCp": 1115,
-          "moveNumber": 32
+          "evalFrom": "-1065",
+          "evalTo": "M3",
+          "evalFromCp": -1065,
+          "evalToCp": 9970,
+          "moveNumber": 25
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 2943,
-          "evalBefore": 3594,
-          "evalAfter": -651,
-          "moveNumber": 34
+          "escapeAmount": 323,
+          "evalBefore": 961,
+          "evalAfter": -638,
+          "moveNumber": 20
         }
       },
       {
-        "gameIndex": 21,
-        "white": "Ruslan «Thunder-Blunder» G.",
-        "black": "Johannes «Jo» N.",
-        "whiteACPL": 78.1,
-        "blackACPL": 79.2,
-        "whiteAccuracy": 66.5,
-        "blackAccuracy": 66.1,
+        "gameIndex": 16,
+        "white": "Victor «Loves Threefold Repetition» P.",
+        "black": "Iannis «Modern Pulverizer» D.",
+        "whiteACPL": 409.1,
+        "blackACPL": 402,
+        "whiteAccuracy": 10.8,
+        "blackAccuracy": 11.1,
         "whiteMoveQuality": {
-          "blunders": 5,
-          "mistakes": 1,
-          "inaccuracies": 5,
-          "good": 4,
+          "blunders": 4,
+          "mistakes": 18,
+          "inaccuracies": 3,
+          "good": 0,
           "excellent": 14
         },
         "blackMoveQuality": {
           "blunders": 4,
-          "mistakes": 2,
-          "inaccuracies": 8,
+          "mistakes": 19,
+          "inaccuracies": 0,
           "good": 1,
           "excellent": 14
         },
         "whiteEngineMoves": 14,
         "blackEngineMoves": 14,
         "biggestBlunder": {
-          "moveNumber": 15,
+          "moveNumber": 23,
           "player": "black",
-          "cpLoss": 493,
-          "winLoss": 61.034604224179205,
-          "severity": 67.90099719939937,
-          "move": "O-O",
-          "evalBefore": -245,
-          "evalAfter": 248
+          "cpLoss": 917,
+          "winLoss": 82.11449912977082,
+          "severity": 102.64312391221353,
+          "move": "f5",
+          "evalBefore": -300,
+          "evalAfter": 617
         },
         "biggestComeback": {
           "player": "white",
           "swing": 2000,
-          "evalFrom": "-914",
+          "evalFrom": "-632",
+          "evalTo": "M5",
+          "evalFromCp": -632,
+          "evalToCp": 9950,
+          "moveNumber": 33
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 218,
+          "evalBefore": 242,
+          "evalAfter": -24,
+          "moveNumber": 12
+        }
+      },
+      {
+        "gameIndex": 17,
+        "white": "Florian «Knightmare» G.",
+        "black": "Peter «Peaky Blunder» N.",
+        "whiteACPL": 6.5,
+        "blackACPL": 5.7,
+        "whiteAccuracy": 96.3,
+        "blackAccuracy": 96.8,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 2,
+          "good": 2,
+          "excellent": 21
+        },
+        "blackMoveQuality": {
+          "blunders": 0,
+          "mistakes": 0,
+          "inaccuracies": 1,
+          "good": 2,
+          "excellent": 22
+        },
+        "whiteEngineMoves": 21,
+        "blackEngineMoves": 22,
+        "biggestBlunder": null,
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-645",
+          "evalTo": "M3",
+          "evalFromCp": -645,
+          "evalToCp": 9970,
+          "moveNumber": 23
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 9188,
+          "evalBefore": 9970,
+          "evalAfter": -782,
+          "moveNumber": 23
+        }
+      },
+      {
+        "gameIndex": 19,
+        "white": "Alejandro «Waffle» E.",
+        "black": "Dogan «Kido» P.",
+        "whiteACPL": 2356.9,
+        "blackACPL": 2518.7,
+        "whiteAccuracy": 1.7,
+        "blackAccuracy": 1.6,
+        "whiteMoveQuality": {
+          "blunders": 16,
+          "mistakes": 53,
+          "inaccuracies": 4,
+          "good": 3,
+          "excellent": 5
+        },
+        "blackMoveQuality": {
+          "blunders": 23,
+          "mistakes": 47,
+          "inaccuracies": 3,
+          "good": 2,
+          "excellent": 5
+        },
+        "whiteEngineMoves": 5,
+        "blackEngineMoves": 5,
+        "biggestBlunder": {
+          "moveNumber": 36,
+          "player": "black",
+          "cpLoss": 959,
+          "winLoss": 85.73592909175689,
+          "severity": 120.03030072845964,
+          "move": "Kd7",
+          "evalBefore": -360,
+          "evalAfter": 599
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "675",
+          "evalTo": "-4576",
+          "evalFromCp": 675,
+          "evalToCp": -4576,
+          "moveNumber": 39
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 9602,
+          "evalBefore": 9930,
+          "evalAfter": -328,
+          "moveNumber": 45
+        }
+      },
+      {
+        "gameIndex": 21,
+        "white": "Daniel «Bishop Mangler Supreme» T.",
+        "black": "Adam «PawnRuinerAlpha» A.",
+        "whiteACPL": 18.5,
+        "blackACPL": 19.7,
+        "whiteAccuracy": 89.1,
+        "blackAccuracy": 88.4,
+        "whiteMoveQuality": {
+          "blunders": 0,
+          "mistakes": 4,
+          "inaccuracies": 4,
+          "good": 1,
+          "excellent": 27
+        },
+        "blackMoveQuality": {
+          "blunders": 1,
+          "mistakes": 3,
+          "inaccuracies": 5,
+          "good": 0,
+          "excellent": 27
+        },
+        "whiteEngineMoves": 27,
+        "blackEngineMoves": 27,
+        "biggestBlunder": {
+          "moveNumber": 7,
+          "player": "black",
+          "cpLoss": 153,
+          "winLoss": 21.650558102343993,
+          "severity": 21.650558102343993,
+          "move": "Ba6",
+          "evalBefore": -66,
+          "evalAfter": 87
+        },
+        "biggestComeback": {
+          "player": "black",
+          "swing": 2000,
+          "evalFrom": "1025",
+          "evalTo": "-1030",
+          "evalFromCp": 1025,
+          "evalToCp": -1030,
+          "moveNumber": 29
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 9254,
+          "evalBefore": 9910,
+          "evalAfter": -656,
+          "moveNumber": 34
+        }
+      },
+      {
+        "gameIndex": 23,
+        "white": "Ruslan «Thunder-Blunder» G.",
+        "black": "Johannes «Jo» N.",
+        "whiteACPL": 82.8,
+        "blackACPL": 82.4,
+        "whiteAccuracy": 64.8,
+        "blackAccuracy": 64.9,
+        "whiteMoveQuality": {
+          "blunders": 4,
+          "mistakes": 3,
+          "inaccuracies": 5,
+          "good": 4,
+          "excellent": 13
+        },
+        "blackMoveQuality": {
+          "blunders": 5,
+          "mistakes": 3,
+          "inaccuracies": 8,
+          "good": 0,
+          "excellent": 13
+        },
+        "whiteEngineMoves": 13,
+        "blackEngineMoves": 13,
+        "biggestBlunder": {
+          "moveNumber": 15,
+          "player": "white",
+          "cpLoss": 501,
+          "winLoss": 61.65579126813409,
+          "severity": 72.13727578371687,
+          "move": "dxc6",
+          "evalBefore": 268,
+          "evalAfter": -233
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 2000,
+          "evalFrom": "-957",
           "evalTo": "M6",
-          "evalFromCp": -914,
+          "evalFromCp": -957,
           "evalToCp": 9940,
           "moveNumber": 26
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 65,
-          "evalBefore": 248,
-          "evalAfter": -183,
+          "escapeAmount": 60,
+          "evalBefore": 225,
+          "evalAfter": -165,
           "moveNumber": 16
         }
       },
       {
-        "gameIndex": 22,
-        "white": "Silvan «Fork This Fork That» S.",
-        "black": "Jack «NoBackwardMoves» C.",
-        "whiteACPL": 22.3,
-        "blackACPL": 29.1,
-        "whiteAccuracy": 87.2,
-        "blackAccuracy": 84.1,
+        "gameIndex": 24,
+        "white": "Adela «Adele» P.",
+        "black": "Jonathan «Panic Gambit» B.",
+        "whiteACPL": 23.9,
+        "blackACPL": 24.6,
+        "whiteAccuracy": 87.4,
+        "blackAccuracy": 87,
         "whiteMoveQuality": {
-          "blunders": 2,
+          "blunders": 3,
           "mistakes": 3,
-          "inaccuracies": 3,
+          "inaccuracies": 2,
           "good": 1,
           "excellent": 38
         },
         "blackMoveQuality": {
           "blunders": 3,
-          "mistakes": 4,
-          "inaccuracies": 0,
-          "good": 1,
+          "mistakes": 3,
+          "inaccuracies": 3,
+          "good": 0,
           "excellent": 38
         },
         "whiteEngineMoves": 38,
         "blackEngineMoves": 38,
         "biggestBlunder": {
-          "moveNumber": 9,
+          "moveNumber": 5,
           "player": "black",
-          "cpLoss": 517,
-          "winLoss": 63.15058128284757,
-          "severity": 73.09679783489607,
-          "move": "Bxd1",
-          "evalBefore": -263,
-          "evalAfter": 254
+          "cpLoss": 215,
+          "winLoss": 29.97368403580832,
+          "severity": 29.97368403580832,
+          "move": "Ne7",
+          "evalBefore": -99,
+          "evalAfter": 116
         },
         "biggestComeback": {
           "player": "white",
-          "swing": 1342,
-          "evalFrom": "-638",
-          "evalTo": "704",
-          "evalFromCp": -638,
-          "evalToCp": 704,
+          "swing": 2000,
+          "evalFrom": "-978",
+          "evalTo": "1056",
+          "evalFromCp": -978,
+          "evalToCp": 1056,
+          "moveNumber": 37
+        },
+        "luckyEscape": {
+          "player": "black",
+          "escapeAmount": 8726,
+          "evalBefore": 9970,
+          "evalAfter": -1244,
+          "moveNumber": 42
+        }
+      },
+      {
+        "gameIndex": 25,
+        "white": "Silvan «Fork This Fork That» S.",
+        "black": "Jack «NoBackwardMoves» C.",
+        "whiteACPL": 21.3,
+        "blackACPL": 27.8,
+        "whiteAccuracy": 87.8,
+        "blackAccuracy": 84.8,
+        "whiteMoveQuality": {
+          "blunders": 1,
+          "mistakes": 4,
+          "inaccuracies": 1,
+          "good": 3,
+          "excellent": 38
+        },
+        "blackMoveQuality": {
+          "blunders": 2,
+          "mistakes": 5,
+          "inaccuracies": 0,
+          "good": 3,
+          "excellent": 36
+        },
+        "whiteEngineMoves": 38,
+        "blackEngineMoves": 36,
+        "biggestBlunder": {
+          "moveNumber": 9,
+          "player": "black",
+          "cpLoss": 503,
+          "winLoss": 61.93031560905946,
+          "severity": 69.82643084921455,
+          "move": "Bxd1",
+          "evalBefore": -251,
+          "evalAfter": 252
+        },
+        "biggestComeback": {
+          "player": "white",
+          "swing": 1240,
+          "evalFrom": "-530",
+          "evalTo": "710",
+          "evalFromCp": -530,
+          "evalToCp": 710,
           "moveNumber": 47
         },
         "luckyEscape": {
           "player": "black",
-          "escapeAmount": 252,
-          "evalBefore": 275,
-          "evalAfter": -23,
+          "escapeAmount": 206,
+          "evalBefore": 208,
+          "evalAfter": -2,
           "moveNumber": 42
         }
       }
@@ -2015,55 +2270,55 @@
     "summary": {
       "accuracyKing": {
         "player": "black",
-        "accuracy": 99.6,
-        "acpl": 0.7,
+        "accuracy": 99.2,
+        "acpl": 1.2,
         "white": "Rainer «Quigli» S.",
         "black": "Stefano «acheron» B.",
-        "gameIndex": 8
+        "gameIndex": 9
       },
       "biggestBlunder": {
-        "moveNumber": 45,
+        "moveNumber": 36,
         "player": "black",
-        "cpLoss": 0,
-        "winLoss": 88.64576236639505,
-        "severity": 123.4532741406092,
-        "move": "Kg7",
-        "evalBefore": -357,
-        "evalAfter": 9910,
+        "cpLoss": 959,
+        "winLoss": 85.73592909175689,
+        "severity": 120.03030072845964,
+        "move": "Kd7",
+        "evalBefore": -360,
+        "evalAfter": 599,
         "white": "Alejandro «Waffle» E.",
         "black": "Dogan «Kido» P.",
-        "gameIndex": 17
+        "gameIndex": 19
       },
       "comebackKing": {
         "player": "white",
         "swing": 2000,
-        "evalFrom": "-1021",
-        "evalTo": "1112",
-        "evalFromCp": -1021,
-        "evalToCp": 1112,
-        "moveNumber": 42,
-        "white": "Manuel «Grundpatzer» C.",
-        "black": "Korbinian «King's Gambit is a real opening» A.",
+        "evalFrom": "-528",
+        "evalTo": "M3",
+        "evalFromCp": -528,
+        "evalToCp": 9970,
+        "moveNumber": 22,
+        "white": "Igor «Premove Blunder» S.",
+        "black": "Mario «ChessDude» M.",
         "gameIndex": 1
       },
       "luckyEscape": {
         "player": "black",
-        "escapeAmount": 9641,
-        "evalBefore": 9920,
-        "evalAfter": -279,
+        "escapeAmount": 9602,
+        "evalBefore": 9930,
+        "evalAfter": -328,
         "moveNumber": 45,
         "white": "Alejandro «Waffle» E.",
         "black": "Dogan «Kido» P.",
-        "gameIndex": 17
+        "gameIndex": 19
       },
       "stockfishBuddy": {
-        "player": "black",
+        "player": "white",
         "engineMoves": 41,
         "totalMoves": 46,
         "percentage": 89.1,
         "white": "Manuel «Grundpatzer» C.",
         "black": "Korbinian «King's Gambit is a real opening» A.",
-        "gameIndex": 1
+        "gameIndex": 2
       },
       "inaccuracyKing": {
         "player": "black",
@@ -2071,39 +2326,39 @@
         "totalMoves": 29,
         "white": "Ruslan «Thunder-Blunder» G.",
         "black": "Johannes «Jo» N.",
-        "gameIndex": 21
+        "gameIndex": 23
       },
       "lowestACPL": {
         "player": "black",
-        "acpl": 0.7,
-        "accuracy": 99.6,
+        "acpl": 1.2,
+        "accuracy": 99.2,
         "white": "Rainer «Quigli» S.",
         "black": "Stefano «acheron» B.",
-        "gameIndex": 8
+        "gameIndex": 9
       },
       "highestACPL": {
         "player": "black",
-        "acpl": 2701,
+        "acpl": 2518.7,
         "accuracy": 1.6,
         "white": "Alejandro «Waffle» E.",
         "black": "Dogan «Kido» P.",
-        "gameIndex": 17
+        "gameIndex": 19
       },
       "lowestCombinedACPL": {
-        "combinedACPL": 2.5999999999999996,
-        "whiteACPL": 1.9,
-        "blackACPL": 0.7,
+        "combinedACPL": 3.2,
+        "whiteACPL": 2,
+        "blackACPL": 1.2,
         "white": "Rainer «Quigli» S.",
         "black": "Stefano «acheron» B.",
-        "gameIndex": 8
+        "gameIndex": 9
       },
       "highestCombinedACPL": {
-        "combinedACPL": 5202.7,
-        "whiteACPL": 2501.7,
-        "blackACPL": 2701,
+        "combinedACPL": 4875.6,
+        "whiteACPL": 2356.9,
+        "blackACPL": 2518.7,
         "white": "Alejandro «Waffle» E.",
         "black": "Dogan «Kido» P.",
-        "gameIndex": 17
+        "gameIndex": 19
       }
     }
   }
