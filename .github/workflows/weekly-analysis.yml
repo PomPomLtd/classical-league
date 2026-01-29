@@ -1,11 +1,12 @@
 name: Weekly Round Analysis
 
 on:
-  schedule:
-    # Run every Wednesday at 12:00 UTC (noon)
-    # Week 1 (day after round start): Finalize previous round + overview
-    # Week 2 (mid-round): Generate in-progress stats for current round
-    - cron: '0 12 * * 3'
+  # Schedule disabled - Season 2 completed
+  # schedule:
+  #   # Run every Wednesday at 12:00 UTC (noon)
+  #   # Week 1 (day after round start): Finalize previous round + overview
+  #   # Week 2 (mid-round): Generate in-progress stats for current round
+  #   - cron: '0 12 * * 3'
   workflow_dispatch:
     inputs:
       season:

@@ -3,17 +3,37 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import { tournamentConfig } from '@/lib/tournament-config'
 
-const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Register', href: '/players/register', current: false },
-  { name: 'Player Directory', href: '/players', current: false },
-  { name: 'Request Bye', href: '/byes', current: false },
-  { name: 'Submit Result', href: '/submit-result', current: false },
-  { name: 'Stats', href: '/stats', current: false },
-  { name: 'Rules', href: '/rules', current: false },
-  { name: 'Tournament Links', href: '/links', current: false },
+// Navigation items that are always visible
+const baseNavigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Stats', href: '/stats' },
+  { name: 'Tournament Links', href: '/links' },
 ]
+
+// Navigation items only visible during active season
+const activeSeasonNavigation = [
+  { name: 'Register', href: '/players/register' },
+  { name: 'Player Directory', href: '/players' },
+  { name: 'Request Bye', href: '/byes' },
+  { name: 'Submit Result', href: '/submit-result' },
+  { name: 'Rules', href: '/rules' },
+]
+
+// Build navigation based on season status
+const navigation = tournamentConfig.isSeasonActive
+  ? [
+      baseNavigation[0], // Home
+      activeSeasonNavigation[0], // Register
+      activeSeasonNavigation[1], // Player Directory
+      activeSeasonNavigation[2], // Request Bye
+      activeSeasonNavigation[3], // Submit Result
+      baseNavigation[1], // Stats
+      activeSeasonNavigation[4], // Rules
+      baseNavigation[2], // Tournament Links
+    ]
+  : baseNavigation
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')

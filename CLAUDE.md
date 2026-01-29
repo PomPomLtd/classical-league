@@ -9,8 +9,14 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
 **Key Tournament Details:**
 - Swiss system format, 7 rounds, 30+30 time control
 - External pairings via swissystem.org
-- Multi-season support (currently Season 2)
+- Multi-season support (Season 2 completed, awaiting Season 3)
 - Expected scale: ~50 players per season
+
+**Season Status Configuration:**
+- Edit `lib/tournament-config.ts` to toggle between active/completed season
+- `isSeasonActive: true` - Shows registration, bye requests, result submission
+- `isSeasonActive: false` - Shows season completed view with stats links
+- Update `currentSeasonNumber` when starting a new season
 
 ## Commands
 
@@ -63,10 +69,12 @@ K4 Classical League is a Next.js 15 web application for managing a Swiss system 
   ```
 
 **GitHub Actions (Automated Stats):**
-- `.github/workflows/weekly-analysis.yml` - Automated round analysis every Wednesday 12pm UTC
-- `.github/workflows/generate-overview.yml` - Season overview generation every Wednesday 2pm UTC
+- `.github/workflows/weekly-analysis.yml` - Round analysis (schedule disabled, manual trigger available)
+- `.github/workflows/generate-overview.yml` - Season overview (schedule disabled, manual trigger available)
 - `.github/workflows/analyze-round.yml` - Manual single round analysis
 - `.github/workflows/analyze-multiple-rounds.yml` - Batch analysis for multiple rounds
+
+Note: Scheduled workflows are disabled between seasons. Re-enable the cron schedules when a new season starts.
 
 **Round Detection:**
 - `node scripts/detect-current-round.js` - Auto-detect which round to analyze
@@ -297,6 +305,59 @@ npm run dev
 - Reset everything: `npm run db:dev:stop && npm run setup:local`
 - Database browser: `npm run db:studio`
 - Check migrations: `npx prisma migrate status`
+
+## Starting a New Season
+
+When Season 2 (or any season) ends and you're ready to start a new season:
+
+### 1. Update Tournament Config
+Edit `lib/tournament-config.ts`:
+```typescript
+export const tournamentConfig = {
+  isSeasonActive: true,  // Change from false to true
+  currentSeasonNumber: 3,  // Increment season number
+  lichessBroadcastUrl: 'https://lichess.org/broadcast/...',  // New broadcast URL
+}
+```
+
+### 2. Re-enable GitHub Action Schedules
+Uncomment the cron schedules in these workflow files:
+- `.github/workflows/weekly-analysis.yml`
+- `.github/workflows/generate-overview.yml`
+
+Change from:
+```yaml
+on:
+  # Schedule disabled - Season 2 completed
+  # schedule:
+  #   - cron: '0 12 * * 3'
+```
+
+To:
+```yaml
+on:
+  schedule:
+    - cron: '0 12 * * 3'
+```
+
+### 3. Create Season in Admin Panel
+1. Go to Admin Panel → Settings
+2. Create new season with start/end dates
+3. Create 7 rounds with appropriate dates and bye deadlines
+
+### 4. Update Any Hardcoded References
+Check and update any season-specific content:
+- Tournament dates in info blocks
+- Links to external resources (swissystem.org tournament)
+
+### 5. Deploy and Verify
+```bash
+npm run build  # Verify build passes
+git add -A && git commit -m "Start Season 3"
+git push
+```
+
+The homepage will now show registration, the navigation will include all active-season items, and GitHub Actions will resume weekly stats generation.
 
 ## Statistics System
 

@@ -1,11 +1,12 @@
 name: Generate Season Overview
 
 on:
-  schedule:
-    # Run every Wednesday at 14:00 UTC (2pm)
-    # Runs 2 hours after weekly round analysis completes
-    # Only updates when new round stats are available
-    - cron: '0 14 * * 3'
+  # Schedule disabled - Season 2 completed
+  # schedule:
+  #   # Run every Wednesday at 14:00 UTC (2pm)
+  #   # Runs 2 hours after weekly round analysis completes
+  #   # Only updates when new round stats are available
+  #   - cron: '0 14 * * 3'
   workflow_dispatch:
     inputs:
       season:
