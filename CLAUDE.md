@@ -1,5 +1,14 @@
 # CLAUDE.md
 
+> **⚠️ This app is being retired.** Since 2026-09-24 the Classical League is being merged into
+> `/Users/sgis/DEV/pompom/k4-swisssystem` (tournament.schachklub-k4.ch) for Season 3; statistics
+> and awards move to the Lichess-broadcast stats platform (`olympiad-stats`, Phase 7). Do not add
+> features here. Spec and phases: `k4-swisssystem/_SPECS/classical-league-spec.md` and
+> `k4-swisssystem/_SPECS/tasks/classical/`. Remaining work in this repo: Phase 0 security fixes
+> (credential scrub, delete `/api/admin/migrate-db`, `/api/admin/create-admin`, `/setup`; gate
+> `pending-counts` and `rounds/[id]/checklist`; `npm audit fix`) and the Season 2 export script
+> (Phase G), then archive.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
