@@ -1,9 +1,16 @@
 import { NextResponse } from 'next/server'
+import { auth } from '@/auth'
 import { db } from '@/lib/db'
 import { getCurrentSeason } from '@/lib/season'
 
 export async function GET() {
   try {
+    // Admin-only (same check as app/api/admin/settings/route.ts)
+    const session = await auth()
+    if (!session || session.user.role !== 'admin') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const season = await getCurrentSeason()
     
     if (!season) {

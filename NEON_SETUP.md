@@ -13,12 +13,12 @@ Based on your setup, you have:
 
 #### Pooled Connection (for application):
 ```
-postgresql://neondb_owner:npg_Jd8j7vAlWQOV@ep-lingering-fire-ag4e3lut-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+<pooled connection string — run: neonctl connection-string --pooled>
 ```
 
 #### Direct Connection (for migrations):
 ```
-postgresql://neondb_owner:npg_Jd8j7vAlWQOV@ep-lingering-fire-ag4e3lut.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+<direct connection string — run: neonctl connection-string>
 ```
 
 **Note**: The direct connection is the same URL but without `-pooler` in the hostname.
@@ -31,13 +31,13 @@ Configure these in your Vercel dashboard:
 
 1. **DATABASE_URL** (for Prisma migrations and Prisma Client):
    ```
-   postgresql://neondb_owner:npg_Jd8j7vAlWQOV@ep-lingering-fire-ag4e3lut.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+   <direct connection string — run: neonctl connection-string>
    ```
    Use the DIRECT connection (without -pooler) for this.
 
 2. **DATABASE_URL_POOLED** (optional, for high-concurrency scenarios):
    ```
-   postgresql://neondb_owner:npg_Jd8j7vAlWQOV@ep-lingering-fire-ag4e3lut-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+   <pooled connection string — run: neonctl connection-string --pooled>
    ```
 
 ### Why Two URLs?
